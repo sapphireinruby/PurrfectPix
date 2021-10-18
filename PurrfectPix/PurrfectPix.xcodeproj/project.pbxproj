@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		27713F9669579C90492BBBDF /* Pods_PurrfectPix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F323A3915F60723F494B48F /* Pods_PurrfectPix.framework */; };
+		A7315CFE271E250C00B58879 /* HomePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7315CFD271E250C00B58879 /* HomePost.swift */; };
+		A7315D00271E27C300B58879 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7315CFF271E27C300B58879 /* Comment.swift */; };
 		A7DDDEF4271B2E7200F28B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */; };
 		A7DDDEF6271B2E7200F28B24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */; };
 		A7DDDEF8271B2E7200F28B24 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF7271B2E7200F28B24 /* HomeViewController.swift */; };
@@ -40,6 +42,8 @@
 		0F323A3915F60723F494B48F /* Pods_PurrfectPix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PurrfectPix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AFFA76A82F4F0AB43049356 /* Pods-PurrfectPix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PurrfectPix.debug.xcconfig"; path = "Target Support Files/Pods-PurrfectPix/Pods-PurrfectPix.debug.xcconfig"; sourceTree = "<group>"; };
 		7E2172BFB59D3EFF94B8CD88 /* Pods-PurrfectPix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PurrfectPix.release.xcconfig"; path = "Target Support Files/Pods-PurrfectPix/Pods-PurrfectPix.release.xcconfig"; sourceTree = "<group>"; };
+		A7315CFD271E250C00B58879 /* HomePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePost.swift; sourceTree = "<group>"; };
+		A7315CFF271E27C300B58879 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A7DDDEF0271B2E7200F28B24 /* PurrfectPix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PurrfectPix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				A7DDDF4D271D9BBC00F28B24 /* Post.swift */,
 				A7DDDF4F271D9BCE00F28B24 /* Relation.swift */,
 				A7DDDF51271D9BE400F28B24 /* Notification.swift */,
+				A7315CFF271E27C300B58879 /* Comment.swift */,
+				A7315CFD271E250C00B58879 /* HomePost.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -372,7 +378,9 @@
 				A7DDDF44271D9AEE00F28B24 /* ListViewController.swift in Sources */,
 				A7DDDF46271D9AF900F28B24 /* PostViewController.swift in Sources */,
 				A7DDDF50271D9BCE00F28B24 /* Relation.swift in Sources */,
+				A7315CFE271E250C00B58879 /* HomePost.swift in Sources */,
 				A7DDDF5A271D9E5200F28B24 /* AnalyticsManager.swift in Sources */,
+				A7315D00271E27C300B58879 /* Comment.swift in Sources */,
 				A7DDDF3A271D99EB00F28B24 /* TabBarViewController.swift in Sources */,
 				A7DDDF4A271D9B2C00F28B24 /* SettingViewController.swift in Sources */,
 				A7DDDF31271BD8E600F28B24 /* CameraViewController.swift in Sources */,

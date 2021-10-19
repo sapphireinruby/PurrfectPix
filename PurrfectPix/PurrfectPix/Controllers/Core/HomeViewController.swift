@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // CollectionView for feed
     private let collectionView: UICollectionView = UICollectionView(
@@ -15,8 +15,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,UICollectio
         collectionViewLayout: UICollectionViewCompositionalLayout(
             sectionProvider: {  index, _ -> NSCollectionLayoutSection? in
 
-                //item
-                let item = NSCollectionLayoutItem(
+                // cell for poster
+                // large cell for post
+                // action cell
+                // like heart cell
+                // timestamp cell
+
+                // item
+
+                let posterItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1), // 100%
                         heightDimension: .fractionalHeight(1) // 100%
@@ -24,21 +31,59 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,UICollectio
                 )
 
 
-                //group
+                let postItem = NSCollectionLayoutItem(
+                    layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .fractionalWidth(1), // 100%
+                        heightDimension: .fractionalHeight(1) // 100%
+                    )
+                )
+
+                let cationItem = NSCollectionLayoutItem(
+                    layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .fractionalWidth(1), // 100%
+                        heightDimension: .fractionalHeight(1) // 100%
+                    )
+                )
+
+                let likeItem = NSCollectionLayoutItem(
+                    layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .fractionalWidth(1), // 100%
+                        heightDimension: .fractionalHeight(1) // 100%
+                    )
+                )
+
+                let dateItem = NSCollectionLayoutItem(
+                    layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .fractionalWidth(1), // 100%
+                        heightDimension: .fractionalHeight(1) // 100%
+                    )
+                )
+
+
+                // group
                 let group = NSCollectionLayoutGroup.vertical(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1), // 100%
                         heightDimension: .absolute(100)
                     ),
-                    subitem: item, count: 1)
+                    subitems: [
+                        posterItem,
+                        postItem,
+                        cationItem,
+                        likeItem,
+                        dateItem
+                              ])
 
+                // cell for poster
+                // large cell for post
+                // action cell
+                // like heart cell
+                // timestamp cell
 
-
-                //section
+                // section
                 return NSCollectionLayoutSection(group: group)
             })
     )
-
 
 
     override func viewDidLoad() {

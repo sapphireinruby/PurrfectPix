@@ -4,7 +4,9 @@
 target 'PurrfectPix' do
   use_frameworks!
 
+
   pod 'Appirater'
+  pod 'SDWebImage'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'

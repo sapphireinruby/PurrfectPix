@@ -30,23 +30,27 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
     private func fetchPosts() {
-        //for mock data
+        // for mock data
+
         let postData: [HomeFeedCellType] = [
             .poster(
                 viewModel: PosterCollectionViewCellViewModel(
                     username: "Elio_puppylover",
-                    profilePictureURL: URL(string: "https://scontent.ftpe8-1.fna.fbcdn.net/v/t1.6435-9/242945276_3054696211465194_1423317400057496127_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeEbjFUHsYJ9EqZsgBq5zb-iT_Ih7fxGqB5P8iHt_EaoHlf59JU9QFYyrEPXsPaxOh8&_nc_ohc=scAT0OX2pHYAX8-fa9T&_nc_ht=scontent.ftpe8-1.fna&oh=6a400e2c4fa886fa84048e8a921feb8f&oe=6193614C")!
-                )
-            ),
-
-            .post(
-                viewModel: PostCollectionViewCellViewModel(
-                    postUrl: URL(string: "https://scontent.ftpe8-4.fna.fbcdn.net/v/t1.6435-9/242633552_3054696328131849_3707480464591953262_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeFwzWTKCl1GNGMIiuY4k5x9GSSG4ACEIPgZJIbgAIQg-NV4mUAjCylLcLzVRJZY_LQ&_nc_ohc=Hb6Ttf8GCf4AX-sfWIS&_nc_ht=scontent.ftpe8-4.fna&oh=649ca474cd9dcea8f97ed3b53e459ad9&oe=61952033")!
+                    // 不能用縮網址，下面這行註解，一定要寫在網址上一行
+                    // swiftlint:disable:next line_length
+                    profilePictureURL: URL(string: "https://www.petmd.com/sites/default/files/styles/article_image/public/petmd-puppy-weight.jpg?itok=IwMOwGSX")!
                 )
             ),
 
             .petTag(viewModel: PostPetTagCollectionViewCellViewModel(
-                petTag: "Dog"
+                    petTag: "Dog"
+                    )
+            ),
+
+            .post(
+                viewModel: PostCollectionViewCellViewModel(
+                    // swiftlint:disable:next line_length
+                    postUrl: URL(string: "https://data.whicdn.com/images/307051828/original.jpg")!
                 )
             ),
 
@@ -55,7 +59,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 )
             ),
 
-            .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: ["Amber_cat", "Zeo666", "Alliee"])),
+            .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: ["Amber_cat", "Zoe666", "Alliee"])),
 
             .caption(viewModel: PostCaptionCollectionViewCellViewModel(username: "Amber_cat", caption: "太可愛了吧～～～！")),
 
@@ -92,28 +96,94 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         // to show mock data
         let celltype = viewModels[indexPath.section][indexPath.row]
+
         switch celltype {
 
         case .poster(let viewModel):
-            break
-        case .post(let viewModel):
-            break
+
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PosterCollectionViewCell.identifer,
+                for: indexPath
+            ) as? PosterCollectionViewCell else {
+                fatalError()
+            }
+            cell.configure(with: viewModel)
+            cell.contentView.backgroundColor = colors[indexPath.row]
+            return cell
+
         case .petTag(let viewModel):
-            break
+
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PostPetTagCollectionViewCell.identifer,
+                for: indexPath
+            ) as? PostPetTagCollectionViewCell else {
+                fatalError()
+            }
+            cell.configure(with: viewModel)
+            cell.contentView.backgroundColor = colors[indexPath.row]
+            return cell
+
+        case .post(let viewModel):
+
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PostCollectionViewCell.identifer,
+                for: indexPath
+            ) as? PostCollectionViewCell else {
+                fatalError()
+            }
+            cell.configure(with: viewModel)
+            cell.contentView.backgroundColor = colors[indexPath.row]
+            return cell
+
         case .actions(let viewModel):
-            break
+
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PostActionsCollectionViewCell.identifer,
+                for: indexPath
+            ) as? PostActionsCollectionViewCell else {
+                fatalError()
+            }
+            cell.configure(with: viewModel)
+            cell.contentView.backgroundColor = colors[indexPath.row]
+            return cell
+
         case .likeCount(let viewModel):
-            break
+
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PostLikesCollectionViewCell.identifer,
+                for: indexPath
+            ) as? PostLikesCollectionViewCell else {
+                fatalError()
+            }
+            cell.configure(with: viewModel)
+            cell.contentView.backgroundColor = colors[indexPath.row]
+            return cell
+
         case .caption(let viewModel):
-            break
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PostCaptionCollectionViewCell.identifer,
+                for: indexPath
+            ) as? PostCaptionCollectionViewCell else {
+                fatalError()
+            }
+            cell.configure(with: viewModel)
+            cell.contentView.backgroundColor = colors[indexPath.row]
+            return cell
+
         case .timestamp(let viewModel):
-            break
+
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PostDateTimeCollectionViewCell.identifer,
+                for: indexPath
+            ) as? PostDateTimeCollectionViewCell else {
+                fatalError()
+            }
+            cell.configure(with: viewModel)
+            cell.contentView.backgroundColor = colors[indexPath.row]
+            return cell
+
         }
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.contentView.backgroundColor = colors[indexPath.row]
-
-        return cell
     }
 }
 
@@ -121,7 +191,7 @@ extension HomeViewController {
 
     func configureCollectionView() {
 
-        let sectionHeight = CGFloat( 60 + 40 + (view.frame.size.width))
+        let sectionHeight: CGFloat = 240 + view.width
 //        let sectionHeight: CGFloat = 240 + view.width
         let collectionView = UICollectionView(
             frame: .zero,
@@ -223,8 +293,43 @@ extension HomeViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell"
+
+        // register 7 cells
+        collectionView.register(
+            PosterCollectionViewCell.self,
+            forCellWithReuseIdentifier: PosterCollectionViewCell.identifer
         )
+
+        collectionView.register(
+            PostPetTagCollectionViewCell.self,
+            forCellWithReuseIdentifier: PostPetTagCollectionViewCell.identifer
+        )
+
+        collectionView.register(
+            PostCollectionViewCell.self,
+            forCellWithReuseIdentifier: PostCollectionViewCell.identifer
+        )
+
+        collectionView.register(
+            PostActionsCollectionViewCell.self,
+            forCellWithReuseIdentifier: PostActionsCollectionViewCell.identifer
+        )
+
+        collectionView.register(
+            PostLikesCollectionViewCell.self,
+            forCellWithReuseIdentifier: PostLikesCollectionViewCell.identifer
+        )
+
+        collectionView.register(
+            PostCaptionCollectionViewCell.self,
+            forCellWithReuseIdentifier: PostCaptionCollectionViewCell.identifer
+        )
+
+        collectionView.register(
+            PostDateTimeCollectionViewCell.self,
+            forCellWithReuseIdentifier: PostDateTimeCollectionViewCell.identifer
+        )
+
         self.collectionView = collectionView
     }
 

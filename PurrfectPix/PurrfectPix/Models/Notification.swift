@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum NotificationCellType {
+    
+    case follow
+    case like
+    case comment
+}

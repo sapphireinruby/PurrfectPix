@@ -7,9 +7,20 @@
 
 import UIKit
 
+protocol PostActionsCollectionViewCellDelegate: AnyObject {
+
+    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool)
+    func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell)
+    func postActionsCollectionViewCellDidTapShare(_ cell: PostActionsCollectionViewCell)
+}
+
 class PostActionsCollectionViewCell: UICollectionViewCell {
 
     static let identifer = "PostActionsCollectionViewCell"
+
+    weak var delegate: PostActionsCollectionViewCellDelegate?
+
+    private var isLiked = false
 
     // set up 3 button
 
@@ -64,7 +75,25 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
     // three actions
 
     @objc func didTapLike() {
+        // the viewModel knows if it's liked
+//        delegate?.postActionsCollectionViewCellDidTapLike(self, isLiked: !isLiked)
+//        // will inverse the isLike Bool, preset it to flase earlier
 
+        // do the heart change directly
+        if self.isLiked {
+            let image = UIImage(named: "Heart-purple")
+            likeButton.setImage(image, for: .normal)
+//            likeButton.tintColor = .label // white or dark depending on the mode
+        }
+        else {
+            let image = UIImage(named: "Heart-filled")
+            likeButton.setImage(image, for: .normal)
+//            likeButton.tintColor = .systemRed
+        }
+
+        delegate?.postActionsCollectionViewCellDidTapLike(self,
+                                                          isLiked: !isLiked)
+        self.isLiked = !isLiked  // to enable doing the switch
     }
 
     @objc func didTapComment() {
@@ -90,9 +119,10 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(with viewModel: PostActionsCollectionViewCellViewModel) {
+        // to save if is liked or not
+        isLiked = viewModel.isLiked
 
         if viewModel.isLiked {
-
             let image = UIImage(named: "Heart-filled")
             likeButton.setImage(image, for: .normal)
 

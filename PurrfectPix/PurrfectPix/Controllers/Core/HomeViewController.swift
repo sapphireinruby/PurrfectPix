@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestoreSwift
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -16,7 +18,36 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // Feed viewModels
     private var viewModels = [[HomeFeedCellType]]()
 
+    let db = Firestore.firestore()
+
     override func viewDidLoad() {
+
+
+        let docRef = db.collection("posts").document("DhgbAAeE1D7T7sTOxUpV")
+
+        docRef.getDocument { (document, error) in
+
+            let result = Result {
+              try document?.data(as: Post.self)
+            }
+            switch result {
+            case .success(let city):
+                if let city = city {
+                    // A `City` value was successfully initialized from the DocumentSnapshot.
+                    print("City: \(city)")
+                } else {
+                    // A nil value was successfully initialized from the DocumentSnapshot,
+                    // or the DocumentSnapshot was nil.
+                    print("Document does not exist")
+                }
+            case .failure(let error):
+                // A `City` value could not be initialized from the DocumentSnapshot.
+                print("Error decoding city: \(error)")
+            }
+        }
+
+
+        
         super.viewDidLoad()
         title = "PurrfectPix"
         view.backgroundColor = .systemBackground
@@ -107,6 +138,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ) as? PosterCollectionViewCell else {
                 fatalError()
             }
+
+            cell.delegate = self  //delegate set up at cell class
+
             cell.configure(with: viewModel)
             cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
@@ -131,6 +165,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ) as? PostCollectionViewCell else {
                 fatalError()
             }
+
+            cell.delegate = self
+
             cell.configure(with: viewModel)
             cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
@@ -143,6 +180,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ) as? PostActionsCollectionViewCell else {
                 fatalError()
             }
+
+            cell.delegate = self
+
             cell.configure(with: viewModel)
             cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
@@ -155,6 +195,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ) as? PostLikesCollectionViewCell else {
                 fatalError()
             }
+
+            cell.delegate = self
+
             cell.configure(with: viewModel)
             cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
@@ -166,6 +209,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ) as? PostCaptionCollectionViewCell else {
                 fatalError()
             }
+
+            cell.delegate = self
+
             cell.configure(with: viewModel)
             cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
@@ -186,6 +232,74 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     }
 }
+
+extension HomeViewController: PostLikesCollectionViewCellDelegate {
+    func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell) {
+
+        let vc = ListViewController() // initiate a vc
+        vc.title = "Liked by / 被誰大心"
+        navigationController?.pushViewController(vc, animated: true)
+
+
+    }
+}
+
+extension HomeViewController: PostCaptionCollectionViewCellDelegate {
+    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell) {
+        print("tapped caption")
+    }
+}
+
+extension HomeViewController: PostActionsCollectionViewCellDelegate {
+    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool) {
+        // call DB to update like state
+    }
+
+    func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell) {
+         let vc = PostViewController()
+        vc.title = "Post"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func postActionsCollectionViewCellDidTapShare(_ cell: PostActionsCollectionViewCell) {
+
+        let vc = UIActivityViewController(activityItems: ["Sharing from PurrfectPix"], applicationActivities: [])
+        present(vc, animated: true)
+
+    }
+}
+
+
+extension HomeViewController: PostCollectionViewCellDelegate {
+    func postCollectionViewCellDidLike(_ cell: PostCollectionViewCell) {
+        print("tapped to like")
+    }
+}
+
+extension HomeViewController: PosterCollectionViewCellDelegate {
+    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell) {
+        // upper right three dot meun
+
+        let sheet = UIAlertController(
+            title: "Post Actions",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
+
+        sheet.addAction(UIAlertAction(title: "Report Post", style: .destructive, handler: { _ in}))
+
+        present(sheet, animated: true)
+    }
+
+    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell) {
+//        let vc = ProfileViewController(user: User(userID: "userid2323", username: "morgan_likeplants", email: "morgan@fake.com"))
+    }
+}
+
 
 extension HomeViewController {
 

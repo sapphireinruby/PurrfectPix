@@ -7,13 +7,21 @@
 
 import UIKit
 
+protocol PostCaptionCollectionViewCellDelegate: AnyObject {
+    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell)
+}
+
 class PostCaptionCollectionViewCell: UICollectionViewCell {
 
     static let identifer = "PostCaptionCollectionViewCell"
 
+    weak var delegate: PostCaptionCollectionViewCellDelegate?
+
+
     private let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0 //for line wrap
+        label.isUserInteractionEnabled = true
         return label
 
     }()
@@ -23,10 +31,19 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
         contentView.clipsToBounds = true
         contentView.backgroundColor = .systemBackground
         contentView.addSubview(label)
+
+        // for target action
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(didTapCaption))
+        label.addGestureRecognizer(tap)
     }
 
     required init? (coder: NSCoder) {
         fatalError()
+    }
+
+    @objc func didTapCaption() {
+        delegate?.postCaptionCollectionViewCellDidTapCaptioon(self)
     }
 
     override func layoutSubviews() {
@@ -52,7 +69,6 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
 //        label.text = "\(viewModel.username): \(viewModel.caption)"  // showing comment with "optional"
 
         label.text = "\(viewModel.username): \(viewModel.caption ?? "")"  // if not nil, not showing the "optional"
-
 
     }
 

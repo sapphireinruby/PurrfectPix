@@ -8,9 +8,18 @@
 import UIKit
 import SDWebImage
 
+protocol PosterCollectionViewCellDelegate: AnyObject {
+    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell)
+    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell)
+
+}
+
 final class PosterCollectionViewCell: UICollectionViewCell {
     
     static let identifer = "PosterCollectionViewCell"
+
+    // use delagate weak to avoid the risk of a "strong reference cycle" aka “retain cycle”
+    weak var delegate: PosterCollectionViewCellDelegate?
 
     private let imageView: UIImageView = {
 
@@ -48,10 +57,19 @@ final class PosterCollectionViewCell: UICollectionViewCell {
         // set target-action for more button
         moreButton.addTarget(self, action: #selector(didTapMore), for: .touchUpInside)
 
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapUsername))
+        usernameLabel.addGestureRecognizer(tap)
+
     }
 
+    // action selector
     @objc func didTapMore() {
-        // set up later
+        delegate?.posterCollectionViewCellDidTapMore(self)
+        // passing a reference of caller of a delegate function
+    }
+
+    @objc func didTapUsername() {
+        delegate?.posterCollectionViewCellDidTapUsername(self)
     }
 
     required init? (coder: NSCoder) {

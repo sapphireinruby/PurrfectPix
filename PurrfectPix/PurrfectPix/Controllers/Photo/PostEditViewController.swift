@@ -5,84 +5,152 @@
 //  Created by Amber on 10/22/21.
 //
 
+import CoreImage
 import UIKit
 
-private let reuseIdentifier = "Cell"
+class PostEditViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-class PostEditViewController: UICollectionViewController {
+    private var filters = [UIImage]()
+
+    private let imageView: UIImageView = {
+
+        let imageView = UIImageView()
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+
+    }()
+
+    // add a collection view
+    private let collectionView: UICollectionView = {
+
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 2
+        layout.sectionInset = UIEdgeInsets(top: 1, left: 16, bottom: 1, right: 16)
+
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
+        collectionView.backgroundColor = .secondarySystemBackground
+
+        // under Views
+        collectionView.register(PhotoCollectionViewCell.self,
+                                forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+        return collectionView
+    }()
+
+    private let image: UIImage
+
+    init(image: UIImage) {
+        self.image = image
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .secondarySystemBackground
+        title = "Edit Photo"
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        imageView.image = image
+        view.addSubview(imageView)
 
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        setUpFilters()
+        
+        view.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
 
-        // Do any additional setup after loading the view.
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(didTapNext))
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+    override func viewDidLayoutSubviews() {
+        
+        super.viewDidLayoutSubviews()
+        imageView.frame = CGRect(
+            x: 0,
+            y: view.safeAreaInsets.top,
+            width: view.width,
+            height: view.width
+        )
+        collectionView.frame = CGRect(
+            x: 0,
+            y: imageView.bottom+20,
+            width: view.width,
+            height: 100
+        )
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+    @objc func didTapNext() {
+        guard let current = imageView.image else { return }
+        // image -> image before filter, current -> after filter
+        
+        let vc = CaptionViewController(image: current)
+        
+        vc.title = "Add caption / 添加文字"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    private func setUpFilters() {
+        guard let filterImage = UIImage(systemName: "camera.filters") else {
+            return
+        }
+        filters.append(filterImage)
+    }
+
+    private func filterImage(image: UIImage) {
+        
+        // black and white filter
+        guard let cgImage = image.cgImage else { return }
+
+        let filter = CIFilter(name: "CIColorMonochrome")
+
+        filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
+        filter?.setValue(CIColor(red: 0.7, green: 0.7, blue: 0.7), forKey: "inputColor")
+        filter?.setValue(1.0, forKey: "inputIntensity")
+
+
+        guard let outputImage = filter?.outputImage else { return }
+
+        let context = CIContext()
+
+        if let outputcgImage = context.createCGImage(
+            outputImage,
+            from: outputImage.extent
+        ) {
+            let filteredImage = UIImage(cgImage: outputcgImage)
+
+            imageView.image = filteredImage
+        }
+    }
+
+    // CollectionView
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return filters.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: PhotoCollectionViewCell.identifier,
+            for: indexPath
+        ) as? PhotoCollectionViewCell else {
+            fatalError()
+        }
+        cell.configure(with: filters[indexPath.row])
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+        collectionView.deselectItem(at: indexPath, animated: true)
+        filterImage(image: image)
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }

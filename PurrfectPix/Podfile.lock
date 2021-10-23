@@ -212,6 +212,7 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - AlignedCollectionViewFlowLayout (1.1.2)
   - Appirater (2.3.1)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
@@ -332,6 +333,8 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.7.0)
+  - Hashtags (0.1.3):
+    - AlignedCollectionViewFlowLayout (~> 1.1.2)
   - leveldb-library (1.22.1)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
@@ -351,11 +354,13 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - FirebaseFirestoreSwift
+  - Hashtags
   - SDWebImage
 
 SPEC REPOS:
   trunk:
     - abseil
+    - AlignedCollectionViewFlowLayout
     - Appirater
     - BoringSSL-GRPC
     - Firebase
@@ -373,6 +378,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - Hashtags
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -380,6 +386,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
+  AlignedCollectionViewFlowLayout: ee2ef451e741ec08f8e0967d828001e2f051c20a
   Appirater: 44a4651f7912a17dc906b655f0c215d5bb768b84
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
@@ -397,11 +404,12 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
+  Hashtags: 6e2fbcb3ec0cae07403aab96985a9497927a5962
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
 
-PODFILE CHECKSUM: df5b7e808ebef390e8a992d854918571339bffaa
+PODFILE CHECKSUM: aa498bd4e2a6874ce9bc63fc17897b5eefac3d18
 
 COCOAPODS: 1.11.0

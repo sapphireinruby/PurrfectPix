@@ -25,6 +25,8 @@
 		A77A1ED1271F91BA0072A1F6 /* PostCaptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1ED0271F91BA0072A1F6 /* PostCaptionCollectionViewCell.swift */; };
 		A77A1ED3271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1ED2271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift */; };
 		A77A1ED5271FC7DA0072A1F6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1ED4271FC7DA0072A1F6 /* Extensions.swift */; };
+		A7BC5E1027220A0C00010F52 /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */; };
+		A7BC5E122722109400010F52 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */; };
 		A7DDDEF4271B2E7200F28B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */; };
 		A7DDDEF6271B2E7200F28B24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */; };
 		A7DDDEF8271B2E7200F28B24 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF7271B2E7200F28B24 /* HomeViewController.swift */; };
@@ -46,7 +48,7 @@
 		A7DDDF50271D9BCE00F28B24 /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF4F271D9BCE00F28B24 /* Relation.swift */; };
 		A7DDDF52271D9BE400F28B24 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF51271D9BE400F28B24 /* Notification.swift */; };
 		A7DDDF54271D9E0B00F28B24 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF53271D9E0B00F28B24 /* AuthManager.swift */; };
-		A7DDDF56271D9E1A00F28B24 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF55271D9E1A00F28B24 /* DataManager.swift */; };
+		A7DDDF56271D9E1A00F28B24 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF55271D9E1A00F28B24 /* DatabaseManager.swift */; };
 		A7DDDF58271D9E2800F28B24 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF57271D9E2800F28B24 /* StorageManager.swift */; };
 		A7DDDF5A271D9E5200F28B24 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF59271D9E5200F28B24 /* AnalyticsManager.swift */; };
 		A7DDDF5C271D9E6000F28B24 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF5B271D9E6000F28B24 /* HapticsManager.swift */; };
@@ -74,6 +76,8 @@
 		A77A1ED0271F91BA0072A1F6 /* PostCaptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCaptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		A77A1ED2271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDateTimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A77A1ED4271FC7DA0072A1F6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
+		A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7DDDEF0271B2E7200F28B24 /* PurrfectPix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PurrfectPix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,7 +101,7 @@
 		A7DDDF4F271D9BCE00F28B24 /* Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
 		A7DDDF51271D9BE400F28B24 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A7DDDF53271D9E0B00F28B24 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
-		A7DDDF55271D9E1A00F28B24 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		A7DDDF55271D9E1A00F28B24 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		A7DDDF57271D9E2800F28B24 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A7DDDF59271D9E5200F28B24 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		A7DDDF5B271D9E6000F28B24 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
@@ -128,6 +132,15 @@
 				A77A1ED2271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift */,
 			);
 			path = "Home Cells";
+			sourceTree = "<group>";
+		};
+		A7BC5E0E272209E100010F52 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */,
+				A7DDDF41271D9ACA00F28B24 /* CaptionViewController.swift */,
+			);
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		A7DDDEE7271B2E7200F28B24 = {
@@ -165,6 +178,7 @@
 		A7DDDF07271B30B600F28B24 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A7BC5E0E272209E100010F52 /* Photo */,
 				A7DDDF48271D9B1200F28B24 /* Setting */,
 				A7DDDF40271D9AA500F28B24 /* Post */,
 				A7DDDF3B271D9A3700F28B24 /* Auth */,
@@ -190,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				A77A1EC5271F8F1F0072A1F6 /* Home Cells */,
+				A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */,
 				A7DDDEFE271B2E7500F28B24 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -213,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				A7DDDF53271D9E0B00F28B24 /* AuthManager.swift */,
-				A7DDDF55271D9E1A00F28B24 /* DataManager.swift */,
+				A7DDDF55271D9E1A00F28B24 /* DatabaseManager.swift */,
 				A7DDDF57271D9E2800F28B24 /* StorageManager.swift */,
 				A7DDDF59271D9E5200F28B24 /* AnalyticsManager.swift */,
 				A7DDDF5B271D9E6000F28B24 /* HapticsManager.swift */,
@@ -258,7 +273,6 @@
 		A7DDDF40271D9AA500F28B24 /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				A7DDDF41271D9ACA00F28B24 /* CaptionViewController.swift */,
 				A7DDDF45271D9AF900F28B24 /* PostViewController.swift */,
 				A7DDDF43271D9AEE00F28B24 /* ListViewController.swift */,
 			);
@@ -426,7 +440,7 @@
 				A77A1EC7271F8F930072A1F6 /* PosterCollectionViewCell.swift in Sources */,
 				A77A1ECF271F91AA0072A1F6 /* PostLikesCollectionViewCell.swift in Sources */,
 				A7DDDF42271D9ACA00F28B24 /* CaptionViewController.swift in Sources */,
-				A7DDDF56271D9E1A00F28B24 /* DataManager.swift in Sources */,
+				A7DDDF56271D9E1A00F28B24 /* DatabaseManager.swift in Sources */,
 				A7DDDF3D271D9A6600F28B24 /* SignInViewController.swift in Sources */,
 				A7DDDF58271D9E2800F28B24 /* StorageManager.swift in Sources */,
 				A7DDDF52271D9BE400F28B24 /* Notification.swift in Sources */,
@@ -434,6 +448,7 @@
 				A7DDDF46271D9AF900F28B24 /* PostViewController.swift in Sources */,
 				A7DDDF50271D9BCE00F28B24 /* Relation.swift in Sources */,
 				A7315CFE271E250C00B58879 /* HomeFeedCellType.swift in Sources */,
+				A7BC5E122722109400010F52 /* PhotoCollectionViewCell.swift in Sources */,
 				A7DDDF5A271D9E5200F28B24 /* AnalyticsManager.swift in Sources */,
 				A7315D00271E27C300B58879 /* Comment.swift in Sources */,
 				A77A1EC9271F915D0072A1F6 /* PostCollectionViewCell.swift in Sources */,
@@ -450,6 +465,7 @@
 				A77A1EBE271F80120072A1F6 /* PostLikesCollectionViewCellViewModel.swift in Sources */,
 				A77A1EB8271F7F8E0072A1F6 /* PostCollectionViewCellViewModel.swift in Sources */,
 				A7DDDF33271BD94E00F28B24 /* ExploreViewController.swift in Sources */,
+				A7BC5E1027220A0C00010F52 /* PostEditViewController.swift in Sources */,
 				A77A1EB6271F7F730072A1F6 /* PosterCollectionViewCellViewModel.swift in Sources */,
 				A77A1EC0271F80440072A1F6 /* PostCaptionCollectionViewCellViewModel.swift in Sources */,
 				A7DDDF4E271D9BBC00F28B24 /* Post.swift in Sources */,
@@ -604,6 +620,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UQWW588DMN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PurrfectPix/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PurrfectPix;
@@ -634,6 +651,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UQWW588DMN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PurrfectPix/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PurrfectPix;

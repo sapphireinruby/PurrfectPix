@@ -27,14 +27,14 @@ final class StorageManager {
     public func uploadPost(  // image 
 
         data: Data?,
+        userID: String,
         id: String, // the id create at caption vc, for image to storage
         completion: @escaping (URL?) -> Void
     ) {
-        guard let username = UserDefaults.standard.string(forKey: "username"),
-              let data = data else {
+              guard let data = data else {
             return
         }
-        let ref = storage.child("\(username)/posts/\(id).png")
+        let ref = storage.child("\(userID)/posts/\(id).png")
         ref.putData(data, metadata: nil) { _, error in
             ref.downloadURL { url, _ in
                 completion(url)

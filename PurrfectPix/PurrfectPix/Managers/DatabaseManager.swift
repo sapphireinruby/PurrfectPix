@@ -76,15 +76,14 @@ final class DatabaseManager {
     //   - completion: Result callback
 
     public func createPost(newPost: Post, completion: @escaping (Bool) -> Void) {
+
         guard let userID = UserDefaults.standard.string(forKey: "userID") else {
             completion(false)
             return
         }
 
         var post = newPost
-        let reference = database.collection("posts").document()
-        let id = reference.documentID
-        post.postID = id
+        let reference = database.collection("posts").document(newPost.postID)
 
         do {
 

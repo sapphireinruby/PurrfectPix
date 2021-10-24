@@ -76,11 +76,14 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
 
         textView.resignFirstResponder() // turn off keyboard
 
+
         var caption = textView.text ?? ""
         if caption == "Add caption/寫點東西" {
             caption = ""
 
         }
+
+        //  show.progress() 安裝 stylish裡的 轉轉轉的 pods
 
         // Generate post ID --> Image & the whole Post share one ID
         guard let newPostID = createNewPostID(),
@@ -89,9 +92,14 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
         }
 
         // Upload Post --> Image & the whole Post share one ID
+        guard let userID = UserDefaults.standard.string(forKey: "userID") else { return }
         StorageManager.shared.uploadPost(
+
+
             data: image.pngData(),
+            userID: userID,
             id: newPostID
+            
         ) { newPostDownloadURL in
             guard let url = newPostDownloadURL else {
                 print("error: failed to upload to storage")
@@ -101,14 +109,18 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
             // New Post
             // storage ref: username/posts/png
 
-            let newPost = Post(userID:"", postID: newPostID, caption: caption, petTag: "", postedDate: stringDate, likers: [String](), comments: [CommentByUser](), postUrlString: "", location: ""
+            let newPost = Post(userID: userID, postID: newPostID, caption: caption, petTag: "", postedDate: stringDate, likers: [String](), comments: [CommentByUser](), postUrlString: "", location: ""
             )
 
             // Update Database
             DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in
                 guard finished else {
+                    // show.progress(falls "送出失敗")
                     return
                 }
+
+                // show.progress(success "成功送出了！")
+
                 DispatchQueue.main.async {
 
                     //  weak self avoid memory leak

@@ -53,6 +53,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         view.backgroundColor = .systemBackground
         configureCollectionView()
         fetchPosts()
+        UserDefaults.standard.setValue("amber_1234", forKey: "userID")
     }
 
     override func viewDidLayoutSubviews() {

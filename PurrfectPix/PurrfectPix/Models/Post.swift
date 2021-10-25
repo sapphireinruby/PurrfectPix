@@ -12,13 +12,13 @@ struct Post: Codable {
     let userID: String
     var postID: String  // Image & the whole Post share one ID
     let caption: String
-    let petTag: String 
+    let petTag: String
     let postedDate: String  // date
     let likers: [String]
     let comments: [CommentByUser]? // map :  comment [ { user: String, comment: String }]
 
 
-    let postUrlString: String // ?? storageURL for pic?
+    let postUrlString: String // URL for the whole post?
 
     // storageReference: get the photo download URL from storage
     // create a reference with UserID

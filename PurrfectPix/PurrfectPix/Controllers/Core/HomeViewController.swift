@@ -109,7 +109,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
                         }
                     })
-                    self.createViewModel(model: posts, username: "Amber67") { result in  // 存在user default
+                    self.createViewModel(model: posts, username: "Amber67") { result in  // 存在user defaultpost
                     }
             }
     }
@@ -239,13 +239,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     ) {
 //        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else { return }
         let currentUsername = "Amber67"
-
+        // 這裡要修改
 
         for model in model {
             StorageManager.shared.profilePictureURL(for: currentUsername) { [weak self] profilePictureURL in
-
                 print("1\(model.postUrlString)")
                 print("2\(profilePictureURL)")
+                
                 guard let postUrl = URL(string: model.postUrlString),
                       let profilePhotoUrl = profilePictureURL else {
                     return
@@ -272,12 +272,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             postUrl: postUrl
                         )
                     ),
+
                     .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: isLiked)),
+
                     .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: model.likers)),
+
                     .caption(
                         viewModel: PostCaptionCollectionViewCellViewModel(
                             username: username,
                             caption: model.caption)),
+
                     .timestamp(
                         viewModel: PostDatetimeCollectionViewCellViewModel(
                             date: DateFormatter.formatter.date(from: model.postedDate) ?? Date()

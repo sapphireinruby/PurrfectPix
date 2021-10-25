@@ -133,7 +133,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
 
     }
 
-    // for storage 的post --> ImagePost
+    // for storage 的post --> Image
     private func createNewPostID() -> String? {
 
         let timeStamp = Date().timeIntervalSince1970

@@ -11,12 +11,11 @@ import Foundation
 
 final class DatabaseManager {
 
-    static let shared = DatabaseManager()  //singleton
+    static let shared = DatabaseManager()  // singleton
     // Private constructor
     private init() {}
 
     let database = Firestore.firestore()
-
 
     // Find posts from a given user
     // - Parameters:

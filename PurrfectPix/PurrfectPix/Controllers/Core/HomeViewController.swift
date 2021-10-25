@@ -91,6 +91,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         viewModels = [[HomeFeedCellType]]()
         db.collection("posts").getDocuments { snapshot, error in
 
+         // 這邊要放listener 監聽變化
             if let  error = error {
                 print(error)
 
@@ -108,7 +109,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
                         }
                     })
-                    self.createViewModel(model: posts, username: "Amber67") { result in
+                    self.createViewModel(model: posts, username: "Amber67") { result in  // 存在user default
                     }
             }
     }
@@ -194,6 +195,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //    }
 
     private func sortData() {
+
         allPosts = allPosts.sorted(by: { first, second in
             let date1 = first.post.date
             let date2 = second.post.date
@@ -258,8 +260,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             profilePictureURL: profilePhotoUrl
                         )
                     ),
+                    
                     .petTag(
-                        viewModel: PostPetTagCollectionViewCellViewModel(petTag: "cat")
+                        viewModel: PostPetTagCollectionViewCellViewModel(
+                            petTag: "cat"
+                        )
                     ),
 
                     .post(

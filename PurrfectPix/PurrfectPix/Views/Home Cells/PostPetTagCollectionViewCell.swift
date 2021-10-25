@@ -29,7 +29,6 @@ class PostPetTagCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(petTagLabel)
     }
 
-
     required init? (coder: NSCoder) {
         fatalError()
     }
@@ -55,7 +54,6 @@ class PostPetTagCollectionViewCell: UICollectionViewCell {
         let petTag = viewModel.petTag
         petTagLabel.text = "# \(petTag)"
 
-        
     }
 
 }

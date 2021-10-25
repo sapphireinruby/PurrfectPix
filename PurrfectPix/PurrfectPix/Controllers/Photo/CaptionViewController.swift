@@ -110,7 +110,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
 
             // swiftlint:disable:next line_length
             let newPost = Post(userID: userID, postID: newPostID, caption: caption, petTag: "cat", postedDate: stringDate, likers: [String](), comments: [CommentByUser](), postUrlString: url, location: ""
-            )
+            )  //  pet tag 那邊 到時候做好要重寫 petTag:
 
             // Update Database
             DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in

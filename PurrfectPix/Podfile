@@ -4,6 +4,7 @@
 target 'PurrfectPix' do
   use_frameworks!
 
+  pod 'JGProgressHUD'
   pod 'Hashtags'
   pod 'Appirater'
   pod 'SDWebImage'

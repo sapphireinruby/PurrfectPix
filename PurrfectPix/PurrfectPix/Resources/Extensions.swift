@@ -103,7 +103,7 @@ extension Decodable {
 }
 
 extension Encodable {
-
+    // 不能用了
     // Convert model to dictionary
     // - Returns: Optional dictionary representation
     func asDictionary() -> [String: Any]? {

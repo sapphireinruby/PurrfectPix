@@ -17,7 +17,8 @@ class PostPetTagCollectionViewCell: UICollectionViewCell {
 //        label.font = .systemFont(ofSize: 14, weight: .regular)
 
         label.font = UIFont.italicSystemFont(ofSize: 14, weight: .regular)
-        label.textColor = .secondarySystemBackground
+        label.textColor = .black
+//        label.textColor = .secondarySystemBackground
         return label
     }()
 
@@ -53,7 +54,6 @@ class PostPetTagCollectionViewCell: UICollectionViewCell {
         let petTag = viewModel.petTag
         petTagLabel.text = "# \(petTag)"
 
-        
     }
 
 }

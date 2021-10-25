@@ -11,12 +11,11 @@ import Foundation
 
 final class DatabaseManager {
 
-    static let shared = DatabaseManager()  //singleton
+    static let shared = DatabaseManager()  // singleton
     // Private constructor
     private init() {}
 
     let database = Firestore.firestore()
-
 
     // Find posts from a given user
     // - Parameters:
@@ -76,15 +75,14 @@ final class DatabaseManager {
     //   - completion: Result callback
 
     public func createPost(newPost: Post, completion: @escaping (Bool) -> Void) {
+
         guard let userID = UserDefaults.standard.string(forKey: "userID") else {
             completion(false)
             return
         }
 
         var post = newPost
-        let reference = database.collection("posts").document()
-        let id = reference.documentID
-        post.postID = id
+        let reference = database.collection("posts").document(newPost.postID)
 
         do {
 
@@ -100,31 +98,59 @@ final class DatabaseManager {
         }
     }
 
+    // Create new user
+    // - Parameters:
+    //   - newUser: User model
+    //   - completion: Result callback
 
+    public func createUser(newUser: User, completion: @escaping (Bool) -> Void) {
 
-    //edit with Elio
-//    public func createPost(newPost: Post, completion: @escaping (Result<String, Error>) -> Void) {
-//        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
-//            print("")
-//            return }
-//        var post = newPost
-//        let reference = database.collection("posts").document()
-//        let id = reference.documentID
-//        post.postID = id
-//
-//        do {
-//
-//            try reference.setData(from: post) { err in
-//                if let err = err {
-//                    completion(.failure(err))
-//                }else{
-//                    completion(.success("Sucess"))
-//                }
-//            }
-//        } catch {
-//
-//        }
-//    }
+        let reference = database.collection("users").document()
 
+        guard let data = newUser.asDictionary() else {  // 不能asDictionary 應該要改
+            completion(false)
+            return
+        }
+        reference.setData(data) { error in
+            completion(error == nil)
+        }
+    }
+
+    // Find single user with email
+    // - Parameters:
+    //   - email: Source email
+    //   - completion: Result callback
+    
+    public func findUser(with email: String, completion: @escaping (User?) -> Void) {
+        
+        let ref = database.collection("users")
+        ref.getDocuments { snapshot, error in
+            guard let users = snapshot?.documents.compactMap({ User(with: $0.data()) }),
+                  error == nil else {
+                completion(nil)
+                return
+            }
+
+            let user = users.first(where: { $0.email == email })
+            completion(user)
+        }
+    }
+
+    // Get users that parameter username follows
+    // - Parameters:
+    //   - username: Query usernam
+    //   - completion: Result callback
+    public func following(for username: String, completion: @escaping ([String]) -> Void) {
+        let ref = database.collection("users")
+            .document(username)
+            .collection("following")
+        ref.getDocuments { snapshot, error in
+            guard let usernames = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
+                completion([])
+                return
+            }
+            completion(usernames)
+        }
+    }
     
 }

@@ -17,10 +17,3 @@ enum HomeFeedCellType {
     case caption(viewModel: PostCaptionCollectionViewCellViewModel)
     case timestamp(viewModel: PostDatetimeCollectionViewCellViewModel)
 }
-// poster
-// * petTag
-// post
-// actions
-// likeCount
-// caption
-// timestamp

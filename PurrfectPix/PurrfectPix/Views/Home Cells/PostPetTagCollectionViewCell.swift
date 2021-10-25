@@ -17,7 +17,8 @@ class PostPetTagCollectionViewCell: UICollectionViewCell {
 //        label.font = .systemFont(ofSize: 14, weight: .regular)
 
         label.font = UIFont.italicSystemFont(ofSize: 14, weight: .regular)
-        label.textColor = .secondarySystemBackground
+        label.textColor = .black
+//        label.textColor = .secondarySystemBackground
         return label
     }()
 
@@ -27,6 +28,7 @@ class PostPetTagCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .systemBackground
         contentView.addSubview(petTagLabel)
     }
+
 
     required init? (coder: NSCoder) {
         fatalError()

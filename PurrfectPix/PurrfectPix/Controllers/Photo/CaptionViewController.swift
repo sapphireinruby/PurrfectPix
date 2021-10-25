@@ -23,7 +23,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
     private let textView: UITextView = {
 
         let textView = UITextView()
-        textView.text = "Add caption"
+        textView.text = "Add caption / 加點文字"
         textView.backgroundColor = .secondarySystemBackground
         textView.font = .systemFont(ofSize: 20)
 
@@ -76,11 +76,10 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
 
         textView.resignFirstResponder() // turn off keyboard
 
-
+        // clean the text view placeholder
         var caption = textView.text ?? ""
-        if caption == "Add caption/寫點東西" {
+        if caption == "Add caption / 加點文字" {
             caption = ""
-
         }
 
         //  show.progress() 安裝 stylish裡的 轉轉轉的 pods
@@ -101,7 +100,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
             id: newPostID
             
         ) { newPostDownloadURL in
-            guard let url = newPostDownloadURL else {
+            guard let url = newPostDownloadURL?.absoluteString else {
                 print("error: failed to upload to storage")
                 return
             }
@@ -109,7 +108,8 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
             // New Post
             // storage ref: username/posts/png
 
-            let newPost = Post(userID: userID, postID: newPostID, caption: caption, petTag: "", postedDate: stringDate, likers: [String](), comments: [CommentByUser](), postUrlString: "", location: ""
+            // swiftlint:disable:next line_length
+            let newPost = Post(userID: userID, postID: newPostID, caption: caption, petTag: "cat", postedDate: stringDate, likers: [String](), comments: [CommentByUser](), postUrlString: url, location: ""
             )
 
             // Update Database
@@ -148,7 +148,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let size: CGFloat = view.width / 4
+        let size: CGFloat = view.width / 3
 
         imageVIew.frame = CGRect(
             x: (view.width-size) / 2,
@@ -158,9 +158,9 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
         )
 
         textView.frame = CGRect(
-            x: 16,
+            x: 24,
             y: imageVIew.bottom + 16,
-            width: view.width - 40,
+            width: view.width - 48,
             height: 160
         )
     }
@@ -168,7 +168,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
 
         // pops up the keyboard
-        if textView.text == "Add caption/寫點東西" {
+        if textView.text == "Add caption / 加點文字" {
             textView.text = nil
         }
     }

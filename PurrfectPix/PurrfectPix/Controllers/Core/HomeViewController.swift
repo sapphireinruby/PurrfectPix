@@ -16,44 +16,104 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private var collectionView: UICollectionView?
 
     // Feed viewModels
-    private var viewModels = [[HomeFeedCellType]]()
+    private var viewModels = [[HomeFeedCellType]]() {
+        didSet {
+            collectionView?.reloadData()
+        }
+    }
+
+    // All post models
+    private var allPosts: [(post: Post, owner: String)] = []
 
     let db = Firestore.firestore()
 
     override func viewDidLoad() {
 
+//
+//        db.collection("posts").getDocuments { snapshot, error in
+//
+//            if let  error = error {
+//                print (error)
+//
+//            }else{
+//
+//                guard let snapshot = snapshot else { return }
+//                    var posts = [Post]()
+//                    snapshot.documents.forEach({ document in
+//
+//                        do {
+//                            let post =  try document.data(as: Post.self)
+//                            guard let post = post else {return}
+//                            posts.append(post)
+//                        } catch {
+//
+//                        }
+//                    })
+//                    self.createViewModel(model: posts, username: "Amber67") { result in
+//                    }
+//            }
+//        }
+//            let result = Result {
+//              try document?.data(as: Post.self)
+//            }
 
-        let docRef = db.collection("posts").document("DhgbAAeE1D7T7sTOxUpV")
-
-        docRef.getDocument { (document, error) in
-
-            let result = Result {
-              try document?.data(as: Post.self)
-            }
-            switch result {
-            case .success(let city):
-                if let city = city {
-                    // A `City` value was successfully initialized from the DocumentSnapshot.
-                    print("City: \(city)")
-                } else {
-                    // A nil value was successfully initialized from the DocumentSnapshot,
-                    // or the DocumentSnapshot was nil.
-                    print("Document does not exist")
-                }
-            case .failure(let error):
-                // A `City` value could not be initialized from the DocumentSnapshot.
-                print("Error decoding city: \(error)")
-            }
-        }
 
 
-        
+//            switch result {
+//            case .success(let post):
+//                if let post = post {
+//                    self.createViewModel(model: post, username: "Amber67") { result in
+//
+//                    }
+//
+//                } else {
+//                    // A nil value was successfully initialized from the DocumentSnapshot,
+//                    // or the DocumentSnapshot was nil.
+//                    print("Document does not exist")
+//                }
+//            case .failure(let error):
+//                // A `City` value could not be initialized from the DocumentSnapshot.
+//                print("Error decoding city: \(error)")
+//            }
+
+
         super.viewDidLoad()
         title = "PurrfectPix"
         view.backgroundColor = .systemBackground
+//        configureCollectionView()
+//        fetchPosts()
+        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
+        // 也許key該換成username
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+
+        viewModels = [[HomeFeedCellType]]()
+        db.collection("posts").getDocuments { snapshot, error in
+
+            if let  error = error {
+                print(error)
+
+            } else {
+
+                guard let snapshot = snapshot else { return }
+                    var posts = [Post]()
+                    snapshot.documents.forEach({ document in
+
+                        do {
+                            let post =  try document.data(as: Post.self)
+                            guard let post = post else {return}
+                            posts.append(post)
+                        } catch {
+
+                        }
+                    })
+                    self.createViewModel(model: posts, username: "Amber67") { result in
+                    }
+            }
+    }
+
         configureCollectionView()
-        fetchPosts()
-        UserDefaults.standard.setValue("amber_1234", forKey: "userID")
     }
 
     override func viewDidLayoutSubviews() {
@@ -61,47 +121,168 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView?.frame = view.bounds
     }
 
-    private func fetchPosts() {
-        // for mock data
+//    private func fetchPosts() {
+//
+//        guard let username = UserDefaults.standard.string(forKey: "username") else {
+//            return
+//        }
+//
+//        let userGroup = DispatchGroup()
+//        userGroup.enter()
+//
+//        var allPosts: [(post: Post, owner: String)] = []
+//
+//        // refresh the collectionView after all the asynchronous job is done
+//        DatabaseManager.shared.following(for: username) { usernames in
+//            defer {
+//                userGroup.leave()
+//            }
+//
+//            let users = usernames + [username]
+//
+//            for current in users {
+//
+//                userGroup.enter()
+//
+//                DatabaseManager.shared.posts(for: current) { result in
+//                    DispatchQueue.main.async {
+//
+//                        defer {
+//                            userGroup.leave()
+//                        }
+//
+//                        switch result {
+//
+//                        case .success(let posts):
+//                            allPosts.append(contentsOf: posts.compactMap({
+//                                (post: $0, owner: current)
+//                            }))
+//                            print("\n\n\n Posts: \(posts.count)")
+//
+//                        case .failure:
+//                            break
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//        userGroup.notify(queue: .main) {
+//            let group = DispatchGroup()
+//            self.allPosts = allPosts
+//            allPosts.forEach { model in
+//                group.enter()
+//                self.createViewModel(
+//                    model: model.post,
+//                    username: model.owner,
+//                    completion: { success in
+//                        defer {
+//                            group.leave()
+//                        }
+//                        if !success {
+//                            print("failed to create VM")
+//                        }
+//                    }
+//                )
+//            }
+//
+//            group.notify(queue: .main) {
+//                self.sortData()
+//                self.collectionView?.reloadData()
+//            }
+//        }
+//    }
 
-        let postData: [HomeFeedCellType] = [
-            .poster(
-                viewModel: PosterCollectionViewCellViewModel(
-                    username: "Elio_puppylover",
-                    // 不能用縮網址，下面這行註解，一定要寫在網址上一行
-                    // swiftlint:disable:next line_length
-                    profilePictureURL: URL(string: "https://www.petmd.com/sites/default/files/styles/article_image/public/petmd-puppy-weight.jpg?itok=IwMOwGSX")!
-                )
-            ),
+    private func sortData() {
+        allPosts = allPosts.sorted(by: { first, second in
+            let date1 = first.post.date
+            let date2 = second.post.date
+            return date1 > date2
+        })
 
-            .petTag(viewModel: PostPetTagCollectionViewCellViewModel(
-                    petTag: "Dog"
+        viewModels = viewModels.sorted(by: { first, second in
+            var date1: Date?
+            var date2: Date?
+            first.forEach { type in
+                switch type {
+                case .timestamp(let vm):
+                    date1 = vm.date
+                default:
+                    break
+                }
+            }
+            second.forEach { type in
+                switch type {
+                case .timestamp(let vm):
+                    date2 = vm.date
+                default:
+                    break
+                }
+            }
+
+            if let date1 = date1, let date2 = date2 {
+                return date1 > date2
+            }
+
+            return false
+        })
+
+    }
+
+    private func createViewModel(
+
+        model: [Post],
+        username: String,
+        completion: @escaping (Bool) -> Void
+    ) {
+//        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else { return }
+        let currentUsername = "Amber67"
+
+
+        for model in model {
+            StorageManager.shared.profilePictureURL(for: currentUsername) { [weak self] profilePictureURL in
+
+                print("1\(model.postUrlString)")
+                print("2\(profilePictureURL)")
+                guard let postUrl = URL(string: model.postUrlString),
+                      let profilePhotoUrl = profilePictureURL else {
+                    return
+                }
+
+                let isLiked = model.likers.contains(currentUsername)
+
+                let postData: [HomeFeedCellType] = [
+                    .poster(
+                        viewModel: PosterCollectionViewCellViewModel(
+                            username: username,
+                            profilePictureURL: profilePhotoUrl
+                        )
+                    ),
+                    .petTag(
+                        viewModel: PostPetTagCollectionViewCellViewModel(petTag: "cat")
+                    ),
+
+                    .post(
+                        viewModel: PostCollectionViewCellViewModel(
+                            postUrl: postUrl
+                        )
+                    ),
+                    .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: isLiked)),
+                    .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: model.likers)),
+                    .caption(
+                        viewModel: PostCaptionCollectionViewCellViewModel(
+                            username: username,
+                            caption: model.caption)),
+                    .timestamp(
+                        viewModel: PostDatetimeCollectionViewCellViewModel(
+                            date: DateFormatter.formatter.date(from: model.postedDate) ?? Date()
+                        )
                     )
-            ),
-
-            .post(
-                viewModel: PostCollectionViewCellViewModel(
-                    // swiftlint:disable:next line_length
-                    postUrl: URL(string: "https://data.whicdn.com/images/307051828/original.jpg")!
-                )
-            ),
-
-            .actions(viewModel: PostActionsCollectionViewCellViewModel(
-                    isLiked: true
-                )
-            ),
-
-            .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: ["Amber_cat", "Zoe666", "Alliee"])),
-
-            .caption(viewModel: PostCaptionCollectionViewCellViewModel(username: "Amber_cat", caption: "太可愛了吧～～～！")),
-
-            .timestamp(viewModel: PostDatetimeCollectionViewCellViewModel(date: Date()))
-
-        ]
-
-        viewModels.append(postData)
-        collectionView?.reloadData()
-
+                ]
+                self?.viewModels.append(postData)
+                completion(true)
+            }
+        }
     }
 
     // collectionView
@@ -127,9 +308,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         // to show mock data
-        let celltype = viewModels[indexPath.section][indexPath.row]
+        let cellType = viewModels[indexPath.section][indexPath.row]
 
-        switch celltype {
+        switch cellType {
 
         case .poster(let viewModel):
 
@@ -143,7 +324,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.delegate = self  //delegate set up at cell class
 
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = colors[indexPath.row]
+//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .petTag(let viewModel):
@@ -155,7 +336,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 fatalError()
             }
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = colors[indexPath.row]
+//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .post(let viewModel):
@@ -170,7 +351,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.delegate = self
 
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = colors[indexPath.row]
+//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .actions(let viewModel):
@@ -185,7 +366,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.delegate = self
 
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = colors[indexPath.row]
+//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .likeCount(let viewModel):
@@ -200,7 +381,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.delegate = self
 
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = colors[indexPath.row]
+//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .caption(let viewModel):
@@ -214,7 +395,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.delegate = self
 
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = colors[indexPath.row]
+//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .timestamp(let viewModel):
@@ -226,7 +407,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 fatalError()
             }
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = colors[indexPath.row]
+//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         }

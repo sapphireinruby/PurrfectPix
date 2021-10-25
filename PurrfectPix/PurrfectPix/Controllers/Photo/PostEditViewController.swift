@@ -93,7 +93,7 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         let vc = CaptionViewController(image: current)
         
-        vc.title = "Add caption / 添加文字"
+        vc.title = "Add caption / 寫點東西"
         navigationController?.pushViewController(vc, animated: true)
     }
 

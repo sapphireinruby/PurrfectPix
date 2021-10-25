@@ -56,7 +56,26 @@ final class StorageManager {
         }
     }
 
+    public func profilePictureURL(for userID: String, completion: @escaping (URL?) -> Void) {
+        storage.child("wRWTOfxEaKtP8OSso4pB").child("profile_picture.png").downloadURL { url, _ in
+            completion(url)
+        }
+    }
 
+    public func uploadProfilePicture(
+
+        userID: String,
+        username: String,
+        data: Data?,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let data = data else {
+            return
+        }
+        storage.child("\(userID)/creatFilename.png").putData(data, metadata: nil) { _, error in
+            completion(error == nil)
+        }
+    }
 
 
 

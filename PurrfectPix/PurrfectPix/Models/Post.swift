@@ -12,9 +12,9 @@ struct Post: Codable {
     let userID: String
     var postID: String  // Image & the whole Post share one ID
     let caption: String
-    let petTag: String // 還要做
+    let petTag: String 
     let postedDate: String  // date
-    let likers: [String]?
+    let likers: [String]
     let comments: [CommentByUser]? // map :  comment [ { user: String, comment: String }]
 
 
@@ -25,6 +25,11 @@ struct Post: Codable {
     var storageReference: String? {
         guard let userID = UserDefaults.standard.string(forKey: "userID") else { return nil }
         return "\(userID)/posts/\(postID).png"  // 路徑可能要修改
+    }
+
+    var date: Date {
+        guard let date = DateFormatter.formatter.date(from: postedDate) else { fatalError() }
+        return date
     }
 
     // 社群相關

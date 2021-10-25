@@ -25,6 +25,9 @@
 		A77A1ED1271F91BA0072A1F6 /* PostCaptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1ED0271F91BA0072A1F6 /* PostCaptionCollectionViewCell.swift */; };
 		A77A1ED3271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1ED2271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift */; };
 		A77A1ED5271FC7DA0072A1F6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1ED4271FC7DA0072A1F6 /* Extensions.swift */; };
+		A780735F2725655400468B30 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780735E2725655400468B30 /* JGProgressHUDWrapper.swift */; };
+		A780736127259E9300468B30 /* SignInHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780736027259E9200468B30 /* SignInHeaderView.swift */; };
+		A78073632725A11400468B30 /* UserTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78073622725A11400468B30 /* UserTextField.swift */; };
 		A7BC5E1027220A0C00010F52 /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */; };
 		A7BC5E122722109400010F52 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */; };
 		A7DDDEF4271B2E7200F28B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */; };
@@ -76,6 +79,9 @@
 		A77A1ED0271F91BA0072A1F6 /* PostCaptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCaptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		A77A1ED2271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDateTimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A77A1ED4271FC7DA0072A1F6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A780735E2725655400468B30 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
+		A780736027259E9200468B30 /* SignInHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHeaderView.swift; sourceTree = "<group>"; };
+		A78073622725A11400468B30 /* UserTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTextField.swift; sourceTree = "<group>"; };
 		A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
 		A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7DDDEF0271B2E7200F28B24 /* PurrfectPix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PurrfectPix.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +140,14 @@
 			path = "Home Cells";
 			sourceTree = "<group>";
 		};
+		A780735D2725651300468B30 /* Third Party Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				A780735E2725655400468B30 /* JGProgressHUDWrapper.swift */,
+			);
+			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
 		A7BC5E0E272209E100010F52 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +178,7 @@
 		A7DDDEF2271B2E7200F28B24 /* PurrfectPix */ = {
 			isa = PBXGroup;
 			children = (
+				A780735D2725651300468B30 /* Third Party Wrapper */,
 				A7DDDF0C271B332400F28B24 /* Resources */,
 				A7DDDF07271B30B600F28B24 /* Controllers */,
 				A7DDDF08271B30BF00F28B24 /* Models */,
@@ -206,6 +221,8 @@
 				A77A1EC5271F8F1F0072A1F6 /* Home Cells */,
 				A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */,
 				A7DDDEFE271B2E7500F28B24 /* LaunchScreen.storyboard */,
+				A780736027259E9200468B30 /* SignInHeaderView.swift */,
+				A78073622725A11400468B30 /* UserTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -446,6 +463,8 @@
 				A7DDDF52271D9BE400F28B24 /* Notification.swift in Sources */,
 				A7DDDF44271D9AEE00F28B24 /* ListViewController.swift in Sources */,
 				A7DDDF46271D9AF900F28B24 /* PostViewController.swift in Sources */,
+				A78073632725A11400468B30 /* UserTextField.swift in Sources */,
+				A780736127259E9300468B30 /* SignInHeaderView.swift in Sources */,
 				A7DDDF50271D9BCE00F28B24 /* Relation.swift in Sources */,
 				A7315CFE271E250C00B58879 /* HomeFeedCellType.swift in Sources */,
 				A7BC5E122722109400010F52 /* PhotoCollectionViewCell.swift in Sources */,
@@ -473,6 +492,7 @@
 				A7DDDF35271BD96E00F28B24 /* NotificationsViewController.swift in Sources */,
 				A77A1ED3271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift in Sources */,
 				A77A1EBC271F7FF00072A1F6 /* PostActionsCollectionViewCellViewModel.swift in Sources */,
+				A780735F2725655400468B30 /* JGProgressHUDWrapper.swift in Sources */,
 				A7DDDF38271D98DB00F28B24 /* ProfileViewController.swift in Sources */,
 				A77A1ED5271FC7DA0072A1F6 /* Extensions.swift in Sources */,
 				A7DDDF5C271D9E6000F28B24 /* HapticsManager.swift in Sources */,

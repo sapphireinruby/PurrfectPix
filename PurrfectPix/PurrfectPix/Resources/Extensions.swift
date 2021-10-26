@@ -118,3 +118,21 @@ extension Encodable {
         return json
     }
 }
+
+enum BaseColor: String {
+
+    // swiftlint:disable identifier_name
+    case P1 // D077D8 pinkpurple
+
+}
+
+extension UIColor {
+
+    static let P1 = baseColor(.P1)
+
+    private static func baseColor(_ color: BaseColor) -> UIColor? {
+
+        return UIColor(named: color.rawValue)!
+    }
+
+}

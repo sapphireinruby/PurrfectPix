@@ -76,7 +76,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //                print("Error decoding city: \(error)")
 //            }
 
-
         super.viewDidLoad()
         title = "PurrfectPix"
         view.backgroundColor = .systemBackground
@@ -239,9 +238,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     ) {
 //        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else { return }
         let currentUsername = "Amber67"
-        // 這裡要修改
+        // MARK:  這裡要修改
 
         for model in model {
+
             StorageManager.shared.profilePictureURL(for: currentUsername) { [weak self] profilePictureURL in
                 print("1\(model.postUrlString)")
                 print("2\(profilePictureURL)")
@@ -250,6 +250,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                       let profilePhotoUrl = profilePictureURL else {
                     return
                 }
+
 
                 let isLiked = model.likers.contains(currentUsername)
 
@@ -263,7 +264,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     
                     .petTag(
                         viewModel: PostPetTagCollectionViewCellViewModel(
-                            petTag: ["cat"]
+                            petTag: model.petTag
                         )
                     ),
 
@@ -431,7 +432,6 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
         vc.title = "Liked by / 被誰大心"
         navigationController?.pushViewController(vc, animated: true)
 
-
     }
 }
 
@@ -491,13 +491,11 @@ extension HomeViewController: PosterCollectionViewCellDelegate {
     }
 }
 
-
 extension HomeViewController {
 
     func configureCollectionView() {
 
         let sectionHeight: CGFloat = 240 + view.width
-//        let sectionHeight: CGFloat = 240 + view.width
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { index, _ -> NSCollectionLayoutSection? in
@@ -549,14 +547,14 @@ extension HomeViewController {
                 let captionItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(60)
+                        heightDimension: .absolute(80)
                     )
                 )
 
                 let timestampItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(40)
+                        heightDimension: .absolute(10)
                     )
                 )
 
@@ -576,14 +574,6 @@ extension HomeViewController {
                             timestampItem
                                   ]
                         )
-
-                    // cell for poster
-                    // * cell for pet tag
-                    // large cell for post
-                    // action cell
-                    // like heart cell
-                    // caption cell
-                    // timestamp cell
 
                     // section
                     let section = NSCollectionLayoutSection(group: group)

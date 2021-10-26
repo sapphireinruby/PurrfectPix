@@ -48,6 +48,20 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
         fatalError()
     }
 
+    // for pet tag
+    private var petTags = [String]()
+
+
+    let tagString = [
+        "#汪星人", "#貓星人", "#鳥類", "#兔兔", "#齧齒動物", "#刺蝟", "#羊駝", "#小豬",
+        "#療癒", "#可愛", "#激萌", "#看一天都不累", "#被主子認可了",
+        "#搞笑", "#迷因臉", "#臭臉王", "#在忙什麼啦",
+        "#小短腿", "#小胖胖", "#圓臉臉",
+        "#抱緊處理", "#玩我最在行", "#該放飯了吧", "#別人的寵物都不會讓我失望",
+        "#領養最棒", "#浪浪需要你"
+    ]
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -70,14 +84,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
         tagView.delegate = self
 
         // Add tag
-        let tagString = [
-            "#汪星人", "#貓星人", "#鳥類", "#兔兔", "#齧齒動物", "#刺蝟", "#羊駝", "#小豬",
-            "#療癒", "#可愛", "#激萌", "#看一天都不累", "#被主子認可了",
-            "#搞笑", "#迷因臉", "#臭臉王", "#在忙什麼啦",
-            "#小短腿", "#小胖胖", "#圓臉臉",
-            "#抱緊處理", "#玩我最在行", "#該放飯了吧", "#別人的寵物都不會讓我失望",
-            "#領養最棒", "#浪浪需要你"
-        ]
+
 
         for text in tagString {
 
@@ -111,6 +118,21 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
         tagView.reload()
     }
 
+    func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTap tag: TTGTextTag!, at index: UInt) {
+
+        let text = tag.content.getAttributedString().string
+
+        if petTags.contains(text) {
+
+        let index = petTags.firstIndex(of: text)
+            petTags.remove(at: index!)
+            
+        } else {
+            petTags.append(text)
+        }
+        print("petTags are \(petTags)")
+    }
+
     @objc func didTapPost() {
 
         textView.resignFirstResponder() // turn off keyboard
@@ -119,9 +141,11 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
         var caption = textView.text ?? ""
         if caption == "Add caption / 加點文字" {
 
-            // if on text input, then nothing on the post itself
+            // if no text input, then nothing on the post itself
             caption = ""
         }
+
+        var petTags = petTags
 
         // show.progress() 安裝 stylish裡的 轉轉轉的 pods
 
@@ -148,10 +172,9 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
             // New Post
             // storage ref: username/posts/png
-
             // swiftlint:disable:next line_length
-            let newPost = Post(userID: userID, postID: newPostID, caption: caption, petTag: ["cat"], postedDate: stringDate, likers: [String](), comments: [CommentByUser](), postUrlString: url, location: ""
-            )  //  pet tag 那邊 到時候做好要重寫 petTag:
+            let newPost = Post(userID: userID, postID: newPostID, caption: caption, petTag: petTags, postedDate: stringDate, likers: [String](), comments: [CommentByUser](), postUrlString: url, location: ""
+            )
 
             // Update Database
             DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in

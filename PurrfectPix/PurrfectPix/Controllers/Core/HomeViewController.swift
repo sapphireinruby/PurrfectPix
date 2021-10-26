@@ -245,7 +245,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             StorageManager.shared.profilePictureURL(for: currentUsername) { [weak self] profilePictureURL in
                 print("1\(model.postUrlString)")
                 print("2\(profilePictureURL)")
-                
+
                 guard let postUrl = URL(string: model.postUrlString),
                       let profilePhotoUrl = profilePictureURL else {
                     return
@@ -263,7 +263,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     
                     .petTag(
                         viewModel: PostPetTagCollectionViewCellViewModel(
-                            petTag: "cat"
+                            petTag: ["cat"]
                         )
                     ),
 

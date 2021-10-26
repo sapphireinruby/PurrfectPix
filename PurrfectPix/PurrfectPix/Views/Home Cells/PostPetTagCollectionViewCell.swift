@@ -8,7 +8,8 @@
 import UIKit
 
 class PostPetTagCollectionViewCell: UICollectionViewCell {
-    
+
+    // cell 上面顯示的字串 不要改成tag collection view
     static let identifer = "PostPetTagCollectionViewCell"
 
     private let petTagLabel: UILabel = {

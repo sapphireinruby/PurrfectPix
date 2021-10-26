@@ -8,6 +8,6 @@
 import Foundation
 
 struct PostPetTagCollectionViewCellViewModel {
-    let petTag: String
+    let petTag: [String]
 
 }

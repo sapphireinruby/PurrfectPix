@@ -15,7 +15,7 @@ class PostDateTimeCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = .systemFont(ofSize: 12, weight: .regular)
-        label.textColor = .secondarySystemBackground
+        label.textColor = .lightGray
         return label
 
     }()

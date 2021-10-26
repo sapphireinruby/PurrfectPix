@@ -59,6 +59,7 @@ class PostCollectionViewCell: UICollectionViewCell {
     }
 
     @objc func didDoubleTapToLike() {
+
             heartImageView.isHidden = false
             UIView.animate(withDuration: 1) {
                 self.heartImageView.alpha = 1
@@ -78,6 +79,7 @@ class PostCollectionViewCell: UICollectionViewCell {
     }
 
     override func layoutSubviews() {
+        
         super.layoutSubviews()
         // set the subview layouts
         imageView.frame = contentView.frame

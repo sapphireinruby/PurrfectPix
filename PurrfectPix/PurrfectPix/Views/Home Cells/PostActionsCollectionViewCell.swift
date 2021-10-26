@@ -65,7 +65,6 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         commentButton.addTarget(self, action: #selector(didTapComment), for: .touchUpInside)
         shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
 
-
     }
 
     required init? (coder: NSCoder) {
@@ -84,8 +83,7 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
             let image = UIImage(named: "Heart-purple")
             likeButton.setImage(image, for: .normal)
 //            likeButton.tintColor = .label // white or dark depending on the mode
-        }
-        else {
+        } else {
             let image = UIImage(named: "Heart-filled")
             likeButton.setImage(image, for: .normal)
 //            likeButton.tintColor = .systemRed
@@ -104,13 +102,30 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
 
     }
 
-
     override func layoutSubviews() {
         super.layoutSubviews()
-        let size: CGFloat = (contentView.height) / 1.7
-        likeButton.frame = CGRect(x: 16, y: (contentView.height - size) / 2, width: size, height: size)
-        commentButton.frame = CGRect(x: likeButton.right + 20, y: (contentView.height - size) / 2, width: size, height: size)
-        shareButton.frame = CGRect(x: commentButton.right + 20, y: (contentView.height - size) / 2, width: size, height: size)
+        let size: CGFloat = (contentView.height) / 1.5
+
+        likeButton.frame = CGRect(
+            x: 24,
+            y: (contentView.height - size) / 2,
+            width: size,
+            height: size
+        )
+
+        commentButton.frame = CGRect(
+            x: likeButton.right + 20,
+            y: (contentView.height - size) / 2,
+            width: size,
+            height: size
+        )
+
+        shareButton.frame = CGRect(
+            x: commentButton.right + 20,
+            y: (contentView.height - size) / 2,
+            width: size,
+            height: size
+        )
 
     }
 

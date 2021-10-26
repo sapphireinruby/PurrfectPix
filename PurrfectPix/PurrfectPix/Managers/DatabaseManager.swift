@@ -28,6 +28,7 @@ final class DatabaseManager {
         completion: @escaping (Result<[Post], Error>) -> Void
     ) {
         let ref = database.collection("posts").whereField("userID", isEqualTo: userID)
+            .order(by: "postedDate", descending: true)
 
         ref.getDocuments { snapshot, error in
 
@@ -141,6 +142,7 @@ final class DatabaseManager {
     //   - username: Query usernam
     //   - completion: Result callback
     public func following(for username: String, completion: @escaping ([String]) -> Void) {
+        
         let ref = database.collection("users")
             .document(username)
             .collection("following")

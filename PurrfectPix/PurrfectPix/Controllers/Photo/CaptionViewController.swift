@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import TTGTags
 
-class CaptionViewController: UIViewController, UITextViewDelegate {
+class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCollectionViewDelegate {
 
     // show the pictre user just took
     private let image: UIImage
@@ -31,17 +32,9 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
         return textView
     }()
 
-//  Pet hashtag will do it later
-//    private let tagView: UIcollectionView = {
-//
-//        let textView = UITextView()
-//        textView.text = "Add caption / 添加文字"
-//        textView.backgroundColor = .secondarySystemBackground
-//        textView.font = .systemFont(ofSize: 18)
-//
-//        textView.textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
-//        return textView
-//    }()
+//  Pet hashtag
+    private let tagView = TTGTextTagCollectionView()
+
 
 // MARK: - Init section
 
@@ -54,6 +47,20 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
     required init?(coder: NSCoder) {
         fatalError()
     }
+
+    // for pet tag
+    private var petTags = [String]()
+
+
+    let tagString = [
+        "#汪星人", "#貓星人", "#鳥類", "#兔兔", "#齧齒動物", "#刺蝟", "#羊駝", "#小豬",
+        "#療癒", "#可愛", "#激萌", "#看一天都不累", "#被主子認可了",
+        "#搞笑", "#迷因臉", "#臭臉王", "#在忙什麼啦",
+        "#小短腿", "#小胖胖", "#圓臉臉",
+        "#抱緊處理", "#玩我最在行", "#該放飯了吧", "#別人的寵物都不會讓我失望",
+        "#領養最棒", "#浪浪需要你"
+    ]
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +77,60 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
             style: .done,
             target: self,
             action: #selector(didTapPost))
+
+        // pet tag collectionview
+        view.addSubview(tagView)
+        tagView.alignment = .center
+        tagView.delegate = self
+
+        // Add tag
+
+
+        for text in tagString {
+
+            let content = TTGTextTagStringContent.init(text: text)
+//            content.textFont = UIFont.boldSystemFont(ofSize: 12)
+            content.textColor = .label
+
+            // nomore tag
+            let normalStyle = TTGTextTagStyle.init()
+            normalStyle.backgroundColor = .secondarySystemBackground
+            normalStyle.extraSpace = CGSize.init(width: 12, height: 12)
+            normalStyle.borderColor = UIColor.purple
+            normalStyle.borderWidth = 1
+
+
+            //selected tag
+            let selectedStyle = TTGTextTagStyle.init()
+            selectedStyle.backgroundColor = .secondarySystemBackground
+            selectedStyle.borderColor = UIColor.purple
+            selectedStyle.borderWidth = 3
+            selectedStyle.extraSpace = CGSize.init(width: 12, height: 12)
+
+            let tag = TTGTextTag.init()
+            tag.content = content
+            tag.style = normalStyle
+            tag.selectedStyle = selectedStyle
+
+            tagView.addTag(tag)
+        }
+
+        tagView.reload()
+    }
+
+    func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTap tag: TTGTextTag!, at index: UInt) {
+
+        let text = tag.content.getAttributedString().string
+
+        if petTags.contains(text) {
+
+        let index = petTags.firstIndex(of: text)
+            petTags.remove(at: index!)
+            
+        } else {
+            petTags.append(text)
+        }
+        print("petTags are \(petTags)")
     }
 
     @objc func didTapPost() {
@@ -79,10 +140,14 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
         // clean the text view placeholder
         var caption = textView.text ?? ""
         if caption == "Add caption / 加點文字" {
+
+            // if no text input, then nothing on the post itself
             caption = ""
         }
 
-        //  show.progress() 安裝 stylish裡的 轉轉轉的 pods
+        var petTags = petTags
+
+        // show.progress() 安裝 stylish裡的 轉轉轉的 pods
 
         // Generate post ID --> Image & the whole Post share one ID
         guard let newPostID = createNewPostID(),
@@ -107,10 +172,9 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
 
             // New Post
             // storage ref: username/posts/png
-
             // swiftlint:disable:next line_length
-            let newPost = Post(userID: userID, postID: newPostID, caption: caption, petTag: "cat", postedDate: stringDate, likers: [String](), comments: [CommentByUser](), postUrlString: url, location: ""
-            )  //  pet tag 那邊 到時候做好要重寫 petTag:
+            let newPost = Post(userID: userID, postID: newPostID, caption: caption, petTag: petTags, postedDate: stringDate, likers: [String](), comments: [CommentByUser](), postUrlString: url, location: ""
+            )
 
             // Update Database
             DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in
@@ -152,7 +216,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
 
         imageVIew.frame = CGRect(
             x: (view.width-size) / 2,
-            y: view.safeAreaInsets.top + 160,
+            y: view.safeAreaInsets.top + 80,
             width: size,
             height: size
         )
@@ -162,6 +226,13 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
             y: imageVIew.bottom + 16,
             width: view.width - 48,
             height: 160
+        )
+
+        tagView.frame = CGRect(
+            x: 24,
+            y: textView.bottom + 16,
+            width: view.width - 48,
+            height: 600
         )
     }
 
@@ -174,3 +245,5 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
     }
 
 }
+
+

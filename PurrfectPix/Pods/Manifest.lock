@@ -346,6 +346,7 @@ PODS:
   - SDWebImage (5.12.1):
     - SDWebImage/Core (= 5.12.1)
   - SDWebImage/Core (5.12.1)
+  - TTGTagCollectionView (2.1.0)
 
 DEPENDENCIES:
   - Appirater
@@ -358,6 +359,7 @@ DEPENDENCIES:
   - Hashtags
   - JGProgressHUD
   - SDWebImage
+  - TTGTagCollectionView
 
 SPEC REPOS:
   trunk:
@@ -386,6 +388,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SDWebImage
+    - TTGTagCollectionView
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -413,7 +416,8 @@ SPEC CHECKSUMS:
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
+  TTGTagCollectionView: a2a8668c659b39e7a6ffd6590475ea53a7ae95f7
 
-PODFILE CHECKSUM: aa068b9f1b8494c594c75d968de88e539611a805
+PODFILE CHECKSUM: 0c1462f2ef8e19ecf3f6c5cafd2b4a6286ba53ea
 
 COCOAPODS: 1.11.0

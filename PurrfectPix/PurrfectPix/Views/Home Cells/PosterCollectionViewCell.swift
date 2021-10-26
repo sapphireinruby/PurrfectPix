@@ -93,7 +93,7 @@ final class PosterCollectionViewCell: UICollectionViewCell {
 
         // usernameLabel
         usernameLabel.sizeToFit()
-        usernameLabel.frame = CGRect(x: imageView.right + 16,
+        usernameLabel.frame = CGRect(x: imageView.right + 24,
                                      y: 0,
                                      width: usernameLabel.width,
                                      height: contentView.height

@@ -12,7 +12,7 @@ struct Post: Codable {
     let userID: String
     var postID: String  // Image & the whole Post share one ID
     let caption: String
-    let petTag: String
+    let petTag: [String]
     let postedDate: String  // date
     let likers: [String]
     let comments: [CommentByUser]? // map :  comment [ { user: String, comment: String }]

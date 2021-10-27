@@ -28,6 +28,8 @@
 		A780735F2725655400468B30 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780735E2725655400468B30 /* JGProgressHUDWrapper.swift */; };
 		A780736127259E9300468B30 /* SignInHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780736027259E9200468B30 /* SignInHeaderView.swift */; };
 		A78073632725A11400468B30 /* UserTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78073622725A11400468B30 /* UserTextField.swift */; };
+		A78073662729213B00468B30 /* 68349-cat-tail-wag.json in Resources */ = {isa = PBXBuildFile; fileRef = A78073652729213A00468B30 /* 68349-cat-tail-wag.json */; };
+		A780736827292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json in Resources */ = {isa = PBXBuildFile; fileRef = A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */; };
 		A7BC5E1027220A0C00010F52 /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */; };
 		A7BC5E122722109400010F52 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */; };
 		A7DDDEF4271B2E7200F28B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */; };
@@ -82,6 +84,8 @@
 		A780735E2725655400468B30 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		A780736027259E9200468B30 /* SignInHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHeaderView.swift; sourceTree = "<group>"; };
 		A78073622725A11400468B30 /* UserTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTextField.swift; sourceTree = "<group>"; };
+		A78073652729213A00468B30 /* 68349-cat-tail-wag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "68349-cat-tail-wag.json"; sourceTree = "<group>"; };
+		A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "70835-hiro-rocket-launch-purple.json"; sourceTree = "<group>"; };
 		A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
 		A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7DDDEF0271B2E7200F28B24 /* PurrfectPix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PurrfectPix.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +152,15 @@
 			path = "Third Party Wrapper";
 			sourceTree = "<group>";
 		};
+		A78073642729212400468B30 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				A78073652729213A00468B30 /* 68349-cat-tail-wag.json */,
+				A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		A7BC5E0E272209E100010F52 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +191,7 @@
 		A7DDDEF2271B2E7200F28B24 /* PurrfectPix */ = {
 			isa = PBXGroup;
 			children = (
+				A78073642729212400468B30 /* Lottie */,
 				A780735D2725651300468B30 /* Third Party Wrapper */,
 				A7DDDF0C271B332400F28B24 /* Resources */,
 				A7DDDF07271B30B600F28B24 /* Controllers */,
@@ -383,6 +397,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7DDDF00271B2E7500F28B24 /* LaunchScreen.storyboard in Resources */,
+				A780736827292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json in Resources */,
+				A78073662729213B00468B30 /* 68349-cat-tail-wag.json in Resources */,
 				A7DDDEFD271B2E7500F28B24 /* Assets.xcassets in Resources */,
 				A7DDDF5E271DA19700F28B24 /* GoogleService-Info.plist in Resources */,
 			);

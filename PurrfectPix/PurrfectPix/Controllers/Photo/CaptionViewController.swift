@@ -51,16 +51,14 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
     // for pet tag
     private var petTags = [String]()
 
-
     let tagString = [
-        "#汪星人", "#貓星人", "#鳥類", "#兔兔", "#齧齒動物", "#刺蝟", "#羊駝", "#小豬",
-        "#療癒", "#可愛", "#激萌", "#看一天都不累", "#被主子認可了",
+        "#汪星人", "#貓星人", "#鳥類", "#兔兔", "#齧齒動物", "爬蟲類", "#刺蝟","#小豬", "#其他寶貝",
+        "#療癒", "#可愛", "#激萌", "#看一天都不累", "#被主子認可了", "#我不想睡",
         "#搞笑", "#迷因臉", "#臭臉王", "#在忙什麼啦",
         "#小短腿", "#小胖胖", "#圓臉臉",
         "#抱緊處理", "#玩我最在行", "#該放飯了吧", "#別人的寵物都不會讓我失望",
         "#領養最棒", "#浪浪需要你"
     ]
-
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -25,7 +25,7 @@
 
 @class FIRApp;
 @class FSTFirestoreClient;
-@class FSTUserDataReader;
+@class FSTUserDataConverter;
 
 namespace firebase {
 namespace firestore {
@@ -79,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign, readonly) std::shared_ptr<api::Firestore> wrapped;
 
 @property(nonatomic, assign, readonly) const model::DatabaseId &databaseID;
-@property(nonatomic, strong, readonly) FSTUserDataReader *dataReader;
+@property(nonatomic, strong, readonly) FSTUserDataConverter *dataConverter;
 
 @end
 

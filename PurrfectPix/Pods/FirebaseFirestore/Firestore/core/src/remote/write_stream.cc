@@ -146,7 +146,7 @@ Status WriteStream::NotifyStreamResponse(const grpc::ByteBuffer& message) {
       return reader.status();
     }
 
-    callback_->OnWriteStreamMutationResult(version, std::move(results));
+    callback_->OnWriteStreamMutationResult(version, results);
   }
 
   return Status::OK();

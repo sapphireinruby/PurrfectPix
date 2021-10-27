@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "PurrfectPix_textlogo.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2018 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@
 namespace firebase {
 namespace firestore {
 namespace remote {
-namespace {
 
 using auth::CredentialsProvider;
 using auth::Token;
@@ -40,6 +39,8 @@ using util::Status;
 using util::StatusOr;
 using util::StringFormat;
 using util::TimerId;
+
+namespace {
 
 /**
  * Initial backoff time after an error.
@@ -201,8 +202,8 @@ void Stream::OnStreamRead(const grpc::ByteBuffer& message) {
   HARD_ASSERT(IsStarted(), "OnStreamRead called for a stopped stream.");
 
   if (LogIsDebugEnabled()) {
-    LOG_DEBUG("%s headers (allowlisted): %s", GetDebugDescription(),
-              Datastore::GetAllowlistedHeadersAsString(
+    LOG_DEBUG("%s headers (whitelisted): %s", GetDebugDescription(),
+              Datastore::GetWhitelistedHeadersAsString(
                   grpc_stream_->GetResponseHeaders()));
   }
 

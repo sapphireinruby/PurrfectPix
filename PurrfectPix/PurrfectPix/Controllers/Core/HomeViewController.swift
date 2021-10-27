@@ -121,6 +121,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView?.frame = view.bounds
     }
 
+// 以下 private func fetchPosts() 若post 重複要處理
+//
 //    private func fetchPosts() {
 //
 //        guard let username = UserDefaults.standard.string(forKey: "username") else {
@@ -360,7 +362,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             cell.delegate = self
 
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, index: indexPath.section)
 //            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
@@ -442,9 +444,23 @@ extension HomeViewController: PostCaptionCollectionViewCellDelegate {
 }
 
 extension HomeViewController: PostActionsCollectionViewCellDelegate {
-    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool) {
+
+    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int) {
         // call DB to update like state
+
+        HapticManager.shared.vibrateForSelection()
+        let tuple = allPosts[index]
+        DatabaseManager.shared.updateLikeState(
+            state: isLiked ? .like : .unlike,
+            postID: tuple.post.postID,
+            owner: tuple.owner) { success in
+            guard success else {
+                return
+            }
+            print("Failed to like")
+        }
     }
+
 
     func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell) {
          let vc = PostViewController()
@@ -460,10 +476,22 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
     }
 }
 
-
 extension HomeViewController: PostCollectionViewCellDelegate {
-    func postCollectionViewCellDidLike(_ cell: PostCollectionViewCell) {
-        print("tapped to like")
+
+    func postCollectionViewCellDidLike(_ cell: PostCollectionViewCell, index: Int) {
+        // index to get the post
+        let tuple = allPosts[index]
+        DatabaseManager.shared.updateLikeState(
+            // 出現錯誤  index outof range
+            // can only like when tapped
+            state: .like,
+            postID: tuple.post.postID,
+            owner: tuple.owner) { success in
+            guard success else {
+                return
+            }
+            print("Failed to like")
+        }
     }
 }
 

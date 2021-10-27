@@ -14,7 +14,7 @@ struct Post: Codable {
     let caption: String
     let petTag: [String]
     let postedDate: String  // date
-    let likers: [String]
+    var likers: [String]
     let comments: [CommentByUser]? // map :  comment [ { user: String, comment: String }]
 
 

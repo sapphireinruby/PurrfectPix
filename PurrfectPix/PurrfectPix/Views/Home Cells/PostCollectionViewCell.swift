@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 protocol PostCollectionViewCellDelegate: AnyObject {
-    func postCollectionViewCellDidLike(_ cell: PostCollectionViewCell)
+    func postCollectionViewCellDidLike(_ cell: PostCollectionViewCell, index: Int)
     // for double tap on the image to like, but cannot unlike
 }
 
@@ -18,6 +18,8 @@ class PostCollectionViewCell: UICollectionViewCell {
     static let identifer = "PostCollectionViewCell"
 
     weak var delegate: PostCollectionViewCellDelegate?
+
+    private var index = 0 // need index to get post
 
     private let imageView: UIImageView = {
 
@@ -75,7 +77,7 @@ class PostCollectionViewCell: UICollectionViewCell {
                 }
             }
 
-            delegate?.postCollectionViewCellDidLike(self)
+            delegate?.postCollectionViewCellDidLike(self, index: index)
     }
 
     override func layoutSubviews() {
@@ -99,7 +101,9 @@ class PostCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
     }
 
-    func configure(with viewModel: PostCollectionViewCellViewModel) {
+    func configure(with viewModel: PostCollectionViewCellViewModel, index: Int) {
+        
+        self.index = index
         imageView.sd_setImage(with: viewModel.postUrl, completed: nil)
     }
 

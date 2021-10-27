@@ -9,14 +9,18 @@ import UIKit
 
 protocol PostActionsCollectionViewCellDelegate: AnyObject {
 
-    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool)
+    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int)
+
     func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell)
+    
     func postActionsCollectionViewCellDidTapShare(_ cell: PostActionsCollectionViewCell)
 }
 
 class PostActionsCollectionViewCell: UICollectionViewCell {
 
     static let identifer = "PostActionsCollectionViewCell"
+
+    private var index = 0
 
     weak var delegate: PostActionsCollectionViewCellDelegate?
 
@@ -90,7 +94,8 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         }
 
         delegate?.postActionsCollectionViewCellDidTapLike(self,
-                                                          isLiked: !isLiked)
+                                                          isLiked: !isLiked,
+                                                          index: index)
         self.isLiked = !isLiked  // to enable doing the switch
     }
 

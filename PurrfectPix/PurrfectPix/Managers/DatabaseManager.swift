@@ -117,6 +117,31 @@ final class DatabaseManager {
         }
     }
 
+    // Get a post with id and username
+    // - Parameters:
+    //   - identifer: Query id
+    //   - username: Query username
+    //   - completion: Result callback
+    public func getPost(
+        with identifer: String,
+        from username: String,
+        completion: @escaping (Post?) -> Void
+    ) {
+        let ref = database.collection("users")
+            .document(username)
+            .collection("posts")
+            .document(identifer)
+        ref.getDocument { snapshot, error in
+            guard let data = snapshot?.data(),
+                  error == nil else {
+                completion(nil)
+                return
+            }
+
+            completion(Post(with: data))
+        }
+    }
+
     // Find single user with email
     // - Parameters:
     //   - email: Source email
@@ -152,6 +177,57 @@ final class DatabaseManager {
                 return
             }
             completion(usernames)
+        }
+    }
+
+    // MARK: - Liking
+
+    // Like states that are supported
+    enum LikeState {
+        case like
+        case unlike
+    }
+
+    // Update like state on post
+    // - Parameters:
+    //   - state: State to update to
+    //   - postID: Post to update for
+    //   - owner: Owner username of post
+    //   - completion: Result callback
+    public func updateLikeState(
+        state: LikeState,
+        postID: String,
+        owner: String,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else { return }
+        let ref = database.collection("users")
+            .document(owner)
+            .collection("posts")
+            .document(postID)
+        getPost(with: postID, from: owner) { post in
+            guard var post = post else {
+                completion(false)
+                return
+            }
+
+            switch state {
+            case .like:
+                if !post.likers.contains(currentUsername) {
+                    // only append user if the user is not already likes the post, to avoid double users in arrayㄍ
+                    post.likers.append(currentUsername)
+                }
+            case .unlike:
+                post.likers.removeAll(where: { $0 == currentUsername })
+            }
+
+            guard let data = post.asDictionary() else {
+                completion(false)
+                return
+            }
+            ref.setData(data) { error in
+                completion(error == nil)
+            }
         }
     }
     

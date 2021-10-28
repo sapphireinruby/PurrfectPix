@@ -21,6 +21,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             collectionView?.reloadData()
         }
     }
+    
+    
 
     // All post models
     private var allPosts: [(post: Post, owner: String)] = []
@@ -29,7 +31,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     override func viewDidLoad() {
 
-//
+        super.viewDidLoad()
+        title = "PurrfectPix"
+        view.backgroundColor = .systemBackground
+        configureCollectionView()
+        fetchPosts()
+        // username will edit later
+        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
+
+
+
+//  以下10/18本來註解
 //        db.collection("posts").getDocuments { snapshot, error in
 //
 //            if let  error = error {
@@ -76,44 +88,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //                print("Error decoding city: \(error)")
 //            }
 
-        super.viewDidLoad()
-        title = "PurrfectPix"
-        view.backgroundColor = .systemBackground
-//        configureCollectionView()
-//        fetchPosts()
-        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
-        // 也許key該換成username
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-
-        viewModels = [[HomeFeedCellType]]()
-        db.collection("posts").getDocuments { snapshot, error in
-
-         // 這邊要放listener 監聽變化
-            if let  error = error {
-                print(error)
-
-            } else {
-
-                guard let snapshot = snapshot else { return }
-                    var posts = [Post]()
-                    snapshot.documents.forEach({ document in
-
-                        do {
-                            let post =  try document.data(as: Post.self)
-                            guard let post = post else {return}
-                            posts.append(post)
-                        } catch {
-
-                        }
-                    })
-                    self.createViewModel(model: posts, username: "Amber67") { result in  // 存在user defaultpost
-                    }
-            }
-    }
-
-        configureCollectionView()
     }
 
     override func viewDidLayoutSubviews() {
@@ -121,79 +96,112 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView?.frame = view.bounds
     }
 
-// 以下 private func fetchPosts() 若post 重複要處理
+//    //  以下10/18本來使用 edit with Elio 1018
+//    override func viewWillAppear(_ animated: Bool) {
 //
-//    private func fetchPosts() {
+//        viewModels = [[HomeFeedCellType]]()
+//        db.collection("posts").getDocuments { snapshot, error in
 //
-//        guard let username = UserDefaults.standard.string(forKey: "username") else {
-//            return
-//        }
+//         // 這邊要放listener 監聽變化
+//            if let  error = error {
+//                print(error)
 //
-//        let userGroup = DispatchGroup()
-//        userGroup.enter()
+//            } else {
 //
-//        var allPosts: [(post: Post, owner: String)] = []
+//                guard let snapshot = snapshot else { return }
+//                    var posts = [Post]()
+//                    snapshot.documents.forEach({ document in
 //
-//        // refresh the collectionView after all the asynchronous job is done
-//        DatabaseManager.shared.following(for: username) { usernames in
-//            defer {
-//                userGroup.leave()
-//            }
+//                        do {
+//                            let post =  try document.data(as: Post.self)
+//                            guard let post = post else {return}
+//                            posts.append(post)
+//                        } catch {
 //
-//            let users = usernames + [username]
-//
-//            for current in users {
-//
-//                userGroup.enter()
-//
-//                DatabaseManager.shared.posts(for: current) { result in
-//                    DispatchQueue.main.async {
-//
-//                        defer {
-//                            userGroup.leave()
 //                        }
-//
-//                        switch result {
-//
-//                        case .success(let posts):
-//                            allPosts.append(contentsOf: posts.compactMap({
-//                                (post: $0, owner: current)
-//                            }))
-//                            print("\n\n\n Posts: \(posts.count)")
-//
-//                        case .failure:
-//                            break
-//                        }
+//                    })
+//                    self.createViewModel(model: posts, username: "Amber67") { result in  // 存在user defaultpost
 //                    }
-//                }
 //            }
-//        }
-//
-//        userGroup.notify(queue: .main) {
-//            let group = DispatchGroup()
-//            self.allPosts = allPosts
-//            allPosts.forEach { model in
-//                group.enter()
-//                self.createViewModel(
-//                    model: model.post,
-//                    username: model.owner,
-//                    completion: { success in
-//                        defer {
-//                            group.leave()
-//                        }
-//                        if !success {
-//                            print("failed to create VM")
-//                        }
-//                    }
-//                )
-//            }
-//
-//            group.notify(queue: .main) {
-//                self.sortData()
-//                self.collectionView?.reloadData()
-//            }
-//        }
 //    }
+//
+//        configureCollectionView()
+//    }
+
+
+//  以下10/18本來註解 private func fetchPosts() 本來// 起來 到196行 若post 重複要處理
+
+    private func fetchPosts() {
+
+        guard let username = UserDefaults.standard.string(forKey: "username") else {
+            return
+        }
+
+        let userGroup = DispatchGroup()
+        userGroup.enter()
+
+        var allPosts: [(post: Post, owner: String)] = []
+
+        // refresh the collectionView after all the asynchronous job is done
+        DatabaseManager.shared.following(for: username) { usernames in
+            defer {
+                userGroup.leave()
+            }
+
+            let users = usernames + [username]
+
+            for current in users {
+
+                userGroup.enter()
+
+                DatabaseManager.shared.posts(for: current) { result in
+                    DispatchQueue.main.async {
+
+                        defer {
+                            userGroup.leave()
+                        }
+
+                        switch result {
+
+                        case .success(let posts):
+                            allPosts.append(contentsOf: posts.compactMap({
+                                (post: $0, owner: current)
+                            }))
+                            print("\n\n\n Posts: \(posts.count)")
+
+                        case .failure:
+                            break
+                        }
+                    }
+                }
+            }
+        }
+
+        userGroup.notify(queue: .main) {
+            let group = DispatchGroup()
+            self.allPosts = allPosts
+            allPosts.forEach { model in
+                group.enter()
+                self.createViewModel(
+                    model: model.post,
+                    username: model.owner,
+                    completion: { success in
+                        defer {
+                            group.leave()
+                        }
+                        if !success {
+                            print("failed to create VM")
+                        }
+                    }
+                )
+            }
+
+            group.notify(queue: .main) {
+                self.sortData()
+                self.collectionView?.reloadData()
+            }
+        }
+    }
 
     private func sortData() {
 
@@ -232,9 +240,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     }
 
+
+
     private func createViewModel(
 
-        model: [Post],
+        model: Post, // 10/18 原為[Post]
         username: String,
         completion: @escaping (Bool) -> Void
     ) {
@@ -242,8 +252,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let currentUsername = "Amber67"
         // MARK:  這裡要修改
 
-        for model in model {
 
+        //  以下10/18本來使用
+//        for model in model {
+//
             StorageManager.shared.profilePictureURL(for: currentUsername) { [weak self] profilePictureURL in
                 print("1\(model.postUrlString)")
                 print("2\(profilePictureURL)")
@@ -294,7 +306,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 self?.viewModels.append(postData)
                 completion(true)
             }
-        }
+//        }
     }
 
     // collectionView
@@ -347,6 +359,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ) as? PostPetTagCollectionViewCell else {
                 fatalError()
             }
+
+            cell.delegate = self
+            
             cell.configure(with: viewModel)
 //            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
@@ -475,6 +490,15 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
     }
 }
+
+extension HomeViewController: PostPetTagCollectionViewCellDelegate {
+    func postPetTagCollectionViewCellDidTapPresentTagView(_ cell: PostPetTagCollectionViewCell) {
+        // after tap, perform a search for the pet tags
+    }
+
+
+}
+
 
 extension HomeViewController: PostCollectionViewCellDelegate {
 

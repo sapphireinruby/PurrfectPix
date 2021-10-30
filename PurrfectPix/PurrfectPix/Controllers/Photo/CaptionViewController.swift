@@ -24,7 +24,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
     private let textView: UITextView = {
 
         let textView = UITextView()
-        textView.text = "Add caption / 加點文字"
+        textView.text = "Add caption"
         textView.backgroundColor = .secondarySystemBackground
         textView.font = .systemFont(ofSize: 20)
 
@@ -137,7 +137,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
         // clean the text view placeholder
         var caption = textView.text ?? ""
-        if caption == "Add caption / 加點文字" {
+        if caption == "Add caption" {
 
             // if no text input, then nothing on the post itself
             caption = ""
@@ -157,10 +157,9 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
         guard let userID = UserDefaults.standard.string(forKey: "userID") else { return }
         StorageManager.shared.uploadPost(
 
-
             data: image.pngData(),
             userID: userID,
-            id: newPostID
+            postID: newPostID
             
         ) { newPostDownloadURL in
             guard let url = newPostDownloadURL?.absoluteString else {
@@ -237,7 +236,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
     func textViewDidBeginEditing(_ textView: UITextView) {
 
         // pops up the keyboard
-        if textView.text == "Add caption / 加點文字" {
+        if textView.text == "Add caption" {
             textView.text = nil
         }
     }

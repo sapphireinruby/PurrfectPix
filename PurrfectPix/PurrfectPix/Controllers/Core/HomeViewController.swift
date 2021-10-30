@@ -12,7 +12,6 @@ import FirebaseFirestoreSwift
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // CollectionView for feed
-    // calulate the heigh dynamically for square
     private var collectionView: UICollectionView?
 
     // Feed viewModels
@@ -23,7 +22,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     
-
     // All post models
     private var allPosts: [(post: Post, owner: String)] = []
 
@@ -252,10 +250,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let currentUsername = "Amber67"
         // MARK:  這裡要修改
 
+        // 以下10/18本來使用
 
-        //  以下10/18本來使用
 //        for model in model {
-//
+
             StorageManager.shared.profilePictureURL(for: currentUsername) { [weak self] profilePictureURL in
                 print("1\(model.postUrlString)")
                 print("2\(profilePictureURL)")
@@ -309,7 +307,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        }
     }
 
-    // collectionView
+    // collectionView datasource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModels.count
@@ -446,7 +444,7 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
     func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell) {
 
         let vc = ListViewController() // initiate a vc
-        vc.title = "Liked by / 被誰大心"
+        vc.title = "Liked by"
         navigationController?.pushViewController(vc, animated: true)
 
     }
@@ -547,7 +545,8 @@ extension HomeViewController {
 
     func configureCollectionView() {
 
-        let sectionHeight: CGFloat = 240 + view.width
+        // calulate the heigh dynamically for square
+        let sectionHeight: CGFloat = 290 + view.width //view.width is the actual post size
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { index, _ -> NSCollectionLayoutSection? in
@@ -560,7 +559,7 @@ extension HomeViewController {
                     // caption cell
                     // timestamp cell
 
-                    // item
+                    // NSLayout item
                 let posterItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
@@ -610,7 +609,7 @@ extension HomeViewController {
                     )
                 )
 
-                    // group
+                    // NSLayout group
                 let group = NSCollectionLayoutGroup.vertical(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
@@ -627,7 +626,7 @@ extension HomeViewController {
                                   ]
                         )
 
-                    // section
+                    // NSLayout Section
                     let section = NSCollectionLayoutSection(group: group)
 
                 section.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 0, bottom: 10, trailing: 0)
@@ -677,7 +676,7 @@ extension HomeViewController {
             forCellWithReuseIdentifier: PostDateTimeCollectionViewCell.identifer
         )
 
-        self.collectionView = collectionView
+        self.collectionView = collectionView  // configuring collectionView as it's own constance, and assign it to the global property
     }
 
 }

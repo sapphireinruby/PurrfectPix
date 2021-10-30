@@ -51,7 +51,7 @@
 		A7DDDF4A271D9B2C00F28B24 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF49271D9B2C00F28B24 /* SettingViewController.swift */; };
 		A7DDDF4C271D9BA600F28B24 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF4B271D9BA600F28B24 /* User.swift */; };
 		A7DDDF4E271D9BBC00F28B24 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF4D271D9BBC00F28B24 /* Post.swift */; };
-		A7DDDF50271D9BCE00F28B24 /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF4F271D9BCE00F28B24 /* Relation.swift */; };
+		A7DDDF50271D9BCE00F28B24 /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF4F271D9BCE00F28B24 /* Relationship.swift */; };
 		A7DDDF52271D9BE400F28B24 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF51271D9BE400F28B24 /* Notification.swift */; };
 		A7DDDF54271D9E0B00F28B24 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF53271D9E0B00F28B24 /* AuthManager.swift */; };
 		A7DDDF56271D9E1A00F28B24 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF55271D9E1A00F28B24 /* DatabaseManager.swift */; };
@@ -110,7 +110,7 @@
 		A7DDDF49271D9B2C00F28B24 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A7DDDF4B271D9BA600F28B24 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A7DDDF4D271D9BBC00F28B24 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		A7DDDF4F271D9BCE00F28B24 /* Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
+		A7DDDF4F271D9BCE00F28B24 /* Relationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
 		A7DDDF51271D9BE400F28B24 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A7DDDF53271D9E0B00F28B24 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		A7DDDF55271D9E1A00F28B24 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 			children = (
 				A7DDDF4B271D9BA600F28B24 /* User.swift */,
 				A7DDDF4D271D9BBC00F28B24 /* Post.swift */,
-				A7DDDF4F271D9BCE00F28B24 /* Relation.swift */,
+				A7DDDF4F271D9BCE00F28B24 /* Relationship.swift */,
 				A7DDDF51271D9BE400F28B24 /* Notification.swift */,
 				A7315CFF271E27C300B58879 /* Comment.swift */,
 				A7315CFD271E250C00B58879 /* HomeFeedCellType.swift */,
@@ -485,7 +485,7 @@
 				A7DDDF46271D9AF900F28B24 /* PostViewController.swift in Sources */,
 				A78073632725A11400468B30 /* UserTextField.swift in Sources */,
 				A780736127259E9300468B30 /* SignInHeaderView.swift in Sources */,
-				A7DDDF50271D9BCE00F28B24 /* Relation.swift in Sources */,
+				A7DDDF50271D9BCE00F28B24 /* Relationship.swift in Sources */,
 				A7315CFE271E250C00B58879 /* HomeFeedCellType.swift in Sources */,
 				A7BC5E122722109400010F52 /* PhotoCollectionViewCell.swift in Sources */,
 				A7DDDF5A271D9E5200F28B24 /* AnalyticsManager.swift in Sources */,

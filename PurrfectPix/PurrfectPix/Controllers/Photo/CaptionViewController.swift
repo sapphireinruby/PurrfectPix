@@ -169,7 +169,16 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
             // New Post
             // storage ref: username/posts/png
             // swiftlint:disable:next line_length
-            let newPost = Post(userID: userID, postID: newPostID, caption: caption, petTag: petTags, postedDate: stringDate, likers: [String](), comments: [CommentByUser](), postUrlString: url, location: ""
+            let newPost = Post(
+                userID: userID,
+                postID: newPostID,
+                caption: caption,
+                petTag: petTags,
+                postedDate: stringDate,
+                likers: [String](),
+                comments: [CommentByUser](),
+                postUrlString: url,
+                location: ""
             )
 
             // Update Database

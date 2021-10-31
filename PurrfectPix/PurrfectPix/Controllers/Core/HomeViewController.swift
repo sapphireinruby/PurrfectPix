@@ -21,11 +21,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             collectionView?.reloadData()
         }
     }
-    
-    
+
     // All post models
     private var allPosts: [(post: Post, owner: String)] = []
-
+    // swiftlint:disable identifier_name
     let db = Firestore.firestore()
 
     override func viewDidLoad() {
@@ -37,7 +36,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         fetchPosts()
         // username will edit later
         UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
-
 
 //  以下10/18本來註解
 //        db.collection("posts").getDocuments { snapshot, error in
@@ -66,7 +64,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //            let result = Result {
 //              try document?.data(as: Post.self)
 //            }
-
 
 //            switch result {
 //            case .success(let post):
@@ -123,7 +120,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //
 //        configureCollectionView()
 //    }
-
 
 //  以下10/18本來註解 private func fetchPosts() 到196行 若post 重複要處理
 
@@ -212,33 +208,30 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     }
 
-
     private func createViewModel(
 
         // 需要釐清 何時要用username 何時要userID
-        model: Post, // 10/18 原為[Post]
+        model: Post,
         userID: String,
         username: String,
         completion: @escaping (Bool) -> Void
     ) {
-//        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else { return }
-        let currentUserID = "wRWTOfxEaKtP8OSso4pB"
+
+        // swiftlint:disable identifier_name
+        let UserID = "wRWTOfxEaKtP8OSso4pB"
+        let username = "perfect67"
         // MARK: 這裡未來要修改成動態
 
-        // 以下10/18本來使用
 
-//        for model in model {
+        StorageManager.shared.downloadURL(for: model) { postURL in
+            StorageManager.shared.profilePictureURL(for: UserID) { [weak self] profilePictureURL in
 
-            StorageManager.shared.profilePictureURL(for: currentUserID) { [weak self] profilePictureURL in
-                print("1\(model.postUrlString)")
-                print("2\(profilePictureURL)")
-
-                guard let postUrl = URL(string: model.postUrlString),
+                guard let postUrl = postURL,
                       let profilePhotoUrl = profilePictureURL else {
-                    return
+                          print("1. model.postUrlString\(model.postUrlString)")
+                          print("2. profilePictureURL \(profilePictureURL)")
+                            return
                 }
-
-                let isLiked = model.likers.contains(currentUserID)
 
                 let postData: [HomeFeedCellType] = [
                     .poster(
@@ -260,9 +253,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         )
                     ),
 
-                    .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: isLiked)),
+                    .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: false)),
 
-                    .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: model.likers)),
+                    .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: [])),
 
                     .caption(
                         viewModel: PostCaptionCollectionViewCellViewModel(
@@ -277,8 +270,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 ]
                 self?.viewModels.append(postData) // add to view model
                 completion(true)
+
             }
-//        }
+        }
+
     }
 
     // MARK: collectionView datasource

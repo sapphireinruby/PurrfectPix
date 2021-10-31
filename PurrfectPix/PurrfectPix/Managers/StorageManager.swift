@@ -42,7 +42,6 @@ final class StorageManager {
         }
     }
 
-
     public func downloadURL(for post: Post, completion: @escaping (URL?) -> Void) {
 
         guard let ref = post.storageReference else {

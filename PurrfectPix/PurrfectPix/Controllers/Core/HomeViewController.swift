@@ -14,7 +14,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // CollectionView for feed
     private var collectionView: UICollectionView?
 
-    // Feed viewModels
+    // Feed viewModels, two demensional array, each inner arry is a post or a section
+    // 7 kinds of home feed cell enums on cell type models file
     private var viewModels = [[HomeFeedCellType]]() {
         didSet {
             collectionView?.reloadData()
@@ -36,7 +37,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         fetchPosts()
         // username will edit later
         UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
-
 
 
 //  以下10/18本來註解
@@ -68,7 +68,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //            }
 
 
-
 //            switch result {
 //            case .success(let post):
 //                if let post = post {
@@ -85,7 +84,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //                // A `City` value could not be initialized from the DocumentSnapshot.
 //                print("Error decoding city: \(error)")
 //            }
-
 
     }
 
@@ -127,81 +125,57 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //    }
 
 
-//  以下10/18本來註解 private func fetchPosts() 本來// 起來 到196行 若post 重複要處理
+//  以下10/18本來註解 private func fetchPosts() 到196行 若post 重複要處理
 
     private func fetchPosts() {
+
+        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
+            return
+        }
 
         guard let username = UserDefaults.standard.string(forKey: "username") else {
             return
         }
 
-        let userGroup = DispatchGroup()
-        userGroup.enter()
+        DatabaseManager.shared.posts(for: userID) { [weak self] result in
+            // refresh the collectionView after all the asynchronous job is done
 
-        var allPosts: [(post: Post, owner: String)] = []
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let posts):
+                    let group = DispatchGroup()  
 
-        // refresh the collectionView after all the asynchronous job is done
-        DatabaseManager.shared.following(for: username) { usernames in
-            defer {
-                userGroup.leave()
-            }
+                    posts.forEach { model in
+                        group.enter()
 
-            let users = usernames + [username]
+                        self?.createViewModel(
+                            model: model,
+                            userID: userID,
+                            username: username,
+                            completion: { success in
+                            defer {
+                                group.leave()
+                            }
+                            if !success {
+                                print("failed to create viewModel")
 
-            for current in users {
-
-                userGroup.enter()
-
-                DatabaseManager.shared.posts(for: current) { result in
-                    DispatchQueue.main.async {
-
-                        defer {
-                            userGroup.leave()
+                            }
+                        })
+                        group.notify(queue: .main) {
+                            self?.collectionView?.reloadData()
                         }
 
-                        switch result {
-
-                        case .success(let posts):
-                            allPosts.append(contentsOf: posts.compactMap({
-                                (post: $0, owner: current)
-                            }))
-                            print("\n\n\n Posts: \(posts.count)")
-
-                        case .failure:
-                            break
-                        }
                     }
+                case . failure(let error):
+                    print(error)
                 }
             }
+
         }
 
-        userGroup.notify(queue: .main) {
-            let group = DispatchGroup()
-            self.allPosts = allPosts
-            allPosts.forEach { model in
-                group.enter()
-                self.createViewModel(
-                    model: model.post,
-                    username: model.owner,
-                    completion: { success in
-                        defer {
-                            group.leave()
-                        }
-                        if !success {
-                            print("failed to create VM")
-                        }
-                    }
-                )
-            }
-
-            group.notify(queue: .main) {
-                self.sortData()
-                self.collectionView?.reloadData()
-            }
-        }
     }
 
-    private func sortData() {
+    private func sortData() {  // 目前還沒呼叫
 
         allPosts = allPosts.sorted(by: { first, second in
             let date1 = first.post.date
@@ -239,22 +213,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
 
-
     private func createViewModel(
 
+        // 需要釐清 何時要用username 何時要userID
         model: Post, // 10/18 原為[Post]
+        userID: String,
         username: String,
         completion: @escaping (Bool) -> Void
     ) {
 //        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else { return }
-        let currentUsername = "Amber67"
-        // MARK:  這裡要修改
+        let currentUserID = "wRWTOfxEaKtP8OSso4pB"
+        // MARK: 這裡未來要修改成動態
 
         // 以下10/18本來使用
 
 //        for model in model {
 
-            StorageManager.shared.profilePictureURL(for: currentUsername) { [weak self] profilePictureURL in
+            StorageManager.shared.profilePictureURL(for: currentUserID) { [weak self] profilePictureURL in
                 print("1\(model.postUrlString)")
                 print("2\(profilePictureURL)")
 
@@ -263,8 +238,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     return
                 }
 
-
-                let isLiked = model.likers.contains(currentUsername)
+                let isLiked = model.likers.contains(currentUserID)
 
                 let postData: [HomeFeedCellType] = [
                     .poster(
@@ -301,13 +275,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         )
                     )
                 ]
-                self?.viewModels.append(postData)
+                self?.viewModels.append(postData) // add to view model
                 completion(true)
             }
 //        }
     }
 
-    // collectionView datasource
+    // MARK: collectionView datasource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModels.count
@@ -318,24 +292,19 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
     let colors: [UIColor] = [
-        .purple,
-        .green,
-        .lightGray,
-        .blue,
-        .yellow,
-        .darkGray,
-        .red
+        .purple, .green, .lightGray, .blue, .yellow, .darkGray, .red
     ]
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         // to show mock data
         let cellType = viewModels[indexPath.section][indexPath.row]
+        // section for the inner array
 
         switch cellType {
 
         case .poster(let viewModel):
-
+        // to dequeue the right cell
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: PosterCollectionViewCell.identifer,
                 for: indexPath
@@ -440,52 +409,31 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 }
 
-extension HomeViewController: PostLikesCollectionViewCellDelegate {
-    func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell) {
+// MARK: Cell delegate:
 
-        let vc = ListViewController() // initiate a vc
-        vc.title = "Liked by"
-        navigationController?.pushViewController(vc, animated: true)
+extension HomeViewController: PosterCollectionViewCellDelegate {
+    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell) {
+        // upper right more meun
 
-    }
-}
+        let sheet = UIAlertController(
+            title: "Post Actions",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
 
-extension HomeViewController: PostCaptionCollectionViewCellDelegate {
-    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell) {
-        print("tapped caption")
-    }
-}
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
-extension HomeViewController: PostActionsCollectionViewCellDelegate {
+        sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
 
-    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int) {
-        // call DB to update like state
+        sheet.addAction(UIAlertAction(title: "Report Post", style: .destructive, handler: { _ in}))
 
-        HapticManager.shared.vibrateForSelection()
-        let tuple = allPosts[index]
-        DatabaseManager.shared.updateLikeState(
-            state: isLiked ? .like : .unlike,
-            postID: tuple.post.postID,
-            owner: tuple.owner) { success in
-            guard success else {
-                return
-            }
-            print("Failed to like")
-        }
+        present(sheet, animated: true)
     }
 
+    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell) {
 
-    func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell) {
-         let vc = PostViewController()
-        vc.title = "Post"
-        navigationController?.pushViewController(vc, animated: true)
-    }
-
-    func postActionsCollectionViewCellDidTapShare(_ cell: PostActionsCollectionViewCell) {
-
-        let vc = UIActivityViewController(activityItems: ["Sharing from PurrfectPix"], applicationActivities: [])
-        present(vc, animated: true)
-
+//        let profileVC = ProfileViewController(user: User(userID: "userid2323", username: "morgan_likeplants", email: "morgan@fake.com", profilePic: "http://img.zcool.cn/community/01558c5987ef04a8012156039eb554.jpg@2o.jpg", followingUsers: ["perfect67", "elio_lovepuppy"], logInCount: 3))
+//        navigationController?.pushViewController(profileVC, animated: true)
     }
 }
 
@@ -494,9 +442,7 @@ extension HomeViewController: PostPetTagCollectionViewCellDelegate {
         // after tap, perform a search for the pet tags
     }
 
-
 }
-
 
 extension HomeViewController: PostCollectionViewCellDelegate {
 
@@ -517,27 +463,40 @@ extension HomeViewController: PostCollectionViewCellDelegate {
     }
 }
 
-extension HomeViewController: PosterCollectionViewCellDelegate {
-    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell) {
-        // upper right three dot meun
+extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
-        let sheet = UIAlertController(
-            title: "Post Actions",
-            message: nil,
-            preferredStyle: .actionSheet
-        )
+    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool) {
+        // call DB to update like state
 
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
-
-        sheet.addAction(UIAlertAction(title: "Report Post", style: .destructive, handler: { _ in}))
-
-        present(sheet, animated: true)
     }
 
-    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell) {
-//        let vc = ProfileViewController(user: User(userID: "userid2323", username: "morgan_likeplants", email: "morgan@fake.com"))
+    func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell) {
+        let postVC = PostViewController() // initiate a vc
+        postVC.title = "Post"
+        navigationController?.pushViewController(postVC, animated: true)
+    }
+
+    func postActionsCollectionViewCellDidTapShare(_ cell: PostActionsCollectionViewCell) {
+
+        let shareVC = UIActivityViewController(activityItems: ["Sharing from PurrfectPix"], applicationActivities: [])
+        present(shareVC, animated: true)
+
+    }
+}
+
+extension HomeViewController: PostLikesCollectionViewCellDelegate {
+    func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell) {
+
+        let listVC = ListViewController()
+        listVC.title = "Liked by"
+        navigationController?.pushViewController(listVC, animated: true)
+
+    }
+}
+
+extension HomeViewController: PostCaptionCollectionViewCellDelegate {
+    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell) {
+        print("tapped caption")
     }
 }
 
@@ -629,8 +588,8 @@ extension HomeViewController {
                     // NSLayout Section
                     let section = NSCollectionLayoutSection(group: group)
 
-                section.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 0, bottom: 10, trailing: 0)
-
+                section.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 0, bottom: 8, trailing: 0)
+                // total 12 points between two sections
                     return section
                 })
         )

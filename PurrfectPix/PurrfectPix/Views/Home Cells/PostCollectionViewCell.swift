@@ -30,21 +30,19 @@ class PostCollectionViewCell: UICollectionViewCell {
     }()
 
     // for double tap showing heart to like the post
-    private let heartImageView: UIImageView = {  //"Heart-filled"
+    private let heartImageView: UIImageView = {
         let image = UIImage(named: "Heart-filled")
         let imageView = UIImageView(image: image)
-//        imageView.tintColor = .white
         imageView.isHidden = true
         imageView.alpha = 0 // animate the actual alpha at action
         return imageView
     }()
 
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.clipsToBounds = true
         contentView.backgroundColor = .secondarySystemBackground
-        // add subview
+        // add subview of the heart
         contentView.addSubview(imageView)
 
         // double tap showing heart to like the post
@@ -63,6 +61,8 @@ class PostCollectionViewCell: UICollectionViewCell {
     @objc func didDoubleTapToLike() {
 
             heartImageView.isHidden = false
+
+            // animate
             UIView.animate(withDuration: 1) {
                 self.heartImageView.alpha = 1
             } completion: { done in

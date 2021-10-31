@@ -32,9 +32,9 @@ final class DatabaseManager {
 
         ref.getDocuments { snapshot, error in
 
-            guard let posts = snapshot?.documents.compactMap({
+            guard let posts = snapshot?.documents.compactMap({ // with extension for decode
 
-                Post(with: $0.data())
+                Post(with: $0.data())  // dictionary
             }),
             error == nil else {
                 return

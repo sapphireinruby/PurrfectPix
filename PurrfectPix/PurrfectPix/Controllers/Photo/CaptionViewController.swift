@@ -52,9 +52,11 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
     private var petTags = [String]()
 
     let tagString = [
-        "#汪星人", "#貓星人", "#鳥類", "#兔兔", "#齧齒動物", "爬蟲類", "#刺蝟","#小豬", "#其他寶貝",
-        "#療癒", "#可愛", "#激萌", "#看一天都不累", "#被主子認可了", "#我不想睡",
-        "#搞笑", "#迷因meme", "#臭臉王", "#在忙什麼啦",
+        "#汪星人", "#貓星人", "#鳥類", "#兔兔", "#齧齒動物",
+        "爬蟲類", "#刺蝟", "#小豬", "#其他寶貝",
+        "#療癒", "#可愛", "#激萌", "#搞笑", "#臭臉王",
+        "#看一天都不累", "#被主子認可了", "#我不想睡",
+        "#在忙什麼啦", "#meme迷因有梗圖",
         "#小短腿", "#小胖胖", "#圓臉臉",
         "#抱緊處理", "#玩我最在行", "#該放飯了吧", "#別人的寵物都不會讓我失望",
         "#領養最棒", "#浪浪需要你"
@@ -83,7 +85,6 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
         // Add tag
 
-
         for text in tagString {
 
             let content = TTGTextTagStringContent.init(text: text)
@@ -97,8 +98,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
             normalStyle.borderColor = UIColor.purple
             normalStyle.borderWidth = 1
 
-
-            //selected tag
+            // selected tag
             let selectedStyle = TTGTextTagStyle.init()
             selectedStyle.backgroundColor = .secondarySystemBackground
             selectedStyle.borderColor = UIColor.purple
@@ -133,13 +133,12 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
     @objc func didTapPost() {
 
-        textView.resignFirstResponder() // turn off keyboard
+        textView.resignFirstResponder()
 
         // clean the text view placeholder
         var caption = textView.text ?? ""
         if caption == "Add caption" {
 
-            // if no text input, then nothing on the post itself
             caption = ""
         }
 
@@ -186,7 +185,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
                     //  weak self avoid memory leak
                     self?.tabBarController?.tabBar.isHidden = false
-                    self?.tabBarController?.selectedIndex = 0
+                    self?.tabBarController?.selectedIndex = 0 // back to home
                     self?.navigationController?.popToRootViewController(animated: false)
                 }
             }

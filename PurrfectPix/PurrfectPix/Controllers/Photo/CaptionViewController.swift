@@ -135,6 +135,9 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
         textView.resignFirstResponder()
 
+        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+        animationView.play()
+
         // clean the text view placeholder
         var caption = textView.text ?? ""
         if caption == "Add caption" {
@@ -163,6 +166,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
         ) { newPostDownloadURL in
             guard let url = newPostDownloadURL?.absoluteString else {
                 print("error: failed to upload to storage")
+                animationView.stop()
                 return
             }
 
@@ -180,6 +184,8 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
                 postUrlString: url,
                 location: ""
             )
+
+
 
             // Update Database
             DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in

@@ -16,7 +16,7 @@ class ExploreViewController: UIViewController, UISearchResultsUpdating {
         super.viewDidLoad()
         title = "Explore"
         view.backgroundColor = .systemBackground
-        searchVC.searchBar.placeholder = "Search..."
+        searchVC.searchBar.placeholder = "Search by username..."
         searchVC.searchResultsUpdater = self
         navigationItem.searchController = searchVC
 

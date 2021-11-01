@@ -501,7 +501,7 @@ extension HomeViewController {
     func configureCollectionView() {
 
         // calulate the heigh dynamically for square
-        let sectionHeight: CGFloat = 290 + view.width //view.width is the actual post size
+        let sectionHeight: CGFloat = 330 + view.width //view.width is the actual post size
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { index, _ -> NSCollectionLayoutSection? in
@@ -553,7 +553,7 @@ extension HomeViewController {
                 let captionItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(60)
+                        heightDimension: .absolute(80)
                     )
                 )
 
@@ -584,7 +584,7 @@ extension HomeViewController {
                     // NSLayout Section
                     let section = NSCollectionLayoutSection(group: group)
 
-                section.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 0)
+                section.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 0, bottom: 4, trailing: 0)
                 // total 12 points between two sections
                     return section
                 })

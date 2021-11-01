@@ -525,7 +525,7 @@ extension HomeViewController {
                 let petTagItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(60)
+                        heightDimension: .absolute(100)
                     )
                 )
 
@@ -553,7 +553,7 @@ extension HomeViewController {
                 let captionItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(80)
+                        heightDimension: .absolute(60)
                     )
                 )
 
@@ -584,7 +584,7 @@ extension HomeViewController {
                     // NSLayout Section
                     let section = NSCollectionLayoutSection(group: group)
 
-                section.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 0, bottom: 8, trailing: 0)
+                section.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 0)
                 // total 12 points between two sections
                     return section
                 })

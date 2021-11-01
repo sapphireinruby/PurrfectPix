@@ -159,6 +159,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         })
                         group.notify(queue: .main) {
                             self?.collectionView?.reloadData()
+                            self?.sortData()
                         }
 
                     }
@@ -171,7 +172,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     }
 
-    private func sortData() {  // 目前還沒呼叫
+    private func sortData() {  // 目前有呼叫
 
         allPosts = allPosts.sorted(by: { first, second in
             let date1 = first.post.date

@@ -88,14 +88,9 @@ class PostPetTagCollectionViewCell: UICollectionViewCell, TTGTextTagCollectionVi
             tag.style = normalStyle
 //            tag.selectedStyle = selectedStyle
 
-
-
             presentTagView.addTag(tag)
         }
     }
-
-
-
 
 
 //

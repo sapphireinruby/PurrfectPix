@@ -49,8 +49,7 @@ class PostDateTimeCollectionViewCell: UICollectionViewCell {
 
     func configure(with viewModel: PostDatetimeCollectionViewCellViewModel) {
         let date = viewModel.date
-        // form extsion
-        label.text = String.date(from: date)
+        label.text = String.date(from: date) // form extension
 
     }
 

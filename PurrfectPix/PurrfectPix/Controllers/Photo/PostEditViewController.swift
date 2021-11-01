@@ -10,7 +10,7 @@ import UIKit
 
 class PostEditViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    private var filters = [UIImage]()
+    private var filters = [UIImage]() // array for filter images
 
     private let imageView: UIImageView = {
 
@@ -21,14 +21,14 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     }()
 
-    // add a collection view
+    // add a collection view for filters
     private let collectionView: UICollectionView = {
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 2
-        layout.sectionInset = UIEdgeInsets(top: 1, left: 16, bottom: 1, right: 16)
+        layout.sectionInset = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
 
         let collectionView = UICollectionView(
             frame: .zero,
@@ -62,7 +62,8 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
         view.addSubview(imageView)
 
         setUpFilters()
-        
+
+        // filters collectionView
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -89,12 +90,12 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     @objc func didTapNext() {
         guard let current = imageView.image else { return }
-        // image -> image before filter, current -> after filter
+        // image -> before filter; current -> after filter
         
-        let vc = CaptionViewController(image: current)
+        let afterFilterVC = CaptionViewController(image: current)
         
-        vc.title = "Add caption / 寫點東西"
-        navigationController?.pushViewController(vc, animated: true)
+        afterFilterVC.title = "Add caption"
+        navigationController?.pushViewController(afterFilterVC, animated: true)
     }
 
     private func setUpFilters() {
@@ -105,16 +106,15 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 
     private func filterImage(image: UIImage) {
-        
-        // black and white filter
+
         guard let cgImage = image.cgImage else { return }
 
+        // black and white filter
         let filter = CIFilter(name: "CIColorMonochrome")
 
         filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
         filter?.setValue(CIColor(red: 0.7, green: 0.7, blue: 0.7), forKey: "inputColor")
         filter?.setValue(1.0, forKey: "inputIntensity")
-
 
         guard let outputImage = filter?.outputImage else { return }
 

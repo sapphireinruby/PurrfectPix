@@ -28,6 +28,10 @@
 		A780735F2725655400468B30 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780735E2725655400468B30 /* JGProgressHUDWrapper.swift */; };
 		A780736127259E9300468B30 /* SignInHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780736027259E9200468B30 /* SignInHeaderView.swift */; };
 		A78073632725A11400468B30 /* UserTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78073622725A11400468B30 /* UserTextField.swift */; };
+		A78073662729213B00468B30 /* 68349-cat-tail-wag.json in Resources */ = {isa = PBXBuildFile; fileRef = A78073652729213A00468B30 /* 68349-cat-tail-wag.json */; };
+		A780736827292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json in Resources */ = {isa = PBXBuildFile; fileRef = A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */; };
+		A780736A272A01E600468B30 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7807369272A01E600468B30 /* Media.xcassets */; };
+		A7A44E39272ED237005ECBF5 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */; };
 		A7BC5E1027220A0C00010F52 /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */; };
 		A7BC5E122722109400010F52 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */; };
 		A7DDDEF4271B2E7200F28B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */; };
@@ -45,10 +49,10 @@
 		A7DDDF42271D9ACA00F28B24 /* CaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF41271D9ACA00F28B24 /* CaptionViewController.swift */; };
 		A7DDDF44271D9AEE00F28B24 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF43271D9AEE00F28B24 /* ListViewController.swift */; };
 		A7DDDF46271D9AF900F28B24 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF45271D9AF900F28B24 /* PostViewController.swift */; };
-		A7DDDF4A271D9B2C00F28B24 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF49271D9B2C00F28B24 /* SettingViewController.swift */; };
+		A7DDDF4A271D9B2C00F28B24 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF49271D9B2C00F28B24 /* SettingsViewController.swift */; };
 		A7DDDF4C271D9BA600F28B24 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF4B271D9BA600F28B24 /* User.swift */; };
 		A7DDDF4E271D9BBC00F28B24 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF4D271D9BBC00F28B24 /* Post.swift */; };
-		A7DDDF50271D9BCE00F28B24 /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF4F271D9BCE00F28B24 /* Relation.swift */; };
+		A7DDDF50271D9BCE00F28B24 /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF4F271D9BCE00F28B24 /* Relationship.swift */; };
 		A7DDDF52271D9BE400F28B24 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF51271D9BE400F28B24 /* Notification.swift */; };
 		A7DDDF54271D9E0B00F28B24 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF53271D9E0B00F28B24 /* AuthManager.swift */; };
 		A7DDDF56271D9E1A00F28B24 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF55271D9E1A00F28B24 /* DatabaseManager.swift */; };
@@ -82,6 +86,10 @@
 		A780735E2725655400468B30 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		A780736027259E9200468B30 /* SignInHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHeaderView.swift; sourceTree = "<group>"; };
 		A78073622725A11400468B30 /* UserTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTextField.swift; sourceTree = "<group>"; };
+		A78073652729213A00468B30 /* 68349-cat-tail-wag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "68349-cat-tail-wag.json"; sourceTree = "<group>"; };
+		A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "70835-hiro-rocket-launch-purple.json"; sourceTree = "<group>"; };
+		A7807369272A01E600468B30 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
 		A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7DDDEF0271B2E7200F28B24 /* PurrfectPix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PurrfectPix.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,10 +109,10 @@
 		A7DDDF41271D9ACA00F28B24 /* CaptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionViewController.swift; sourceTree = "<group>"; };
 		A7DDDF43271D9AEE00F28B24 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		A7DDDF45271D9AF900F28B24 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		A7DDDF49271D9B2C00F28B24 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A7DDDF49271D9B2C00F28B24 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A7DDDF4B271D9BA600F28B24 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A7DDDF4D271D9BBC00F28B24 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		A7DDDF4F271D9BCE00F28B24 /* Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
+		A7DDDF4F271D9BCE00F28B24 /* Relationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
 		A7DDDF51271D9BE400F28B24 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A7DDDF53271D9E0B00F28B24 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		A7DDDF55271D9E1A00F28B24 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -148,6 +156,23 @@
 			path = "Third Party Wrapper";
 			sourceTree = "<group>";
 		};
+		A78073642729212400468B30 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				A78073652729213A00468B30 /* 68349-cat-tail-wag.json */,
+				A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		A7A44E37272ED222005ECBF5 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		A7BC5E0E272209E100010F52 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +203,7 @@
 		A7DDDEF2271B2E7200F28B24 /* PurrfectPix */ = {
 			isa = PBXGroup;
 			children = (
+				A78073642729212400468B30 /* Lottie */,
 				A780735D2725651300468B30 /* Third Party Wrapper */,
 				A7DDDF0C271B332400F28B24 /* Resources */,
 				A7DDDF07271B30B600F28B24 /* Controllers */,
@@ -193,6 +219,7 @@
 		A7DDDF07271B30B600F28B24 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A7A44E37272ED222005ECBF5 /* Other */,
 				A7BC5E0E272209E100010F52 /* Photo */,
 				A7DDDF48271D9B1200F28B24 /* Setting */,
 				A7DDDF40271D9AA500F28B24 /* Post */,
@@ -207,7 +234,7 @@
 			children = (
 				A7DDDF4B271D9BA600F28B24 /* User.swift */,
 				A7DDDF4D271D9BBC00F28B24 /* Post.swift */,
-				A7DDDF4F271D9BCE00F28B24 /* Relation.swift */,
+				A7DDDF4F271D9BCE00F28B24 /* Relationship.swift */,
 				A7DDDF51271D9BE400F28B24 /* Notification.swift */,
 				A7315CFF271E27C300B58879 /* Comment.swift */,
 				A7315CFD271E250C00B58879 /* HomeFeedCellType.swift */,
@@ -258,6 +285,7 @@
 			children = (
 				A7DDDF5D271DA19600F28B24 /* GoogleService-Info.plist */,
 				A7DDDEFC271B2E7500F28B24 /* Assets.xcassets */,
+				A7807369272A01E600468B30 /* Media.xcassets */,
 				A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */,
 				A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */,
 				A77A1ED4271FC7DA0072A1F6 /* Extensions.swift */,
@@ -299,7 +327,7 @@
 		A7DDDF48271D9B1200F28B24 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				A7DDDF49271D9B2C00F28B24 /* SettingViewController.swift */,
+				A7DDDF49271D9B2C00F28B24 /* SettingsViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -383,7 +411,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7DDDF00271B2E7500F28B24 /* LaunchScreen.storyboard in Resources */,
+				A780736827292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json in Resources */,
+				A78073662729213B00468B30 /* 68349-cat-tail-wag.json in Resources */,
 				A7DDDEFD271B2E7500F28B24 /* Assets.xcassets in Resources */,
+				A780736A272A01E600468B30 /* Media.xcassets in Resources */,
 				A7DDDF5E271DA19700F28B24 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,7 +496,7 @@
 				A7DDDF46271D9AF900F28B24 /* PostViewController.swift in Sources */,
 				A78073632725A11400468B30 /* UserTextField.swift in Sources */,
 				A780736127259E9300468B30 /* SignInHeaderView.swift in Sources */,
-				A7DDDF50271D9BCE00F28B24 /* Relation.swift in Sources */,
+				A7DDDF50271D9BCE00F28B24 /* Relationship.swift in Sources */,
 				A7315CFE271E250C00B58879 /* HomeFeedCellType.swift in Sources */,
 				A7BC5E122722109400010F52 /* PhotoCollectionViewCell.swift in Sources */,
 				A7DDDF5A271D9E5200F28B24 /* AnalyticsManager.swift in Sources */,
@@ -474,7 +505,7 @@
 				A7DDDF3A271D99EB00F28B24 /* TabBarViewController.swift in Sources */,
 				A77A1EBA271F7FC70072A1F6 /* PostPetTagCollectionViewCellViewModel.swift in Sources */,
 				A77A1ECD271F91920072A1F6 /* PostPetTagCollectionViewCell.swift in Sources */,
-				A7DDDF4A271D9B2C00F28B24 /* SettingViewController.swift in Sources */,
+				A7DDDF4A271D9B2C00F28B24 /* SettingsViewController.swift in Sources */,
 				A77A1EC2271F80760072A1F6 /* PostDatetimeCollectionViewCellViewModel.swift in Sources */,
 				A7DDDF31271BD8E600F28B24 /* CameraViewController.swift in Sources */,
 				A7DDDEF8271B2E7200F28B24 /* HomeViewController.swift in Sources */,
@@ -495,6 +526,7 @@
 				A780735F2725655400468B30 /* JGProgressHUDWrapper.swift in Sources */,
 				A7DDDF38271D98DB00F28B24 /* ProfileViewController.swift in Sources */,
 				A77A1ED5271FC7DA0072A1F6 /* Extensions.swift in Sources */,
+				A7A44E39272ED237005ECBF5 /* SearchResultsViewController.swift in Sources */,
 				A7DDDF5C271D9E6000F28B24 /* HapticsManager.swift in Sources */,
 				A7DDDEF4271B2E7200F28B24 /* AppDelegate.swift in Sources */,
 				A7DDDEF6271B2E7200F28B24 /* SceneDelegate.swift in Sources */,
@@ -644,6 +676,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PurrfectPix/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PurrfectPix;
+				INFOPLIST_KEY_NSCameraUsageDescription = "for capturing photos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "for you to choose photos to upload";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -654,7 +688,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AmberL.PurrfectPix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -675,6 +709,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PurrfectPix/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PurrfectPix;
+				INFOPLIST_KEY_NSCameraUsageDescription = "for capturing photos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "for you to choose photos to upload";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -685,7 +721,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AmberL.PurrfectPix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

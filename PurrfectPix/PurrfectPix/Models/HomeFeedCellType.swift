@@ -8,7 +8,7 @@
 import Foundation
 
 enum HomeFeedCellType {
-    
+    // each of these type have their own ViewModels
     case poster(viewModel: PosterCollectionViewCellViewModel)
     case petTag(viewModel: PostPetTagCollectionViewCellViewModel)
     case post(viewModel: PostCollectionViewCellViewModel)

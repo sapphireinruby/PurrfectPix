@@ -105,30 +105,94 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
         filters.append(filterImage)
     }
 
-    private func filterImage(image: UIImage) {
+        private func filterImage(image: UIImage) {
+        // core image -> core graphic -> UIImage
 
-        guard let cgImage = image.cgImage else { return }
+            guard let cgImage = image.cgImage else { return }
 
-        // black and white filter
-        let filter = CIFilter(name: "CIColorMonochrome")
+            let filter = CIFilter(name: "CIHighlightShadowAdjust")
 
-        filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
-        filter?.setValue(CIColor(red: 0.7, green: 0.7, blue: 0.7), forKey: "inputColor")
-        filter?.setValue(1.0, forKey: "inputIntensity")
+            filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
+            filter?.setValue(0.5, forKey: "inputHighlightAmount")
 
-        guard let outputImage = filter?.outputImage else { return }
+            guard let outputImage = filter?.outputImage else { return }
 
-        let context = CIContext()
+            let context = CIContext()
 
-        if let outputcgImage = context.createCGImage(
-            outputImage,
-            from: outputImage.extent
-        ) {
-            let filteredImage = UIImage(cgImage: outputcgImage)
+            if let outputcgImage = context.createCGImage(
+                outputImage,
+                from: outputImage.extent
+            ) {
+                let filteredImage = UIImage(cgImage: outputcgImage)
 
-            imageView.image = filteredImage
+                imageView.image = filteredImage
+            }
         }
-    }
+
+//    private func filterImage(image: UIImage) {
+//    // core image -> core graphic -> UIImage
+//
+//        guard let cgImage = image.cgImage else { return }
+//
+//        // CISepiaTone filter
+//        let filter = CIFilter(name: "CISepiaTone")
+//
+//        switch filter {
+//        case CIFilter(name: "CISepiaTone"):
+//            filter?.setValue(1.0, forKey: "inputIntensity")
+//
+//        case CIFilter(name: "CIHighlightShadowAdjust"):
+//            filter?.setValue(1.0, forKey: "inputHighlightAmount")
+//
+//        case CIFilter(name: "CIGaussianBlur"):
+//            filter?.setValue(2.0, forKey: "inputRadius")
+//
+//        case CIFilter(name: "CIColorMonochrome"):
+//            filter?.setValue(CIColor(red: 0.7, green: 0.7, blue: 0.7), forKey: "inputColor")
+//            filter?.setValue(1.0, forKey: "inputIntensity")
+//        default:
+//            filter?.setValue(1.0, forKey: "inputHighlightAmount")
+//        }
+//
+//        guard let outputImage = filter?.outputImage else { return }
+//
+//        let context = CIContext()
+//
+//        if let outputcgImage = context.createCGImage(
+//            outputImage,
+//            from: outputImage.extent
+//        ) {
+//            let filteredImage = UIImage(cgImage: outputcgImage)
+//
+//            imageView.image = filteredImage
+//        }
+//    }
+
+//    private func filterImage(image: UIImage) {
+//    // core image -> core graphic -> UIImage
+//
+//        guard let cgImage = image.cgImage else { return }
+//
+//        // black and white filter
+//        let filter = CIFilter(name: "CIColorMonochrome")
+//
+//        filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
+//        filter?.setValue(CIColor(red: 0.7, green: 0.7, blue: 0.7), forKey: "inputColor")
+//        filter?.setValue(1.0, forKey: "inputIntensity")
+//
+//        guard let outputImage = filter?.outputImage else { return }
+//
+//        let context = CIContext()
+//
+//        if let outputcgImage = context.createCGImage(
+//            outputImage,
+//            from: outputImage.extent
+//        ) {
+//            let filteredImage = UIImage(cgImage: outputcgImage)
+//
+//            imageView.image = filteredImage
+//        }
+//    }
 
     // CollectionView
 
@@ -144,7 +208,8 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
         ) as? PhotoCollectionViewCell else {
             fatalError()
         }
-        cell.configure(with: filters[indexPath.row])
+        cell.configure(with: filters[indexPath.row], style: "")
+
         return cell
     }
 

@@ -41,8 +41,10 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
     }
 
-    func configure(with image: UIImage?) {
+    func configure(with image: UIImage?, style: String) {
+        // 把filter title 塞進去
         imageView.image = image
+        
     }
 
     func configure(with url: URL?) {

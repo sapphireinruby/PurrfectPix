@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Lottie
 
 extension UIView {
     
@@ -133,5 +134,27 @@ extension UIColor {
 
         return UIColor(named: color.rawValue)!
     }
+
+}
+
+extension UIViewController {
+
+    func setupAnimation(name: String, mood: LottieLoopMode ) -> AnimationView {
+
+            let animationView = AnimationView(name: name)
+
+            animationView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+            animationView.center = self.view.center
+            animationView.contentMode = .scaleAspectFit
+
+            animationView.loopMode = mood
+            animationView.animationSpeed = 0.3
+            animationView.backgroundBehavior = .pauseAndRestore // restart from other tab bar item
+
+            view.addSubview(animationView)
+
+            return animationView
+
+        }
 
 }

@@ -25,7 +25,6 @@
 		A77A1ED1271F91BA0072A1F6 /* PostCaptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1ED0271F91BA0072A1F6 /* PostCaptionCollectionViewCell.swift */; };
 		A77A1ED3271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1ED2271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift */; };
 		A77A1ED5271FC7DA0072A1F6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1ED4271FC7DA0072A1F6 /* Extensions.swift */; };
-		A780735F2725655400468B30 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780735E2725655400468B30 /* JGProgressHUDWrapper.swift */; };
 		A780736127259E9300468B30 /* SignInHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780736027259E9200468B30 /* SignInHeaderView.swift */; };
 		A78073632725A11400468B30 /* UserTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78073622725A11400468B30 /* UserTextField.swift */; };
 		A78073662729213B00468B30 /* 68349-cat-tail-wag.json in Resources */ = {isa = PBXBuildFile; fileRef = A78073652729213A00468B30 /* 68349-cat-tail-wag.json */; };
@@ -34,6 +33,7 @@
 		A7A44E39272ED237005ECBF5 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */; };
 		A7BC5E1027220A0C00010F52 /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */; };
 		A7BC5E122722109400010F52 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */; };
+		A7BCBC70272FD5C10005D7BE /* 890-loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = A7BCBC6F272FD5C10005D7BE /* 890-loading-animation.json */; };
 		A7DDDEF4271B2E7200F28B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */; };
 		A7DDDEF6271B2E7200F28B24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */; };
 		A7DDDEF8271B2E7200F28B24 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF7271B2E7200F28B24 /* HomeViewController.swift */; };
@@ -83,7 +83,6 @@
 		A77A1ED0271F91BA0072A1F6 /* PostCaptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCaptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		A77A1ED2271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDateTimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A77A1ED4271FC7DA0072A1F6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		A780735E2725655400468B30 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		A780736027259E9200468B30 /* SignInHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHeaderView.swift; sourceTree = "<group>"; };
 		A78073622725A11400468B30 /* UserTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTextField.swift; sourceTree = "<group>"; };
 		A78073652729213A00468B30 /* 68349-cat-tail-wag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "68349-cat-tail-wag.json"; sourceTree = "<group>"; };
@@ -92,6 +91,7 @@
 		A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
 		A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		A7BCBC6F272FD5C10005D7BE /* 890-loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "890-loading-animation.json"; sourceTree = "<group>"; };
 		A7DDDEF0271B2E7200F28B24 /* PurrfectPix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PurrfectPix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,19 +148,12 @@
 			path = "Home Cells";
 			sourceTree = "<group>";
 		};
-		A780735D2725651300468B30 /* Third Party Wrapper */ = {
-			isa = PBXGroup;
-			children = (
-				A780735E2725655400468B30 /* JGProgressHUDWrapper.swift */,
-			);
-			path = "Third Party Wrapper";
-			sourceTree = "<group>";
-		};
 		A78073642729212400468B30 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
 				A78073652729213A00468B30 /* 68349-cat-tail-wag.json */,
 				A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */,
+				A7BCBC6F272FD5C10005D7BE /* 890-loading-animation.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -204,7 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				A78073642729212400468B30 /* Lottie */,
-				A780735D2725651300468B30 /* Third Party Wrapper */,
 				A7DDDF0C271B332400F28B24 /* Resources */,
 				A7DDDF07271B30B600F28B24 /* Controllers */,
 				A7DDDF08271B30BF00F28B24 /* Models */,
@@ -410,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7BCBC70272FD5C10005D7BE /* 890-loading-animation.json in Resources */,
 				A7DDDF00271B2E7500F28B24 /* LaunchScreen.storyboard in Resources */,
 				A780736827292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json in Resources */,
 				A78073662729213B00468B30 /* 68349-cat-tail-wag.json in Resources */,
@@ -523,7 +516,6 @@
 				A7DDDF35271BD96E00F28B24 /* NotificationsViewController.swift in Sources */,
 				A77A1ED3271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift in Sources */,
 				A77A1EBC271F7FF00072A1F6 /* PostActionsCollectionViewCellViewModel.swift in Sources */,
-				A780735F2725655400468B30 /* JGProgressHUDWrapper.swift in Sources */,
 				A7DDDF38271D98DB00F28B24 /* ProfileViewController.swift in Sources */,
 				A77A1ED5271FC7DA0072A1F6 /* Extensions.swift in Sources */,
 				A7A44E39272ED237005ECBF5 /* SearchResultsViewController.swift in Sources */,

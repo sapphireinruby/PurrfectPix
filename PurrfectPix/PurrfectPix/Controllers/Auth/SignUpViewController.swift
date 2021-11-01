@@ -185,8 +185,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         AuthManager.shared.signUp(
 
             userID: "wRWTOfxEaKtP8OSso4pB",
-            email: email,
-            username: username,
+            email: "lucky77@fake.com",
+            username: "luck77",
             password: password,
             profilePicture: data
         ) { [weak self] result in
@@ -195,8 +195,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                 case .success(let user):  // user model
 
                     HapticManager.shared.vibrate(for: .success)
-                    UserDefaults.standard.setValue(user.email, forKey: "email")
-                    UserDefaults.standard.setValue(user.userID, forKey: "userID")
+//                    UserDefaults.standard.setValue(user.email, forKey: "email")
+//                    UserDefaults.standard.setValue(user.userID, forKey: "userID")
+                    UserDefaults.standard.setValue("lucky77@fake.com", forKey: "email")
+                    UserDefaults.standard.setValue("luck77", forKey: "username")
+                    UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
 
                     self?.navigationController?.popToRootViewController(animated: true)
                     self?.completion?()

@@ -12,7 +12,9 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        UserDefaults.standard.setValue("lucky77@fake.com", forKey: "email")
+        UserDefaults.standard.setValue("luck77", forKey: "username")
+        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
         
         guard let userID = UserDefaults.standard.string(forKey: "userID"),
               let email = UserDefaults.standard.string(forKey: "email"),

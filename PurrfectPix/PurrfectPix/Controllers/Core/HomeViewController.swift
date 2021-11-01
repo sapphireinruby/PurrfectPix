@@ -449,7 +449,7 @@ extension HomeViewController: PostCollectionViewCellDelegate {
             // can only like when tapped
             state: .like,
             postID: tuple.post.postID,
-            owner: tuple.owner) { success in
+                                                                              owner: tuple.owner) { success in
             guard success else {
                 return
             }

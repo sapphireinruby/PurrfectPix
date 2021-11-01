@@ -24,11 +24,11 @@ final class DatabaseManager {
 
     public func posts(
         
-        for username: String,
+        for userID: String,
         completion: @escaping (Result<[Post], Error>) -> Void
     ) {
-        let ref = database.collection("posts").whereField("username", isEqualTo: username)
-            .order(by: "postedDate", descending: true)
+        let ref = database.collection("posts").whereField("userID", isEqualTo: userID)
+            .order(by: "postedDate", descending: true)  //  只有userID, 沒有username
 
         ref.getDocuments { snapshot, error in
 
@@ -37,6 +37,7 @@ final class DatabaseManager {
                 Post(with: $0.data())  // dictionary
             }),
             error == nil else {
+                completion(.failure(error!))
                 return
             }
             completion(.success(posts))

@@ -9,21 +9,44 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    private let user: User
+
+    private var isCurrentUser: Bool {
+        return user.username.lowercased() == UserDefaults.standard.string(forKey: "username")?.lowercased() ?? ""
+    }
+
+    // MARK: - Init
+    init(user: User) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Profile"
+        title = user.username.uppercased()
         view.backgroundColor = .systemBackground
+        configure()
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func configure() {
+        if isCurrentUser {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(
+                image: UIImage(systemName: "gear"),
+                style: .done,
+                target: self,
+                action: #selector(didTapSettings)
+            )
+        }
     }
-    */
+
+    @objc func didTapSettings() {
+        let settingVC = SettingsViewController()
+        present(UINavigationController(rootViewController: settingVC), animated: true)
+    }
 
 }

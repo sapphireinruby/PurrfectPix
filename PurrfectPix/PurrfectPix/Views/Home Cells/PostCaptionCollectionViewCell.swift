@@ -68,7 +68,8 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
 
 //        label.text = "\(viewModel.username): \(viewModel.caption)"  // showing comment with "optional"
 
-        label.text = "\(viewModel.username): \(viewModel.caption ?? "")"  // if not nil, not showing the "optional"
+        label.text = "\(viewModel.username): \(viewModel.caption ?? "")"
+        // if not nil, not showing the "optional"
 
     }
 

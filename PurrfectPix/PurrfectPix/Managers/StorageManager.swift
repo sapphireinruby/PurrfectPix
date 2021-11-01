@@ -16,7 +16,7 @@ final class StorageManager {
 
     private let storage = Storage.storage().reference()
 
-//    let storage = Storage.storage() edit with Elio
+//    let storage = Storage.storage() // edit with Elio
 
     // Upload post image
     // - Parameters:
@@ -28,20 +28,19 @@ final class StorageManager {
 
         data: Data?,
         userID: String,
-        id: String, // the id create at caption vc, for image to storage
+        postID: String, // the postID create at caption vc, for image to storage
         completion: @escaping (URL?) -> Void
     ) {
               guard let data = data else {
             return
         }
-        let ref = storage.child("\(userID)/posts/\(id).png")
+        let ref = storage.child("\(userID)/posts/\(postID).png")
         ref.putData(data, metadata: nil) { _, error in
             ref.downloadURL { url, _ in
-                completion(url)
+                completion(url) // the download url we just uploaded
             }
         }
     }
-
 
     public func downloadURL(for post: Post, completion: @escaping (URL?) -> Void) {
 
@@ -57,7 +56,7 @@ final class StorageManager {
     }
 
     public func profilePictureURL(for userID: String, completion: @escaping (URL?) -> Void) {
-        storage.child("wRWTOfxEaKtP8OSso4pB").child("profile_picture.png").downloadURL { url, _ in
+        storage.child("\(userID)/profile_picture.png").downloadURL { url, _ in
             completion(url)
         }
     }
@@ -65,19 +64,16 @@ final class StorageManager {
     public func uploadProfilePicture(
 
         userID: String,
-        username: String,
         data: Data?,
         completion: @escaping (Bool) -> Void
     ) {
         guard let data = data else {
             return
         }
-        storage.child("\(userID)/creatFilename.png").putData(data, metadata: nil) { _, error in
+        storage.child("\(userID)/profile_picture.png").putData(data, metadata: nil) { _, error in
             completion(error == nil)
         }
     }
-
-
 
 // edit with Elio
 //    public func uploadPost(

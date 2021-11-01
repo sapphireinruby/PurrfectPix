@@ -58,7 +58,7 @@ extension UIFont {
 }
 
 extension DateFormatter {
-    // expensive to initialize everytime, for better app performance
+    // expensive for memeory to initialize everytime, for better app performance
     static let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -70,7 +70,6 @@ extension DateFormatter {
 extension String {
     // take a date input above to return a string
     static func date(from date: Date) -> String? {
-
         let formatter = DateFormatter.formatter
         let string = formatter.string(from: date)
         return string

@@ -9,4 +9,5 @@ import Foundation
 
 struct PostDatetimeCollectionViewCellViewModel {
     let date: Date
+    // create extension for the format
 }

@@ -18,13 +18,12 @@ struct Post: Codable {
     let comments: [CommentByUser]? // map :  comment [ { user: String, comment: String }]
 
 
-    let postUrlString: String // URL for the whole post?
+    let postUrlString: String
 
     // storageReference: get the photo download URL from storage
-    // create a reference with UserID
     var storageReference: String? {
         guard let userID = UserDefaults.standard.string(forKey: "userID") else { return nil }
-        return "\(userID)/posts/\(postID).png"  // 路徑可能要修改
+        return "\(userID)/posts/\(postID).png" 
     }
 
     var date: Date {

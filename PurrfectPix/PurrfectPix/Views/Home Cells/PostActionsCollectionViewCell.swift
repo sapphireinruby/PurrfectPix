@@ -9,7 +9,7 @@ import UIKit
 
 protocol PostActionsCollectionViewCellDelegate: AnyObject {
 
-    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int)
+    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool)
 
     func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell)
     
@@ -26,13 +26,11 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
 
     private var isLiked = false
 
-    // set up 3 button
-
+    // set up 3 buttons
     private let likeButton: UIButton = {
         let button = UIButton()
         button.tintColor = .label
         let image = UIImage(named: "Heart-purple")
-//        let image = UIImage(systemName: "Heart-purple", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40))
         button.setImage(image, for: .normal)
         return button
     }() // closure
@@ -41,8 +39,6 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         button.tintColor = .label
         let image = UIImage(named: "Comment-Alt")
-//        Comment-Alt Message-Happy Message-3
-//        let image = UIImage(systemName: "Basic Elaboration Message Happy", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40))
         button.setImage(image, for: .normal)
         return button
     }()
@@ -51,7 +47,6 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         button.tintColor = .label
         let image = UIImage(named: "Paper Plane")
-//        let image = UIImage(systemName: "Paper Plane", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40))
         button.setImage(image, for: .normal)
         return button
     }()
@@ -86,7 +81,7 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         if self.isLiked {
             let image = UIImage(named: "Heart-purple")
             likeButton.setImage(image, for: .normal)
-//            likeButton.tintColor = .label // white or dark depending on the mode
+
         } else {
             let image = UIImage(named: "Heart-filled")
             likeButton.setImage(image, for: .normal)
@@ -94,8 +89,7 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         }
 
         delegate?.postActionsCollectionViewCellDidTapLike(self,
-                                                          isLiked: !isLiked,
-                                                          index: index)
+                                                          isLiked: !isLiked)
         self.isLiked = !isLiked  // to enable doing the switch
     }
 

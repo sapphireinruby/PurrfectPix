@@ -28,15 +28,16 @@ final class DatabaseManager {
         completion: @escaping (Result<[Post], Error>) -> Void
     ) {
         let ref = database.collection("posts").whereField("userID", isEqualTo: userID)
-            .order(by: "postedDate", descending: true)
+            .order(by: "postedDate", descending: true)  //  只有userID, 沒有username
 
         ref.getDocuments { snapshot, error in
 
-            guard let posts = snapshot?.documents.compactMap({
+            guard let posts = snapshot?.documents.compactMap({ // with extension for decode
 
-                Post(with: $0.data())
+                Post(with: $0.data())  // dictionary
             }),
             error == nil else {
+                completion(.failure(error!))
                 return
             }
             completion(.success(posts))
@@ -69,6 +70,30 @@ final class DatabaseManager {
 //            completion(.success(posts))
 //        }
 //    }
+
+
+    // MARK: Search under Explore VC: Find user with username
+    // - Parameters:
+    //   - username: Source username
+    //   - completion: Result callback
+    public func findUsers(
+        with usernamePrefix: String,
+        completion: @escaping ([User]) -> Void) {
+
+        let ref = database.collection("users")
+        ref.getDocuments { snapshot, error in
+            guard let users = snapshot?.documents.compactMap({ User(with: $0.data()) }),
+                  error == nil else {
+                completion([])
+                return
+            }
+
+            let subuset = users.filter({
+                $0.username.lowercased().hasPrefix(usernamePrefix.lowercased())
+            })
+            completion(subuset)
+        }
+    }
 
     // Create new post
     // - Parameters:

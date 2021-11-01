@@ -43,7 +43,7 @@ final class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
-        title = "Take Photo / 快補捉牠"
+        title = "Take Photo"
 
         view.addSubview(cameraView)
         view.addSubview(shutterButton)

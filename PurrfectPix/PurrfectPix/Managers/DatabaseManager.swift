@@ -24,10 +24,10 @@ final class DatabaseManager {
 
     public func posts(
         
-        for userID: String,
+        for username: String,
         completion: @escaping (Result<[Post], Error>) -> Void
     ) {
-        let ref = database.collection("posts").whereField("userID", isEqualTo: userID)
+        let ref = database.collection("posts").whereField("username", isEqualTo: username)
             .order(by: "postedDate", descending: true)
 
         ref.getDocuments { snapshot, error in
@@ -69,6 +69,30 @@ final class DatabaseManager {
 //            completion(.success(posts))
 //        }
 //    }
+
+
+    // MARK: Search under Explore VC: Find user with username
+    // - Parameters:
+    //   - username: Source username
+    //   - completion: Result callback
+    public func findUsers(
+        with usernamePrefix: String,
+        completion: @escaping ([User]) -> Void) {
+
+        let ref = database.collection("users")
+        ref.getDocuments { snapshot, error in
+            guard let users = snapshot?.documents.compactMap({ User(with: $0.data()) }),
+                  error == nil else {
+                completion([])
+                return
+            }
+
+            let subuset = users.filter({
+                $0.username.lowercased().hasPrefix(usernamePrefix.lowercased())
+            })
+            completion(subuset)
+        }
+    }
 
     // Create new post
     // - Parameters:

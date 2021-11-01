@@ -15,10 +15,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
 
-        if !AuthManager.shared.isSignedIn {  // 目前用!關起來
+        if AuthManager.shared.isSignedIn {  // 可在前面用!關起來
             // signed in UI
             window.rootViewController = TabBarViewController()
         } else {
+
             // sign in UI
             let vc = SignInViewController()
             let navVC = UINavigationController(rootViewController: vc)

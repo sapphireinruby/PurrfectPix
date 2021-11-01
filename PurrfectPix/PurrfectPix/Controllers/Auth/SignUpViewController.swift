@@ -184,7 +184,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Sign up with authManager
         AuthManager.shared.signUp(
 
-            userID: "456464564",
+            userID: "wRWTOfxEaKtP8OSso4pB",
             email: email,
             username: username,
             password: password,
@@ -210,7 +210,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
 
     private func presentError() {
         let alert = UIAlertController(title: "Woops",
-                                      message: " 請確認每個欄位都有填寫，密碼要超過六個英文字母",
+                                      message: "Please make sure to fill all fields and have a password longer than 6 characters.",
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert, animated: true)

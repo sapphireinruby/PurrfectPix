@@ -33,7 +33,7 @@
 		A7A44E39272ED237005ECBF5 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */; };
 		A7BC5E1027220A0C00010F52 /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */; };
 		A7BC5E122722109400010F52 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */; };
-		A7BCBC6E272FCCA80005D7BE /* 890-loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = A7BCBC6D272FCCA80005D7BE /* 890-loading-animation.json */; };
+		A7BCBC70272FD5C10005D7BE /* 890-loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = A7BCBC6F272FD5C10005D7BE /* 890-loading-animation.json */; };
 		A7DDDEF4271B2E7200F28B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */; };
 		A7DDDEF6271B2E7200F28B24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */; };
 		A7DDDEF8271B2E7200F28B24 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF7271B2E7200F28B24 /* HomeViewController.swift */; };
@@ -91,7 +91,7 @@
 		A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
 		A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
-		A7BCBC6D272FCCA80005D7BE /* 890-loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "890-loading-animation.json"; sourceTree = "<group>"; };
+		A7BCBC6F272FD5C10005D7BE /* 890-loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "890-loading-animation.json"; sourceTree = "<group>"; };
 		A7DDDEF0271B2E7200F28B24 /* PurrfectPix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PurrfectPix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 			children = (
 				A78073652729213A00468B30 /* 68349-cat-tail-wag.json */,
 				A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */,
-				A7BCBC6D272FCCA80005D7BE /* 890-loading-animation.json */,
+				A7BCBC6F272FD5C10005D7BE /* 890-loading-animation.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -402,7 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7BCBC6E272FCCA80005D7BE /* 890-loading-animation.json in Resources */,
+				A7BCBC70272FD5C10005D7BE /* 890-loading-animation.json in Resources */,
 				A7DDDF00271B2E7500F28B24 /* LaunchScreen.storyboard in Resources */,
 				A780736827292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json in Resources */,
 				A78073662729213B00468B30 /* 68349-cat-tail-wag.json in Resources */,

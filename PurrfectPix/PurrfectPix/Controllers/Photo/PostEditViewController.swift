@@ -11,6 +11,7 @@ import UIKit
 class PostEditViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     private var filters = [UIImage]() // array for filter images
+    var filterStyles: [FilterType] = [.autoAdjust, .chrome, .ciSepiaTone, .ciGaussianBlur, .ciHighlightShadowAdjust, .ciColorMonochrome ]
 
     private let imageView: UIImageView = {
 
@@ -26,8 +27,9 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 2
+        layout.minimumLineSpacing = 4
+        layout.minimumInteritemSpacing = 30
+        layout.itemSize.width = 50
         layout.sectionInset = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
 
         let collectionView = UICollectionView(
@@ -75,15 +77,15 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         super.viewDidLayoutSubviews()
         imageView.frame = CGRect(
-            x: 0,
+            x: -2,
             y: view.safeAreaInsets.top,
-            width: view.width,
+            width: view.width + 4,
             height: view.width
         )
         collectionView.frame = CGRect(
-            x: 0,
-            y: imageView.bottom+20,
-            width: view.width,
+            x: 16,
+            y: imageView.bottom + 24,
+            width: view.width - 32,
             height: 100
         )
     }
@@ -105,17 +107,131 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
         filters.append(filterImage)
     }
 
-        private func filterImage(image: UIImage) {
-        // core image -> core graphic -> UIImage
+//        private func filterImage(image: UIImage) {
+//        // core image -> core graphic -> UIImage
+//
+//            guard let cgImage = image.cgImage else { return }
+//
+//            let filter = CIFilter(name: "CIHighlightShadowAdjust")
+//
+//            filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
+//            filter?.setValue(0.5, forKey: "inputHighlightAmount")
+//
+//            guard let outputImage = filter?.outputImage else { return }
+//
+//            let context = CIContext()
+//
+//            if let outputcgImage = context.createCGImage(
+//                outputImage,
+//                from: outputImage.extent
+//            ) {
+//                let filteredImage = UIImage(cgImage: outputcgImage)
+//
+//                imageView.image = filteredImage
+//            }
+//        }
 
-            guard let cgImage = image.cgImage else { return }
+    enum FilterType: String {
 
-            let filter = CIFilter(name: "CIHighlightShadowAdjust")
+        case autoAdjust = "Auto Adjustment"
+        case chrome = "Chrome"
+        case ciSepiaTone = "Sepia Tone"
+        case ciHighlightShadowAdjust = "Highlight Shadow"
+        case ciGaussianBlur = "Gaussian Blur"
+        case ciColorMonochrome = "Monochrome"
+    }
 
+    private func filterImage (image: UIImage, filterStyle: FilterType) {
+        // UIImage -> core image/CIImage: CI Filter -> core graphic -> UIImage
+        // UIImage 物件需要在使用濾鏡前轉換成 CIImage
+        // UIImage 是來自 CIImage 屬性, 但UIImage的值是 nil。
+        // 因此先把 UIImage 轉成 CGImage。再把 CGImage 轉成 CIImage，就可以在 Core Image APIs 裡使用
+        // 當應用了濾鏡，再次把釋出的 CIImage 轉換為 UIImage，並在 UIImageView 顯示出來。
+
+        guard let cgImage = image.cgImage else { return } //  image: UIImage
+
+        var filter: CIFilter?
+
+        var autoImage: CIImage?
+
+        var outputImage: CIImage?
+
+        switch filterStyle {
+
+        case .autoAdjust:
+
+            var inputImage = CIImage(cgImage: cgImage)
+            let filters = inputImage.autoAdjustmentFilters()
+            for filter: CIFilter in filters {
+                filter.setValue(inputImage, forKey: kCIInputImageKey)
+                autoImage = filter.outputImage!
+            }
+
+        case .chrome:
+
+            filter = CIFilter(name: "CIPhotoEffectChrome")
+//            filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
+//            filter?.setValue(0.7, forKey: "inputIntensity")
+            outputImage = filter?.outputImage
+
+        case .ciSepiaTone:
+
+            filter = CIFilter(name: "CISepiaTone")
             filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
-            filter?.setValue(0.5, forKey: "inputHighlightAmount")
+            filter?.setValue(0.7, forKey: "inputIntensity")
+            outputImage = filter?.outputImage
 
-            guard let outputImage = filter?.outputImage else { return }
+        case .ciHighlightShadowAdjust:
+            filter = CIFilter(name: "CIHighlightShadowAdjust")
+            filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
+            filter?.setValue(0.75, forKey: "inputHighlightAmount")
+            filter?.setValue(0.3, forKey: "inputShadowAmount")
+            outputImage = filter?.outputImage
+
+        case .ciGaussianBlur:
+            filter = CIFilter(name: "CIGaussianBlur")
+            filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
+            filter?.setValue(0.8, forKey: "inputRadius")
+            outputImage = filter?.outputImage
+
+        case .ciColorMonochrome:
+            filter = CIFilter(name: "CIColorMonochrome")
+            filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
+            filter?.setValue(CIColor(red: 0.7, green: 0.7, blue: 0.7), forKey: "inputColor")
+            filter?.setValue(1.0, forKey: "inputIntensity")
+            outputImage = filter?.outputImage
+
+        default:
+            filter = CIFilter(name: "CIHighlightShadowAdjust")
+            filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
+            filter?.setValue(1.0, forKey: "inputHighlightAmount")
+            outputImage = filter?.outputImage
+
+        }
+
+        if autoImage != nil {
+
+            guard let autoImage = autoImage else {
+                return
+            }
+            let context = CIContext()
+
+            if let autoImage = context.createCGImage(
+                autoImage,
+                from: autoImage.extent
+            ) {
+                let filteredImage = UIImage(cgImage: autoImage)
+
+                imageView.image = filteredImage
+            }
+            self.imageView.image = UIImage(ciImage: autoImage)
+
+        } else if outputImage != nil {
+
+            guard let outputImage = filter?.outputImage else {
+                return
+
+            }
 
             let context = CIContext()
 
@@ -127,46 +243,12 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
 
                 imageView.image = filteredImage
             }
+
+        } else {
+            print("image filtering failed")
         }
 
-//    private func filterImage(image: UIImage) {
-//    // core image -> core graphic -> UIImage
-//
-//        guard let cgImage = image.cgImage else { return }
-//
-//        // CISepiaTone filter
-//        let filter = CIFilter(name: "CISepiaTone")
-//
-//        switch filter {
-//        case CIFilter(name: "CISepiaTone"):
-//            filter?.setValue(1.0, forKey: "inputIntensity")
-//
-//        case CIFilter(name: "CIHighlightShadowAdjust"):
-//            filter?.setValue(1.0, forKey: "inputHighlightAmount")
-//
-//        case CIFilter(name: "CIGaussianBlur"):
-//            filter?.setValue(2.0, forKey: "inputRadius")
-//
-//        case CIFilter(name: "CIColorMonochrome"):
-//            filter?.setValue(CIColor(red: 0.7, green: 0.7, blue: 0.7), forKey: "inputColor")
-//            filter?.setValue(1.0, forKey: "inputIntensity")
-//        default:
-//            filter?.setValue(1.0, forKey: "inputHighlightAmount")
-//        }
-//
-//        guard let outputImage = filter?.outputImage else { return }
-//
-//        let context = CIContext()
-//
-//        if let outputcgImage = context.createCGImage(
-//            outputImage,
-//            from: outputImage.extent
-//        ) {
-//            let filteredImage = UIImage(cgImage: outputcgImage)
-//
-//            imageView.image = filteredImage
-//        }
-//    }
+    }
 
 //    private func filterImage(image: UIImage) {
 //    // core image -> core graphic -> UIImage
@@ -197,7 +279,7 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
     // CollectionView
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filters.count
+        return filterStyles.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -208,7 +290,8 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
         ) as? PhotoCollectionViewCell else {
             fatalError()
         }
-        cell.configure(with: filters[indexPath.row], style: "")
+
+        cell.configure(style: filterStyles[indexPath.row].rawValue)
 
         return cell
     }
@@ -216,6 +299,6 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         collectionView.deselectItem(at: indexPath, animated: true)
-        filterImage(image: image)
+        filterImage(image: image, filterStyle: filterStyles[indexPath.row])
     }
 }

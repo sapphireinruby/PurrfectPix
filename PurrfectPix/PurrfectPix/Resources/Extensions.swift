@@ -143,12 +143,12 @@ extension UIViewController {
 
             let animationView = AnimationView(name: name)
 
-            animationView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+            animationView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             animationView.center = self.view.center
             animationView.contentMode = .scaleAspectFit
 
             animationView.loopMode = mood
-            animationView.animationSpeed = 0.3
+            animationView.animationSpeed =  1
             animationView.backgroundBehavior = .pauseAndRestore // restart from other tab bar item
 
             view.addSubview(animationView)

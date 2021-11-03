@@ -33,7 +33,7 @@ final class PosterCollectionViewCell: UICollectionViewCell {
     private let usernameLabel: UILabel = {
 
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         return label
     }()
 

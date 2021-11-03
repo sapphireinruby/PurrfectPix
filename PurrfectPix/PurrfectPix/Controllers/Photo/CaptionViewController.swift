@@ -147,8 +147,6 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
         var petTags = petTags
 
-        // show.progress() 安裝 stylish裡的 轉轉轉的 pods
-
         // Generate post ID --> Image & the whole Post share one ID
         guard let newPostID = createNewPostID(),
               let stringDate = String.date(from: Date()) else {
@@ -172,7 +170,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
             // New Post
             // storage ref: username/posts/png
-            // swiftlint:disable:next line_length
+
             let newPost = Post(
                 userID: userID,
                 postID: newPostID,
@@ -185,16 +183,12 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
                 location: ""
             )
 
-
-
             // Update Database
             DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in
                 guard finished else {
-                    // show.progress(falls "送出失敗")
+
                     return
                 }
-
-                // show.progress(success "成功送出了！")
 
                 DispatchQueue.main.async {
 
@@ -256,5 +250,3 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
     }
 
 }
-
-

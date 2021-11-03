@@ -22,9 +22,20 @@ class PhotoCollectionViewCell: UICollectionViewCell {
 
     }()
 
+    private let label: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 10, weight: .regular)
+        label.textColor = .P1
+        return label
+
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
+        contentView.addSubview(label)
     }
 
     required init?(coder: NSCoder) {
@@ -33,16 +44,27 @@ class PhotoCollectionViewCell: UICollectionViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        let size: CGFloat = contentView.height
         imageView.frame = contentView.bounds
+        label.sizeToFit()
+        label.frame = CGRect(x: 0,
+                             y: 40,
+                             width: size,
+                             height: size
+        )
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
+        label.text = nil
     }
 
-    func configure(with image: UIImage?) {
-        imageView.image = image
+    func configure(style: String) {
+        imageView.image = UIImage(systemName: "camera.filters")
+        imageView.tintColor = .darkGray
+        label.text = style
+        
     }
 
     func configure(with url: URL?) {

@@ -11,7 +11,7 @@ import UIKit
 class PostEditViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     private var filters = [UIImage]() // array for filter images
-    var filterStyles: [FilterType] = [.autoAdjust, .chrome, .ciSepiaTone, .ciGaussianBlur, .ciHighlightShadowAdjust, .ciColorMonochrome ]
+    var filterStyles: [FilterType] = [.autoAdjust, .vibrance, .ciSepiaTone, .ciGaussianBlur, .ciHighlightShadowAdjust, .ciColorMonochrome ]
 
     private let imageView: UIImageView = {
 
@@ -134,7 +134,7 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
     enum FilterType: String {
 
         case autoAdjust = "Auto Adjustment"
-        case chrome = "Chrome"
+        case vibrance = "Vibrance"
         case ciSepiaTone = "Sepia Tone"
         case ciHighlightShadowAdjust = "Highlight Shadow"
         case ciGaussianBlur = "Gaussian Blur"
@@ -152,9 +152,9 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
 
         var filter: CIFilter?
 
-        var autoImage: CIImage?
+        var autoOutputCIImage: CIImage?
 
-        var outputImage: CIImage?
+        var outputCIImage: CIImage?
 
         switch filterStyle {
 
@@ -164,54 +164,54 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
             let filters = inputImage.autoAdjustmentFilters()
             for filter: CIFilter in filters {
                 filter.setValue(inputImage, forKey: kCIInputImageKey)
-                autoImage = filter.outputImage!
+                autoOutputCIImage = filter.outputImage!
             }
 
-        case .chrome:
+        case .vibrance:
 
-            filter = CIFilter(name: "CIPhotoEffectChrome")
-//            filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
-//            filter?.setValue(0.7, forKey: "inputIntensity")
-            outputImage = filter?.outputImage
+            filter = CIFilter(name: "CIVibrance")
+            filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
+            filter?.setValue(1, forKey: "inputAmount")
+            outputCIImage = filter?.outputImage
 
         case .ciSepiaTone:
 
             filter = CIFilter(name: "CISepiaTone")
             filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
             filter?.setValue(0.7, forKey: "inputIntensity")
-            outputImage = filter?.outputImage
+            outputCIImage = filter?.outputImage
 
         case .ciHighlightShadowAdjust:
             filter = CIFilter(name: "CIHighlightShadowAdjust")
             filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
             filter?.setValue(0.75, forKey: "inputHighlightAmount")
             filter?.setValue(0.3, forKey: "inputShadowAmount")
-            outputImage = filter?.outputImage
+            outputCIImage = filter?.outputImage
 
         case .ciGaussianBlur:
             filter = CIFilter(name: "CIGaussianBlur")
             filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
             filter?.setValue(0.8, forKey: "inputRadius")
-            outputImage = filter?.outputImage
+            outputCIImage = filter?.outputImage
 
         case .ciColorMonochrome:
             filter = CIFilter(name: "CIColorMonochrome")
             filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
             filter?.setValue(CIColor(red: 0.7, green: 0.7, blue: 0.7), forKey: "inputColor")
             filter?.setValue(1.0, forKey: "inputIntensity")
-            outputImage = filter?.outputImage
+            outputCIImage = filter?.outputImage
 
         default:
             filter = CIFilter(name: "CIHighlightShadowAdjust")
             filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
             filter?.setValue(1.0, forKey: "inputHighlightAmount")
-            outputImage = filter?.outputImage
+            outputCIImage = filter?.outputImage
 
         }
 
-        if autoImage != nil {
+        if autoOutputCIImage != nil {
 
-            guard let autoImage = autoImage else {
+            guard let autoImage = autoOutputCIImage else {
                 return
             }
             let context = CIContext()
@@ -226,7 +226,7 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
             }
             self.imageView.image = UIImage(ciImage: autoImage)
 
-        } else if outputImage != nil {
+        } else if outputCIImage != nil {
 
             guard let outputImage = filter?.outputImage else {
                 return

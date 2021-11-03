@@ -107,29 +107,6 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
         filters.append(filterImage)
     }
 
-//        private func filterImage(image: UIImage) {
-//        // core image -> core graphic -> UIImage
-//
-//            guard let cgImage = image.cgImage else { return }
-//
-//            let filter = CIFilter(name: "CIHighlightShadowAdjust")
-//
-//            filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
-//            filter?.setValue(0.5, forKey: "inputHighlightAmount")
-//
-//            guard let outputImage = filter?.outputImage else { return }
-//
-//            let context = CIContext()
-//
-//            if let outputcgImage = context.createCGImage(
-//                outputImage,
-//                from: outputImage.extent
-//            ) {
-//                let filteredImage = UIImage(cgImage: outputcgImage)
-//
-//                imageView.image = filteredImage
-//            }
-//        }
 
     enum FilterType: String {
 
@@ -249,32 +226,6 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
 
     }
-
-//    private func filterImage(image: UIImage) {
-//    // core image -> core graphic -> UIImage
-//
-//        guard let cgImage = image.cgImage else { return }
-//
-//        // black and white filter
-//        let filter = CIFilter(name: "CIColorMonochrome")
-//
-//        filter?.setValue(CIImage(cgImage: cgImage), forKey: "inputImage")
-//        filter?.setValue(CIColor(red: 0.7, green: 0.7, blue: 0.7), forKey: "inputColor")
-//        filter?.setValue(1.0, forKey: "inputIntensity")
-//
-//        guard let outputImage = filter?.outputImage else { return }
-//
-//        let context = CIContext()
-//
-//        if let outputcgImage = context.createCGImage(
-//            outputImage,
-//            from: outputImage.extent
-//        ) {
-//            let filteredImage = UIImage(cgImage: outputcgImage)
-//
-//            imageView.image = filteredImage
-//        }
-//    }
 
     // CollectionView
 

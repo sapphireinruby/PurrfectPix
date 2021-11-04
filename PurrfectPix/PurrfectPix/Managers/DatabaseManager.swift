@@ -102,7 +102,7 @@ final class DatabaseManager {
 
     public func createPost(newPost: Post, completion: @escaping (Bool) -> Void) {
 
-        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
+        guard let userID = AuthManager.shared.userID else {
             completion(false)
             return
         }
@@ -131,7 +131,7 @@ final class DatabaseManager {
 
     public func createUser(newUser: User, completion: @escaping (Bool) -> Void) {
 
-        let reference = database.collection("users").document()
+        let reference = database.collection("users").document(newUser.userID)
 
         guard let data = newUser.asDictionary() else {  // 不能asDictionary 應該要改
             completion(false)

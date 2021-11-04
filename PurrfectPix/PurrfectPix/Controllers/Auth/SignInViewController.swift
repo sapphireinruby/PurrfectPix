@@ -8,6 +8,8 @@
 import SafariServices
 import UIKit
 import AuthenticationServices
+import CryptoKit
+import FirebaseAuth
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 
@@ -16,15 +18,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     private let headerView = SignInHeaderView()
 
     private let signInWithAppleButton = ASAuthorizationAppleIDButton()
-
-//    private let signInWithAppleButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("Sign In with Apple", for: .normal)
-//        button.backgroundColor = .systemBlue
-//        button.layer.cornerRadius = 8
-//        button.layer.masksToBounds = true
-//        return button
-//    }()
 
     private let emailField: UserTextField = {
 
@@ -102,12 +95,17 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         )
 
         signInWithAppleButton.frame = CGRect(x: 40, y: headerView.bottom + 48, width: view.width - 80, height: 50)
+
         emailField.frame = CGRect(x: 24, y: signInWithAppleButton.bottom + 20, width: view.width - 48, height: 50)
+
         passwordField.frame = CGRect(x: 24, y: emailField.bottom + 10, width: view.width - 50, height: 48)
         
         signInButton.frame = CGRect(x: 40, y: passwordField.bottom + 20, width: view.width - 80, height: 50)
+
         createAccountButton.frame = CGRect(x: 40, y: signInButton.bottom + 20, width: view.width - 80, height: 50)
+
         termsButton.frame = CGRect(x: 40, y: createAccountButton.bottom + 50, width: view.width - 80, height: 40)
+
         privacyButton.frame = CGRect(x: 40, y: termsButton.bottom + 10, width: view.width - 80, height: 40)
     }
 
@@ -135,18 +133,96 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Actions
 
+    // MARK: - Sign in with Apple
     @objc func didTapSinginWithApple() {
-        let provider = ASAuthorizationAppleIDProvider()
-        let request = provider.createRequest()
-        request.requestedScopes = [.fullName, .email]
 
-        let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self
-        controller.presentationContextProvider = self
-        controller.performRequests()
-
+        performSignIn()
     }
 
+    func performSignIn() {
+
+        let request = createAppleIDRequest()
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+
+    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
+
+                let appleIDProvider = ASAuthorizationAppleIDProvider()
+                let request = appleIDProvider.createRequest()
+                request.requestedScopes = [.fullName, .email]
+
+                let nonce = randomNonceString()
+                request.nonce = sha256(nonce)
+                currentNonce = nonce
+                return request
+    }
+
+    private func randomNonceString(length: Int = 32) -> String {
+      precondition(length > 0)
+      let charset: [Character] =
+        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+      var result = ""
+      var remainingLength = length
+
+      while remainingLength > 0 {
+        let randoms: [UInt8] = (0 ..< 16).map { _ in
+          var random: UInt8 = 0
+          let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+          if errorCode != errSecSuccess {
+            fatalError(
+              "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
+            )
+          }
+          return random
+        }
+
+        randoms.forEach { random in
+          if remainingLength == 0 {
+            return
+          }
+
+          if random < charset.count {
+            result.append(charset[Int(random)])
+            remainingLength -= 1
+          }
+        }
+      }
+
+      return result
+    }
+
+    @available(iOS 13, *)
+    private func sha256(_ input: String) -> String {
+      let inputData = Data(input.utf8)
+      let hashedData = SHA256.hash(data: inputData)
+      let hashString = hashedData.compactMap {
+        String(format: "%02x", $0)
+      }.joined()
+
+      return hashString
+    }
+
+    // Unhashed nonce.
+    fileprivate var currentNonce: String?
+
+    @available(iOS 13, *)
+    func startSignInWithAppleFlow() {
+      let nonce = randomNonceString()
+      currentNonce = nonce
+
+      let appleIDProvider = ASAuthorizationAppleIDProvider()
+      let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+      request.nonce = sha256(nonce)
+
+      let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+      authorizationController.delegate = self
+      authorizationController.presentationContextProvider = self
+      authorizationController.performRequests()
+    }
 
     @objc func didTapSignIn() {
         emailField.resignFirstResponder()
@@ -167,17 +243,18 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-//                    HapticManager.shared.vibrate(for: .success)
-                    let vc = TabBarViewController()
-                    vc.modalPresentationStyle = .fullScreen
+                    HapticManager.shared.vibrate(for: .success)
+                    // if sign in success, present home screen
+                    let vcTabBar = TabBarViewController()
+                    vcTabBar.modalPresentationStyle = .fullScreen
                     self?.present(
-                        vc,
+                        vcTabBar,
                         animated: true,
                         completion: nil
                     )
 
                 case .failure(let error):
-//                    HapticManager.shared.vibrate(for: .error)
+                    HapticManager.shared.vibrate(for: .error)
                     print(error)
                 }
             }
@@ -185,31 +262,31 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
 
     @objc func didTapCreateAccount() {
-        let vc = SignUpViewController()
-        vc.completion = { [weak self] in
+        let vcSignUp = SignUpViewController()
+        vcSignUp.completion = { [weak self] in
             DispatchQueue.main.async {
                 let tabVC = TabBarViewController()
                 tabVC.modalPresentationStyle = .fullScreen
                 self?.present(tabVC, animated: true)
             }
         }
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vcSignUp, animated: true)
     }
 
     @objc func didTapTerms() {
         guard let url = URL(string: "https://") else {
             return
         }
-        let vc = SFSafariViewController(url: url)
-        present(vc, animated: true)
+        let vcSF = SFSafariViewController(url: url)
+        present(vcSF, animated: true)
     }
 
     @objc func didTapPrivacy() {
         guard let url = URL(string: "https://") else {
             return
         }
-        let vc = SFSafariViewController(url: url)
-        present(vc, animated: true)
+        let vcSF = SFSafariViewController(url: url)
+        present(vcSF, animated: true)
     }
 
     // MARK: Field Delegate
@@ -227,12 +304,73 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
 extension SignInViewController: ASAuthorizationControllerDelegate {
 
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+      if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+        guard let nonce = currentNonce else {
+          fatalError("Invalid state: A login callback was received, but no login request was sent.")
+        }
+        guard let appleIDToken = appleIDCredential.identityToken else {
+          print("Unable to fetch identity token")
+          return
+        }
+          print("===============\(appleIDCredential.fullName?.givenName)==================")
+
+        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+          print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+          return
+        }
+        // Initialize an Apple credential with firebase.
+        let credential = OAuthProvider.credential(withProviderID: "apple.com",
+                                                  idToken: idTokenString,
+                                                  rawNonce: nonce)
+        // Sign in with Firebase.
+          Auth.auth().signIn(with: credential) { (authResult, error) in
+                          if let user = authResult?.user {
+                              // create new user
+                              // Sign up with authManager, upadate user 資料
+                              if let fullname = appleIDCredential.fullName,
+                                 let username = fullname.givenName,
+                                 let email = appleIDCredential.email,
+                                 let userID = Auth.auth().currentUser?.uid {
+
+                              }
+
+                              DispatchQueue.main.async {
+                                     // HapticManager
+//
+//                                  UserDefaults.standard.setValue(email, forKey: "email")
+//                                  UserDefaults.standard.setValue(username, forKey: "username")
+                                      let vcTabBar = TabBarViewController()
+                                      vcTabBar.modalPresentationStyle = .fullScreen
+                                      self.present(
+                                          vcTabBar,
+                                          animated: true,
+                                          completion: nil
+                                      )
+                                  }
+
+                        print ("Nice! You're signed in with AppleID as \(user.uid), email:\(user.email ?? "email unknow")")
+                          } else {
+
+                              print("\n\n Sign In with AppleID Error: \(error)")
+
+                          }
+                      }
+          // User is signed in to Firebase with Apple.
+
+        }
+      }
+
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+      // Handle error.
+      print("Sign in with Apple errored: \(error)")
+    }
+
 }
 
 extension SignInViewController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return view.window!
     }
-
 
 }

@@ -34,7 +34,9 @@ final class AuthManager {
         return auth.currentUser != nil
     }
 
-    let userID = Auth.auth().currentUser?.uid
+    var userID: String? {
+        Auth.auth().currentUser?.uid
+    }
 
     // Attempt sign in
     // - Parameters:

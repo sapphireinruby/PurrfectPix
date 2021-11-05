@@ -33,10 +33,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         title = "PurrfectPix"
         view.backgroundColor = .systemBackground
         configureCollectionView()
-        fetchPosts()
         // username will edit later
 //        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
 
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchPosts()
     }
 
     override func viewDidLayoutSubviews() {
@@ -47,13 +51,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     private func fetchPosts() {
 
-        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
-            return
-        }
+//        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
+//            return
+//        }
+//
+//        guard let username = UserDefaults.standard.string(forKey: "username") else {
+//            return
+//        }
 
-        guard let username = UserDefaults.standard.string(forKey: "username") else {
-            return
-        }
+        guard let userID = AuthManager.shared.userID else { return }
 
         DatabaseManager.shared.posts(for: userID) { [weak self] result in
             // refresh the collectionView after all the asynchronous job is done
@@ -69,7 +75,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         self?.createViewModel(
                             model: model,
                             userID: userID,
-                            username: username,
+                            username: "username",
                             completion: { success in
                             defer {
                                 group.leave()
@@ -145,7 +151,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        let username = "perfect67"
         // MARK: 這裡未來要修改成動態
 
-        guard let currentUserID = AuthManager.shared.userID else { return }
+//        guard let currentUserID = AuthManager.shared.userID else { return }
         StorageManager.shared.downloadURL(for: model) { postURL in
             StorageManager.shared.profilePictureURL(for: userID) { [weak self] profilePictureURL in
 

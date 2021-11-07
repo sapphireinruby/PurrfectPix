@@ -10,6 +10,7 @@ import Foundation
 struct Post: Codable {
 
     let userID: String
+    var username: String
     var postID: String  // Image & the whole Post share one ID
     let caption: String
     let petTag: [String]

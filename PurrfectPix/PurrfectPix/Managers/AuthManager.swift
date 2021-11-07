@@ -27,7 +27,6 @@ final class AuthManager {
         case signInFailed
     }
 
-
     // Determine if user is signed in
     public var isSignedIn: Bool {
 
@@ -36,7 +35,21 @@ final class AuthManager {
 
     var userID: String? {
         Auth.auth().currentUser?.uid
-    }
+    } // for compyted property
+
+//    var username: String? {
+//        Auth.auth().currentUser?.displayName
+//    } // for compyted property
+
+
+//    lazy var userID = Auth.auth().currentUser?.uid {
+//        didSet{
+//            print(userID)
+//        }
+//    }
+
+ // for stored property
+
 
     // Attempt sign in
     // - Parameters:
@@ -64,6 +77,7 @@ final class AuthManager {
 
                 UserDefaults.standard.setValue(user.userID, forKey: "userID")
                 UserDefaults.standard.setValue(user.email, forKey: "email")
+//                UserDefaults.standard.setValue(user.username, forKey: "username")
                 completion(.success(user))
             }
         }
@@ -96,14 +110,14 @@ final class AuthManager {
                 return
             }
 
-            guard let userId = result?.user.uid else { return }
+            guard let userID = result?.user.uid else { return }
 
-            let newUser = User(userID: userId, username: username, email: email, profilePic: "", followingUsers: [String](), logInCount: 0)
+            let newUser = User(userID: userID, username: username, email: email, profilePic: "", followingUsers: [String](), logInCount: 0)
 
             DatabaseManager.shared.createUser(newUser: newUser) { success in
                 if success {
                     StorageManager.shared.uploadProfilePicture(
-                        userID: userId,
+                        userID: userID,
                         data: profilePicture
                     ) { uploadSuccess in
                         if uploadSuccess {

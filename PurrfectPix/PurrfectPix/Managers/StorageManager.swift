@@ -20,6 +20,7 @@ final class StorageManager {
 
         data: Data?,
         userID: String,
+        username: String,
         postID: String, // the postID create at caption vc, for image to storage
         completion: @escaping (URL?) -> Void
     ) {

@@ -33,55 +33,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         title = "PurrfectPix"
         view.backgroundColor = .systemBackground
         configureCollectionView()
-        fetchPosts()
         // username will edit later
-        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
+//        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
 
-//  以下10/18本來註解
-//        db.collection("posts").getDocuments { snapshot, error in
-//
-//            if let  error = error {
-//                print (error)
-//
-//            }else{
-//
-//                guard let snapshot = snapshot else { return }
-//                    var posts = [Post]()
-//                    snapshot.documents.forEach({ document in
-//
-//                        do {
-//                            let post =  try document.data(as: Post.self)
-//                            guard let post = post else {return}
-//                            posts.append(post)
-//                        } catch {
-//
-//                        }
-//                    })
-//                    self.createViewModel(model: posts, username: "Amber67") { result in
-//                    }
-//            }
-//        }
-//            let result = Result {
-//              try document?.data(as: Post.self)
-//            }
+    }
 
-//            switch result {
-//            case .success(let post):
-//                if let post = post {
-//                    self.createViewModel(model: post, username: "Amber67") { result in
-//
-//                    }
-//
-//                } else {
-//                    // A nil value was successfully initialized from the DocumentSnapshot,
-//                    // or the DocumentSnapshot was nil.
-//                    print("Document does not exist")
-//                }
-//            case .failure(let error):
-//                // A `City` value could not be initialized from the DocumentSnapshot.
-//                print("Error decoding city: \(error)")
-//            }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchPosts()
     }
 
     override func viewDidLayoutSubviews() {
@@ -89,49 +48,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView?.frame = view.bounds
     }
 
-//    //  以下10/18本來使用 edit with Elio 1018
-//    override func viewWillAppear(_ animated: Bool) {
-//
-//        viewModels = [[HomeFeedCellType]]()
-//        db.collection("posts").getDocuments { snapshot, error in
-//
-//         // 這邊要放listener 監聽變化
-//            if let  error = error {
-//                print(error)
-//
-//            } else {
-//
-//                guard let snapshot = snapshot else { return }
-//                    var posts = [Post]()
-//                    snapshot.documents.forEach({ document in
-//
-//                        do {
-//                            let post =  try document.data(as: Post.self)
-//                            guard let post = post else {return}
-//                            posts.append(post)
-//                        } catch {
-//
-//                        }
-//                    })
-//                    self.createViewModel(model: posts, username: "Amber67") { result in  // 存在user defaultpost
-//                    }
-//            }
-//    }
-//
-//        configureCollectionView()
-//    }
-
-//  以下10/18本來註解 private func fetchPosts() 到196行 若post 重複要處理
 
     private func fetchPosts() {
 
-        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
-            return
-        }
+//        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
+//            return
+//        }
+//
+//        guard let username = UserDefaults.standard.string(forKey: "username") else {
+//            return
+//        }
 
-        guard let username = UserDefaults.standard.string(forKey: "username") else {
-            return
-        }
+        guard let userID = AuthManager.shared.userID else { return }
 
         DatabaseManager.shared.posts(for: userID) { [weak self] result in
             // refresh the collectionView after all the asynchronous job is done
@@ -147,7 +75,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         self?.createViewModel(
                             model: model,
                             userID: userID,
-                            username: username,
+                            username: "username",
                             completion: { success in
                             defer {
                                 group.leave()
@@ -219,13 +147,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     ) {
 
         // swiftlint:disable identifier_name
-        let UserID = "wRWTOfxEaKtP8OSso4pB"
-        let username = "perfect67"
+//        let UserID = "wRWTOfxEaKtP8OSso4pB"
+//        let username = "perfect67"
         // MARK: 這裡未來要修改成動態
 
-
+//        guard let currentUserID = AuthManager.shared.userID else { return }
         StorageManager.shared.downloadURL(for: model) { postURL in
-            StorageManager.shared.profilePictureURL(for: UserID) { [weak self] profilePictureURL in
+            StorageManager.shared.profilePictureURL(for: userID) { [weak self] profilePictureURL in
 
                 guard let postUrl = postURL,
                       let profilePhotoUrl = profilePictureURL else {

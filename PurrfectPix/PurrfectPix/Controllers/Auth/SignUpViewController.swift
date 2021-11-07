@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -182,11 +183,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let data = profilePictureImageView.image?.pngData()
 
         // Sign up with authManager
-        AuthManager.shared.signUp(
 
-            userID: "wRWTOfxEaKtP8OSso4pB",
-            email: "lucky77@fake.com",
-            username: "luck77",
+
+        
+        AuthManager.shared.signUp(
+            userID: "",
+            email: email,
+            username: username,
             password: password,
             profilePicture: data
         ) { [weak self] result in
@@ -194,12 +197,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                 switch result {
                 case .success(let user):  // user model
 
-                    HapticManager.shared.vibrate(for: .success)
+//                    HapticManager.shared.vibrate(for: .success)
 //                    UserDefaults.standard.setValue(user.email, forKey: "email")
 //                    UserDefaults.standard.setValue(user.userID, forKey: "userID")
-                    UserDefaults.standard.setValue("lucky77@fake.com", forKey: "email")
-                    UserDefaults.standard.setValue("luck77", forKey: "username")
-                    UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
+//                    UserDefaults.standard.setValue("lucky77@fake.com", forKey: "email")
+//                    UserDefaults.standard.setValue("luck77", forKey: "username")
+//                    UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
 
                     self?.navigationController?.popToRootViewController(animated: true)
                     self?.completion?()
@@ -241,8 +244,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
 
         if textField == usernameField {
             emailField.becomeFirstResponder()
-        }
-        else if textField == emailField {
+        } else if textField == emailField {
             passwordField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()

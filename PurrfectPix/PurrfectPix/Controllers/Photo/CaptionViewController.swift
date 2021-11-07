@@ -7,6 +7,7 @@
 
 import UIKit
 import TTGTags
+//import FirebaseAuth
 
 class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCollectionViewDelegate {
 
@@ -34,7 +35,6 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
 //  Pet hashtag
     private let tagView = TTGTextTagCollectionView()
-
 
 // MARK: - Init section
 
@@ -154,7 +154,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
         }
 
         // Upload Post --> Image & the whole Post share one ID
-        guard let userID = UserDefaults.standard.string(forKey: "userID") else { return }
+        guard let userID = AuthManager.shared.userID else { return }
         StorageManager.shared.uploadPost(
 
             data: image.pngData(),
@@ -207,10 +207,12 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
         let timeStamp = Date().timeIntervalSince1970
         let randomNumber = Int.random(in: 0...1000)
+        let userID = AuthManager.shared.userID
 
-        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
-            return nil
-        }
+//        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
+//            return nil
+//        }
+//        let userID = Auth.auth().currentUser?.uid
 
         return "\(userID)_\(randomNumber)_\(timeStamp)"
     }

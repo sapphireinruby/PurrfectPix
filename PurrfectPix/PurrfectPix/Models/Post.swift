@@ -22,7 +22,7 @@ struct Post: Codable {
 
     // storageReference: get the photo download URL from storage
     var storageReference: String? {
-        guard let userID = UserDefaults.standard.string(forKey: "userID") else { return nil }
+        guard let userID = AuthManager.shared.userID else { return nil }
         return "\(userID)/posts/\(postID).png" 
     }
 

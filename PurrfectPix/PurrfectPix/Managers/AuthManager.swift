@@ -27,10 +27,15 @@ final class AuthManager {
         case signInFailed
     }
 
+
     // Determine if user is signed in
     public var isSignedIn: Bool {
 
         return auth.currentUser != nil
+    }
+
+    var userID: String? {
+        Auth.auth().currentUser?.uid
     }
 
     // Attempt sign in
@@ -81,30 +86,38 @@ final class AuthManager {
         profilePicture: Data?,
         completion: @escaping (Result<User, Error>) -> Void
     ) {
-        let newUser = User(userID: userID, username: username, email: email, profilePic: "", followingUsers: [String](), logInCount: 0)
+
 
         // Create account
         auth.createUser(withEmail: email, password: password) { result, error in
             guard result != nil, error == nil else {
-                completion(.failure(AuthError.newUserCreation))
+                guard let error = error else { return }
+                completion(.failure(error))
                 return
             }
+
+            guard let userId = result?.user.uid else { return }
+
+            let newUser = User(userID: userId, username: username, email: email, profilePic: "", followingUsers: [String](), logInCount: 0)
 
             DatabaseManager.shared.createUser(newUser: newUser) { success in
                 if success {
                     StorageManager.shared.uploadProfilePicture(
-                        userID: userID,
+                        userID: userId,
                         data: profilePicture
                     ) { uploadSuccess in
                         if uploadSuccess {
+
                             completion(.success(newUser))
                         }
                         else {
-                            completion(.failure(AuthError.newUserCreation))
+                            guard let error = error else { return }
+                            completion(.failure(error))
                         }
                     }
                 }
                 else {
+                    guard let error = error else { return }
                     completion(.failure(AuthError.newUserCreation))
                 }
             }

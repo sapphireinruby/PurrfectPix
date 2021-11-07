@@ -55,9 +55,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //            return
 //        }
 //
-//        guard let username = UserDefaults.standard.string(forKey: "username") else {
-//            return
-//        }
+        guard let username = UserDefaults.standard.string(forKey: "username") else {
+            return
+        }
 
         guard let userID = AuthManager.shared.userID else { return }
 
@@ -75,7 +75,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         self?.createViewModel(
                             model: model,
                             userID: userID,
-                            username: "username",
+                            username: username,
                             completion: { success in
                             defer {
                                 group.leave()
@@ -139,7 +139,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     private func createViewModel(
 
-        // 需要釐清 何時要用username 何時要userID
         model: Post,
         userID: String,
         username: String,
@@ -165,7 +164,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 let postData: [HomeFeedCellType] = [
                     .poster(
                         viewModel: PosterCollectionViewCellViewModel(
-                            username: username,
+                            username: model.username,
                             profilePictureURL: profilePhotoUrl
                         )
                     ),
@@ -188,7 +187,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
                     .caption(
                         viewModel: PostCaptionCollectionViewCellViewModel(
-                            username: username,
+                            username: model.username,
                             caption: model.caption)),
 
                     .timestamp(

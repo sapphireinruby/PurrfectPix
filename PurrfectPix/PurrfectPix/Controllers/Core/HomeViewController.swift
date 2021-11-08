@@ -35,13 +35,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         configureCollectionView()
         // username will edit later
 //        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
-
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         fetchPosts()
     }
+
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        fetchPosts()
+//    }  // 有時候會出現兩次～
+
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

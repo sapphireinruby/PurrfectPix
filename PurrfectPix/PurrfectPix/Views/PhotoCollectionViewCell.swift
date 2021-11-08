@@ -9,6 +9,8 @@ import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
 
+    // for Edit post filter and explore view
+
     static let identifier = "PhotoCollectionViewCell"
 
     private let imageView: UIImageView = {
@@ -16,7 +18,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-
         imageView.tintColor = .label // fits both mode
         return imageView
 
@@ -67,6 +68,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         
     }
 
+    // explore view
     func configure(with url: URL?) {
         imageView.sd_setImage(with: url, completed: nil)
     }

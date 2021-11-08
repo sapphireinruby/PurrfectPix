@@ -142,20 +142,76 @@ final class DatabaseManager {
         }
     }
 
+    // Gets posts for explore page
+    // - Parameter completion: Result callback
+
+    public func explorePosts(completion: @escaping ([Post]) -> Void) {
+
+        let ref = database.collection("posts") // get all posts from database
+
+        // 以下簡易版
+        ref.getDocuments { snapshot, error in
+
+            guard let posts = snapshot?.documents.compactMap({ // with extension for decode
+
+                Post(with: $0.data())  // dictionary
+            }),
+            error == nil else {
+//                completion(false)
+                return
+            }
+            completion(posts)
+        }
+
+
+        // 以下dipatchGroup版本
+//        ref.getDocuments { snapshot, error in
+//            guard let posts = snapshot?.documents.compactMap({ Post(with: $0.data()) }),
+//                  error == nil else {
+//                completion([])
+//                return
+//            }
+//
+//            let group = DispatchGroup()
+//            var gatherPosts = [Post]()
+//
+//                ref.getDocuments { snapshot, error in
+//
+//                    defer {
+//                        group.leave()
+//                    }
+//
+//                    guard let posts = snapshot?.documents.compactMap({ Post(with: $0.data()) }),
+//                          error == nil else {
+//                        return
+//                    }
+//
+//                    gatherPosts.append(contentsOf: posts.compactMap({
+//                        (post: $0)
+//                    }))
+//                }
+//            }
+//
+//            group.notify(queue: .main) {
+//                completion(gatherPosts)
+//            }
+
+    }
+
     // Get a post with id and username
     // - Parameters:
-    //   - identifer: Query id
+    //   - identifier: Query id
     //   - username: Query username
     //   - completion: Result callback
     public func getPost(
-        with identifer: String,
+        with identifier: String,
         from username: String,
         completion: @escaping (Post?) -> Void
     ) {
         let ref = database.collection("users")
-            .document(username)
+            .document(username)  // 要userID
             .collection("posts")
-            .document(identifer)
+            .document(identifier)
         ref.getDocument { snapshot, error in
             guard let data = snapshot?.data(),
                   error == nil else {

@@ -53,7 +53,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     private let signUpButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign Up", for: .normal)
-        button.backgroundColor = .systemGreen
+        button.backgroundColor = .P1
         button.layer.cornerRadius = 8
         button.layer.masksToBounds = true
         return button
@@ -114,8 +114,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         view.addSubview(emailField)
         view.addSubview(passwordField)
         view.addSubview(signUpButton)
-//        view.addSubview(termsButton)
-//        view.addSubview(privacyButton)
+        view.addSubview(termsButton)
+        view.addSubview(privacyButton)
     }
 
     private func addImageGesture() {
@@ -126,8 +126,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
 
     private func addButtonActions() {
         signUpButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
-//        termsButton.addTarget(self, action: #selector(didTapTerms), for: .touchUpInside)
-//        privacyButton.addTarget(self, action: #selector(didTapPrivacy), for: .touchUpInside)
+        termsButton.addTarget(self, action: #selector(didTapTerms), for: .touchUpInside)
+        privacyButton.addTarget(self, action: #selector(didTapPrivacy), for: .touchUpInside)
     }
 
     // MARK: - Actions
@@ -135,7 +135,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @objc func didTapImage() {
         let sheet = UIAlertController(
             title: "Profile Picture",
-            message: "Set a picture to help your friends find you.",
+            message: "Set a picture to help your friends find you :)",
             preferredStyle: .actionSheet
         )
 
@@ -211,9 +211,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                     HapticManager.shared.vibrate(for: .success)
 //                    UserDefaults.standard.setValue(user.email, forKey: "email")
 //                    UserDefaults.standard.setValue(user.userID, forKey: "userID")
-//                    UserDefaults.standard.setValue("lucky77@fake.com", forKey: "email")
-//                    UserDefaults.standard.setValue("luck77", forKey: "username")
-//                    UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
 
                     // if sign in success, present home screen
                     let vcTabBar = TabBarViewController()

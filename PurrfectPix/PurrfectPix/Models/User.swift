@@ -18,6 +18,4 @@ struct User: Codable {
     let followingUsers:[String]?
     let logInCount: Int?
 
-    // let petTag: String?  放在post裡了
-
 }

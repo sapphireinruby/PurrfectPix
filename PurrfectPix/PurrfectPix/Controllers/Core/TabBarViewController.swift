@@ -15,15 +15,21 @@ class TabBarViewController: UITabBarController {
 //        UserDefaults.standard.setValue("lucky77@fake.com", forKey: "email")
 //        UserDefaults.standard.setValue("luck77", forKey: "username")
 //        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
-        
-        guard let userID = UserDefaults.standard.string(forKey: "userID"),
-              let email = UserDefaults.standard.string(forKey: "email"),
-              let username = UserDefaults.standard.string(forKey: "username") else {
 
-                  return
-        }
+        // 以下native sign in 使用
+//        guard let userID = UserDefaults.standard.string(forKey: "userID"),
+//              let email = UserDefaults.standard.string(forKey: "email"),
+//              let username = UserDefaults.standard.string(forKey: "username") else {
+//
+//                  return
+//        }
+        // 以下 apple ID sign in 使用
+        guard let userID = AuthManager.shared.userID,
+              let username = AuthManager.shared.username,
+              let userEmail = AuthManager.shared.email else { return }
 
-        let currentUser = User(userID: userID, username: username, email: email, profilePic: "", followingUsers: [String](), logInCount: 0)
+
+        let currentUser = User(userID: userID, username: username, email: userEmail, profilePic: "", followingUsers: [String](), logInCount: 0)
 
         // define VCs
         let home = HomeViewController()

@@ -26,6 +26,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private var allPosts: [(post: Post, owner: String)] = []
     // swiftlint:disable identifier_name
     let db = Firestore.firestore()
+    
 
     override func viewDidLoad() {
 
@@ -38,10 +39,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         fetchPosts()
     }
 
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        fetchPosts()
-//    }  // 有時候會出現兩次～
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchPosts()
+    }  // 有時候會出現兩次～
 
 
     override func viewDidLayoutSubviews() {
@@ -56,7 +57,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //            return
 //        }
 //
-        guard let username = UserDefaults.standard.string(forKey: "username") else {
+        guard let username = AuthManager.shared.username else {
             return
         }
 
@@ -147,16 +148,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     ) {
 
         // swiftlint:disable identifier_name
-//        let UserID = "wRWTOfxEaKtP8OSso4pB"
-//        let username = "perfect67"
+
         // MARK: 這裡未來要修改成動態
 
 //        guard let currentUserID = AuthManager.shared.userID else { return }
         StorageManager.shared.downloadURL(for: model) { postURL in
             StorageManager.shared.profilePictureURL(for: userID) { [weak self] profilePictureURL in
 
-                guard let postUrl = postURL,
-                      let profilePhotoUrl = profilePictureURL else {
+                guard let postUrl = postURL
+//                      let profilePhotoUrl = profilePictureURL
+                else {
                           print("1. model.postUrlString\(model.postUrlString)")
                           print("2. profilePictureURL \(profilePictureURL)")
                             return
@@ -166,7 +167,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     .poster(
                         viewModel: PosterCollectionViewCellViewModel(
                             username: model.username,
-                            profilePictureURL: profilePhotoUrl
+                            profilePictureURL: profilePictureURL ?? nil
                         )
                     ),
                     

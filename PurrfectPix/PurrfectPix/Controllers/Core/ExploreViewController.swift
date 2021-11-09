@@ -163,10 +163,10 @@ class ExploreViewController: UIViewController, UISearchResultsUpdating {
 
 // explore view
 private func fetchData() {
-    DatabaseManager.shared.explorePosts { posts in
+    DatabaseManager.shared.explorePosts { [weak self] posts in
 //        DispatchQueue.main.async {
-            self.posts = posts
-            self.collectionView.reloadData()
+            self?.posts = posts
+            self?.collectionView.reloadData()
 //        }
     }
 }
@@ -189,6 +189,13 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.configure(with: URL(string: posts[indexPath.row].postUrlString))
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let post = posts[indexPath.row]
+        let vcPostView = PostViewController(post: post)// 要接回去 或新開
+        navigationController?.pushViewController(vcPostView, animated: true)
     }
 }
 

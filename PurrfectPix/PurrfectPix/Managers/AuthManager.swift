@@ -37,9 +37,14 @@ final class AuthManager {
         Auth.auth().currentUser?.uid
     } // for compyted property
 
-//    var username: String? {
-//        Auth.auth().currentUser?.displayName
-//    } // for compyted property
+    var username: String? {
+        Auth.auth().currentUser?.displayName
+    } // for compyted property
+
+    var email: String? {
+        Auth.auth().currentUser?.email
+    } // for compyted property
+
 
 
 //    lazy var userID = Auth.auth().currentUser?.uid {
@@ -75,8 +80,10 @@ final class AuthManager {
                     return
                 }
 
-                UserDefaults.standard.setValue(user.userID, forKey: "userID")
-                UserDefaults.standard.setValue(user.email, forKey: "email")
+
+
+//                UserDefaults.standard.setValue(user.userID, forKey: "userID")
+//                UserDefaults.standard.setValue(user.email, forKey: "email")
 //                UserDefaults.standard.setValue(user.username, forKey: "username")
                 completion(.success(user))
             }
@@ -109,6 +116,12 @@ final class AuthManager {
                 completion(.failure(error))
                 return
             }
+
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = username
+            changeRequest?.commitChanges { error in
+            }
+
 
             guard let userID = result?.user.uid else { return }
 

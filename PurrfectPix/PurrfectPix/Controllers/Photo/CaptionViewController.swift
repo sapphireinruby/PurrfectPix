@@ -155,7 +155,8 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
         // Upload Post --> Image & the whole Post share one ID
         guard let userID = AuthManager.shared.userID else { return }
-        guard let username = UserDefaults.standard.string(forKey: "username") else { return }
+        guard let username = AuthManager.shared.username else { return }
+        
         StorageManager.shared.uploadPost(
 
             data: image.pngData(),

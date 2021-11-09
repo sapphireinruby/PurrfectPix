@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let imageView = UIImageView()
         imageView.tintColor = .lightGray
         imageView.image = UIImage(systemName: "person.circle")
+        imageView.tintColor = .P1
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 45
@@ -197,15 +198,32 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                 switch result {
                 case .success(let user):  // user model
 
-//                    HapticManager.shared.vibrate(for: .success)
+//                    let newSignUpUser = User(userID: "", username: username, email: email, profilePic: profilePicture, followingUsers: [String](), logInCount: 0)
+//                    DatabaseManager.shared.createUser(newUser: newSignUpUser) { isSuccess in
+//                        if isSuccess {
+//                            print("New sign up user username in database is now \(newSignUpUser.username)")
+//
+//                        } else {
+//                            print("save username to firebase error")
+//                        }
+//                    }
+
+                    HapticManager.shared.vibrate(for: .success)
 //                    UserDefaults.standard.setValue(user.email, forKey: "email")
 //                    UserDefaults.standard.setValue(user.userID, forKey: "userID")
 //                    UserDefaults.standard.setValue("lucky77@fake.com", forKey: "email")
 //                    UserDefaults.standard.setValue("luck77", forKey: "username")
 //                    UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
 
-                    self?.navigationController?.popToRootViewController(animated: true)
-                    self?.completion?()
+                    // if sign in success, present home screen
+                    let vcTabBar = TabBarViewController()
+                    vcTabBar.modalPresentationStyle = .fullScreen
+                    self?.present(
+                        vcTabBar,
+                        animated: true,
+                        completion: nil
+                    )
+//                    self?.completion?()
                 case .failure(let error):
                     HapticManager.shared.vibrate(for: .error)
                     print("\n\nSign Up Error: \(error)")

@@ -245,19 +245,19 @@ final class DatabaseManager {
 
     // Get users that parameter username follows
     // - Parameters:
-    //   - username: Query usernam
+    //   - username: Query username
     //   - completion: Result callback
-    public func following(for username: String, completion: @escaping ([String]) -> Void) {
+    public func following(for userID: String, completion: @escaping ([String]) -> Void) {
         
         let ref = database.collection("users")
-            .document(username)
-            .collection("following")
+            .document(userID)
+            .collection("followingUsers")
         ref.getDocuments { snapshot, error in
-            guard let usernames = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
+            guard let username = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
                 completion([])
                 return
             }
-            completion(usernames)
+            completion(username)
         }
     }
 
@@ -281,7 +281,7 @@ final class DatabaseManager {
         owner: String,
         completion: @escaping (Bool) -> Void
     ) {
-        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else { return }
+        guard let currentUsername = AuthManager.shared.username else { return }
         let ref = database.collection("users")
             .document(owner)
             .collection("posts")

@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("You're sign in as \(user.uid), email: \(user.email ?? "")")
         }
 
-        // 以下兩行會每次開app 先登出使用者
+        // 以下兩行會每次開app 先登出使用者登出
 
         do { try Auth.auth().signOut() }
         catch{

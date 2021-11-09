@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
     private let user: User
 
     private var isCurrentUser: Bool {
-        return user.username.lowercased() == UserDefaults.standard.string(forKey: "username")?.lowercased() ?? ""
+        return user.username.lowercased() == AuthManager.shared.username?.lowercased() ?? ""
     }
 
     // MARK: - Init

@@ -243,7 +243,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    HapticManager.shared.vibrate(for: .success)
+//                    HapticManager
+
                     // if sign in success, present home screen
                     let vcTabBar = TabBarViewController()
                     vcTabBar.modalPresentationStyle = .fullScreen
@@ -254,7 +255,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     )
 
                 case .failure(let error):
-                    HapticManager.shared.vibrate(for: .error)
+//                    HapticManager
                     print(error)
                 }
             }
@@ -305,6 +306,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 extension SignInViewController: ASAuthorizationControllerDelegate {
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+
       if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
         guard let nonce = currentNonce else {
           fatalError("Invalid state: A login callback was received, but no login request was sent.")
@@ -319,12 +321,14 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
           print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
           return
         }
+
         // Initialize an Apple credential with firebase.
         let credential = OAuthProvider.credential(withProviderID: "apple.com",
                                                   idToken: idTokenString,
                                                   rawNonce: nonce)
         // Sign in with Firebase.
           Auth.auth().signIn(with: credential) { (authResult, error) in
+
                           if let user = authResult?.user {
                               // create new user
                               // Sign up with authManager, upadate user 資料
@@ -333,23 +337,39 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                                  let email = appleIDCredential.email,
                                  let userID = Auth.auth().currentUser?.uid {
 
-                              }
-
-                              DispatchQueue.main.async {
-                                     // HapticManager
-//
-//                                  UserDefaults.standard.setValue(email, forKey: "email")
-//                                  UserDefaults.standard.setValue(username, forKey: "username")
-                                      let vcTabBar = TabBarViewController()
-                                      vcTabBar.modalPresentationStyle = .fullScreen
-                                      self.present(
-                                          vcTabBar,
-                                          animated: true,
-                                          completion: nil
-                                      )
+                                  let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                                  changeRequest?.displayName = username
+                                  changeRequest?.commitChanges { error in
                                   }
 
-                        print ("Nice! You're signed in with AppleID as \(user.uid), email:\(user.email ?? "email unknow")")
+                                  let newAppleUser = User(userID: userID, username: username, email: email, profilePic: "", followingUsers: [String](), logInCount: 0)
+                                  DatabaseManager.shared.createUser(newUser: newAppleUser) { isSuccess in
+                                      if isSuccess {
+                                          print("New Apple User username in database is now \(newAppleUser.username)")
+
+                                      } else {
+                                          print("New Apple User save username to firebase error")
+                                      }
+                                  }
+                              }
+
+//                              DispatchQueue.main.async {
+//                                     // HapticManager
+////
+////                                  UserDefaults.standard.setValue(email, forKey: "email")
+////                                  UserDefaults.standard.setValue(username, forKey: "username")
+
+                                  // if sign in success, present home screen
+                                  let vcTabBar = TabBarViewController()
+                                  vcTabBar.modalPresentationStyle = .fullScreen
+                                  self.present(
+                                      vcTabBar,
+                                      animated: true,
+                                      completion: nil
+                                  )
+//                                  }
+
+                              print ("Nice! You're signed in with AppleID as \(user.uid), email:\(user.email ?? "email unknow")")
                           } else {
 
                               print("\n\n Sign In with AppleID Error: \(error)")

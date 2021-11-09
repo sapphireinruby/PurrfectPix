@@ -194,8 +194,8 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let post = posts[indexPath.row]
-        let vc = PostViewController(post: post)// 要接回去 或新開
-        navigationController?.pushViewController(vc, animated: true)
+        let vcPostView = PostViewController(post: post)// 要接回去 或新開
+        navigationController?.pushViewController(vcPostView, animated: true)
     }
 }
 

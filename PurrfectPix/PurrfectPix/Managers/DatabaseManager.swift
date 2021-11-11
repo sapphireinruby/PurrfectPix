@@ -259,9 +259,7 @@ final class DatabaseManager {
     //   - state: State to update to
     //   - targetUsername: Other user username
     //   - completion: Result callback
-    public func updateRelationship(user: User,
-        state: RelationshipState,
-        for targetUserID: String,
+    public func updateRelationship(user: User, state: RelationshipState, for targetUserID: String,
         completion: @escaping (Bool) -> Void
     ) {
         guard let currentUserID = AuthManager.shared.userID else {
@@ -288,9 +286,8 @@ final class DatabaseManager {
 //                let user = User(userID: user.userID, username: user.username, email: user.email, profilePic: user.profilePic, following: user.following?.remove(at: index), followers: user.followers, logInCount: user.logInCount)
 
             currentFollowing.updateData([
-                   "following" : FieldValue.arrayRemove(["targetUserID"])
+                   "following": FieldValue.arrayRemove(["targetUserID"])
                ])
-
             do {
                 try currentFollowing.setData(from: user)
             } catch {
@@ -301,9 +298,8 @@ final class DatabaseManager {
             // 2. Remove currentUser from targetUser followers list, delete currentUserID from 對方的 followers, followers.remove(currentUserID)
 
          targetUserFollowers.updateData([
-                "followers" : FieldValue.arrayRemove(["currentUserID"])
+                "followers": FieldValue.arrayRemove(["currentUserID"])
             ])
-
 
             do {
                 try targetUserFollowers.setData(from: user)
@@ -321,7 +317,6 @@ final class DatabaseManager {
             currentFollowing.updateData([
                    "followers" : FieldValue.arrayUnion(["targetUserID"])
                ])
-
         do {
             try currentFollowing.setData(from: user)
         } catch {
@@ -331,11 +326,9 @@ final class DatabaseManager {
 
 
            // 2. Add currentUser to targetUser followers list 加入自己成對方的追蹤者 targetUserFollowers
-
             targetUserFollowers.updateData([
                    "followers" : FieldValue.arrayUnion(["currentUserID"])
                ])
-
             do {
                 try targetUserFollowers.setData(from: user)
             } catch {
@@ -424,9 +417,7 @@ final class DatabaseManager {
         }
 
         let ref = database.collection("users")
-            .document(targetUserID)
-            .collection("followers")
-            .document(currentUsername) // 在post下面 顯示有按讚的人名
+            .document(targetUserID) // 在post下面 顯示有按讚的人名
         ref.getDocument { snapshot, error in
             guard snapshot?.data() != nil, error == nil else {
                 // Not following

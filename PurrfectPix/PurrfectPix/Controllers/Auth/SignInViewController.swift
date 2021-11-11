@@ -56,12 +56,12 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
 
-    private let termsButton: UIButton = {
-        let button = UIButton()
-        button.setTitleColor(.link, for: .normal)
-        button.setTitle("Terms of Service", for: .normal)
-        return button
-    }()
+//    private let termsButton: UIButton = {
+//        let button = UIButton()
+//        button.setTitleColor(.link, for: .normal)
+//        button.setTitle("Terms of Service", for: .normal)
+//        return button
+//    }()
 
     private let privacyButton: UIButton = {
         let button = UIButton()
@@ -104,9 +104,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
         createAccountButton.frame = CGRect(x: 40, y: signInButton.bottom + 20, width: view.width - 80, height: 50)
 
-        termsButton.frame = CGRect(x: 40, y: createAccountButton.bottom + 50, width: view.width - 80, height: 40)
+//        termsButton.frame = CGRect(x: 40, y: createAccountButton.bottom + 50, width: view.width - 80, height: 40)
 
-        privacyButton.frame = CGRect(x: 40, y: termsButton.bottom + 10, width: view.width - 80, height: 40)
+        privacyButton.frame = CGRect(x: 40, y: createAccountButton.bottom + 10, width: view.width - 80, height: 40)
     }
 
     private func addSubviews() {
@@ -119,7 +119,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(signInWithAppleButton)
 
 //        view.addSubview(termsButton)
-//        view.addSubview(privacyButton)
+        view.addSubview(privacyButton)
     }
 
     private func addButtonActions() {
@@ -127,7 +127,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         signInWithAppleButton.addTarget(self, action: #selector(didTapSinginWithApple), for: .touchUpInside)
         signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
         createAccountButton.addTarget(self, action: #selector(didTapCreateAccount), for: .touchUpInside)
-        termsButton.addTarget(self, action: #selector(didTapTerms), for: .touchUpInside)
+//        termsButton.addTarget(self, action: #selector(didTapTerms), for: .touchUpInside)
         privacyButton.addTarget(self, action: #selector(didTapPrivacy), for: .touchUpInside)
     }
 
@@ -274,13 +274,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         navigationController?.pushViewController(vcSignUp, animated: true)
     }
 
-    @objc func didTapTerms() {
-        guard let url = URL(string: "https://") else {
-            return
-        }
-        let vcSF = SFSafariViewController(url: url)
-        present(vcSF, animated: true)
-    }
+//    @objc func didTapTerms() {
+//        guard let url = URL(string: "https://") else {
+//            return
+//        }
+//        let vcSF = SFSafariViewController(url: url)
+//        present(vcSF, animated: true)
+//    }
 
     @objc func didTapPrivacy() {
         guard let url = URL(string: "https://") else {
@@ -341,8 +341,8 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                                   changeRequest?.displayName = username
                                   changeRequest?.commitChanges { error in
                                   }
-
-                                  let newAppleUser = User(userID: userID, username: username, email: email, profilePic: "", followingUsers: [String](), logInCount: 0)
+                                  // swiftlint:disable line_length
+                                  let newAppleUser = User(userID: userID, username: username, email: email, profilePic: "", following: [String](), followers: [String](), blocking: [String](), logInCount: 0)
                                   DatabaseManager.shared.createUser(newUser: newAppleUser) { isSuccess in
                                       if isSuccess {
                                           print("New Apple User username in database is now \(newAppleUser.username)")

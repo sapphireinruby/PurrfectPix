@@ -154,7 +154,7 @@ class ExploreViewController: UIViewController, UISearchResultsUpdating {
             return
         }
 
-        DatabaseManager.shared.findUsers(with: query) { results in
+        DatabaseManager.shared.findUsers(username: query) { results in
             DispatchQueue.main.async {
                 resultsVC.update(with: results)
             }

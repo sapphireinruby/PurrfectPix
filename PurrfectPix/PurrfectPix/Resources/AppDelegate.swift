@@ -30,6 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         catch{
         }
 
+
+//         Add fake data notification for current user
+//        let id = NotificationsManager.newIdentifier()
+//        let model = PurrNotification(identifier: id, notificationType: 1, profilePictureUrl: , fromUserID: <#T##String#>, fromUsername: "Amber", targetUserID: "Jr0VXFfmrmbeLeaAJwgEnbV5J5z1", dateString: "11/11/2021", postId: nil, postUrl: "https://img.technews.tw/wp-content/uploads/2021/09/08105820/Japanese-Scottish-Fold-Motimaru-grabs-Guinness-World-Record-for-most-watched-cat-on-YouTube.jpg", isFollowing: nil)
+//        NotificationsManager.shared.create(notification: model, for: "Jr0VXFfmrmbeLeaAJwgEnbV5J5z1") // to user: shiba110
+
         return true
     }
 

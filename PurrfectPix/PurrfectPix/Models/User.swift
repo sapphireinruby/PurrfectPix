@@ -9,13 +9,16 @@ import Foundation
 
 struct User: Codable {
 
-    let userID: String  // generate from firebase, for fake data, copy from document
+    let userID: String  // generate from firebase
     let username: String
     let email: String
     let profilePic: String?
 
     // community
-    let followingUsers:[String]?
+    let following: [String]?
+    let followers: [String]?
+    let blocking: [String]?
     let logInCount: Int?
 
+    // init
 }

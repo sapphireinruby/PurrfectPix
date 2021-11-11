@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import SafariServices
 
 class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -59,12 +60,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         return button
     }()
 
-    private let termsButton: UIButton = {
-        let button = UIButton()
-        button.setTitleColor(.link, for: .normal)
-        button.setTitle("Terms of Service", for: .normal)
-        return button
-    }()
+//    private let termsButton: UIButton = {
+//        let button = UIButton()
+//        button.setTitleColor(.link, for: .normal)
+//        button.setTitle("Terms of Service", for: .normal)
+//        return button
+//    }()
 
     private let privacyButton: UIButton = {
         let button = UIButton()
@@ -104,8 +105,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         emailField.frame = CGRect(x: 25, y: usernameField.bottom+10, width: view.width-50, height: 50)
         passwordField.frame = CGRect(x: 25, y: emailField.bottom+10, width: view.width-50, height: 50)
         signUpButton.frame = CGRect(x: 35, y: passwordField.bottom+20, width: view.width-70, height: 50)
-        termsButton.frame = CGRect(x: 35, y: signUpButton.bottom+50, width: view.width-70, height: 40)
-        privacyButton.frame = CGRect(x: 35, y: termsButton.bottom+10, width: view.width-70, height: 40)
+//        termsButton.frame = CGRect(x: 35, y: signUpButton.bottom+50, width: view.width-70, height: 40)
+        privacyButton.frame = CGRect(x: 35, y: signUpButton.bottom+10, width: view.width-70, height: 40)
     }
 
     private func addSubviews() {
@@ -114,7 +115,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         view.addSubview(emailField)
         view.addSubview(passwordField)
         view.addSubview(signUpButton)
-        view.addSubview(termsButton)
+//        view.addSubview(termsButton)
         view.addSubview(privacyButton)
     }
 
@@ -126,7 +127,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
 
     private func addButtonActions() {
         signUpButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
-        termsButton.addTarget(self, action: #selector(didTapTerms), for: .touchUpInside)
+//        termsButton.addTarget(self, action: #selector(didTapTerms), for: .touchUpInside)
         privacyButton.addTarget(self, action: #selector(didTapPrivacy), for: .touchUpInside)
     }
 
@@ -237,20 +238,20 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         present(alert, animated: true)
     }
 
-    @objc func didTapTerms() {
-        guard let url = URL(string: "") else {
-            return
-        }
-//        let vc = SFSafariViewController(url: url)
-//        present(vc, animated: true)
-    }
+//    @objc func didTapTerms() {
+//        guard let url = URL(string: "") else {
+//            return
+//        }
+////        let vc = SFSafariViewController(url: url)
+////        present(vc, animated: true)
+//    }
 
     @objc func didTapPrivacy() {
-        guard let url = URL(string: "") else {
+        guard let url = URL(string: "https://www.privacypolicies.com/live/dd1fde8e-ef94-48a1-8b08-49b95c29ac5e") else {
             return
         }
-//        let vc = SFSafariViewController(url: url)
-//        present(vc, animated: true)
+        let vcWeb = SFSafariViewController(url: url)
+        present(vcWeb, animated: true)
     }
 
     // MARK: Field Delegate

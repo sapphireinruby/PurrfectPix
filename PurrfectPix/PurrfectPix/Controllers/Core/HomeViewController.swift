@@ -24,9 +24,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     // All post models
     private var allPosts: [(post: Post, owner: String)] = []
-    // swiftlint:disable identifier_name
-    let db = Firestore.firestore()
-    
+
+    let dbFire = Firestore.firestore()
+
 
     override func viewDidLoad() {
 
@@ -44,12 +44,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         fetchPosts()
     }  // 有時候會出現兩次～
 
-
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView?.frame = view.bounds
     }
-
 
     private func fetchPosts() {
 
@@ -146,8 +144,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         username: String,
         completion: @escaping (Bool) -> Void
     ) {
-
-        // swiftlint:disable identifier_name
 
         // MARK: 這裡未來要修改成動態
 
@@ -392,6 +388,8 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
     func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool) {
         // call DB to update like state
+
+        // create notification
 
     }
 

@@ -9,7 +9,7 @@ import UIKit
 
 protocol PostActionsCollectionViewCellDelegate: AnyObject {
 
-    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool)
+    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int)
 
     func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell)
     
@@ -74,7 +74,6 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
 
     @objc func didTapLike() {
         // the viewModel knows if it's liked
-//        delegate?.postActionsCollectionViewCellDidTapLike(self, isLiked: !isLiked)
 //        // will inverse the isLike Bool, preset it to flase earlier
 
         // do the heart change directly
@@ -89,7 +88,8 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         }
 
         delegate?.postActionsCollectionViewCellDidTapLike(self,
-                                                          isLiked: !isLiked)
+                                                          isLiked: !isLiked,
+                                                          index: index)
         self.isLiked = !isLiked  // to enable doing the switch
     }
 
@@ -140,7 +140,11 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
             let image = UIImage(named: "Heart-filled")
             likeButton.setImage(image, for: .normal)
 
+        } else {
+            let image = UIImage(named: "Heart-purple")
+            likeButton.setImage(image, for: .normal)
         }
+
     }
 
 }

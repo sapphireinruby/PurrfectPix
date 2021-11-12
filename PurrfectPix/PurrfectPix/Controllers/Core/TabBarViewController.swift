@@ -12,24 +12,12 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        UserDefaults.standard.setValue("lucky77@fake.com", forKey: "email")
-//        UserDefaults.standard.setValue("luck77", forKey: "username")
-//        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
-
-        // 以下native sign in 使用
-//        guard let userID = UserDefaults.standard.string(forKey: "userID"),
-//              let email = UserDefaults.standard.string(forKey: "email"),
-//              let username = UserDefaults.standard.string(forKey: "username") else {
-//
-//                  return
-//        }
         // 以下 apple ID sign in 使用
         guard let userID = AuthManager.shared.userID,
               let username = AuthManager.shared.username,
               let userEmail = AuthManager.shared.email else { return }
 
-
-        let currentUser = User(userID: userID, username: username, email: userEmail, profilePic: "", following: [String](), followers: [String](), blocking: [String](), logInCount: 0)
+        let currentUser = User(username: username, email: userEmail, profilePic: "")
 
         // define VCs
         let home = HomeViewController()

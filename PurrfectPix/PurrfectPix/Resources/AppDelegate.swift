@@ -26,9 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // 以下兩行會每次開app 先登出使用者登出
 
-        do { try Auth.auth().signOut() }
-        catch{
-        }
+//        do { try Auth.auth().signOut() }
+//        catch{
+//        }
 
 
         return true

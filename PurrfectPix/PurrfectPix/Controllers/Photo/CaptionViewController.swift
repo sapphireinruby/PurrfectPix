@@ -211,7 +211,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
         let timeStamp = Date().timeIntervalSince1970
         let randomNumber = Int.random(in: 0...1000)
-        let userID = AuthManager.shared.userID
+        guard let userID = AuthManager.shared.userID else { return "" }
 
 //        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
 //            return nil

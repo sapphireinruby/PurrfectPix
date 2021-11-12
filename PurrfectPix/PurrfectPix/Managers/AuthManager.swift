@@ -14,6 +14,8 @@ final class AuthManager {
     // Shared instanece
     static let shared = AuthManager()
 
+    var user: User?
+
     // Private constructor
     private init() {}
 
@@ -55,7 +57,6 @@ final class AuthManager {
 
  // for stored property
 
-
     // Attempt sign in
     // - Parameters:
     //   - email: Email of user
@@ -80,11 +81,6 @@ final class AuthManager {
                     return
                 }
 
-
-
-//                UserDefaults.standard.setValue(user.userID, forKey: "userID")
-//                UserDefaults.standard.setValue(user.email, forKey: "email")
-//                UserDefaults.standard.setValue(user.username, forKey: "username")
                 completion(.success(user))
             }
         }
@@ -122,10 +118,10 @@ final class AuthManager {
             changeRequest?.commitChanges { error in
             }
 
-
             guard let userID = result?.user.uid else { return }
 
-            let newUser = User(userID: userID, username: username, email: email, profilePic: "", following: [String](), followers: [String](), blocking: [String](), logInCount: 0)
+            var newUser = User(username: username, email: email, profilePic: "", logInCount: 0)
+            newUser.userID = userID
 
             DatabaseManager.shared.createUser(newUser: newUser) { success in
                 if success {
@@ -136,14 +132,12 @@ final class AuthManager {
                         if uploadSuccess {
 
                             completion(.success(newUser))
-                        }
-                        else {
+                        } else {
                             guard let error = error else { return }
                             completion(.failure(error))
                         }
                     }
-                }
-                else {
+                } else {
                     guard let error = error else { return }
                     completion(.failure(AuthError.newUserCreation))
                 }

@@ -41,7 +41,9 @@
 		A780736A272A01E600468B30 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7807369272A01E600468B30 /* Media.xcassets */; };
 		A7A44E39272ED237005ECBF5 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */; };
 		A7AFC766273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC765273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift */; };
-		A7AFC768273FD37F000FDF28 /*  ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC767273FD37F000FDF28 /*  ProfileHeaderViewModel.swift */; };
+		A7AFC768273FD37F000FDF28 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC767273FD37F000FDF28 /* ProfileHeaderViewModel.swift */; };
+		A7AFC76A273FEAB6000FDF28 /* ProfileHeaderCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC769273FEAB6000FDF28 /* ProfileHeaderCountView.swift */; };
+		A7AFC76C273FFC3B000FDF28 /* ProfileHeaderCountViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC76B273FFC3B000FDF28 /* ProfileHeaderCountViewViewModel.swift */; };
 		A7BC5E1027220A0C00010F52 /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */; };
 		A7BC5E122722109400010F52 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */; };
 		A7BCBC70272FD5C10005D7BE /* 890-loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = A7BCBC6F272FD5C10005D7BE /* 890-loading-animation.json */; };
@@ -110,7 +112,9 @@
 		A7807369272A01E600468B30 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		A7AFC765273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
-		A7AFC767273FD37F000FDF28 /*  ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ProfileHeaderViewModel.swift"; sourceTree = "<group>"; };
+		A7AFC767273FD37F000FDF28 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
+		A7AFC769273FEAB6000FDF28 /* ProfileHeaderCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCountView.swift; sourceTree = "<group>"; };
+		A7AFC76B273FFC3B000FDF28 /* ProfileHeaderCountViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCountViewViewModel.swift; sourceTree = "<group>"; };
 		A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
 		A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7BCBC6F272FD5C10005D7BE /* 890-loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "890-loading-animation.json"; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 				A77A1EC5271F8F1F0072A1F6 /* Home Cells */,
 				A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */,
 				A719A56C273E42F600EE6BE1 /* ListUserTableViewCell.swift */,
+				A7AFC769273FEAB6000FDF28 /* ProfileHeaderCountView.swift */,
 				A7AFC765273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift */,
 				A7DDDEFE271B2E7500F28B24 /* LaunchScreen.storyboard */,
 				A780736027259E9200468B30 /* SignInHeaderView.swift */,
@@ -293,9 +298,10 @@
 				A77A1EB9271F7FC70072A1F6 /* PostPetTagCollectionViewCellViewModel.swift */,
 				A719A56E273E438E00EE6BE1 /* ListUserTableViewCellViewModel.swift */,
 				A77A1EB7271F7F8E0072A1F6 /* PostCollectionViewCellViewModel.swift */,
-				A7AFC767273FD37F000FDF28 /*  ProfileHeaderViewModel.swift */,
+				A7AFC767273FD37F000FDF28 /* ProfileHeaderViewModel.swift */,
 				A77A1EBB271F7FF00072A1F6 /* PostActionsCollectionViewCellViewModel.swift */,
 				A77A1EBD271F80120072A1F6 /* PostLikesCollectionViewCellViewModel.swift */,
+				A7AFC76B273FFC3B000FDF28 /* ProfileHeaderCountViewViewModel.swift */,
 				A77A1EBF271F80440072A1F6 /* PostCaptionCollectionViewCellViewModel.swift */,
 				A77A1EC1271F80760072A1F6 /* PostDatetimeCollectionViewCellViewModel.swift */,
 			);
@@ -527,6 +533,7 @@
 				A719A56D273E42F600EE6BE1 /* ListUserTableViewCell.swift in Sources */,
 				A7DDDF56271D9E1A00F28B24 /* DatabaseManager.swift in Sources */,
 				A7DDDF3D271D9A6600F28B24 /* SignInViewController.swift in Sources */,
+				A7AFC76C273FFC3B000FDF28 /* ProfileHeaderCountViewViewModel.swift in Sources */,
 				A7DDDF58271D9E2800F28B24 /* StorageManager.swift in Sources */,
 				A7DDDF52271D9BE400F28B24 /* Notification.swift in Sources */,
 				A7DDDF44271D9AEE00F28B24 /* ListViewController.swift in Sources */,
@@ -575,7 +582,8 @@
 				A7DDDEF4271B2E7200F28B24 /* AppDelegate.swift in Sources */,
 				A7DDDEF6271B2E7200F28B24 /* SceneDelegate.swift in Sources */,
 				A74012B2273B3048007B91F4 /* CommentNotificationTableViewCell.swift in Sources */,
-				A7AFC768273FD37F000FDF28 /*  ProfileHeaderViewModel.swift in Sources */,
+				A7AFC768273FD37F000FDF28 /* ProfileHeaderViewModel.swift in Sources */,
+				A7AFC76A273FEAB6000FDF28 /* ProfileHeaderCountView.swift in Sources */,
 				A77A1ED1271F91BA0072A1F6 /* PostCaptionCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

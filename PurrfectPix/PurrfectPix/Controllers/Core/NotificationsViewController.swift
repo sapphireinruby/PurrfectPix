@@ -10,7 +10,6 @@ import Lottie
 
 class NotificationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-
     private let noActivityLabel: UILabel = {
         let label = UILabel()
         label.text = "No Notifications"

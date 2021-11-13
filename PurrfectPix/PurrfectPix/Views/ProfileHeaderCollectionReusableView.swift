@@ -21,8 +21,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         return imageView
     }()
 
-
-    public let countContainerView = ProfileHeaderCountView()
+    public let countContainerView = ProfileHeaderCountView()  // make it public so ProfileVC can use it
 
     private let bioLabel: UILabel = {
 //        guard let username = AuthManager.shared.username else {return }
@@ -39,6 +38,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         // header count
         addSubview(countContainerView)
         addSubview(imageView)
+        addSubview(bioLabel)
     }
 
     required init?(coder: NSCoder) {
@@ -48,21 +48,21 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let imageSize: CGFloat = width/3.5
-        imageView.frame = CGRect(x: 4, y: 4, width: imageSize, height: imageSize)
+        imageView.frame = CGRect(x: 16, y: 4, width: imageSize, height: imageSize)
         imageView.layer.cornerRadius = imageSize/2
         countContainerView.frame = CGRect(
-            x: imageView.right+4,
+            x: imageView.right+8,
             y: 3,
-            width: width-imageView.right-8,
+            width: width-imageView.right-24,
             height: imageSize
         )
         let bioSize = bioLabel.sizeThatFits(
             bounds.size
         )
         bioLabel.frame = CGRect(
-            x: 4,
+            x: 16,
             y: imageView.bottom+8,
-            width: width-8,
+            width: width-32,
             height: bioSize.height+40
         )
     }

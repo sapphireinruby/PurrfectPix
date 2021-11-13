@@ -9,7 +9,7 @@ import UIKit
 
 protocol PostLikesCollectionViewCellDelegate: AnyObject {
 
-    func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell)
+    func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell, index: Int)
 }
 
 
@@ -41,7 +41,8 @@ class PostLikesCollectionViewCell: UICollectionViewCell {
     }
 
     @objc func didTapLabel() {
-        delegate?.postLikesCollectionViewCellDidTapLikeCount(self)
+//        delegate?.postLikesCollectionViewCellDidTapLikeCount(self, index: 3)
+        // 問collection view 找這個cell 的位置,  目前找不到 所以先槓槓起來
     }
 
 

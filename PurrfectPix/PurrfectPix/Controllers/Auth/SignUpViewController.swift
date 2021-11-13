@@ -168,6 +168,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         usernameField.resignFirstResponder()
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
+        
+//        // lottie for loding
+//        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+//        animationView.play()
 
         guard let username = usernameField.text,
               let email = emailField.text,

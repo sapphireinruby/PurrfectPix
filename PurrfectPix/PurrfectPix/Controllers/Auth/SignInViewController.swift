@@ -141,6 +141,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
     func performSignIn() {
 
+        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+        animationView.play()
+
         let request = createAppleIDRequest()
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
@@ -283,7 +286,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 //    }
 
     @objc func didTapPrivacy() {
-        guard let url = URL(string: "https://") else {
+        guard let url = URL(string: "https://www.privacypolicies.com/live/dd1fde8e-ef94-48a1-8b08-49b95c29ac5e") else {
             return
         }
         let vcSF = SFSafariViewController(url: url)
@@ -337,12 +340,16 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                                  let email = appleIDCredential.email,
                                  let userID = Auth.auth().currentUser?.uid {
 
+                                  var userInfo = User(username: username, email: email, profilePic: "", logInCount: 0)
+
                                   let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                                   changeRequest?.displayName = username
                                   changeRequest?.commitChanges { error in
                                   }
-                                  // swiftlint:disable line_length
-                                  let newAppleUser = User(userID: userID, username: username, email: email, profilePic: "", following: [String](), followers: [String](), blocking: [String](), logInCount: 0)
+
+                                  CacheUserInfo.shared.cache[userID] = userInfo
+
+                                  let newAppleUser = User(username: username, email: email, profilePic: "")
                                   DatabaseManager.shared.createUser(newUser: newAppleUser) { isSuccess in
                                       if isSuccess {
                                           print("New Apple User username in database is now \(newAppleUser.username)")
@@ -355,9 +362,6 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
 
 //                              DispatchQueue.main.async {
 //                                     // HapticManager
-////
-////                                  UserDefaults.standard.setValue(email, forKey: "email")
-////                                  UserDefaults.standard.setValue(username, forKey: "username")
 
                                   // if sign in success, present home screen
                                   let vcTabBar = TabBarViewController()
@@ -367,13 +371,11 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                                       animated: true,
                                       completion: nil
                                   )
-//                                  }
 
                               print ("Nice! You're signed in with AppleID as \(user.uid), email:\(user.email ?? "email unknow")")
                           } else {
 
                               print("\n\n Sign In with AppleID Error: \(error)")
-
                           }
                       }
           // User is signed in to Firebase with Apple.

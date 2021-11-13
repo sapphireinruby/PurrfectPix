@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		27713F9669579C90492BBBDF /* Pods_PurrfectPix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F323A3915F60723F494B48F /* Pods_PurrfectPix.framework */; };
+		A719A56D273E42F600EE6BE1 /* ListUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A719A56C273E42F600EE6BE1 /* ListUserTableViewCell.swift */; };
+		A719A56F273E438E00EE6BE1 /* ListUserTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A719A56E273E438E00EE6BE1 /* ListUserTableViewCellViewModel.swift */; };
 		A7315CFE271E250C00B58879 /* HomeFeedCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7315CFD271E250C00B58879 /* HomeFeedCellType.swift */; };
 		A7315D00271E27C300B58879 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7315CFF271E27C300B58879 /* Comment.swift */; };
 		A74012AE273B2F84007B91F4 /* FollowNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74012AD273B2F84007B91F4 /* FollowNotificationTableViewCell.swift */; };
@@ -73,6 +75,8 @@
 		0F323A3915F60723F494B48F /* Pods_PurrfectPix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PurrfectPix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AFFA76A82F4F0AB43049356 /* Pods-PurrfectPix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PurrfectPix.debug.xcconfig"; path = "Target Support Files/Pods-PurrfectPix/Pods-PurrfectPix.debug.xcconfig"; sourceTree = "<group>"; };
 		7E2172BFB59D3EFF94B8CD88 /* Pods-PurrfectPix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PurrfectPix.release.xcconfig"; path = "Target Support Files/Pods-PurrfectPix/Pods-PurrfectPix.release.xcconfig"; sourceTree = "<group>"; };
+		A719A56C273E42F600EE6BE1 /* ListUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUserTableViewCell.swift; sourceTree = "<group>"; };
+		A719A56E273E438E00EE6BE1 /* ListUserTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUserTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		A7315CFD271E250C00B58879 /* HomeFeedCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedCellType.swift; sourceTree = "<group>"; };
 		A7315CFF271E27C300B58879 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A74012AD273B2F84007B91F4 /* FollowNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowNotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 				A74012AC273B2F5F007B91F4 /* Notification Cells */,
 				A77A1EC5271F8F1F0072A1F6 /* Home Cells */,
 				A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */,
+				A719A56C273E42F600EE6BE1 /* ListUserTableViewCell.swift */,
 				A7DDDEFE271B2E7500F28B24 /* LaunchScreen.storyboard */,
 				A780736027259E9200468B30 /* SignInHeaderView.swift */,
 				A78073622725A11400468B30 /* UserTextField.swift */,
@@ -281,6 +286,7 @@
 				A77A1EB5271F7F730072A1F6 /* PosterCollectionViewCellViewModel.swift */,
 				A74012B7273B3269007B91F4 /* NotificationCellViewModels.swift */,
 				A77A1EB9271F7FC70072A1F6 /* PostPetTagCollectionViewCellViewModel.swift */,
+				A719A56E273E438E00EE6BE1 /* ListUserTableViewCellViewModel.swift */,
 				A77A1EB7271F7F8E0072A1F6 /* PostCollectionViewCellViewModel.swift */,
 				A77A1EBB271F7FF00072A1F6 /* PostActionsCollectionViewCellViewModel.swift */,
 				A77A1EBD271F80120072A1F6 /* PostLikesCollectionViewCellViewModel.swift */,
@@ -512,6 +518,7 @@
 				A77A1EC7271F8F930072A1F6 /* PosterCollectionViewCell.swift in Sources */,
 				A77A1ECF271F91AA0072A1F6 /* PostLikesCollectionViewCell.swift in Sources */,
 				A7DDDF42271D9ACA00F28B24 /* CaptionViewController.swift in Sources */,
+				A719A56D273E42F600EE6BE1 /* ListUserTableViewCell.swift in Sources */,
 				A7DDDF56271D9E1A00F28B24 /* DatabaseManager.swift in Sources */,
 				A7DDDF3D271D9A6600F28B24 /* SignInViewController.swift in Sources */,
 				A7DDDF58271D9E2800F28B24 /* StorageManager.swift in Sources */,
@@ -544,6 +551,7 @@
 				A77A1EBE271F80120072A1F6 /* PostLikesCollectionViewCellViewModel.swift in Sources */,
 				A77A1EB8271F7F8E0072A1F6 /* PostCollectionViewCellViewModel.swift in Sources */,
 				A7DDDF33271BD94E00F28B24 /* ExploreViewController.swift in Sources */,
+				A719A56F273E438E00EE6BE1 /* ListUserTableViewCellViewModel.swift in Sources */,
 				A7BC5E1027220A0C00010F52 /* PostEditViewController.swift in Sources */,
 				A77A1EB6271F7F730072A1F6 /* PosterCollectionViewCellViewModel.swift in Sources */,
 				A74012B8273B3269007B91F4 /* NotificationCellViewModels.swift in Sources */,

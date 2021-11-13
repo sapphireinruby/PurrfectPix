@@ -14,6 +14,7 @@ final class PurrFollowButton: UIButton {
         case unfollow = "Unfollow"
 
         var titleColor: UIColor {
+            
             switch self {
             case .follow: return .white
             case .unfollow: return .label

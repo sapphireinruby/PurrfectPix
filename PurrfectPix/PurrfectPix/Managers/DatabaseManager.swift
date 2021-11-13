@@ -44,34 +44,6 @@ final class DatabaseManager {
         }
     }
 
-    // MARK: Search under Explore VC: Find user with username
-    // - Parameters:
-    //   - username: Source username
-    //   - completion: Result callback
-    public func findUsers(
-        username: String,
-        completion: @escaping ([User]) -> Void) {
-
-        let ref = database.collection("users")
-        ref.getDocuments { snapshot, error in
-            guard let users = snapshot?.documents.compactMap({ User(with: $0.data()) }),
-                  error == nil else {
-                completion([])
-                return
-            }
-
-            let subuset = users.filter({
-                $0.username.lowercased().hasPrefix(username.lowercased())
-            })
-            completion(subuset)
-//
-//
-//            let user = users.first(
-//                // 邏輯要改
-//                where: { $0.username == username })
-//            completion([user])
-        }
-    }
 
     // Create new post
     // - Parameters:
@@ -98,6 +70,7 @@ final class DatabaseManager {
                 }
             }
         } catch {
+            print("Create post error")
 
         }
     }
@@ -120,6 +93,28 @@ final class DatabaseManager {
         }
     }
 
+
+    // userID to find user infos
+
+    public func fetchUser(
+        userID: String,
+        completion: @escaping (User) -> Void
+    ) {
+        let ref = database.collection("users").document(userID)
+        ref.getDocument { snapshot, error in
+            guard let snapshot = snapshot else { return }
+            guard let user = User(with: snapshot.data()!) else {
+                return
+            }
+            completion(user)
+
+        }
+
+    }
+
+
+
+// MARK: Explore tab ralated:
     // Gets posts for explore page
     // - Parameter completion: Result callback
 
@@ -144,11 +139,34 @@ final class DatabaseManager {
     }
 
 
+    // - Parameters:
+    //   - username: Source username
+    //   - completion: Result callback
+    public func findUsers(
+        username: String,
+        completion: @escaping ([User]) -> Void) {
+
+        let ref = database.collection("users")
+        ref.getDocuments { snapshot, error in
+            guard let users = snapshot?.documents.compactMap({ User(with: $0.data()) }),
+                  error == nil else {
+                completion([])
+                return
+            }
+
+            let subuser = users.filter({
+                $0.username.lowercased().hasPrefix(username.lowercased())
+            })
+            completion(subuser)
+
+        }
+    }
+
     // Find single user with email
     // - Parameters:
     //   - email: Source email
     //   - completion: Result callback
-    
+
     public func findUser(with email: String, completion: @escaping (User?) -> Void) {
         
         let ref = database.collection("users")
@@ -170,18 +188,26 @@ final class DatabaseManager {
     //   - completion: Result callback
     public func following(for userID: String, completion: @escaping ([String]) -> Void) {
         
-        let ref = database.collection("users")
-            .document(userID)
-            .collection("following")
-        ref.getDocuments { snapshot, error in
-            guard let username = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
-                completion([])
-                return
+        let ref = database.collection("users").document(userID)
+
+        ref.getDocument { (querySnapshot, error) in
+            if let user = try? querySnapshot?.data(as: User.self) {
+
+                var usernames = [String]()
+
+                user.following?.forEach({ userID in
+                    self.fetchUser(userID: userID) { user in
+                        usernames.append(user.username)
+                    }
+                })
+                completion(usernames)
+            } else {
+              print("Can't fetch user info QQ")
             }
-            completion(username)
         }
     }
-
+    
+    
 
     // MARK: notification related
 
@@ -221,7 +247,7 @@ final class DatabaseManager {
     ) {
         let ref = database
             .collection("notifications")
-            .document(identifier) // an unique string for each notification
+            .document(identifier) // an unique id for each notification
         ref.setData(data)
     }
 
@@ -277,14 +303,6 @@ final class DatabaseManager {
         case .unfollow:
             // 1. Remove follower for currentUser following list, delete targetUserID from 自己的 following array
 
-//            if following.contains(targetUserID) {
-//
-//            let index = following.firstIndex(of: following)
-////                following.remove(at: index!)
-//            }
-//
-//                let user = User(userID: user.userID, username: user.username, email: user.email, profilePic: user.profilePic, following: user.following?.remove(at: index), followers: user.followers, logInCount: user.logInCount)
-
             currentFollowing.updateData([
                    "following": FieldValue.arrayRemove(["targetUserID"])
                ])
@@ -313,8 +331,7 @@ final class DatabaseManager {
         case .follow:
             // 1. Add target user to self's following list 加入對方到自己的 追蹤中 currentFollowing
 
-
-            currentFollowing.updateData([
+           currentFollowing.updateData([
                    "followers" : FieldValue.arrayUnion(["targetUserID"])
                ])
         do {
@@ -324,10 +341,9 @@ final class DatabaseManager {
             print("Follow target user fails")
         }
 
-
            // 2. Add currentUser to targetUser followers list 加入自己成對方的追蹤者 targetUserFollowers
             targetUserFollowers.updateData([
-                   "followers" : FieldValue.arrayUnion(["currentUserID"])
+             "followers" : FieldValue.arrayUnion(["currentUserID"])
                ])
             do {
                 try targetUserFollowers.setData(from: user)
@@ -562,35 +578,32 @@ final class DatabaseManager {
     public func updateLikeState(
         state: LikeState,
         postID: String,
-        owner: String,
         completion: @escaping (Bool) -> Void
-    ) {
-        guard let currentUserID =  AuthManager.shared.userID else { return }
-        let ref = database.collection("posts")
-            .document(postID)
-        getPost(with: postID) { post in
-            guard var post = post else {
+    ){
+
+        let ref = database.collection("posts").document(postID)
+        guard let currentUserID = AuthManager.shared.userID else {
                 completion(false)
-                return
-            }
+                return }
 
             switch state {
-            case .like:
-                if !post.likers.contains(currentUserID) {
-                    post.likers.append(currentUserID)
-                }
             case .unlike:
-                post.likers.removeAll(where: { $0 == currentUserID })
-            }
+                // 1. Remove currentUser from likers list array
+                ref.updateData([
+                       "likers": FieldValue.arrayRemove([currentUserID])
+                   ])
 
-            guard let data = post.asDictionary() else {
-                completion(false)
-                return
-            }
-            ref.setData(data) { error in
-                completion(error == nil)
+                completion(true)
+
+            case .like:
+                // Add currentUser ID to the post likers list array
+
+               ref.updateData([
+                       "likers": FieldValue.arrayUnion([currentUserID])
+                   ])
+
+                completion(true)
             }
         }
-    }
-    
+
 }

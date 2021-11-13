@@ -29,7 +29,7 @@ class TabBarViewController: UITabBarController {
               let userEmail = AuthManager.shared.email else { return }
 
 
-        let currentUser = User(userID: userID, username: username, email: userEmail, profilePic: "", followingUsers: [String](), logInCount: 0)
+        let currentUser = User(userID: userID, username: username, email: userEmail, profilePic: "", following: [String](), followers: [String](), blocking: [String](), logInCount: 0)
 
         // define VCs
         let home = HomeViewController()

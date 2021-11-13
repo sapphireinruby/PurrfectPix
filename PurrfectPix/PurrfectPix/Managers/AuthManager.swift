@@ -125,7 +125,7 @@ final class AuthManager {
 
             guard let userID = result?.user.uid else { return }
 
-            let newUser = User(userID: userID, username: username, email: email, profilePic: "", followingUsers: [String](), logInCount: 0)
+            let newUser = User(userID: userID, username: username, email: email, profilePic: "", following: [String](), followers: [String](), blocking: [String](), logInCount: 0)
 
             DatabaseManager.shared.createUser(newUser: newUser) { success in
                 if success {

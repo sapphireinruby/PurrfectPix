@@ -32,11 +32,11 @@ class TabBarViewController: UITabBarController {
         let nav4 = UINavigationController(rootViewController: activity)
         let nav5 = UINavigationController(rootViewController: profile)
 
-        nav1.navigationBar.tintColor = .label
-        nav2.navigationBar.tintColor = .label
-        nav3.navigationBar.tintColor = .label
-        nav4.navigationBar.tintColor = .label
-        nav5.navigationBar.tintColor = .label
+        nav1.navigationBar.tintColor = .P1
+        nav2.navigationBar.tintColor = .P1
+        nav3.navigationBar.tintColor = .P1
+        nav4.navigationBar.tintColor = .P1
+        nav5.navigationBar.tintColor = .P1
 
         // Define tab items
         nav1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1 )

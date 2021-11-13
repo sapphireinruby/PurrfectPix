@@ -14,7 +14,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     private let noActivityLabel: UILabel = {
         let label = UILabel()
         label.text = "No Notifications"
-        label.textColor = .secondaryLabel
+        label.textColor = .P1
         label.textAlignment = .center
         label.isHidden = true
         return label

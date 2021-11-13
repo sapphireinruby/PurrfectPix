@@ -76,6 +76,29 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
 
+    // register reuseable header cell
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        guard kind == UICollectionView.elementKindSectionHeader,
+              let headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: ProfileHeaderCollectionReusableView.identifier,
+                for: indexPath
+              ) as? ProfileHeaderCollectionReusableView else {
+            return UICollectionReusableView()
+        }
+//            headerView.configure(with: viewModel)
+        return headerView
+
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+//        let post = posts[indexPath.row]
+//        let vc = PostViewController(post: post)
+//        navigationController?.pushViewController(vc, animated: true)
+    }
+
 }
 
 extension ProfileViewController{
@@ -116,6 +139,12 @@ extension ProfileViewController{
         )
         collectionView.register(PhotoCollectionViewCell.self,
                                 forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+
+        collectionView.register(
+            ProfileHeaderCollectionReusableView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: ProfileHeaderCollectionReusableView.identifier
+        )
 
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self

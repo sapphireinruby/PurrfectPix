@@ -17,6 +17,8 @@ class ProfileViewController: UIViewController {
 
     private var collectionView: UICollectionView?
 
+    private var headerViewModel: ProfileHeaderViewModel?
+
     // MARK: - Init
     init(user: User) {
         self.user = user
@@ -38,15 +40,65 @@ class ProfileViewController: UIViewController {
     }
 
     private func fetchProfileInfo() {
-         // 3 types of counts
-        // Bio, username
-        // profilePictureURL
-        StorageManager.shared.profilePictureURL(for: user.username) { url
-            in
-        }
+
+        headerViewModel = ProfileHeaderViewModel(
+            profilePictureUrl: nil,
+            followerCount: 23,
+            followingICount: 17,
+            postCount: 16,
+            buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: true) ,
+            username: "Amberlala",
+            bio: "Check out me and my puppy ZumZum"
+        )
+
+        // to store Profiel Header Info
+        var profilePictureUrl = "" // 好像都沒存進去
+        var buttonType: ProfileButtonType = .edit
+        var username: String?
+        var bio: String?
+
+        var followerCount = 0
+        var followingCount = 0
+        var postCount = 0
+
+        let group = DispatchGroup() // fet all the info, then present it
+        group.enter()
+
+//        // hide container view
+//        DatabaseManager.shared.getUserInfo(userID: user.userID) { userInfo in
+//            // 3 types of counts, following, followers, and posts
+//            followerCount = userInfo?.followerCount ?? 0
+//            followingCount = userInfo?.followingCount ?? 0
+//            postCount = userInfo?.postCount ?? 0
+//
+//            // Bio, username
+//            username = userInfo?.username ?? ""
+//            bio = userInfo?.bio ?? "Introduce your pet to everyone!"
+//
+//            // profilePictureURL
+//            profilePictureUrl = userInfo?.profilePic ?? ""
+//        }
+
+
         // if not current user's profile, get follow state
         if !isCurrentUser{
+            // need to get if the current user is following the perofile user account
+            group.enter()
+            DatabaseManager.shared.isFollowing(targetUserID: user.username) { isFollowing in
+                // isFollowing  function需要修改
+                defer {
+                    group.leave()
+                }
+                print(isFollowing)
+                buttonType = .follow(isFollowing: isFollowing)
+            }
+        }
 
+        group.notify(queue: .main) {
+            // swiftlint:disable line_length
+            self.headerViewModel = ProfileHeaderViewModel(profilePictureUrl: URL(string: profilePictureUrl), followerCount: followerCount, followingICount: followingCount, postCount: postCount, buttonType: .edit, username: username, bio: bio
+            )
+            self.collectionView?.reloadData()
         }
 
     }
@@ -102,22 +154,21 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
               ) as? ProfileHeaderCollectionReusableView else {
             return UICollectionReusableView()
         }
-//        if let viewModel = headerViewModel {
-//            headerView.configure(with: viewModel)
-//            headerView.countContainerView.delegate = self
-//        }
+        if let viewModel = headerViewModel {
+            headerView.configure(with: viewModel)
+            headerView.countContainerView.delegate = self
+        }
 
         let viewModel = ProfileHeaderViewModel(
             profilePictureUrl: nil,
             followerCount: 23,
             followingICount: 17,
-            postCount: 16,
-            buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: true) ,
-            name: "Zoe13",
-            bio: "Check out my puppy ZumZum")
+            postCount: 6,
+            buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: true),
+            username: "Elionono",
+            bio: "Check out my cute puppy Dodo"
+        )
 
-        headerView.configure(with: viewModel)
-        headerView.countContainerView.delegate = self
         return headerView
     }
 
@@ -147,6 +198,15 @@ extension ProfileViewController: ProfileHeaderCountViewDelegate {
 
     func profileHeaderCountViewDidTapEditProfile(_ containerView: ProfileHeaderCountView) {
 
+        let vc = EditProfileViewController()
+        vc.completion = { [weak self] in
+            // refetch/reload hearder info
+            self?.headerViewModel = nil
+            self?.fetchProfileInfo()
+        }
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC, animated: true)
+
     }
 
     func profileHeaderCountViewDidTapFollow(_ containerView: ProfileHeaderCountView) {
@@ -154,7 +214,7 @@ extension ProfileViewController: ProfileHeaderCountViewDelegate {
     }
 
     func profileHeaderCountViewDidTapUnFollow(_ containerView: ProfileHeaderCountView) {
-        
+
     }
 
 

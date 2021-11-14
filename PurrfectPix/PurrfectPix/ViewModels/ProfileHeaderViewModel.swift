@@ -8,18 +8,18 @@
 import Foundation
 
     enum ProfileButtonType {
-        case edit
-        case follow(isFollowing: Bool)
+        case edit // for viewing self's profile
+        case follow(isFollowing: Bool) // for others profile
     }
 
-
     struct ProfileHeaderViewModel {
+
         let profilePictureUrl: URL?
         let followerCount: Int
         let followingICount: Int
         let postCount: Int
         let buttonType: ProfileButtonType
-        let name: String?
+        let username: String?
         let bio: String?
 
 }

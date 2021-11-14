@@ -9,14 +9,18 @@ import Foundation
 
 struct User: Codable {
 
-    var userID: String  // generate from firebase
+    var userID: String  // the document ID generate from firebase
     var username: String
     var email: String
+    var bio: String?
     var profilePic: String?
 
     // community
     var following: [String]?
-    var followers: [String]?
+    var followingCount: Int?
+    var follower: [String]?
+    var followerCount: Int?
+    var postCount: Int?
     var blocking: [String]?
     var logInCount: Int?
 
@@ -27,13 +31,18 @@ struct User: Codable {
         profilePic: String?,
         logInCount: Int = 0
     )
+
     {
         self.userID = ""
         self.username = username
         self.email = email
+        self.bio = ""
         self.profilePic = profilePic
         self.following = []
-        self.followers = []
+        self.followingCount = 0
+        self.follower = []
+        self.followerCount = 0
+        self.postCount = 0
         self.blocking = []
         self.logInCount = logInCount
     }

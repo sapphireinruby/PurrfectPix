@@ -44,6 +44,7 @@
 		A7AFC768273FD37F000FDF28 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC767273FD37F000FDF28 /* ProfileHeaderViewModel.swift */; };
 		A7AFC76A273FEAB6000FDF28 /* ProfileHeaderCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC769273FEAB6000FDF28 /* ProfileHeaderCountView.swift */; };
 		A7AFC76C273FFC3B000FDF28 /* ProfileHeaderCountViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC76B273FFC3B000FDF28 /* ProfileHeaderCountViewViewModel.swift */; };
+		A7AFC76E274125DA000FDF28 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC76D274125D9000FDF28 /* EditProfileViewController.swift */; };
 		A7BC5E1027220A0C00010F52 /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */; };
 		A7BC5E122722109400010F52 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */; };
 		A7BCBC70272FD5C10005D7BE /* 890-loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = A7BCBC6F272FD5C10005D7BE /* 890-loading-animation.json */; };
@@ -115,6 +116,7 @@
 		A7AFC767273FD37F000FDF28 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		A7AFC769273FEAB6000FDF28 /* ProfileHeaderCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCountView.swift; sourceTree = "<group>"; };
 		A7AFC76B273FFC3B000FDF28 /* ProfileHeaderCountViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCountViewViewModel.swift; sourceTree = "<group>"; };
+		A7AFC76D274125D9000FDF28 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		A7BC5E0F27220A0C00010F52 /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
 		A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7BCBC6F272FD5C10005D7BE /* 890-loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "890-loading-animation.json"; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				A7DDDF49271D9B2C00F28B24 /* SettingsViewController.swift */,
+				A7AFC76D274125D9000FDF28 /* EditProfileViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				A7DDDF52271D9BE400F28B24 /* Notification.swift in Sources */,
 				A7DDDF44271D9AEE00F28B24 /* ListViewController.swift in Sources */,
 				A74012B4273B3144007B91F4 /* NotificationsManager.swift in Sources */,
+				A7AFC76E274125DA000FDF28 /* EditProfileViewController.swift in Sources */,
 				A7DDDF46271D9AF900F28B24 /* PostViewController.swift in Sources */,
 				A74012AE273B2F84007B91F4 /* FollowNotificationTableViewCell.swift in Sources */,
 				A78073632725A11400468B30 /* UserTextField.swift in Sources */,

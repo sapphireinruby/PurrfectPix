@@ -125,7 +125,7 @@ class ProfileHeaderCountView: UIView {
         followingCountButton.frame = CGRect(x: followerCountButton.right+4, y: 4, width: buttonWidth, height: height/2)
         postCountButton.frame = CGRect(x: followingCountButton.right+4, y: 4, width: buttonWidth, height: height/2)
 
-        actionButton.frame = CGRect(x: 4, y: height-42, width: width-8, height: 40)
+        actionButton.frame = CGRect(x: 4, y: height-42, width: width-4, height: 40)
     }
 
     func configure(with viewModel: ProfileHeaderCountViewViewModel) {

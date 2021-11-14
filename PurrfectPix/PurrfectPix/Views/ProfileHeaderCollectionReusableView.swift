@@ -36,6 +36,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         // header count
+
         addSubview(countContainerView)
         addSubview(imageView)
         addSubview(bioLabel)
@@ -47,23 +48,28 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+
+        // profile picture
         let imageSize: CGFloat = width/3.5
         imageView.frame = CGRect(x: 16, y: 4, width: imageSize, height: imageSize)
         imageView.layer.cornerRadius = imageSize/2
+
+        // 3 profile counts and profile button: edit or follow
         countContainerView.frame = CGRect(
             x: imageView.right+8,
             y: 3,
             width: width-imageView.right-24,
             height: imageSize
         )
+
         let bioSize = bioLabel.sizeThatFits(
             bounds.size
         )
         bioLabel.frame = CGRect(
             x: 16,
-            y: imageView.bottom+8,
-            width: width-32,
-            height: bioSize.height+40
+            y: imageView.bottom + 8,
+            width: width - 32,
+            height: bioSize.height + 40
         )
     }
 
@@ -79,13 +85,14 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
 
         // if there's username, show it before the welcome text
         var text = ""
-        if let name = viewModel.name {
-            text = name + "\n"
+        if let username = viewModel.username {
+            text = username + "\n"
         }
         text += viewModel.bio ?? "Welcome to my profile!"
         bioLabel.text = text
 
-        // Container
+//        // hide container view
+//        // Container
         let containerViewModel = ProfileHeaderCountViewViewModel(
             followerCount: viewModel.followerCount,
             followingCount: viewModel.followingICount,

@@ -383,14 +383,16 @@ final class DatabaseManager {
         userID: String,
         completion: @escaping (User?) -> Void
     ) {
+        guard let userID = AuthManager.shared.userID else { return }
         let ref = database.collection("users").document(userID)
-        ref.getDocument { snapshot, error in
-            guard let data = snapshot?.data(),
-                  let userInfo = User(with: data) else {
-                completion(nil)
+        ref.getDocument { document, error in
+            guard let document = document,
+            document.exists,
+            let user = try? document.data(as: User.self) else{
                 return
             }
-            completion(userInfo)
+
+            completion(user)
         }
     }
 
@@ -402,8 +404,8 @@ final class DatabaseManager {
         guard let userID = AuthManager.shared.userID else {
             return
         }
-        let documentReference = database.collection("users").document(userID)
-        documentReference.getDocument { document, error in
+        let ref = database.collection("users").document(userID)
+        ref.getDocument { document, error in
 
                  guard let document = document,
                        document.exists,
@@ -414,7 +416,7 @@ final class DatabaseManager {
                  user.username = name
                  user.bio = bio
                  do {
-                    try documentReference.setData(from: user)
+                    try ref.setData(from: user)
                  } catch {
                     print(error)
                  }

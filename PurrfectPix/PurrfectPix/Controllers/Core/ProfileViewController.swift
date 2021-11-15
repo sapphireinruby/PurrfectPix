@@ -40,7 +40,8 @@ class ProfileViewController: UIViewController {
     }
 
     private func fetchProfileInfo() {
-
+//        let username = user.username
+        // mock data
         headerViewModel = ProfileHeaderViewModel(
             profilePictureUrl: nil,
             followerCount: 23,
@@ -65,19 +66,19 @@ class ProfileViewController: UIViewController {
         group.enter()
 
 //        // hide container view
-//        DatabaseManager.shared.getUserInfo(userID: user.userID) { userInfo in
-//            // 3 types of counts, following, followers, and posts
-//            followerCount = userInfo?.followerCount ?? 0
-//            followingCount = userInfo?.followingCount ?? 0
-//            postCount = userInfo?.postCount ?? 0
-//
-//            // Bio, username
-//            username = userInfo?.username ?? ""
-//            bio = userInfo?.bio ?? "Introduce your pet to everyone!"
-//
-//            // profilePictureURL
-//            profilePictureUrl = userInfo?.profilePic ?? ""
-//        }
+        DatabaseManager.shared.getUserInfo(userID: user.userID) { userInfo in
+            // 3 types of counts, following, followers, and posts
+            followerCount = userInfo?.followerCount ?? 0
+            followingCount = userInfo?.followingCount ?? 0
+            postCount = userInfo?.postCount ?? 0
+
+            // Bio, username
+            username = userInfo?.username ?? ""
+            bio = userInfo?.bio ?? "Introduce your pet to everyone!"
+
+            // profilePictureURL
+            profilePictureUrl = userInfo?.profilePic ?? ""
+        }
 
 
         // if not current user's profile, get follow state
@@ -96,7 +97,14 @@ class ProfileViewController: UIViewController {
 
         group.notify(queue: .main) {
             // swiftlint:disable line_length
-            self.headerViewModel = ProfileHeaderViewModel(profilePictureUrl: URL(string: profilePictureUrl), followerCount: followerCount, followingICount: followingCount, postCount: postCount, buttonType: .edit, username: username, bio: bio
+            self.headerViewModel = ProfileHeaderViewModel(
+                profilePictureUrl: URL(string: profilePictureUrl),
+                followerCount: 3,
+                followingICount: 4,
+                postCount: 7,
+                buttonType: buttonType,
+                username: username,
+                bio: bio
             )
             self.collectionView?.reloadData()
         }

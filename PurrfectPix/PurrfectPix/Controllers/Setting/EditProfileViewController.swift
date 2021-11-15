@@ -20,8 +20,6 @@ class EditProfileViewController: UIViewController {
 
     private let bioField: UserTextField = {
         let field = UserTextField()
-//        field.textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
-//        field.backgroundColor = .secondarySystemBackground
         field.placeholder = "Tell us about you and your pet here!"
         return field
     }()
@@ -43,8 +41,6 @@ class EditProfileViewController: UIViewController {
             action: #selector(didTapSave))
 
 
-
-
         guard let userID = AuthManager.shared.userID else { return }
         DatabaseManager.shared.getUserInfo(userID: userID) { [weak self] info in
             DispatchQueue.main.async {
@@ -57,23 +53,15 @@ class EditProfileViewController: UIViewController {
         }
     }
 
-//    // placeholder for bio textView
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        // clean placeholder
-//        if textView.text == "Tell us about you and your pet here!" {
-//            textView.text = nil
-//        }
-//    }
-
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        nameField.frame = CGRect(x: 20,
+        nameField.frame = CGRect(x: 24,
                                  y: view.safeAreaInsets.top+10,
-                                 width: view.width-40,
+                                 width: view.width-48,
                                  height: 50)
-        bioField.frame = CGRect(x: 20,
+        bioField.frame = CGRect(x: 24,
                                    y: nameField.bottom+10,
-                                   width: view.width-40,
+                                   width: view.width-48,
                                    height: 120)
     }
 

@@ -162,14 +162,29 @@ class ExploreViewController: UIViewController, UISearchResultsUpdating {
     }
 
 // explore view
-private func fetchData() {
-    DatabaseManager.shared.explorePosts { [weak self] posts in
-//        DispatchQueue.main.async {
-            self?.posts = posts
-            self?.collectionView.reloadData()
-//        }
+    private func fetchData() {
+
+        DatabaseManager.shared.explorePosts { [weak self] posts in
+            //        DispatchQueue.main.async {
+            guard let userID = AuthManager.shared.userID else { return }
+
+            DatabaseManager.shared.fetchUser(userID: userID) { user in
+
+                self?.posts = posts.filter({ post in
+                    guard let blocked = user.blocking else { return true}
+                    // 看黑名單裡面有沒有這個user ID 如果有就不呈現
+                    if blocked.contains(post.userID){
+                        return false
+                    } else {
+                        return true
+                    }
+
+                })
+                self?.collectionView.reloadData() // 要放在這城市裡 要再拿到資料後 才能reload 不會出錯
+            }
+        }
     }
-}
+
 }
 
 extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataSource {

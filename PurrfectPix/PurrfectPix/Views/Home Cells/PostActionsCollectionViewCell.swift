@@ -116,14 +116,14 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         )
 
         commentButton.frame = CGRect(
-            x: likeButton.right + 20,
+            x: likeButton.right + 24,
             y: (contentView.height - size) / 2,
             width: size,
             height: size
         )
 
         shareButton.frame = CGRect(
-            x: commentButton.right + 20,
+            x: commentButton.right + 24,
             y: (contentView.height - size) / 2,
             width: size,
             height: size

@@ -14,7 +14,6 @@ final class AuthManager {
     // Shared instanece
     static let shared = AuthManager()
 
-    var user: User?
 
     // Private constructor
     private init() {}

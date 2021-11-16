@@ -15,7 +15,7 @@ class TabBarViewController: UITabBarController {
     
         // 以下 apple ID sign in  第一次可以，第二次有誤
         guard let userID = AuthManager.shared.userID,
-//              let username = CacheUserInfo.shared.cache[userID]?.username,
+//              let username = AuthManager.shared.username,
               let email = AuthManager.shared.email
         else {
                   print("Create tab bar with user info error")

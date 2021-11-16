@@ -11,6 +11,15 @@ import FirebaseFirestoreSwift
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    private let noPostLabel: UILabel = {
+        let label = UILabel()
+        label.text = "You have no post, tap Camera to create a post or check other pets at Explore! "
+        label.textColor = .P1
+        label.textAlignment = .center
+//        label.isHidden = true
+        return label
+    }()
+
     // CollectionView for feed
     private var collectionView: UICollectionView?
 
@@ -205,6 +214,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             }
         }
+//        if viewModels.isEmpty {
+//            noPostLabel.isHidden = false
+//            collectionView.isHidden = true
+//        }
+//        else {
+//            noPostLabelLabel.isHidden = true
+//            noPostLabel.isHidden = false
+//            collectionView.reloadData()
+//        }
 
     }
 

@@ -35,15 +35,15 @@ final class AuthManager {
 
     var userID: String? {
         Auth.auth().currentUser?.uid
-    } // for compyted property
+    } // for computed property
 
     var username: String? {
         Auth.auth().currentUser?.displayName
-    }// for compyted property
+    }// for computed property
 
     var email: String? {
         Auth.auth().currentUser?.email
-    } // for compyted property
+    } // for computed property
 
 
 // for cache user

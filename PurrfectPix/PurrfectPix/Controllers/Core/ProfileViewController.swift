@@ -9,22 +9,41 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    private var user: User?
+//    目前要調整的地方：改username and bio 後要更新畫面。
+//    目前進來時還抓不到本人，所以無法再title 顯示username
+//    算post數量錯誤
 
-    private var isCurrentUser: Bool {
-        guard let user = user else { return false }
-        return user.userID == AuthManager.shared.userID ?? ""
-    } // break point return true， 11/16 return false
+
+//    private var user: User? {
+//        didSet {
+//            if let user = user {
+//                isCurrentUser = user.username == AuthManager.shared.username
+//            } else {
+//                isCurrentUser = false
+//            }
+//        }
+//    }
+
+    private var isCurrentUser = false
+    // break point return true， 11/16 return false
 
     private var collectionView: UICollectionView?
 
-    private var headerViewModel: ProfileHeaderViewModel?
+    private var headerViewModel: ProfileHeaderViewModel? {
 
+        didSet {
+            collectionView?.reloadData()
+        }
+
+
+
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchProfileInfo()
-        title = user?.username.uppercased() ?? "Profile" // 無法顯示username on title 了
+        title = "Profile"
+//        title = user?.username.uppercased() ?? "Profile" // 無法顯示 username on title  因為無法正確辨識是不是本人
         view.backgroundColor = .systemBackground
         configureNavBar()
         configureCollectionView()
@@ -32,17 +51,6 @@ class ProfileViewController: UIViewController {
     }
 
     private func fetchProfileInfo() {
-//        let username = user.username
-        // mock data
-        headerViewModel = ProfileHeaderViewModel(
-            profilePictureUrl: nil,
-            followerCount: 23,
-            followingICount: 14,
-            postCount: 16,
-            buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: true) ,
-            username: "Amberlala",
-            bio: "Check out me and my puppy ZumZum"
-        )
 
         // to store Profiel Header Info
         var profilePictureUrl = "" // 好像都沒存進去
@@ -57,55 +65,68 @@ class ProfileViewController: UIViewController {
         let group = DispatchGroup() // fet all the info, then present it
         group.enter()
 
-
-        guard let user = user else { return }
 //        // hide container view
-        DatabaseManager.shared.getUserInfo(userID: user.userID) { userInfo in
+        DatabaseManager.shared.getUserInfo(userID: AuthManager.shared.userID ?? "") { userInfo in
+
+            guard let userInfo = userInfo else { return }
+
             // 3 types of counts, following, followers, and posts
-            followerCount = userInfo?.followerCount ?? 0
-            followingCount = userInfo?.followingCount ?? 0
-            postCount = userInfo?.postCount ?? 0
+            followerCount = userInfo.followerCount ?? 0
+            followingCount = userInfo.followingCount ?? 0
+            postCount = userInfo.postCount ?? 0
 
             // Bio, username
-            username = userInfo?.username ?? ""
-            bio = userInfo?.bio ?? "Introduce your pet to everyone!"
+            username = userInfo.username ?? ""
+            bio = userInfo.bio ?? "Introduce your pet to everyone!"
 
             // profilePictureURL
-            profilePictureUrl = userInfo?.profilePic ?? ""
+            profilePictureUrl = userInfo.profilePic ?? ""
 
             // set cache
             // for cache
-            CacheUserInfo.shared.cache[user.userID] = userInfo // closure 裡面要加self
-        }
+            CacheUserInfo.shared.cache[userInfo.userID] = userInfo // closure 裡面要加self，但解開optional後就不用了
 
+            self.isCurrentUser = userInfo.userID == AuthManager.shared.userID
+
+            self.headerViewModel = ProfileHeaderViewModel(
+                profilePictureUrl: nil,
+                followerCount: followerCount,
+                followingICount: followingCount,
+                postCount: postCount,
+                buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: true) ,
+                username: userInfo.username ?? "Error",
+                bio: userInfo.bio ?? "Error"
+            )
+
+        }
 
         // if not current user's profile, get follow state
-        if !isCurrentUser{
-            // need to get if the current user is following the perofile user account
-            group.enter()
-            DatabaseManager.shared.isFollowing(targetUserID: user.username) { isFollowing in
-                // isFollowing  function需要修改
-                defer {
-                    group.leave()
-                }
-                print(isFollowing)
-                buttonType = .follow(isFollowing: isFollowing)
-            }
-        }
+//        if !isCurrentUser {
+//            // need to get if the current user is following the perofile user account
+//            group.enter()
+//            DatabaseManager.shared.isFollowing(targetUserID: user.username) { isFollowing in
+//                // isFollowing  function需要修改
+//                defer {
+//                    group.leave()
+//                }
+//                print(isFollowing)
+//                buttonType = .follow(isFollowing: isFollowing)
+//            }
+//        }
 
-        group.notify(queue: .main) {
-            // swiftlint:disable line_length
-            self.headerViewModel = ProfileHeaderViewModel(
-                profilePictureUrl: URL(string: profilePictureUrl),
-                followerCount: 3,
-                followingICount: 4,
-                postCount: 7,
-                buttonType: buttonType,
-                username: username,
-                bio: bio
-            )
-            self.collectionView?.reloadData()
-        }
+//        group.notify(queue: .main) {
+//            // swiftlint:disable line_length
+//            self.headerViewModel = ProfileHeaderViewModel(
+//                profilePictureUrl: URL(string: profilePictureUrl),
+//                followerCount: 3,
+//                followingICount: 4,
+//                postCount: 7,
+//                buttonType: buttonType,
+//                username: username,
+//                bio: bio
+//            )
+//            self.collectionView?.reloadData()
+//        }
 
     }
 
@@ -115,6 +136,7 @@ class ProfileViewController: UIViewController {
     }
 
     private func configureNavBar() {
+        //  因為抓不到是不是本人 所以不會顯示
         if isCurrentUser {
             navigationItem.rightBarButtonItem = UIBarButtonItem(
                 image: UIImage(systemName: "gear"),

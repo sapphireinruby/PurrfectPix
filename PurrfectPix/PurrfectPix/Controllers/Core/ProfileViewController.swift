@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController {
         headerViewModel = ProfileHeaderViewModel(
             profilePictureUrl: nil,
             followerCount: 23,
-            followingICount: 17,
+            followingICount: 14,
             postCount: 16,
             buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: true) ,
             username: "Amberlala",

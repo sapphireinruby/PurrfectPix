@@ -12,12 +12,17 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    
         // 以下 apple ID sign in 使用
         guard let userID = AuthManager.shared.userID,
-              let username = AuthManager.shared.username,
-              let userEmail = AuthManager.shared.email else { return }
+              let username = CacheUserInfo.shared.cache[userID]?.username,
+              let email = AuthManager.shared.email
+        else {
+                  print("Create tab bar with user info error")
+                  return
+              }
 
-        let currentUser = User(username: username, email: userEmail, profilePic: "")
+        let currentUser = User(userID: userID, username: username, email: email, profilePic: "")
 
         // define VCs
         let home = HomeViewController()

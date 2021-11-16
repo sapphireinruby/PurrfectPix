@@ -340,16 +340,26 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                                  let email = appleIDCredential.email,
                                  let userID = Auth.auth().currentUser?.uid {
 
-                                  var userInfo = User(username: username, email: email, profilePic: "", logInCount: 0)
+                                  var userInfo = User(userID: userID, username: username, email: email, profilePic: "", logInCount: 0)
 
                                   let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                                   changeRequest?.displayName = username
+                                  // 沒有存成功 但是也沒有印出錯誤訊息
                                   changeRequest?.commitChanges { error in
+                                      if error != nil {
+                                          print( Auth.auth().currentUser?.displayName)
+                                      }
+
+                                      print(error)
                                   }
 
+                                  // for cache
                                   CacheUserInfo.shared.cache[userID] = userInfo
 
-                                  let newAppleUser = User(username: username, email: email, profilePic: "")
+                                  var newAppleUser = User(userID: userID, username: username, email: email, profilePic: "")
+
+                                  guard let appleUser = Auth.auth().currentUser else { return }
+//                                  appleUser.userID = Auth.auth().currentUser?.uid
                                   DatabaseManager.shared.createUser(newUser: newAppleUser) { isSuccess in
                                       if isSuccess {
                                           print("New Apple User username in database is now \(newAppleUser.username)")
@@ -360,19 +370,20 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                                   }
                               }
 
-//                              DispatchQueue.main.async {
 //                                     // HapticManager
+                              // if sign in success, present home screen
+                              let vcTabBar = TabBarViewController()
+                              vcTabBar.modalPresentationStyle = .fullScreen
+                              self.present(
+                                  vcTabBar,
+                                  animated: true,
+                                  completion: nil
+                              )
 
-                                  // if sign in success, present home screen
-                                  let vcTabBar = TabBarViewController()
-                                  vcTabBar.modalPresentationStyle = .fullScreen
-                                  self.present(
-                                      vcTabBar,
-                                      animated: true,
-                                      completion: nil
-                                  )
 
                               print ("Nice! You're signed in with AppleID as \(user.uid), email:\(user.email ?? "email unknow")")
+
+
                           } else {
 
                               print("\n\n Sign In with AppleID Error: \(error)")

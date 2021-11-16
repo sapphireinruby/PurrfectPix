@@ -25,15 +25,15 @@ struct User: Codable {
     var logInCount: Int?
 
     init(
-        
+        // 初始化會用到的參數
+        userID: String,
         username: String,
         email: String,
         profilePic: String?,
         logInCount: Int = 0
-    )
-
-    {
-        self.userID = ""
+    ){
+        // 初始化會做的事情
+        self.userID = userID
         self.username = username
         self.email = email
         self.bio = ""

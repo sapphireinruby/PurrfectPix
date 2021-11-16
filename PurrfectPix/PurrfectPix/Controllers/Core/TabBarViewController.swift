@@ -13,23 +13,23 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
 
     
-        // 以下 apple ID sign in 使用
+        // 以下 apple ID sign in  第一次可以，第二次有誤
         guard let userID = AuthManager.shared.userID,
-              let username = CacheUserInfo.shared.cache[userID]?.username,
+//              let username = CacheUserInfo.shared.cache[userID]?.username,
               let email = AuthManager.shared.email
         else {
                   print("Create tab bar with user info error")
                   return
               }
 
-        let currentUser = User(userID: userID, username: username, email: email, profilePic: "")
+        let currentUser = User(userID: userID, username: "", email: email, profilePic: "")
 
         // define VCs
         let home = HomeViewController()
         let explore = ExploreViewController()
         let camera = CameraViewController()
         let activity = NotificationsViewController()
-        let profile = ProfileViewController(user: currentUser)
+        let profile = ProfileViewController()
 
         let nav1 = UINavigationController(rootViewController: home)
         let nav2 = UINavigationController(rootViewController: explore)

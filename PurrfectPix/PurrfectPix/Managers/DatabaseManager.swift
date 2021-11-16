@@ -109,7 +109,7 @@ final class DatabaseManager {
     }
 
 
-    // userID to find user infos
+    // userID to find user info
 
     public func fetchUser(
         userID: String,
@@ -122,7 +122,6 @@ final class DatabaseManager {
                 return
             }
             completion(user)
-
         }
 
     }

@@ -216,7 +216,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
 
 extension ExploreViewController: SearchResultsViewControllerDelegate {
     func searchResultsViewController(_ vc: SearchResultsViewController, didSelectResultWith user: User) {
-        let profileVC = ProfileViewController(user: user)
+        let profileVC = ProfileViewController()
         navigationController?.pushViewController(profileVC, animated: true)
     }
 }

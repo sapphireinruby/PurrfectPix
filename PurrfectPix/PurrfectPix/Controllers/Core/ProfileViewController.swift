@@ -9,34 +9,26 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    private let user: User
+    private var user: User?
 
     private var isCurrentUser: Bool {
-        return user.username == AuthManager.shared.username ?? ""
-    } // break point return true
+        guard let user = user else { return false }
+        return user.userID == AuthManager.shared.userID ?? ""
+    } // break point return true， 11/16 return false
 
     private var collectionView: UICollectionView?
 
     private var headerViewModel: ProfileHeaderViewModel?
 
-    // MARK: - Init
-    init(user: User) {
-        self.user = user
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = user.username.uppercased()
+        fetchProfileInfo()
+        title = user?.username.uppercased() ?? "Profile" // 無法顯示username on title 了
         view.backgroundColor = .systemBackground
         configureNavBar()
         configureCollectionView()
-        fetchProfileInfo()
+
     }
 
     private func fetchProfileInfo() {
@@ -65,6 +57,8 @@ class ProfileViewController: UIViewController {
         let group = DispatchGroup() // fet all the info, then present it
         group.enter()
 
+
+        guard let user = user else { return }
 //        // hide container view
         DatabaseManager.shared.getUserInfo(userID: user.userID) { userInfo in
             // 3 types of counts, following, followers, and posts
@@ -78,6 +72,10 @@ class ProfileViewController: UIViewController {
 
             // profilePictureURL
             profilePictureUrl = userInfo?.profilePic ?? ""
+
+            // set cache
+            // for cache
+            CacheUserInfo.shared.cache[user.userID] = userInfo // closure 裡面要加self
         }
 
 

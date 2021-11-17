@@ -17,9 +17,9 @@ class ListViewController: UIViewController {
     }()
 
     enum ListType {
-        case followers(user: User)
-        case following(user: User)
-        case likers(usernames: [String])
+        case followers(user: [User])
+        case following(user: [User])
+        case likers(user: [User])
 
         var title: String {
             switch self {
@@ -67,29 +67,31 @@ class ListViewController: UIViewController {
 
     private func configureViewModels() {
         switch type {
-        case .likers(let usernames):
-            viewModels = usernames.compactMap({
-                ListUserTableViewCellViewModel(imageUrl: nil, username: $0)
+        case .likers(let users):
+            viewModels = users.compactMap({
+                ListUserTableViewCellViewModel(imageUrl: nil, username: $0.username, userID: $0.userID)
             })
             tableView.reloadData()
         case .followers(let targetUser):
-            DatabaseManager.shared.followers(for: targetUser.username) { [weak self] usernames in
-                self?.viewModels = usernames.compactMap({
-                    ListUserTableViewCellViewModel(imageUrl: nil, username: $0)
-                })
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-            }
+            return
+//            DatabaseManager.shared.followers(for: targetUser.username) { [weak self] usernames in
+//                self?.viewModels = usernames.compactMap({
+//                    ListUserTableViewCellViewModel(imageUrl: nil, username: $0, userID: <#String#>)
+//                })
+//                DispatchQueue.main.async {
+//                    self?.tableView.reloadData()
+//                }
+//            }
         case .following(let targetUser):
-            DatabaseManager.shared.following(for: targetUser.username) { [weak self] usernames in
-                self?.viewModels = usernames.compactMap({
-                    ListUserTableViewCellViewModel(imageUrl: nil, username: $0)
-                })
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-            }
+            return
+//            DatabaseManager.shared.following(for: targetUser.username) { [weak self] usernames in
+//                self?.viewModels = usernames.compactMap({
+//                    ListUserTableViewCellViewModel(imageUrl: nil, username: $0, userID: <#String#>)
+//                })
+//                DispatchQueue.main.async {
+//                    self?.tableView.reloadData()
+//                }
+//            }
         }
     }
 }
@@ -113,8 +115,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         DatabaseManager.shared.findUser(with: username) { [weak self] user in
             if let user = user {
                 DispatchQueue.main.async {
-                    let vc = ProfileViewController()
-                    self?.navigationController?.pushViewController(vc, animated: true)
+//                    let vc = ProfileViewController()
+//                    self?.navigationController?.pushViewController(vc, animated: true)
                 }
             }
         }

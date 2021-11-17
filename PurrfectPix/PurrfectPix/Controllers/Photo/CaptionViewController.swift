@@ -200,6 +200,10 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
                     self?.tabBarController?.tabBar.isHidden = false
                     self?.tabBarController?.selectedIndex = 0 // back to home
                     self?.navigationController?.popToRootViewController(animated: false)
+
+                    // for new post created and observer this notification
+                    NotificationCenter.default.post(name: .didPostNotification,
+                                                    object: nil)
                 }
             }
         }
@@ -212,11 +216,6 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
         let timeStamp = Date().timeIntervalSince1970
         let randomNumber = Int.random(in: 0...1000)
         guard let userID = AuthManager.shared.userID else { return "" }
-
-//        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
-//            return nil
-//        }
-//        let userID = Auth.auth().currentUser?.uid
 
         return "\(userID)_\(randomNumber)_\(timeStamp)"
     }

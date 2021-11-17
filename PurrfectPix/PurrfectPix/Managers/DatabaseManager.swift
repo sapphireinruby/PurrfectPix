@@ -17,7 +17,8 @@ final class DatabaseManager {
 
     let database = Firestore.firestore()
 
-    // Find posts from a given user
+
+    // Find posts from a given user for profile tab
     // - Parameters:
     // - username: UserID ** to query
     // - completion: Result callback
@@ -28,7 +29,7 @@ final class DatabaseManager {
         completion: @escaping (Result<[Post], Error>) -> Void
     ) {
         let ref = database.collection("posts").whereField("userID", isEqualTo: userID)
-            .order(by: "postedDate", descending: true)  //  只有userID, 沒有username
+            .order(by: "postedDate", descending: true) 
 
         ref.getDocuments { snapshot, error in
 

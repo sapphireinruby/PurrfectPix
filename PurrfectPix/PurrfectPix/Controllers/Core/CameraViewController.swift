@@ -141,7 +141,7 @@ final class CameraViewController: UIViewController {
 
     private func setUpCamera() {
 
-        let captureSession = AVCaptureSession()
+        guard let captureSession = captureSession else { return }
         if let device = AVCaptureDevice.default(for: .video) {
             do {
                 let input = try AVCaptureDeviceInput(device: device)

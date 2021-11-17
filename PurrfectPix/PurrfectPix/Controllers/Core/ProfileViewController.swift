@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
 //    目前進來時還抓不到本人，所以無法再title 顯示username
 //    算post數量錯誤
 
+//    private let user: User
 
 //    private var user: User? {
 //        didSet {
@@ -24,7 +25,16 @@ class ProfileViewController: UIViewController {
 //        }
 //    }
 
-    private var isCurrentUser = false
+    //        private let user: User
+    //
+    //        private var isCurrentUser: Bool {
+//    return user.username == AuthManager.shared.username ?? ""
+    //        }
+
+
+    private var isCurrentUser: Bool {
+        userID == AuthManager.shared.userID
+    }
     // break point return true， 11/16 return false
 
     private var collectionView: UICollectionView?
@@ -35,13 +45,25 @@ class ProfileViewController: UIViewController {
             collectionView?.reloadData()
         }
 
-
-
     }
+
+    private var posts: [Post] = []
+
+    let userID: String
+
+    init(userID: String) {
+        self.userID = userID
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchProfileInfo()
+        fetchProfileInfo(userID: userID)
         title = "Profile"
 //        title = user?.username.uppercased() ?? "Profile" // 無法顯示 username on title  因為無法正確辨識是不是本人
         view.backgroundColor = .systemBackground
@@ -50,7 +72,24 @@ class ProfileViewController: UIViewController {
 
     }
 
-    private func fetchProfileInfo() {
+    private func fetchProfileInfo(userID: String) {
+
+        let group = DispatchGroup() // fetch all the info, then present it
+
+        // Fetch Posts
+        group.enter()
+        DatabaseManager.shared.posts(for: userID) { [weak self] result in
+            defer {
+                group.leave()
+            }
+
+            switch result {
+            case .success(let posts):
+                self?.posts = posts
+            case .failure:
+                break
+            }
+        }
 
         // to store Profiel Header Info
         var profilePictureUrl = "" // 好像都沒存進去
@@ -62,7 +101,7 @@ class ProfileViewController: UIViewController {
         var followingCount = 0
         var postCount = 0
 
-        let group = DispatchGroup() // fet all the info, then present it
+
         group.enter()
 
 //        // hide container view
@@ -76,7 +115,7 @@ class ProfileViewController: UIViewController {
             postCount = userInfo.postCount ?? 0
 
             // Bio, username
-            username = userInfo.username ?? ""
+            username = userInfo.userID ?? ""
             bio = userInfo.bio ?? "Introduce your pet to everyone!"
 
             // profilePictureURL
@@ -86,7 +125,7 @@ class ProfileViewController: UIViewController {
             // for cache
             CacheUserInfo.shared.cache[userInfo.userID] = userInfo // closure 裡面要加self，但解開optional後就不用了
 
-            self.isCurrentUser = userInfo.userID == AuthManager.shared.userID
+//            self.isCurrentUser = userInfo.userID == AuthManager.shared.userID
 
             self.headerViewModel = ProfileHeaderViewModel(
                 profilePictureUrl: nil,
@@ -136,7 +175,7 @@ class ProfileViewController: UIViewController {
     }
 
     private func configureNavBar() {
-        //  因為抓不到是不是本人 所以不會顯示
+        //  目前抓不到是否是本人 所以不會顯示
         if isCurrentUser {
             navigationItem.rightBarButtonItem = UIBarButtonItem(
                 image: UIImage(systemName: "gear"),
@@ -156,7 +195,7 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return posts.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -167,7 +206,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         ) as? PhotoCollectionViewCell else {
             fatalError()
         }
-        cell.configure(with: UIImage(named: "test"))
+        cell.configure(with: URL(string: posts[indexPath.row].postUrlString))
         return cell
     }
 
@@ -197,6 +236,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
             bio: "Check out my cute puppy Dodo"
         )
 
+        headerView.delegate = self // change profile image
         return headerView
     }
 
@@ -204,11 +244,72 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-//        let post = posts[indexPath.row]
-//        let vc = PostViewController(post: post)
-//        navigationController?.pushViewController(vc, animated: true)
+        let post = posts[indexPath.row]
+        let vc = PostViewController(post: post)
+        navigationController?.pushViewController(vc, animated: true)
     }
 
+}
+
+extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
+    func profileHeaderCollectionReusableViewDidTapProfilePicture(_ header: ProfileHeaderCollectionReusableView) {
+
+        guard isCurrentUser else {
+            return
+        }
+
+        let sheet = UIAlertController(
+            title: "Change Picture",
+            message: "How about update a new photo with your pets?",
+            preferredStyle: .actionSheet
+        )
+
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        sheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { [weak self] _ in
+
+            DispatchQueue.main.async {
+                let picker = UIImagePickerController()
+                picker.sourceType = .camera
+                picker.allowsEditing = true
+                picker.delegate = self
+                self?.present(picker, animated: true)
+            }
+        }))
+        sheet.addAction(UIAlertAction(title: "Choose Photo", style: .default, handler: { [weak self] _ in
+            DispatchQueue.main.async {
+                let picker = UIImagePickerController()
+                picker.allowsEditing = true
+                picker.sourceType = .photoLibrary
+                picker.delegate = self
+                self?.present(picker, animated: true)
+            }
+        }))
+        present(sheet, animated: true)
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        StorageManager.shared.uploadProfilePicture(
+            userID: userID,  //需要修改
+            data: image.pngData()
+        ) { [weak self] success in
+            if success {
+                guard let userID = self?.userID else { return }
+                self?.headerViewModel = nil
+                self?.posts = []
+                self?.fetchProfileInfo(userID: userID)
+            }
+        }
+    }
 }
 
 extension ProfileViewController: ProfileHeaderCountViewDelegate {
@@ -221,16 +322,22 @@ extension ProfileViewController: ProfileHeaderCountViewDelegate {
     }
 
     func profileHeaderCountViewDidTapPosts(_ containerView: ProfileHeaderCountView) {
-
+        guard posts.count >= 18 else {
+            return
+        }
+        collectionView?.setContentOffset(CGPoint(x: 0, y: view.width * 0.4),
+                                         animated: true)
     }
 
     func profileHeaderCountViewDidTapEditProfile(_ containerView: ProfileHeaderCountView) {
 
         let vc = EditProfileViewController()
+
         vc.completion = { [weak self] in
             // refetch/reload hearder info
+            guard let userID = self?.userID else { return }
             self?.headerViewModel = nil
-            self?.fetchProfileInfo()
+            self?.fetchProfileInfo(userID: userID)
         }
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true)

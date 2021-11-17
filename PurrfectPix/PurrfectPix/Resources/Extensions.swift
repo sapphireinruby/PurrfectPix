@@ -158,3 +158,8 @@ extension UIViewController {
         }
 
 }
+
+extension Notification.Name {
+    // Notification to inform of new post
+    static let didPostNotification = Notification.Name("didPostNotification")
+}

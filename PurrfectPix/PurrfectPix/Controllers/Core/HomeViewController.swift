@@ -31,11 +31,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        }
 //    }
 
-    private var allPosts = [(post: Post, owner: String, viewModel:[HomeFeedCellType])]() {
-        didSet {
-            collectionView?.reloadData()
-        }
-    }
+    private var allPosts = [(post: Post, owner: String, viewModel:[HomeFeedCellType])]()
 
     // All post models
 //    private var allPosts: [(post: Post, owner: String)] = []
@@ -148,6 +144,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return false
         })
 
+        collectionView?.reloadData()
     }
 
     private func createViewModel(
@@ -364,7 +361,7 @@ extension HomeViewController: PosterCollectionViewCellDelegate {
 
         sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
 
-        sheet.addAction(UIAlertAction(title: "Report Post", style: .destructive, handler: { _ in}))
+        sheet.addAction(UIAlertAction(title: "Report Post and Block User", style: .destructive, handler: { _ in}))
 
         present(sheet, animated: true)
     }
@@ -391,7 +388,8 @@ extension HomeViewController: PostCollectionViewCellDelegate {
 
         } else {
             allPosts[index].post.likers.append(userID)
-            allPosts[index].viewModel
+            let post = allPosts[index].post
+            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
         }
 
         DatabaseManager.shared.updateLikeState(
@@ -422,6 +420,8 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
         } else {
             allPosts[index].post.likers.append(userID)
+            let post = allPosts[index].post
+            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
         }
 
         DatabaseManager.shared.updateLikeState(
@@ -434,6 +434,7 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
                 print("Updated likestate with heart icon success!")
         }
 
+        self.collectionView?.reloadData()
         
         // create notification
 
@@ -457,10 +458,10 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
 
     func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell, index: Int) {
 
-        let listVC = ListViewController(type: .likers(usernames:
-        allPosts[index].post.likers))
-//        listVC.title = "Liked by"
-        navigationController?.pushViewController(listVC, animated: true)
+//        let listVC = ListViewController(type: .likers(usernames:
+//        allPosts[index].post.likers))
+////        listVC.title = "Liked by"
+//        navigationController?.pushViewController(listVC, animated: true)
 
     }
 }

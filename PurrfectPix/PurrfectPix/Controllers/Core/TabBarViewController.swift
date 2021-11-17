@@ -29,7 +29,7 @@ class TabBarViewController: UITabBarController {
         let explore = ExploreViewController()
         let camera = CameraViewController()
         let activity = NotificationsViewController()
-        let profile = ProfileViewController()
+        let profile = ProfileViewController(userID: userID)
 
         let nav1 = UINavigationController(rootViewController: home)
         let nav2 = UINavigationController(rootViewController: explore)
@@ -42,6 +42,20 @@ class TabBarViewController: UITabBarController {
         nav3.navigationBar.tintColor = .P1
         nav4.navigationBar.tintColor = .P1
         nav5.navigationBar.tintColor = .P1
+
+        if #available(iOS 14.0, *) {
+            home.navigationItem.backButtonDisplayMode = .minimal
+            explore.navigationItem.backButtonDisplayMode = .minimal
+            camera.navigationItem.backButtonDisplayMode = .minimal
+            activity.navigationItem.backButtonDisplayMode = .minimal
+            profile.navigationItem.backButtonDisplayMode = .minimal
+        } else {
+            nav1.navigationItem.backButtonTitle = ""
+            nav2.navigationItem.backButtonTitle = ""
+            nav3.navigationItem.backButtonTitle = ""
+            nav4.navigationItem.backButtonTitle = ""
+            nav5.navigationItem.backButtonTitle = ""
+        }
 
         // Define tab items
         nav1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1 )

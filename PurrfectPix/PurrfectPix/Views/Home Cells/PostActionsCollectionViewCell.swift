@@ -9,7 +9,7 @@ import UIKit
 
 protocol PostActionsCollectionViewCellDelegate: AnyObject {
 
-    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool)
+    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int)
 
     func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell)
     
@@ -57,12 +57,14 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .systemBackground
         contentView.addSubview(likeButton)
         contentView.addSubview(commentButton)
-        contentView.addSubview(shareButton)
+//        // hide share
+//        contentView.addSubview(shareButton)
 
         // three target actions
         likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
         commentButton.addTarget(self, action: #selector(didTapComment), for: .touchUpInside)
-        shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
+//        // hide share
+//        shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
 
     }
 
@@ -74,7 +76,6 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
 
     @objc func didTapLike() {
         // the viewModel knows if it's liked
-//        delegate?.postActionsCollectionViewCellDidTapLike(self, isLiked: !isLiked)
 //        // will inverse the isLike Bool, preset it to flase earlier
 
         // do the heart change directly
@@ -89,7 +90,8 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         }
 
         delegate?.postActionsCollectionViewCellDidTapLike(self,
-                                                          isLiked: !isLiked)
+                                                          isLiked: !isLiked,
+                                                          index: index)
         self.isLiked = !isLiked  // to enable doing the switch
     }
 
@@ -97,9 +99,10 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
 
     }
 
-    @objc func didTapShare() {
-
-    }
+//    // hide share
+//    @objc func didTapShare() {
+//
+//    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -113,14 +116,14 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         )
 
         commentButton.frame = CGRect(
-            x: likeButton.right + 20,
+            x: likeButton.right + 24,
             y: (contentView.height - size) / 2,
             width: size,
             height: size
         )
 
         shareButton.frame = CGRect(
-            x: commentButton.right + 20,
+            x: commentButton.right + 24,
             y: (contentView.height - size) / 2,
             width: size,
             height: size
@@ -140,7 +143,11 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
             let image = UIImage(named: "Heart-filled")
             likeButton.setImage(image, for: .normal)
 
+        } else {
+            let image = UIImage(named: "Heart-purple")
+            likeButton.setImage(image, for: .normal)
         }
+
     }
 
 }

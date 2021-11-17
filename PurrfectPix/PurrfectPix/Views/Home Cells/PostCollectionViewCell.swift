@@ -72,12 +72,13 @@ class PostCollectionViewCell: UICollectionViewCell {
                     } completion: { done in
                         if done {
                             self.heartImageView.isHidden = true
+                            self.delegate?.postCollectionViewCellDidLike(self, index: self.index)
                         }
                     }
                 }
             }
 
-            delegate?.postCollectionViewCellDidLike(self, index: index)
+
     }
 
     override func layoutSubviews() {

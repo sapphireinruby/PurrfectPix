@@ -7,6 +7,7 @@
 
 import UIKit
 import TTGTags
+//import FirebaseAuth
 
 class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCollectionViewDelegate {
 
@@ -34,7 +35,6 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
 //  Pet hashtag
     private let tagView = TTGTextTagCollectionView()
-
 
 // MARK: - Init section
 
@@ -135,6 +135,9 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
         textView.resignFirstResponder()
 
+        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+        animationView.play()
+
         // clean the text view placeholder
         var caption = textView.text ?? ""
         if caption == "Add caption" {
@@ -144,8 +147,6 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
         var petTags = petTags
 
-        // show.progress() 安裝 stylish裡的 轉轉轉的 pods
-
         // Generate post ID --> Image & the whole Post share one ID
         guard let newPostID = createNewPostID(),
               let stringDate = String.date(from: Date()) else {
@@ -153,24 +154,29 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
         }
 
         // Upload Post --> Image & the whole Post share one ID
-        guard let userID = UserDefaults.standard.string(forKey: "userID") else { return }
+        guard let userID = AuthManager.shared.userID else { return }
+        guard let username = AuthManager.shared.username else { return }
+        
         StorageManager.shared.uploadPost(
 
             data: image.pngData(),
             userID: userID,
+            username: username,
             postID: newPostID
             
         ) { newPostDownloadURL in
             guard let url = newPostDownloadURL?.absoluteString else {
                 print("error: failed to upload to storage")
+                animationView.stop()
                 return
             }
 
             // New Post
             // storage ref: username/posts/png
-            // swiftlint:disable:next line_length
+
             let newPost = Post(
                 userID: userID,
+                username: username,
                 postID: newPostID,
                 caption: caption,
                 petTag: petTags,
@@ -184,11 +190,9 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
             // Update Database
             DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in
                 guard finished else {
-                    // show.progress(falls "送出失敗")
+
                     return
                 }
-
-                // show.progress(success "成功送出了！")
 
                 DispatchQueue.main.async {
 
@@ -196,6 +200,10 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
                     self?.tabBarController?.tabBar.isHidden = false
                     self?.tabBarController?.selectedIndex = 0 // back to home
                     self?.navigationController?.popToRootViewController(animated: false)
+
+                    // for new post created and observer this notification
+                    NotificationCenter.default.post(name: .didPostNotification,
+                                                    object: nil)
                 }
             }
         }
@@ -207,10 +215,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
         let timeStamp = Date().timeIntervalSince1970
         let randomNumber = Int.random(in: 0...1000)
-
-        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
-            return nil
-        }
+        guard let userID = AuthManager.shared.userID else { return "" }
 
         return "\(userID)_\(randomNumber)_\(timeStamp)"
     }
@@ -250,5 +255,3 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
     }
 
 }
-
-

@@ -49,7 +49,10 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        let size = label.sizeThatFits(CGSize(width: contentView.bounds.size.width - 16, height: contentView.bounds.size.height )) //type CGFloat
+        let size = label.sizeThatFits(CGSize(
+            width: contentView.bounds.size.width - 48,
+            height: contentView.bounds.size.height ))
+        //type CGFloat
         // to return the size to fit the given label
 
         label.frame = CGRect(x: 24,
@@ -67,10 +70,13 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
     func configure(with viewModel: PostCaptionCollectionViewCellViewModel) {
 
 //        label.text = "\(viewModel.username): \(viewModel.caption)"  // showing comment with "optional"
+        let labelName = "\(viewModel.username): \n" 
+        let labelCap = "\(viewModel.caption ?? "")"
+        label.text = labelName + labelCap
 
-        label.text = "\(viewModel.username): \(viewModel.caption ?? "")"
+//        label.text = "\(viewModel.username): \(viewModel.caption ?? "")"
         // if not nil, not showing the "optional"
-
+//        label.textColor = .P1
     }
 
 }

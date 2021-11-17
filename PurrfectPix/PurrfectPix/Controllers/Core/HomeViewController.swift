@@ -11,21 +11,33 @@ import FirebaseFirestoreSwift
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    private let noPostLabel: UILabel = {
+        let label = UILabel()
+        label.text = "You have no post, tap Camera to create a post or check other pets at Explore! "
+        label.textColor = .P1
+        label.textAlignment = .center
+//        label.isHidden = true
+        return label
+    }()
+
     // CollectionView for feed
     private var collectionView: UICollectionView?
 
     // Feed viewModels, two demensional array, each inner arry is a post or a section
     // 7 kinds of home feed cell enums on cell type models file
-    private var viewModels = [[HomeFeedCellType]]() {
-        didSet {
-            collectionView?.reloadData()
-        }
-    }
+//    private var viewModels = [[HomeFeedCellType]]() {
+//        didSet {
+//            collectionView?.reloadData()
+//        }
+//    }
+
+    private var allPosts = [(post: Post, owner: String, viewModel:[HomeFeedCellType])]()
 
     // All post models
-    private var allPosts: [(post: Post, owner: String)] = []
-    // swiftlint:disable identifier_name
-    let db = Firestore.firestore()
+//    private var allPosts: [(post: Post, owner: String)] = []
+
+    let dbFire = Firestore.firestore()
+
 
     override func viewDidLoad() {
 
@@ -33,105 +45,28 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         title = "PurrfectPix"
         view.backgroundColor = .systemBackground
         configureCollectionView()
-        fetchPosts()
         // username will edit later
-        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
-
-//  以下10/18本來註解
-//        db.collection("posts").getDocuments { snapshot, error in
-//
-//            if let  error = error {
-//                print (error)
-//
-//            }else{
-//
-//                guard let snapshot = snapshot else { return }
-//                    var posts = [Post]()
-//                    snapshot.documents.forEach({ document in
-//
-//                        do {
-//                            let post =  try document.data(as: Post.self)
-//                            guard let post = post else {return}
-//                            posts.append(post)
-//                        } catch {
-//
-//                        }
-//                    })
-//                    self.createViewModel(model: posts, username: "Amber67") { result in
-//                    }
-//            }
-//        }
-//            let result = Result {
-//              try document?.data(as: Post.self)
-//            }
-
-//            switch result {
-//            case .success(let post):
-//                if let post = post {
-//                    self.createViewModel(model: post, username: "Amber67") { result in
-//
-//                    }
-//
-//                } else {
-//                    // A nil value was successfully initialized from the DocumentSnapshot,
-//                    // or the DocumentSnapshot was nil.
-//                    print("Document does not exist")
-//                }
-//            case .failure(let error):
-//                // A `City` value could not be initialized from the DocumentSnapshot.
-//                print("Error decoding city: \(error)")
-//            }
-
+//        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
+//        fetchPosts()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchPosts()
+    }  // 有時候會出現兩次～
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView?.frame = view.bounds
     }
 
-//    //  以下10/18本來使用 edit with Elio 1018
-//    override func viewWillAppear(_ animated: Bool) {
-//
-//        viewModels = [[HomeFeedCellType]]()
-//        db.collection("posts").getDocuments { snapshot, error in
-//
-//         // 這邊要放listener 監聽變化
-//            if let  error = error {
-//                print(error)
-//
-//            } else {
-//
-//                guard let snapshot = snapshot else { return }
-//                    var posts = [Post]()
-//                    snapshot.documents.forEach({ document in
-//
-//                        do {
-//                            let post =  try document.data(as: Post.self)
-//                            guard let post = post else {return}
-//                            posts.append(post)
-//                        } catch {
-//
-//                        }
-//                    })
-//                    self.createViewModel(model: posts, username: "Amber67") { result in  // 存在user defaultpost
-//                    }
-//            }
-//    }
-//
-//        configureCollectionView()
-//    }
-
-//  以下10/18本來註解 private func fetchPosts() 到196行 若post 重複要處理
-
     private func fetchPosts() {
 
-        guard let userID = UserDefaults.standard.string(forKey: "userID") else {
-            return
-        }
+        allPosts.removeAll() // fetch 之前先清除
 
-        guard let username = UserDefaults.standard.string(forKey: "username") else {
-            return
-        }
+        guard let username = AuthManager.shared.username else { return }
+
+        guard let userID = AuthManager.shared.userID else { return }
 
         DatabaseManager.shared.posts(for: userID) { [weak self] result in
             // refresh the collectionView after all the asynchronous job is done
@@ -158,8 +93,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             }
                         })
                         group.notify(queue: .main) {
-                            self?.collectionView?.reloadData()
                             self?.sortData()
+
                         }
 
                     }
@@ -180,10 +115,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return date1 > date2
         })
 
-        viewModels = viewModels.sorted(by: { first, second in
+        allPosts = allPosts.sorted(by: { first, second in
+            // 拿allPost的tuple 裡面的 timestamp cell來做排序
             var date1: Date?
             var date2: Date?
-            first.forEach { type in
+            first.viewModel.forEach {  type in
                 switch type {
                 case .timestamp(let vm):
                     date1 = vm.date
@@ -191,10 +127,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     break
                 }
             }
-            second.forEach { type in
+            second.viewModel.forEach { type in
                 switch type {
                 case .timestamp(let vm):
                     date2 = vm.date
+
                 default:
                     break
                 }
@@ -207,28 +144,24 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return false
         })
 
+        collectionView?.reloadData()
     }
 
     private func createViewModel(
 
-        // 需要釐清 何時要用username 何時要userID
         model: Post,
         userID: String,
         username: String,
         completion: @escaping (Bool) -> Void
     ) {
 
-        // swiftlint:disable identifier_name
-        let UserID = "wRWTOfxEaKtP8OSso4pB"
-        let username = "perfect67"
-        // MARK: 這裡未來要修改成動態
-
-
         StorageManager.shared.downloadURL(for: model) { postURL in
-            StorageManager.shared.profilePictureURL(for: UserID) { [weak self] profilePictureURL in
+            StorageManager.shared.profilePictureURL(for: userID) { [weak self] profilePictureURL in
 
                 guard let postUrl = postURL,
-                      let profilePhotoUrl = profilePictureURL else {
+                      let userID = AuthManager.shared.userID
+
+                else {
                           print("1. model.postUrlString\(model.postUrlString)")
                           print("2. profilePictureURL \(profilePictureURL)")
                             return
@@ -237,8 +170,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 let postData: [HomeFeedCellType] = [
                     .poster(
                         viewModel: PosterCollectionViewCellViewModel(
-                            username: username,
-                            profilePictureURL: profilePhotoUrl
+                            username: model.username,
+                            profilePictureURL: profilePictureURL ?? nil
                         )
                     ),
                     
@@ -254,13 +187,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         )
                     ),
 
-                    .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: false)),
+                        .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: model.likers.contains(userID))), // 這篇貼文的likers 裏面 有現在的userID, 就會是true
 
-                    .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: [])),
+                        .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: model.likers)),
 
                     .caption(
                         viewModel: PostCaptionCollectionViewCellViewModel(
-                            username: username,
+                            username: model.username,
                             caption: model.caption)),
 
                     .timestamp(
@@ -269,22 +202,35 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         )
                     )
                 ]
-                self?.viewModels.append(postData) // add to view model
+
+                // [(post: Post, owner: String, viewModel:[[HomeFeedCellType]])]()
+                self?.allPosts.append((post: model, owner: username, viewModel: postData))
+
+//                self?.viewModels.append(postData)// add to view model
                 completion(true)
 
             }
         }
+//        if viewModels.isEmpty {
+//            noPostLabel.isHidden = false
+//            collectionView.isHidden = true
+//        }
+//        else {
+//            noPostLabelLabel.isHidden = true
+//            noPostLabel.isHidden = false
+//            collectionView.reloadData()
+//        }
 
     }
 
     // MARK: collectionView datasource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModels.count
+        return allPosts.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModels[section].count
+        return allPosts[section].viewModel.count
     }
 
     let colors: [UIColor] = [
@@ -294,7 +240,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         // to show mock data
-        let cellType = viewModels[indexPath.section][indexPath.row]
+//        let cellType = viewModels[indexPath.section][indexPath.row]
+        let cellType = allPosts[indexPath.section].viewModel[indexPath.row]
         // section for the inner array
 
         switch cellType {
@@ -326,7 +273,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.delegate = self
             
             cell.configure(with: viewModel)
-//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .post(let viewModel):
@@ -341,7 +287,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.delegate = self
 
             cell.configure(with: viewModel, index: indexPath.section)
-//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .actions(let viewModel):
@@ -356,7 +301,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.delegate = self
 
             cell.configure(with: viewModel)
-//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .likeCount(let viewModel):
@@ -371,7 +315,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.delegate = self
 
             cell.configure(with: viewModel)
-//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .caption(let viewModel):
@@ -385,7 +328,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.delegate = self
 
             cell.configure(with: viewModel)
-//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .timestamp(let viewModel):
@@ -397,9 +339,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 fatalError()
             }
             cell.configure(with: viewModel)
-//            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
-
         }
 
     }
@@ -421,15 +361,12 @@ extension HomeViewController: PosterCollectionViewCellDelegate {
 
         sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
 
-        sheet.addAction(UIAlertAction(title: "Report Post", style: .destructive, handler: { _ in}))
+        sheet.addAction(UIAlertAction(title: "Report Post and Block User", style: .destructive, handler: { _ in}))
 
         present(sheet, animated: true)
     }
 
     func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell) {
-
-//        let profileVC = ProfileViewController(user: User(userID: "userid2323", username: "morgan_likeplants", email: "morgan@fake.com", profilePic: "http://img.zcool.cn/community/01558c5987ef04a8012156039eb554.jpg@2o.jpg", followingUsers: ["perfect67", "elio_lovepuppy"], logInCount: 3))
-//        navigationController?.pushViewController(profileVC, animated: true)
     }
 }
 
@@ -443,33 +380,70 @@ extension HomeViewController: PostPetTagCollectionViewCellDelegate {
 extension HomeViewController: PostCollectionViewCellDelegate {
 
     func postCollectionViewCellDidLike(_ cell: PostCollectionViewCell, index: Int) {
+        // post picture, tap to like the post
         // index to get the post
-        let tuple = allPosts[index]
+        // create notification
+        guard let userID = AuthManager.shared.userID else { return }
+        if allPosts[index].post.likers.contains(userID) {
+
+        } else {
+            allPosts[index].post.likers.append(userID)
+            let post = allPosts[index].post
+            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
+        }
+
         DatabaseManager.shared.updateLikeState(
-            // 出現錯誤  index outof range
-            // can only like when tapped
             state: .like,
-            postID: tuple.post.postID,
-                                                                              owner: tuple.owner) { success in
+            postID: allPosts[index].post.postID) { success in
             guard success else {
+                print("Failed to like from post picture")
+
                 return
             }
-            print("Failed to like")
+            print("Like post from post picture success!")
+                
         }
+
+        self.collectionView?.reloadData()
     }
 }
 
 extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
-    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool) {
+    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int) {
+        // 3 icons under picture, tap to like the post
         // call DB to update like state
+//        let tupople = allPosts[index]
+
+        guard let userID = AuthManager.shared.userID else { return }
+        if allPosts[index].post.likers.contains(userID) {
+
+        } else {
+            allPosts[index].post.likers.append(userID)
+            let post = allPosts[index].post
+            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
+        }
+
+        DatabaseManager.shared.updateLikeState(
+            state: isLiked ? .like : .unlike,
+            postID: allPosts[index].post.postID) { success in
+            guard success else {
+                print("Failed to updated like state with heart icon")
+                return
+            }
+                print("Updated likestate with heart icon success!")
+        }
+
+        self.collectionView?.reloadData()
+        
+        // create notification
 
     }
 
     func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell) {
-        let postVC = PostViewController() // initiate a vc
-        postVC.title = "Post"
-        navigationController?.pushViewController(postVC, animated: true)
+//        let postVC = PostViewController(post: Post) // initiate a vc
+//        postVC.title = "Post"
+//        navigationController?.pushViewController(postVC, animated: true)
     }
 
     func postActionsCollectionViewCellDidTapShare(_ cell: PostActionsCollectionViewCell) {
@@ -481,11 +455,13 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 }
 
 extension HomeViewController: PostLikesCollectionViewCellDelegate {
-    func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell) {
 
-        let listVC = ListViewController()
-        listVC.title = "Liked by"
-        navigationController?.pushViewController(listVC, animated: true)
+    func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell, index: Int) {
+
+//        let listVC = ListViewController(type: .likers(usernames:
+//        allPosts[index].post.likers))
+////        listVC.title = "Liked by"
+//        navigationController?.pushViewController(listVC, animated: true)
 
     }
 }
@@ -501,18 +477,11 @@ extension HomeViewController {
     func configureCollectionView() {
 
         // calulate the heigh dynamically for square
-        let sectionHeight: CGFloat = 330 + view.width //view.width is the actual post size
+        let sectionHeight: CGFloat = 330 + view.width
+        //view.width is the actual post size
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { index, _ -> NSCollectionLayoutSection? in
-
-                    // cell for poster
-                    // * cell for pet tag
-                    // large cell for post
-                    // actions cell
-                    // like heart cell
-                    // caption cell
-                    // timestamp cell
 
                     // NSLayout item
                 let posterItem = NSCollectionLayoutItem(

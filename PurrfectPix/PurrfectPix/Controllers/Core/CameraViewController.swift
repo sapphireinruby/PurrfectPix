@@ -22,10 +22,11 @@ final class CameraViewController: UIViewController {
     private let shutterButton: UIButton = {
 
         let button = UIButton()
-        button.layer.masksToBounds = true
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.label.cgColor // fit in both light mode and dark mode
-        button.backgroundColor = nil
+        button.tintColor = .label
+        button.setImage(UIImage(systemName: "camera.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 60)),
+                        for: .normal)
+//        button.layer.borderColor = UIColor.label.cgColor // fit in both light mode and dark mode
+
         return button
 
     }()
@@ -34,7 +35,7 @@ final class CameraViewController: UIViewController {
 
         let button = UIButton()
         button.tintColor = .label
-        button.setImage(UIImage(systemName: "photo", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40)),
+        button.setImage(UIImage(systemName: "photo.on.rectangle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40)),
                         for: .normal)
         return button
 
@@ -84,18 +85,20 @@ final class CameraViewController: UIViewController {
         )
 
         let buttonSize: CGFloat = view.width/5
+
         shutterButton.frame = CGRect(
             x: (view.width-buttonSize)/2,
             y: view.safeAreaInsets.top + view.width + 100,
             width: buttonSize,
             height: buttonSize
         )
-        shutterButton.layer.cornerRadius = buttonSize/2
+//        shutterButton.layer.cornerRadius = buttonSize/2
 
-        photoPickerButton.frame = CGRect(x: (shutterButton.left - (buttonSize/1.5))/2,
-                                         y: shutterButton.top + ((buttonSize/1.5)/2),
-                                         width: buttonSize/1.5,
-                                         height: buttonSize/1.5)
+        photoPickerButton.frame = CGRect(
+            x: (shutterButton.left - (buttonSize/1.5))/2,
+            y: shutterButton.top + ((buttonSize/1.5)/2),
+            width: buttonSize,
+            height: buttonSize)
     }
 
     @objc func didTapPickPhoto() {
@@ -138,7 +141,7 @@ final class CameraViewController: UIViewController {
 
     private func setUpCamera() {
 
-        let captureSession = AVCaptureSession()
+        guard let captureSession = captureSession else { return }
         if let device = AVCaptureDevice.default(for: .video) {
             do {
                 let input = try AVCaptureDeviceInput(device: device)

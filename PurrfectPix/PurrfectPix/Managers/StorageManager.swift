@@ -16,18 +16,11 @@ final class StorageManager {
 
     private let storage = Storage.storage().reference()
 
-//    let storage = Storage.storage() // edit with Elio
-
-    // Upload post image
-    // - Parameters:
-    //   - data: Image data
-    //   - id: New post id
-    //   - completion: Result callback
-
     public func uploadPost(  // image 
 
         data: Data?,
         userID: String,
+        username: String,
         postID: String, // the postID create at caption vc, for image to storage
         completion: @escaping (URL?) -> Void
     ) {

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Lottie
 
 extension UIView {
     
@@ -134,4 +135,31 @@ extension UIColor {
         return UIColor(named: color.rawValue)!
     }
 
+}
+
+extension UIViewController {
+
+    func setupAnimation(name: String, mood: LottieLoopMode ) -> AnimationView {
+
+            let animationView = AnimationView(name: name)
+
+            animationView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+            animationView.center = self.view.center
+            animationView.contentMode = .scaleAspectFit
+
+            animationView.loopMode = mood
+            animationView.animationSpeed =  1
+            animationView.backgroundBehavior = .pauseAndRestore // restart from other tab bar item
+
+            view.addSubview(animationView)
+
+            return animationView
+
+        }
+
+}
+
+extension Notification.Name {
+    // Notification to inform of new post
+    static let didPostNotification = Notification.Name("didPostNotification")
 }

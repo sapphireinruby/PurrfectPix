@@ -33,7 +33,7 @@ final class PosterCollectionViewCell: UICollectionViewCell {
     private let usernameLabel: UILabel = {
 
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         return label
     }()
 
@@ -123,7 +123,9 @@ final class PosterCollectionViewCell: UICollectionViewCell {
         // the username that setted up on viewModel file, will get from data
 
         usernameLabel.text = viewModel.username
-        imageView.sd_setImage(with: viewModel.profilePictureURL, completed: nil)
+//        imageView.sd_setImage(with: viewModel.profilePictureURL, completed: nil)
+        imageView.sd_setImage(with:  viewModel.profilePictureURL, placeholderImage: UIImage(systemName: "person.circle"))
+        imageView.tintColor = .P1
 
     }
 

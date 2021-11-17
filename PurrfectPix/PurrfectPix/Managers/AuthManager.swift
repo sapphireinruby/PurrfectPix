@@ -33,6 +33,22 @@ final class AuthManager {
         return auth.currentUser != nil
     }
 
+    var userID: String? {
+        Auth.auth().currentUser?.uid
+    } // for computed property
+
+    var username: String? {
+        Auth.auth().currentUser?.displayName
+    }// for computed property
+
+    var email: String? {
+        Auth.auth().currentUser?.email
+    } // for computed property
+
+
+
+ // for stored property
+
     // Attempt sign in
     // - Parameters:
     //   - email: Email of user
@@ -57,8 +73,6 @@ final class AuthManager {
                     return
                 }
 
-                UserDefaults.standard.setValue(user.userID, forKey: "userID")
-                UserDefaults.standard.setValue(user.email, forKey: "email")
                 completion(.success(user))
             }
         }
@@ -81,14 +95,26 @@ final class AuthManager {
         profilePicture: Data?,
         completion: @escaping (Result<User, Error>) -> Void
     ) {
-        let newUser = User(userID: userID, username: username, email: email, profilePic: "", followingUsers: [String](), logInCount: 0)
+
 
         // Create account
         auth.createUser(withEmail: email, password: password) { result, error in
             guard result != nil, error == nil else {
-                completion(.failure(AuthError.newUserCreation))
+                guard let error = error else { return }
+                completion(.failure(error))
                 return
             }
+
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = username
+            changeRequest?.commitChanges { error in
+                print("commitChangesError \(error)")
+            }
+
+            guard let userID = result?.user.uid else { return }
+
+            var newUser = User(userID: userID, username: username, email: email, profilePic: "", logInCount: 0)
+//            newUser.userID = userID
 
             DatabaseManager.shared.createUser(newUser: newUser) { success in
                 if success {
@@ -97,14 +123,15 @@ final class AuthManager {
                         data: profilePicture
                     ) { uploadSuccess in
                         if uploadSuccess {
+
                             completion(.success(newUser))
-                        }
-                        else {
-                            completion(.failure(AuthError.newUserCreation))
+                        } else {
+                            guard let error = error else { return }
+                            completion(.failure(error))
                         }
                     }
-                }
-                else {
+                } else {
+                    guard let error = error else { return }
                     completion(.failure(AuthError.newUserCreation))
                 }
             }

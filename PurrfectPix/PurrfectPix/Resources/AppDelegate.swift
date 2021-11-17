@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import FirebaseAuth
 import UIKit
 
 @main
@@ -18,6 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+
+        if let user = Auth.auth().currentUser {
+            print("You're sign in as \(user.uid), email: \(user.email ?? "")")
+        }
+
+        // 以下兩行會每次開app 先登出使用者
+
+        do { try Auth.auth().signOut() }
+        catch{
+        }
+
         return true
     }
 

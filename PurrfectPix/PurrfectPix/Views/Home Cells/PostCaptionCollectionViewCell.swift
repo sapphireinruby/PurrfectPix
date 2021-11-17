@@ -70,7 +70,7 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
     func configure(with viewModel: PostCaptionCollectionViewCellViewModel) {
 
 //        label.text = "\(viewModel.username): \(viewModel.caption)"  // showing comment with "optional"
-        let labelName = "\(viewModel.username): \n " 
+        let labelName = "\(viewModel.username): \n" 
         let labelCap = "\(viewModel.caption ?? "")"
         label.text = labelName + labelCap
 

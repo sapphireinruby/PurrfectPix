@@ -46,8 +46,6 @@ final class AuthManager {
     } // for computed property
 
 
-// for cache user
-
 
  // for stored property
 

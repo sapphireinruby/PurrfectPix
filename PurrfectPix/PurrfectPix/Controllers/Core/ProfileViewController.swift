@@ -53,6 +53,7 @@ class ProfileViewController: UIViewController {
 
     init(userID: String) {
         self.userID = userID
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
@@ -124,7 +125,7 @@ class ProfileViewController: UIViewController {
             // for cache
             CacheUserInfo.shared.cache[userInfo.userID] = userInfo // closure 裡面要加self，但解開optional後就不用了
 
-            self.isCurrentUser = userInfo.userID == AuthManager.shared.userID
+//            self.isCurrentUser = userInfo.userID == AuthManager.shared.userID
 
             self.headerViewModel = ProfileHeaderViewModel(
                 profilePictureUrl: nil,
@@ -298,13 +299,14 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             return
         }
         StorageManager.shared.uploadProfilePicture(
-            userID: user.userID,  //需要修改
+            userID: userID,  //需要修改
             data: image.pngData()
         ) { [weak self] success in
             if success {
+                guard let userID = self?.userID else { return }
                 self?.headerViewModel = nil
                 self?.posts = []
-                self?.fetchProfileInfo()
+                self?.fetchProfileInfo(userID: userID)
             }
         }
     }
@@ -330,10 +332,12 @@ extension ProfileViewController: ProfileHeaderCountViewDelegate {
     func profileHeaderCountViewDidTapEditProfile(_ containerView: ProfileHeaderCountView) {
 
         let vc = EditProfileViewController()
+
         vc.completion = { [weak self] in
             // refetch/reload hearder info
+            guard let userID = self?.userID else { return }
             self?.headerViewModel = nil
-            self?.fetchProfileInfo()
+            self?.fetchProfileInfo(userID: userID)
         }
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true)

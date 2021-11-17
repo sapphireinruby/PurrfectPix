@@ -265,7 +265,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             }
 
             DispatchQueue.main.async {
-                let vc = ProfileViewController()
+                let vc = ProfileViewController(userID: user.userID)
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
         }

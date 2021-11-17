@@ -458,10 +458,10 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
 
     func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell, index: Int) {
 
-        let listVC = ListViewController(type: .likers(usernames:
-        allPosts[index].post.likers))
-//        listVC.title = "Liked by"
-        navigationController?.pushViewController(listVC, animated: true)
+//        let listVC = ListViewController(type: .likers(usernames:
+//        allPosts[index].post.likers))
+////        listVC.title = "Liked by"
+//        navigationController?.pushViewController(listVC, animated: true)
 
     }
 }

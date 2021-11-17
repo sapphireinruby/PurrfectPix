@@ -45,9 +45,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         title = "PurrfectPix"
         view.backgroundColor = .systemBackground
         configureCollectionView()
-        // username will edit later
-//        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
-//        fetchPosts()
+
     }
 
     override func viewWillAppear(_ animated: Bool) {

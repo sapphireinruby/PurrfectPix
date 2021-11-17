@@ -122,13 +122,16 @@ extension Encodable {
 enum BaseColor: String {
 
     // swiftlint:disable identifier_name
-    case P1 // D077D8 pinkpurple
+    case P1 // 889CEB light lavander purple
+    case P2 // D077D8 pinkpurple
 
 }
 
 extension UIColor {
 
     static let P1 = baseColor(.P1)
+
+    static let P2 = baseColor(.P2)
 
     private static func baseColor(_ color: BaseColor) -> UIColor? {
 

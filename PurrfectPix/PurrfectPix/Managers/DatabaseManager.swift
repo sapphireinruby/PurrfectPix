@@ -420,7 +420,6 @@ final class DatabaseManager {
                  } catch {
                     print(error)
                  }
-
         }
     }
     // Get user counts for target usre's fowllowers, followings, and posts

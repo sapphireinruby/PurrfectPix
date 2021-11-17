@@ -86,6 +86,7 @@ class ProfileViewController: UIViewController {
             switch result {
             case .success(let posts):
                 self?.posts = posts
+                self?.collectionView?.reloadData()
             case .failure:
                 break
             }
@@ -110,12 +111,12 @@ class ProfileViewController: UIViewController {
             guard let userInfo = userInfo else { return }
 
             // 3 types of counts, following, followers, and posts
-            followerCount = userInfo.followerCount ?? 0
-            followingCount = userInfo.followingCount ?? 0
-            postCount = userInfo.postCount ?? 0
+//            followerCount = userInfo.followerCount ?? 0
+//            followingCount = userInfo.followingCount ?? 0
+//            postCount = userInfo.postCount ?? 0
 
             // Bio, username
-            username = userInfo.userID ?? ""
+            username = userInfo.username ?? ""
             bio = userInfo.bio ?? "Introduce your pet to everyone!"
 
             // profilePictureURL
@@ -237,6 +238,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         )
 
         headerView.delegate = self // change profile image
+        headerView.countContainerView.postCountButton.setTitle("\(posts.count) Posts", for: .normal)
         return headerView
     }
 

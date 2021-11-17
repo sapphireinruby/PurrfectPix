@@ -44,7 +44,7 @@ final class DatabaseManager {
         }
     }
 
-
+// MARK: insert postCount +=1, under users
     // Create new post
     // - Parameters:
     //   - newPost: New Post model
@@ -56,17 +56,32 @@ final class DatabaseManager {
             completion(false)
             return
         }
+        // insert postCount +=1, under collection("users")
+//        let userRef = database.collection("users").document(userID)
+//        do {
+//
+//            try userRef.setData(from: User) { error in
+//                if let error = error {
+//                    completion(false)
+//                } else {
+//                    completion(error == nil)
+//                }
+//            }
+//        } catch {
+//            print("Add post count fails")
+//
+//        }
 
         var post = newPost
         let reference = database.collection("posts").document(newPost.postID)
 
         do {
 
-            try reference.setData(from: post) { err in
-                if let err = err {
+            try reference.setData(from: post) { error in
+                if let error = error {
                     completion(false)
                 } else {
-                    completion(err == nil)
+                    completion(error == nil)
                 }
             }
         } catch {
@@ -94,7 +109,7 @@ final class DatabaseManager {
     }
 
 
-    // userID to find user infos
+    // userID to find user info
 
     public func fetchUser(
         userID: String,
@@ -107,7 +122,6 @@ final class DatabaseManager {
                 return
             }
             completion(user)
-
         }
 
     }
@@ -252,7 +266,7 @@ final class DatabaseManager {
     }
 
 
-    // Get a post with id and username
+    // Get a post from notification with id and username
     // - Parameters:
     //   - identifier: Query id
     //   - username: Query username
@@ -280,6 +294,7 @@ final class DatabaseManager {
         case unfollow
     }
 
+    // MARK: insert following and followers: count +=1, under users
     // Update relationship of follow for user
     // - Parameters:
     //   - state: State to update to
@@ -356,7 +371,58 @@ final class DatabaseManager {
         }
     }
 
-    // Get user counts for target usre
+    // MARK: - User Info
+
+    // Get user info
+    // - Parameters
+    //   - username: userID to query for
+    //   - completion: Result callback
+    // 應該可以所有資料 都從這個function拿
+    public func getUserInfo(
+        userID: String,
+        completion: @escaping (User?) -> Void
+    ) {
+        guard let userID = AuthManager.shared.userID else { return }
+        let ref = database.collection("users").document(userID)
+        ref.getDocument { document, error in
+            guard let document = document,
+            document.exists,
+            let user = try? document.data(as: User.self) else{
+                return
+            }
+
+            completion(user)
+        }
+    }
+
+    public func setUserInfo(
+        name: String,
+        bio: String,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let userID = AuthManager.shared.userID else {
+            return
+        }
+        let ref = database.collection("users").document(userID)
+        ref.getDocument { document, error in
+
+                 guard let document = document,
+                       document.exists,
+                       var user = try? document.data(as: User.self)
+                 else {
+                           return
+                 }
+                 user.username = name
+                 user.bio = bio
+                 do {
+                    try ref.setData(from: user)
+                 } catch {
+                    print(error)
+                 }
+
+        }
+    }
+    // Get user counts for target usre's fowllowers, followings, and posts
     // - Parameters:
     //   - userID: UserID to query
     //   - completion: Callback
@@ -364,62 +430,77 @@ final class DatabaseManager {
         userID: String,
         completion: @escaping ((followers: Int, following: Int, posts: Int)) -> Void
     ) {
-        let userRef = database.collection("users")
-            .document(userID)
+//        let postRef = database.collection("posts")
+        let docRef = database.collection("users").document(userID)
 
+        var posts = 0
         var followers = 0
         var following = 0
-        var posts = 0
 
-        let group = DispatchGroup()
-        group.enter()
-        group.enter()
-        group.enter()
-
-        userRef.collection("posts").getDocuments { snapshot, error in
-            defer {
-                group.leave()
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+            } else {
+                print("Document does not exist")
             }
-
-            guard let count = snapshot?.documents.count, error == nil else {
-                return
-            }
-            posts = count
         }
-
-        userRef.collection("followers").getDocuments { snapshot, error in
-            defer {
-                group.leave()
-            }
-
-            guard let count = snapshot?.documents.count, error == nil else {
-                return
-            }
-            followers = count
-        }
-
-        userRef.collection("following").getDocuments { snapshot, error in
-            defer {
-                group.leave()
-            }
-
-            guard let count = snapshot?.documents.count, error == nil else {
-                return
-            }
-            following = count
-        }
-
-        group.notify(queue: .global()) {
-            let result = (
-                followers: followers,
-                following: following,
-                posts: posts
-            )
-            completion(result)
-        }
+//
+//        let group = DispatchGroup()
+//        group.enter()
+//        group.enter()
+//        group.enter()
+//
+//        postRef.getDocuments { snapshot, error in
+//            defer {
+//                group.leave()
+//            }
+//            let query = postRef.whereField("userID", isEqualTo: userID) { snapshot, error in
+//                // 錯誤訊息 Type of expression is ambiguous without more context 應該是argument 或return type錯誤
+//                guard let count = snapshot.size, error == nil else {
+//                    return
+//                }
+//                posts = count
+//            }
+//
+//        }
+//        // 還是要整包抓下來 再拿field裡面的count
+//
+//        userRef.getDocument(completion: <#T##FIRDocumentSnapshotBlock##FIRDocumentSnapshotBlock##(DocumentSnapshot?, Error?) -> Void#>)
+//
+//        userRef.where("followers").get() { snapshot, error in
+//            defer {
+//                group.leave()
+//            }
+//
+//            guard let count = snapshot?.count, error == nil else {
+//                return
+//            }
+//            followers = count
+//        }
+//
+//        userRef.where("following").get() { snapshot, error in
+//            defer {
+//                group.leave()
+//            }
+//
+//            guard let count = snapshot?.documents.count, error == nil else {
+//                return
+//            }
+//            following = count
+//        }
+//
+//        group.notify(queue: .global()) {
+//            let result = (
+//                followers: followers,
+//                following: following,
+//                posts: posts
+//            )
+//            completion(result)
+//        }
     }
 
-    // Check if current user is following another
+    // Check if current user is following another user
     // - Parameters:
     //   - targetUsername: Other user to check
     //   - completion: Result callback
@@ -427,13 +508,14 @@ final class DatabaseManager {
         targetUserID: String,
         completion: @escaping (Bool) -> Void
     ) {
-        guard let currentUsername = AuthManager.shared.username else {
+        guard let currentUserID = AuthManager.shared.userID else {
             completion(false)
             return
         }
 
         let ref = database.collection("users")
-            .document(targetUserID) // 在post下面 顯示有按讚的人名
+            .document(currentUserID) // 在自己的following裏面 有無對方的ID 還需要修改
+        // ref.whereField("following", isEqualTo: "targetUserID")
         ref.getDocument { snapshot, error in
             guard snapshot?.data() != nil, error == nil else {
                 // Not following
@@ -447,72 +529,34 @@ final class DatabaseManager {
 
     // Get followers for user
     // - Parameters:
-    //   - username: Username to query
+    //   - UserID: UserID to query
     //   - completion: Result callback
     public func followers(for userID: String, completion: @escaping ([String]) -> Void) {
-        let ref = database.collection("users")
-            .document(userID)
-            .collection("followers")
-        ref.getDocuments { snapshot, error in
-            guard let usernames = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
-                completion([])
-                return
-            }
-            completion(usernames)  //  確認是否username可以
+        guard let currentUserID = AuthManager.shared.userID else {
+            completion([])
+            return
         }
-    }
+        let ref = database.collection("users").document(currentUserID)
+        // 或列出自己的followers就好
+        // 再建立一個collection 存入document 等到生成table view實在顯示
 
-    // MARK: - User Info
-
-    // Get user info
-    // - Parameters:
-    //   - username: username to query for
-    //   - completion: Result callback
-//    public func getUserInfo(
-//        username: String,
-//        completion: @escaping (UserInfo?) -> Void
-//    ) {
-//        let ref = database.collection("users")
-//            .document(username)
-//            .collection("information")
-//            .document("basic")
-//        ref.getDocument { snapshot, error in
-//            guard let data = snapshot?.data(),
-//                  let userInfo = UserInfo(with: data) else {
-//                completion(nil)
+//        ref.get() { snapshot, error in
+//            guard let usernames = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
+//                completion([])
 //                return
 //            }
-//            completion(userInfo)
+//            completion(usernames)  //  user要轉username
 //        }
-//    }
+    }
 
-    // Set user info
-    // - Parameters:
-    //   - userInfo: UserInfo model
-    //   - completion: Callback
-//    public func setUserInfo(
-//        userInfo: UserInfo,
-//        completion: @escaping (Bool) -> Void
-//    ) {
-//        guard let username = UserDefaults.standard.string(forKey: "username"),
-//              let data = userInfo.asDictionary() else {
-//            return
-//        }
-//
-//        let ref = database.collection("users")
-//            .document(username)
-//            .collection("information")
-//            .document("basic")
-//        ref.setData(data) { error in
-//            completion(error == nil)
-//        }
-//    }
+
+
 
     // MARK: - Comment
 
     // Create a comment
     // - Parameters:
-    //   - comment: Comment mmodel
+    //   - comment: Comment model
     //   - postID: post id
     //   - owner: username who owns post
     //   - completion: Result callback

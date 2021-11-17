@@ -1,0 +1,1093 @@
+2021-11-14 17:51:14 +0000  Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x7fcf050dd930; archive(resolved)="<IDEArchive: 0x7fceff5c44a0>", distributionTask(resolved)="2", distributionDestination(resolved)="1", distributionMethod(resolved)="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team(resolved)="<IDEProvisioningDisambiguatableBasicTeam: 0x7fcf6327c890; teamID='UQWW588DMN', teamName='Yiling Liu', teamType='Individual', username='ling9393@gmail.com', isFreeProvisioningTeam='0'>">
+	Chain (14, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x7fcf050dd930; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7fcf6327c890; teamID='UQWW588DMN', teamName='Yiling Liu', teamType='Individual', username='ling9393@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionProcessingPipelineContext: 0x7fcf051a53f0; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7fcf6327c890; teamID='UQWW588DMN', teamName='Yiling Liu', teamType='Individual', username='ling9393@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7fcf050d7cb0; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7fcf6327c890; teamID='UQWW588DMN', teamName='Yiling Liu', teamType='Individual', username='ling9393@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7fcf05608bd0; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7fcf6327c890; teamID='UQWW588DMN', teamName='Yiling Liu', teamType='Individual', username='ling9393@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7fcf05661f30; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7fcf6327c890; teamID='UQWW588DMN', teamName='Yiling Liu', teamType='Individual', username='ling9393@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7fcf05179e90; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7fcf6327c890; teamID='UQWW588DMN', teamName='Yiling Liu', teamType='Individual', username='ling9393@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7fcf05661390; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7fcf6327c890; teamID='UQWW588DMN', teamName='Yiling Liu', teamType='Individual', username='ling9393@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7fcf0547b7c0; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7fcf6327c890; teamID='UQWW588DMN', teamName='Yiling Liu', teamType='Individual', username='ling9393@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7fcf056ec430; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7fcf6327c890; teamID='UQWW588DMN', teamName='Yiling Liu', teamType='Individual', username='ling9393@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7fcf050caae0; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="(null)">
+	<IDEDistributionContext: 0x7fcf056e9e00; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="(null)">
+	<IDEDistributionContext: 0x7fcf0464b270; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="(null)">
+	<IDEDistributionContext: 0x7fcf057ffe30; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7fcf215c26f0>", team="(null)">
+	<IDEDistributionContext: 0x7fcf057a16f0; archive = "<IDEArchive: 0x7fceff5c44a0>", distributionMethod="(null)", team="(null)">
+</IDEDistributionProcessingPipelineContext: 0x7fcf050dd930>
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionCreateDestRootStep
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionCopyItemStep
+2021-11-14 17:51:14 +0000  Running /usr/bin/ditto '-V' '/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app'
+2021-11-14 17:51:14 +0000  >>> Copying /Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app 
+2021-11-14 17:51:14 +0000  copying file ./_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  35633 bytes for ./_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./AppIcon60x60@2x.png ... 
+2021-11-14 17:51:14 +0000  10151 bytes for ./AppIcon60x60@2x.png
+2021-11-14 17:51:14 +0000  copying file ./GoogleService-Info.plist ... 
+2021-11-14 17:51:14 +0000  673 bytes for ./GoogleService-Info.plist
+copying file ./70835-hiro-rocket-launch-purple.json ... 
+2021-11-14 17:51:14 +0000  569547 bytes for ./70835-hiro-rocket-launch-purple.json
+2021-11-14 17:51:14 +0000  copying file ./Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib ... 
+2021-11-14 17:51:14 +0000  2091 bytes for ./Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib
+2021-11-14 17:51:14 +0000  copying file ./Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib ... 
+2021-11-14 17:51:14 +0000  896 bytes for ./Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib
+copying file ./Base.lproj/LaunchScreen.storyboardc/Info.plist ... 
+2021-11-14 17:51:14 +0000  258 bytes for ./Base.lproj/LaunchScreen.storyboardc/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./68349-cat-tail-wag.json ... 
+2021-11-14 17:51:14 +0000  27991 bytes for ./68349-cat-tail-wag.json
+2021-11-14 17:51:14 +0000  copying file ./PurrfectPix ... 
+2021-11-14 17:51:14 +0000  37357424 bytes for ./PurrfectPix
+copying file ./Assets.car ... 
+2021-11-14 17:51:14 +0000  1057231 bytes for ./Assets.car
+copying file ./890-loading-animation.json ... 
+2021-11-14 17:51:14 +0000  7512 bytes for ./890-loading-animation.json
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/grpcpp.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  2472 bytes for ./Frameworks/grpcpp.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/grpcpp.framework/grpcpp ... 
+2021-11-14 17:51:14 +0000  3582592 bytes for ./Frameworks/grpcpp.framework/grpcpp
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/grpcpp.framework/gRPCCertificates-Cpp.bundle/roots.pem ... 
+2021-11-14 17:51:14 +0000  284228 bytes for ./Frameworks/grpcpp.framework/gRPCCertificates-Cpp.bundle/roots.pem
+copying file ./Frameworks/grpcpp.framework/gRPCCertificates-Cpp.bundle/Info.plist ... 
+2021-11-14 17:51:14 +0000  741 bytes for ./Frameworks/grpcpp.framework/gRPCCertificates-Cpp.bundle/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/grpcpp.framework/Info.plist ... 
+2021-11-14 17:51:14 +0000  736 bytes for ./Frameworks/grpcpp.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Hashtags.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  2700 bytes for ./Frameworks/Hashtags.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Hashtags.framework/Hashtags.bundle/Info.plist ... 
+2021-11-14 17:51:14 +0000  714 bytes for ./Frameworks/Hashtags.framework/Hashtags.bundle/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Hashtags.framework/Hashtags.bundle/close.png ... 
+2021-11-14 17:51:14 +0000  641 bytes for ./Frameworks/Hashtags.framework/Hashtags.bundle/close.png
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Hashtags.framework/Hashtags ... 
+2021-11-14 17:51:14 +0000  786128 bytes for ./Frameworks/Hashtags.framework/Hashtags
+copying file ./Frameworks/Hashtags.framework/Info.plist ... 
+2021-11-14 17:51:14 +0000  739 bytes for ./Frameworks/Hashtags.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Hashtags.framework/close.png ... 
+2021-11-14 17:51:14 +0000  641 bytes for ./Frameworks/Hashtags.framework/close.png
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/GTMSessionFetcher.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  1798 bytes for ./Frameworks/GTMSessionFetcher.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher ... 
+2021-11-14 17:51:14 +0000  1280176 bytes for ./Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/GTMSessionFetcher.framework/Info.plist ... 
+2021-11-14 17:51:14 +0000  759 bytes for ./Frameworks/GTMSessionFetcher.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/FBLPromises.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  1798 bytes for ./Frameworks/FBLPromises.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/FBLPromises.framework/FBLPromises ... 
+2021-11-14 17:51:14 +0000  603712 bytes for ./Frameworks/FBLPromises.framework/FBLPromises
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/FBLPromises.framework/Info.plist ... 
+2021-11-14 17:51:14 +0000  746 bytes for ./Frameworks/FBLPromises.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/GoogleUtilities.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  1798 bytes for ./Frameworks/GoogleUtilities.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/GoogleUtilities.framework/GoogleUtilities ... 
+2021-11-14 17:51:14 +0000  1053152 bytes for ./Frameworks/GoogleUtilities.framework/GoogleUtilities
+copying file ./Frameworks/GoogleUtilities.framework/Info.plist ... 
+2021-11-14 17:51:14 +0000  755 bytes for ./Frameworks/GoogleUtilities.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/JGProgressHUD.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  1798 bytes for ./Frameworks/JGProgressHUD.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/JGProgressHUD.framework/JGProgressHUD ... 
+2021-11-14 17:51:14 +0000  707024 bytes for ./Frameworks/JGProgressHUD.framework/JGProgressHUD
+copying file ./Frameworks/JGProgressHUD.framework/Info.plist ... 
+2021-11-14 17:51:14 +0000  749 bytes for ./Frameworks/JGProgressHUD.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/nanopb.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  1798 bytes for ./Frameworks/nanopb.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/nanopb.framework/nanopb ... 
+2021-11-14 17:51:14 +0000  277968 bytes for ./Frameworks/nanopb.framework/nanopb
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/nanopb.framework/Info.plist ... 
+2021-11-14 17:51:14 +0000  739 bytes for ./Frameworks/nanopb.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/AlignedCollectionViewFlowLayout.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  1798 bytes for ./Frameworks/AlignedCollectionViewFlowLayout.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/AlignedCollectionViewFlowLayout.framework/Info.plist ... 
+2021-11-14 17:51:14 +0000  787 bytes for ./Frameworks/AlignedCollectionViewFlowLayout.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/AlignedCollectionViewFlowLayout.framework/AlignedCollectionViewFlowLayout ... 
+2021-11-14 17:51:14 +0000  400288 bytes for ./Frameworks/AlignedCollectionViewFlowLayout.framework/AlignedCollectionViewFlowLayout
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/leveldb.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  1798 bytes for ./Frameworks/leveldb.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/leveldb.framework/leveldb ... 
+2021-11-14 17:51:14 +0000  2436560 bytes for ./Frameworks/leveldb.framework/leveldb
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/leveldb.framework/Info.plist ... 
+738 bytes for ./Frameworks/leveldb.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/grpc.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  1798 bytes for ./Frameworks/grpc.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/grpc.framework/grpc ... 
+2021-11-14 17:51:14 +0000  16571392 bytes for ./Frameworks/grpc.framework/grpc
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/grpc.framework/Info.plist ... 
+732 bytes for ./Frameworks/grpc.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/openssl_grpc.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  1798 bytes for ./Frameworks/openssl_grpc.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/openssl_grpc.framework/openssl_grpc ... 
+2021-11-14 17:51:14 +0000  9060992 bytes for ./Frameworks/openssl_grpc.framework/openssl_grpc
+copying file ./Frameworks/openssl_grpc.framework/Info.plist ... 
+2021-11-14 17:51:14 +0000  747 bytes for ./Frameworks/openssl_grpc.framework/Info.plist
+copying file ./Frameworks/absl.framework/_CodeSignature/CodeResources ... 
+1798 bytes for ./Frameworks/absl.framework/_CodeSignature/CodeResources
+copying file ./Frameworks/absl.framework/absl ... 
+2021-11-14 17:51:14 +0000  2497264 bytes for ./Frameworks/absl.framework/absl
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/absl.framework/Info.plist ... 
+738 bytes for ./Frameworks/absl.framework/Info.plist
+copying file ./Frameworks/TTGTags.framework/_CodeSignature/CodeResources ... 
+1798 bytes for ./Frameworks/TTGTags.framework/_CodeSignature/CodeResources
+copying file ./Frameworks/TTGTags.framework/TTGTags ... 
+553824 bytes for ./Frameworks/TTGTags.framework/TTGTags
+copying file ./Frameworks/TTGTags.framework/Info.plist ... 
+737 bytes for ./Frameworks/TTGTags.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/SDWebImage.framework/_CodeSignature/CodeResources ... 
+1798 bytes for ./Frameworks/SDWebImage.framework/_CodeSignature/CodeResources
+copying file ./Frameworks/SDWebImage.framework/SDWebImage ... 
+2021-11-14 17:51:14 +0000  3565280 bytes for ./Frameworks/SDWebImage.framework/SDWebImage
+copying file ./Frameworks/SDWebImage.framework/Info.plist ... 
+2021-11-14 17:51:14 +0000  744 bytes for ./Frameworks/SDWebImage.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  18294 bytes for ./Frameworks/Appirater.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater ... 
+2021-11-14 17:51:14 +0000  341504 bytes for ./Frameworks/Appirater.framework/Appirater
+copying file ./Frameworks/Appirater.framework/Info.plist ... 
+2021-11-14 17:51:14 +0000  741 bytes for ./Frameworks/Appirater.framework/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/de.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  369 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/de.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/he.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  371 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/he.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/ar.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  430 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/ar.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/el.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  547 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/el.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/zh-Hans.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  343 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/zh-Hans.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/ja.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  432 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/ja.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/fa.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  493 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/fa.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/en.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  347 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/en.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/uk.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  466 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/uk.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/nb.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  358 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/nb.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/es.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  352 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/es.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/da.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  370 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/da.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/it.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  382 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/it.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/sk.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  372 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/sk.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/ms.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  370 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/ms.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/sv.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  350 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/sv.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/cs.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  354 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/cs.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/ko.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  378 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/ko.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/hy.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  600 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/hy.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/zh-Hant.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  343 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/zh-Hant.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/hu.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  361 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/hu.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/tr.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  409 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/tr.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/pl.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  410 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/pl.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/pt-BR.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  333 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/pt-BR.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/vi.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  417 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/vi.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/ru.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  475 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/ru.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/fr.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  368 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/fr.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/fi.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  358 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/fi.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/id.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  398 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/id.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/nl.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  391 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/nl.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/th.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  614 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/th.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/pt.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  333 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/pt.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/ro.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  347 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/ro.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/Info.plist ... 
+2021-11-14 17:51:14 +0000  716 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/Info.plist
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Appirater.framework/Appirater.bundle/ca.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:14 +0000  387 bytes for ./Frameworks/Appirater.framework/Appirater.bundle/ca.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Lottie.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:14 +0000  1798 bytes for ./Frameworks/Lottie.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Lottie.framework/Lottie ... 
+2021-11-14 17:51:14 +0000  8657248 bytes for ./Frameworks/Lottie.framework/Lottie
+2021-11-14 17:51:14 +0000  /usr/bin/ditto exited with 0
+2021-11-14 17:51:14 +0000  copying file ./Frameworks/Lottie.framework/Info.plist ... 
+735 bytes for ./Frameworks/Lottie.framework/Info.plist
+copying file ./embedded.mobileprovision ... 
+12312 bytes for ./embedded.mobileprovision
+copying file ./Info.plist ... 
+1746 bytes for ./Info.plist
+copying file ./PkgInfo ... 
+8 bytes for ./PkgInfo
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionEmbedProfileStep
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf057604d0; bundleID='org.cocoapods.AlignedCollectionViewFlowLayout', path='<DVTFilePath:0x7fcf059db830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057a6e80; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf050b8ec0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.AlignedCollectionViewFlowLayout', executablePath='<DVTFilePath:0x7fcf03f1cd10:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/AlignedCollectionViewFlowLayout'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf05798730; bundleID='org.cocoapods.Appirater', path='<DVTFilePath:0x7fcf05ee9880:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Appirater.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057a7840; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf054f6370; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Appirater', executablePath='<DVTFilePath:0x7fcf05eea320:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Appirater.framework/Appirater'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf057777a0; bundleID='org.cocoapods.FBLPromises', path='<DVTFilePath:0x7fcf04747860:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/FBLPromises.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05780490; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0541e5e0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.FBLPromises', executablePath='<DVTFilePath:0x7fcf05606b20:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/FBLPromises.framework/FBLPromises'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf0467eed0; bundleID='org.cocoapods.GTMSessionFetcher', path='<DVTFilePath:0x7fcf04754e20:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057793f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0541c360; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.GTMSessionFetcher', executablePath='<DVTFilePath:0x7fcf0506e040:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf051dcb90; bundleID='org.cocoapods.GoogleUtilities', path='<DVTFilePath:0x7fcf0474b080:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GoogleUtilities.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0575f6c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05442550; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.GoogleUtilities', executablePath='<DVTFilePath:0x7fcf056d49d0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GoogleUtilities.framework/GoogleUtilities'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf0574be50; bundleID='org.cocoapods.Hashtags', path='<DVTFilePath:0x7fcf047578e0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Hashtags.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057925f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf61fb03e0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Hashtags', executablePath='<DVTFilePath:0x7fcf04759990:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf0479d8c0; bundleID='org.cocoapods.JGProgressHUD', path='<DVTFilePath:0x7fcf059dd830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/JGProgressHUD.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0574cda0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0545ef30; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.JGProgressHUD', executablePath='<DVTFilePath:0x7fcf057e2a60:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/JGProgressHUD.framework/JGProgressHUD'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf057a64a0; bundleID='org.cocoapods.Lottie', path='<DVTFilePath:0x7fcf059e26b0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Lottie.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0460b8e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05419af0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Lottie', executablePath='<DVTFilePath:0x7fcf057b1be0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Lottie.framework/Lottie'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf0575ed10; bundleID='org.cocoapods.SDWebImage', path='<DVTFilePath:0x7fcf059e9ec0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/SDWebImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0575f3a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05699680; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.SDWebImage', executablePath='<DVTFilePath:0x7fcf05017610:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/SDWebImage.framework/SDWebImage'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf04694900; bundleID='org.cocoapods.TTGTags', path='<DVTFilePath:0x7fcf059ec830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/TTGTags.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0577efb0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf056e8390; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.TTGTags', executablePath='<DVTFilePath:0x7fcf0500f190:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/TTGTags.framework/TTGTags'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf051e6230; bundleID='org.cocoapods.absl', path='<DVTFilePath:0x7fceff5ca4f0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/absl.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d6b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf051e4870; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.absl', executablePath='<DVTFilePath:0x7fcf059dae90:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/absl.framework/absl'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf05777430; bundleID='org.cocoapods.grpc', path='<DVTFilePath:0x7fcf0474dc40:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpc.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d700; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0566e0c0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.grpc', executablePath='<DVTFilePath:0x7fcf0474ecf0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpc.framework/grpc'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf051839c0; bundleID='org.cocoapods.grpcpp', path='<DVTFilePath:0x7fcf047506e0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpcpp.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05781f50; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf054d1d40; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.grpcpp', executablePath='<DVTFilePath:0x7fcf04753400:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpcpp.framework/grpcpp'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf051e34d0; bundleID='org.cocoapods.leveldb', path='<DVTFilePath:0x7fcf059e0000:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/leveldb.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d770; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf056dd120; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.leveldb', executablePath='<DVTFilePath:0x7fcf059e1e60:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/leveldb.framework/leveldb'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf051cf730; bundleID='org.cocoapods.nanopb', path='<DVTFilePath:0x7fcf059e4d70:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/nanopb.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05728180; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057f01f0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.nanopb', executablePath='<DVTFilePath:0x7fcf059e6ce0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/nanopb.framework/nanopb'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fcf0575ecb0; bundleID='org.cocoapods.openssl-grpc', path='<DVTFilePath:0x7fcf059e7580:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/openssl_grpc.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf04684c10; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05666090; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.openssl-grpc', executablePath='<DVTFilePath:0x7fcf059e95c0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/openssl_grpc.framework/openssl_grpc'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionInfoPlistStep
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionAppThinningPlistStep
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionAppThinningPlistStep because it said so
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionCompileBitcodeStep
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCompileBitcodeStep because it said so
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionCodeSlimmingStep
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/AlignedCollectionViewFlowLayout' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/AlignedCollectionViewFlowLayout'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/FBLPromises.framework/FBLPromises' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/FBLPromises.framework/FBLPromises'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework/GoogleUtilities' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework/GoogleUtilities'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework/JGProgressHUD' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework/JGProgressHUD'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Lottie.framework/Lottie' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Lottie.framework/Lottie'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/SDWebImage.framework/SDWebImage' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/SDWebImage.framework/SDWebImage'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/TTGTags.framework/TTGTags' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/TTGTags.framework/TTGTags'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/absl.framework/absl' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/absl.framework/absl'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpc.framework/grpc' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpc.framework/grpc'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpcpp.framework/grpcpp' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpcpp.framework/grpcpp'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/leveldb.framework/leveldb' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/leveldb.framework/leveldb'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/nanopb.framework/nanopb' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/nanopb.framework/nanopb'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework/openssl_grpc' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework/openssl_grpc'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/PurrfectPix' '-r' '-keep_cs' '-o' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/PurrfectPix'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionCopyBCSymbolMapsStep
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionSymbolsStep
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionAppThinningStep
+2021-11-14 17:51:14 +0000  Skipping step: IDEDistributionAppThinningStep because it said so
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionArchThinningStep
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/AlignedCollectionViewFlowLayout' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "AlignedCollectionViewFlowLayout" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "Appirater" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/FBLPromises.framework/FBLPromises' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "FBLPromises" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "GTMSessionFetcher" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework/GoogleUtilities' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "GoogleUtilities" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "Hashtags" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework/JGProgressHUD' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "JGProgressHUD" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Lottie.framework/Lottie' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "Lottie" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/SDWebImage.framework/SDWebImage' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "SDWebImage" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/TTGTags.framework/TTGTags' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "TTGTags" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/absl.framework/absl' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "absl" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpc.framework/grpc' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "grpc" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpcpp.framework/grpcpp' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "grpcpp" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/leveldb.framework/leveldb' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "leveldb" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/nanopb.framework/nanopb' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "nanopb" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework/openssl_grpc' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "openssl_grpc" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/PurrfectPix' '-verify_arch' 'arm64e'
+2021-11-14 17:51:14 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-11-14 17:51:14 +0000  Skipping architecture thinning for item "PurrfectPix" because arch "arm64e" wasn't found
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionODRStep
+2021-11-14 17:51:14 +0000  Processing step: IDEDistributionStripXattrsStep
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf057604d0; bundleID='org.cocoapods.AlignedCollectionViewFlowLayout', path='<DVTFilePath:0x7fcf059db830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057a6e80; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf054e5ec0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.AlignedCollectionViewFlowLayout', executablePath='<DVTFilePath:0x7fcf03f1cd10:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/AlignedCollectionViewFlowLayout'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf05798730; bundleID='org.cocoapods.Appirater', path='<DVTFilePath:0x7fcf05ee9880:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Appirater.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057a7840; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf054e5c50; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Appirater', executablePath='<DVTFilePath:0x7fcf05eea320:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Appirater.framework/Appirater'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf057777a0; bundleID='org.cocoapods.FBLPromises', path='<DVTFilePath:0x7fcf04747860:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/FBLPromises.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05780490; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05462ac0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.FBLPromises', executablePath='<DVTFilePath:0x7fcf05606b20:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/FBLPromises.framework/FBLPromises'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf0467eed0; bundleID='org.cocoapods.GTMSessionFetcher', path='<DVTFilePath:0x7fcf04754e20:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057793f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05462af0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.GTMSessionFetcher', executablePath='<DVTFilePath:0x7fcf0506e040:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf051dcb90; bundleID='org.cocoapods.GoogleUtilities', path='<DVTFilePath:0x7fcf0474b080:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GoogleUtilities.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0575f6c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0507b620; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.GoogleUtilities', executablePath='<DVTFilePath:0x7fcf056d49d0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GoogleUtilities.framework/GoogleUtilities'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf0574be50; bundleID='org.cocoapods.Hashtags', path='<DVTFilePath:0x7fcf047578e0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Hashtags.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057925f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0507b6b0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Hashtags', executablePath='<DVTFilePath:0x7fcf04759990:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf0479d8c0; bundleID='org.cocoapods.JGProgressHUD', path='<DVTFilePath:0x7fcf059dd830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/JGProgressHUD.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0574cda0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0507b6c0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.JGProgressHUD', executablePath='<DVTFilePath:0x7fcf057e2a60:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/JGProgressHUD.framework/JGProgressHUD'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf057a64a0; bundleID='org.cocoapods.Lottie', path='<DVTFilePath:0x7fcf059e26b0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Lottie.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0460b8e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0507b600; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Lottie', executablePath='<DVTFilePath:0x7fcf057b1be0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Lottie.framework/Lottie'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf0575ed10; bundleID='org.cocoapods.SDWebImage', path='<DVTFilePath:0x7fcf059e9ec0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/SDWebImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0575f3a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf050cfc70; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.SDWebImage', executablePath='<DVTFilePath:0x7fcf05017610:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/SDWebImage.framework/SDWebImage'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf04694900; bundleID='org.cocoapods.TTGTags', path='<DVTFilePath:0x7fcf059ec830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/TTGTags.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0577efb0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0507b680; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.TTGTags', executablePath='<DVTFilePath:0x7fcf0500f190:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/TTGTags.framework/TTGTags'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf051e6230; bundleID='org.cocoapods.absl', path='<DVTFilePath:0x7fceff5ca4f0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/absl.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d6b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057d3e20; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.absl', executablePath='<DVTFilePath:0x7fcf059dae90:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/absl.framework/absl'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf05777430; bundleID='org.cocoapods.grpc', path='<DVTFilePath:0x7fcf0474dc40:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpc.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d700; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057d0530; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.grpc', executablePath='<DVTFilePath:0x7fcf0474ecf0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpc.framework/grpc'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf051839c0; bundleID='org.cocoapods.grpcpp', path='<DVTFilePath:0x7fcf047506e0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpcpp.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05781f50; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf051ad8e0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.grpcpp', executablePath='<DVTFilePath:0x7fcf04753400:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpcpp.framework/grpcpp'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf051e34d0; bundleID='org.cocoapods.leveldb', path='<DVTFilePath:0x7fcf059e0000:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/leveldb.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d770; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0541b5b0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.leveldb', executablePath='<DVTFilePath:0x7fcf059e1e60:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/leveldb.framework/leveldb'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf051cf730; bundleID='org.cocoapods.nanopb', path='<DVTFilePath:0x7fcf059e4d70:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/nanopb.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05728180; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057d1a20; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.nanopb', executablePath='<DVTFilePath:0x7fcf059e6ce0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/nanopb.framework/nanopb'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fcf0575ecb0; bundleID='org.cocoapods.openssl-grpc', path='<DVTFilePath:0x7fcf059e7580:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/openssl_grpc.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf04684c10; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057d1a20; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.openssl-grpc', executablePath='<DVTFilePath:0x7fcf059e95c0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/openssl_grpc.framework/openssl_grpc'>', hardenedRuntime='0'>'>
+2021-11-14 17:51:14 +0000  Running /usr/bin/xattr '-crs' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app'
+2021-11-14 17:51:15 +0000  /usr/bin/xattr exited with 0
+2021-11-14 17:51:15 +0000  Processing step: IDEDistributionCodesignStep
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf057604d0; bundleID='org.cocoapods.AlignedCollectionViewFlowLayout', path='<DVTFilePath:0x7fcf059db830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057a6e80; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057d83f0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.AlignedCollectionViewFlowLayout', executablePath='<DVTFilePath:0x7fcf03f1cd10:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/AlignedCollectionViewFlowLayout'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf057604d0; bundleID='org.cocoapods.AlignedCollectionViewFlowLayout', path='<DVTFilePath:0x7fcf059db830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057a6e80; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05481fb0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.AlignedCollectionViewFlowLayout', executablePath='<DVTFilePath:0x7fcf03f1cd10:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/AlignedCollectionViewFlowLayout'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:15 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf057604d0; bundleID='org.cocoapods.AlignedCollectionViewFlowLayout', path='<DVTFilePath:0x7fcf059db830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057a6e80; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05482c30; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.AlignedCollectionViewFlowLayout', executablePath='<DVTFilePath:0x7fcf03f1cd10:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/AlignedCollectionViewFlowLayout'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~T6XvNi
+2021-11-14 17:51:15 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~T6XvNi' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework'
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework: replacing existing signature
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.AlignedCollectionViewFlowLayout]
+2021-11-14 17:51:15 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf05798730; bundleID='org.cocoapods.Appirater', path='<DVTFilePath:0x7fcf05ee9880:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Appirater.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057a7840; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0507b680; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Appirater', executablePath='<DVTFilePath:0x7fcf05eea320:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Appirater.framework/Appirater'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf05798730; bundleID='org.cocoapods.Appirater', path='<DVTFilePath:0x7fcf05ee9880:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Appirater.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057a7840; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05482170; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Appirater', executablePath='<DVTFilePath:0x7fcf05eea320:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Appirater.framework/Appirater'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:15 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf05798730; bundleID='org.cocoapods.Appirater', path='<DVTFilePath:0x7fcf05ee9880:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Appirater.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057a7840; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05482560; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Appirater', executablePath='<DVTFilePath:0x7fcf05eea320:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Appirater.framework/Appirater'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~XhFUoP
+2021-11-14 17:51:15 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~XhFUoP' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Appirater.framework'
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Appirater.framework: replacing existing signature
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Appirater.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.Appirater]
+2021-11-14 17:51:15 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf057777a0; bundleID='org.cocoapods.FBLPromises', path='<DVTFilePath:0x7fcf04747860:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/FBLPromises.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05780490; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057f4240; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.FBLPromises', executablePath='<DVTFilePath:0x7fcf05606b20:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/FBLPromises.framework/FBLPromises'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf057777a0; bundleID='org.cocoapods.FBLPromises', path='<DVTFilePath:0x7fcf04747860:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/FBLPromises.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05780490; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05481720; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.FBLPromises', executablePath='<DVTFilePath:0x7fcf05606b20:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/FBLPromises.framework/FBLPromises'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:15 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf057777a0; bundleID='org.cocoapods.FBLPromises', path='<DVTFilePath:0x7fcf04747860:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/FBLPromises.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05780490; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05443e10; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.FBLPromises', executablePath='<DVTFilePath:0x7fcf05606b20:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/FBLPromises.framework/FBLPromises'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~qGKvgo
+2021-11-14 17:51:15 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~qGKvgo' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/FBLPromises.framework'
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/FBLPromises.framework: replacing existing signature
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/FBLPromises.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.FBLPromises]
+2021-11-14 17:51:15 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf0467eed0; bundleID='org.cocoapods.GTMSessionFetcher', path='<DVTFilePath:0x7fcf04754e20:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057793f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf050768f0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.GTMSessionFetcher', executablePath='<DVTFilePath:0x7fcf0506e040:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf0467eed0; bundleID='org.cocoapods.GTMSessionFetcher', path='<DVTFilePath:0x7fcf04754e20:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057793f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf054b0280; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.GTMSessionFetcher', executablePath='<DVTFilePath:0x7fcf0506e040:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:15 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf0467eed0; bundleID='org.cocoapods.GTMSessionFetcher', path='<DVTFilePath:0x7fcf04754e20:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057793f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0549dc80; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.GTMSessionFetcher', executablePath='<DVTFilePath:0x7fcf0506e040:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~jAXF80
+2021-11-14 17:51:15 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~jAXF80' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework'
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework: replacing existing signature
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.GTMSessionFetcher]
+2021-11-14 17:51:15 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf051dcb90; bundleID='org.cocoapods.GoogleUtilities', path='<DVTFilePath:0x7fcf0474b080:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GoogleUtilities.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0575f6c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0e74b0a0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.GoogleUtilities', executablePath='<DVTFilePath:0x7fcf056d49d0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GoogleUtilities.framework/GoogleUtilities'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf051dcb90; bundleID='org.cocoapods.GoogleUtilities', path='<DVTFilePath:0x7fcf0474b080:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GoogleUtilities.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0575f6c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057f41c0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.GoogleUtilities', executablePath='<DVTFilePath:0x7fcf056d49d0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GoogleUtilities.framework/GoogleUtilities'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:15 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf051dcb90; bundleID='org.cocoapods.GoogleUtilities', path='<DVTFilePath:0x7fcf0474b080:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GoogleUtilities.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0575f6c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0507b600; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.GoogleUtilities', executablePath='<DVTFilePath:0x7fcf056d49d0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/GoogleUtilities.framework/GoogleUtilities'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~n2TsP4
+2021-11-14 17:51:15 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~n2TsP4' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework'
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework: replacing existing signature
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.GoogleUtilities]
+2021-11-14 17:51:15 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf0574be50; bundleID='org.cocoapods.Hashtags', path='<DVTFilePath:0x7fcf047578e0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Hashtags.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057925f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0507b700; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Hashtags', executablePath='<DVTFilePath:0x7fcf04759990:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf0574be50; bundleID='org.cocoapods.Hashtags', path='<DVTFilePath:0x7fcf047578e0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Hashtags.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057925f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0545f4a0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Hashtags', executablePath='<DVTFilePath:0x7fcf04759990:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:15 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf0574be50; bundleID='org.cocoapods.Hashtags', path='<DVTFilePath:0x7fcf047578e0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Hashtags.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf057925f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05481b80; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Hashtags', executablePath='<DVTFilePath:0x7fcf04759990:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~75WcoR
+2021-11-14 17:51:15 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~75WcoR' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Hashtags.framework'
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Hashtags.framework: replacing existing signature
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Hashtags.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.Hashtags]
+2021-11-14 17:51:15 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf0479d8c0; bundleID='org.cocoapods.JGProgressHUD', path='<DVTFilePath:0x7fcf059dd830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/JGProgressHUD.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0574cda0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf33d1c020; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.JGProgressHUD', executablePath='<DVTFilePath:0x7fcf057e2a60:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/JGProgressHUD.framework/JGProgressHUD'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf0479d8c0; bundleID='org.cocoapods.JGProgressHUD', path='<DVTFilePath:0x7fcf059dd830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/JGProgressHUD.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0574cda0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057d83f0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.JGProgressHUD', executablePath='<DVTFilePath:0x7fcf057e2a60:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/JGProgressHUD.framework/JGProgressHUD'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:15 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf0479d8c0; bundleID='org.cocoapods.JGProgressHUD', path='<DVTFilePath:0x7fcf059dd830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/JGProgressHUD.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0574cda0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057d1a20; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.JGProgressHUD', executablePath='<DVTFilePath:0x7fcf057e2a60:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/JGProgressHUD.framework/JGProgressHUD'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~RasnmX
+2021-11-14 17:51:15 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~RasnmX' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework'
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework: replacing existing signature
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.JGProgressHUD]
+2021-11-14 17:51:15 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf057a64a0; bundleID='org.cocoapods.Lottie', path='<DVTFilePath:0x7fcf059e26b0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Lottie.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0460b8e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057d83f0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Lottie', executablePath='<DVTFilePath:0x7fcf057b1be0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Lottie.framework/Lottie'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf057a64a0; bundleID='org.cocoapods.Lottie', path='<DVTFilePath:0x7fcf059e26b0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Lottie.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0460b8e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05449ad0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Lottie', executablePath='<DVTFilePath:0x7fcf057b1be0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Lottie.framework/Lottie'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:15 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf057a64a0; bundleID='org.cocoapods.Lottie', path='<DVTFilePath:0x7fcf059e26b0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Lottie.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0460b8e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf054445a0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.Lottie', executablePath='<DVTFilePath:0x7fcf057b1be0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/Lottie.framework/Lottie'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~HMy2pH
+2021-11-14 17:51:15 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~HMy2pH' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Lottie.framework'
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Lottie.framework: replacing existing signature
+2021-11-14 17:51:15 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Lottie.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.Lottie]
+2021-11-14 17:51:15 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf0575ed10; bundleID='org.cocoapods.SDWebImage', path='<DVTFilePath:0x7fcf059e9ec0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/SDWebImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0575f3a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf047546c0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.SDWebImage', executablePath='<DVTFilePath:0x7fcf05017610:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/SDWebImage.framework/SDWebImage'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:15 +0000  Entitlements for <IDEDistributionItem: 0x7fcf0575ed10; bundleID='org.cocoapods.SDWebImage', path='<DVTFilePath:0x7fcf059e9ec0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/SDWebImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0575f3a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057d83f0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.SDWebImage', executablePath='<DVTFilePath:0x7fcf05017610:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/SDWebImage.framework/SDWebImage'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:15 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf0575ed10; bundleID='org.cocoapods.SDWebImage', path='<DVTFilePath:0x7fcf059e9ec0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/SDWebImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0575f3a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05448e50; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.SDWebImage', executablePath='<DVTFilePath:0x7fcf05017610:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/SDWebImage.framework/SDWebImage'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~IqxQLn
+2021-11-14 17:51:15 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~IqxQLn' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/SDWebImage.framework'
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/SDWebImage.framework: replacing existing signature
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/SDWebImage.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.SDWebImage]
+2021-11-14 17:51:16 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf04694900; bundleID='org.cocoapods.TTGTags', path='<DVTFilePath:0x7fcf059ec830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/TTGTags.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0577efb0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0578f340; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.TTGTags', executablePath='<DVTFilePath:0x7fcf0500f190:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/TTGTags.framework/TTGTags'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf04694900; bundleID='org.cocoapods.TTGTags', path='<DVTFilePath:0x7fcf059ec830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/TTGTags.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0577efb0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05447890; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.TTGTags', executablePath='<DVTFilePath:0x7fcf0500f190:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/TTGTags.framework/TTGTags'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:16 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf04694900; bundleID='org.cocoapods.TTGTags', path='<DVTFilePath:0x7fcf059ec830:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/TTGTags.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0577efb0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf047ae950; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.TTGTags', executablePath='<DVTFilePath:0x7fcf0500f190:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/TTGTags.framework/TTGTags'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~Qzs84I
+2021-11-14 17:51:16 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~Qzs84I' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/TTGTags.framework'
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/TTGTags.framework: replacing existing signature
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/TTGTags.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.TTGTags]
+2021-11-14 17:51:16 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf051e6230; bundleID='org.cocoapods.absl', path='<DVTFilePath:0x7fceff5ca4f0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/absl.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d6b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf047ae950; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.absl', executablePath='<DVTFilePath:0x7fcf059dae90:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/absl.framework/absl'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf051e6230; bundleID='org.cocoapods.absl', path='<DVTFilePath:0x7fceff5ca4f0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/absl.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d6b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0578f340; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.absl', executablePath='<DVTFilePath:0x7fcf059dae90:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/absl.framework/absl'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:16 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf051e6230; bundleID='org.cocoapods.absl', path='<DVTFilePath:0x7fceff5ca4f0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/absl.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d6b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf054a5b60; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.absl', executablePath='<DVTFilePath:0x7fcf059dae90:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/absl.framework/absl'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~42OLN5
+2021-11-14 17:51:16 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~42OLN5' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/absl.framework'
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/absl.framework: replacing existing signature
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/absl.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.absl]
+2021-11-14 17:51:16 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf05777430; bundleID='org.cocoapods.grpc', path='<DVTFilePath:0x7fcf0474dc40:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpc.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d700; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05209fe0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.grpc', executablePath='<DVTFilePath:0x7fcf0474ecf0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpc.framework/grpc'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf05777430; bundleID='org.cocoapods.grpc', path='<DVTFilePath:0x7fcf0474dc40:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpc.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d700; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0578f340; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.grpc', executablePath='<DVTFilePath:0x7fcf0474ecf0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpc.framework/grpc'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:16 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf05777430; bundleID='org.cocoapods.grpc', path='<DVTFilePath:0x7fcf0474dc40:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpc.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d700; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05457270; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.grpc', executablePath='<DVTFilePath:0x7fcf0474ecf0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpc.framework/grpc'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~tvUAW4
+2021-11-14 17:51:16 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~tvUAW4' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpc.framework'
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpc.framework: replacing existing signature
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpc.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.grpc]
+2021-11-14 17:51:16 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf051839c0; bundleID='org.cocoapods.grpcpp', path='<DVTFilePath:0x7fcf047506e0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpcpp.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05781f50; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057e5ed0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.grpcpp', executablePath='<DVTFilePath:0x7fcf04753400:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpcpp.framework/grpcpp'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf051839c0; bundleID='org.cocoapods.grpcpp', path='<DVTFilePath:0x7fcf047506e0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpcpp.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05781f50; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057efbf0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.grpcpp', executablePath='<DVTFilePath:0x7fcf04753400:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpcpp.framework/grpcpp'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:16 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf051839c0; bundleID='org.cocoapods.grpcpp', path='<DVTFilePath:0x7fcf047506e0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpcpp.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05781f50; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05481610; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.grpcpp', executablePath='<DVTFilePath:0x7fcf04753400:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/grpcpp.framework/grpcpp'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~lzS2Hj
+2021-11-14 17:51:16 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~lzS2Hj' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpcpp.framework'
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpcpp.framework: replacing existing signature
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpcpp.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.grpcpp]
+2021-11-14 17:51:16 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf051e34d0; bundleID='org.cocoapods.leveldb', path='<DVTFilePath:0x7fcf059e0000:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/leveldb.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d770; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057e5ed0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.leveldb', executablePath='<DVTFilePath:0x7fcf059e1e60:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/leveldb.framework/leveldb'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf051e34d0; bundleID='org.cocoapods.leveldb', path='<DVTFilePath:0x7fcf059e0000:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/leveldb.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d770; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf054e61e0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.leveldb', executablePath='<DVTFilePath:0x7fcf059e1e60:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/leveldb.framework/leveldb'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:16 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf051e34d0; bundleID='org.cocoapods.leveldb', path='<DVTFilePath:0x7fcf059e0000:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/leveldb.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0576d770; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0543c440; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.leveldb', executablePath='<DVTFilePath:0x7fcf059e1e60:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/leveldb.framework/leveldb'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~k7PxFP
+2021-11-14 17:51:16 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~k7PxFP' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/leveldb.framework'
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/leveldb.framework: replacing existing signature
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/leveldb.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.leveldb]
+2021-11-14 17:51:16 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf051cf730; bundleID='org.cocoapods.nanopb', path='<DVTFilePath:0x7fcf059e4d70:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/nanopb.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05728180; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf04624610; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.nanopb', executablePath='<DVTFilePath:0x7fcf059e6ce0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/nanopb.framework/nanopb'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf051cf730; bundleID='org.cocoapods.nanopb', path='<DVTFilePath:0x7fcf059e4d70:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/nanopb.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05728180; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf04669fb0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.nanopb', executablePath='<DVTFilePath:0x7fcf059e6ce0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/nanopb.framework/nanopb'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:16 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf051cf730; bundleID='org.cocoapods.nanopb', path='<DVTFilePath:0x7fcf059e4d70:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/nanopb.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf05728180; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057d83f0; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.nanopb', executablePath='<DVTFilePath:0x7fcf059e6ce0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/nanopb.framework/nanopb'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~QqgYqL
+2021-11-14 17:51:16 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~QqgYqL' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/nanopb.framework'
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/nanopb.framework: replacing existing signature
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/nanopb.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.nanopb]
+2021-11-14 17:51:16 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf0575ecb0; bundleID='org.cocoapods.openssl-grpc', path='<DVTFilePath:0x7fcf059e7580:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/openssl_grpc.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf04684c10; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf04624640; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.openssl-grpc', executablePath='<DVTFilePath:0x7fcf059e95c0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/openssl_grpc.framework/openssl_grpc'>', hardenedRuntime='0'>'>: {
+}
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf0575ecb0; bundleID='org.cocoapods.openssl-grpc', path='<DVTFilePath:0x7fcf059e7580:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/openssl_grpc.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf04684c10; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0543b350; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.openssl-grpc', executablePath='<DVTFilePath:0x7fcf059e95c0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/openssl_grpc.framework/openssl_grpc'>', hardenedRuntime='0'>'> are: {
+}
+2021-11-14 17:51:16 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf0575ecb0; bundleID='org.cocoapods.openssl-grpc', path='<DVTFilePath:0x7fcf059e7580:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/openssl_grpc.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf04684c10; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf057d1a20; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='(null)', teamID='UQWW588DMN', identifier='org.cocoapods.openssl-grpc', executablePath='<DVTFilePath:0x7fcf059e95c0:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/Frameworks/openssl_grpc.framework/openssl_grpc'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~8b3iz0
+2021-11-14 17:51:16 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~8b3iz0' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework'
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework: replacing existing signature
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.openssl-grpc]
+2021-11-14 17:51:16 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf047cced0; bundleID='com.AmberL.PurrfectPix', path='<DVTFilePath:0x7fcf05edf640:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0467ec30; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf0545e120; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='{
+    "application-identifier" = "UQWW588DMN.com.AmberL.PurrfectPix";
+    "com.apple.developer.applesignin" =     (
+        Default
+    );
+    "com.apple.developer.team-identifier" = UQWW588DMN;
+    "get-task-allow" = 1;
+}', teamID='UQWW588DMN', identifier='com.AmberL.PurrfectPix', executablePath='<DVTFilePath:0x7fceff308e30:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/PurrfectPix'>', hardenedRuntime='0'>'>: {
+    "application-identifier" = "UQWW588DMN.com.AmberL.PurrfectPix";
+    "com.apple.developer.applesignin" =     (
+        Default
+    );
+    "com.apple.developer.team-identifier" = UQWW588DMN;
+    "get-task-allow" = 1;
+}
+2021-11-14 17:51:16 +0000  Entitlements for <IDEDistributionItem: 0x7fcf047cced0; bundleID='com.AmberL.PurrfectPix', path='<DVTFilePath:0x7fcf05edf640:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0467ec30; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05457020; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='{
+    "application-identifier" = "UQWW588DMN.com.AmberL.PurrfectPix";
+    "com.apple.developer.applesignin" =     (
+        Default
+    );
+    "com.apple.developer.team-identifier" = UQWW588DMN;
+    "get-task-allow" = 1;
+}', teamID='UQWW588DMN', identifier='com.AmberL.PurrfectPix', executablePath='<DVTFilePath:0x7fceff308e30:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/PurrfectPix'>', hardenedRuntime='0'>'> are: {
+    "application-identifier" = "UQWW588DMN.com.AmberL.PurrfectPix";
+    "com.apple.developer.applesignin" =     (
+        Default
+    );
+    "com.apple.developer.team-identifier" = UQWW588DMN;
+    "get-task-allow" = 1;
+}
+2021-11-14 17:51:16 +0000  Writing entitlements for <IDEDistributionItem: 0x7fcf047cced0; bundleID='com.AmberL.PurrfectPix', path='<DVTFilePath:0x7fcf05edf640:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fcf0467ec30; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fcf05443650; name='Apple Development: Yiling Liu (GX2FBS7B62)', hash='D9A247648C97D499166821A67EB82ED7C72740F4', serialNumber='128828D9FFAE089370704BA9510CCD59', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-10-23 14:49:18 +0000''>', entitlements='{
+    "application-identifier" = "UQWW588DMN.com.AmberL.PurrfectPix";
+    "com.apple.developer.applesignin" =     (
+        Default
+    );
+    "com.apple.developer.team-identifier" = UQWW588DMN;
+    "get-task-allow" = 1;
+}', teamID='UQWW588DMN', identifier='com.AmberL.PurrfectPix', executablePath='<DVTFilePath:0x7fceff308e30:'/Users/amber67/Library/Developer/Xcode/Archives/2021-11-15/PurrfectPix 11-15-21, 1.49 AM.xcarchive/Products/Applications/PurrfectPix.app/PurrfectPix'>', hardenedRuntime='0'>'> to: /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~T6zVvV
+2021-11-14 17:51:16 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'D9A247648C97D499166821A67EB82ED7C72740F4' '--entitlements' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/entitlements~~~T6zVvV' '--preserve-metadata=identifier,flags,runtime' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app'
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app: replacing existing signature
+2021-11-14 17:51:16 +0000  /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app: signed app bundle with Mach-O thin (arm64) [com.AmberL.PurrfectPix]
+2021-11-14 17:51:16 +0000  /usr/bin/codesign exited with 0
+2021-11-14 17:51:16 +0000  Processing step: IDEDistributionZipODRItemStep
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-11-14 17:51:16 +0000  Processing step: IDEDistributionCreateIPAStep
+2021-11-14 17:51:16 +0000  Running /usr/bin/ditto '-V' '-c' '-k' '--norsrc' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root' '/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Packages/PurrfectPix.ipa'
+2021-11-14 17:51:16 +0000  >>> Copying /var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root 
+2021-11-14 17:51:16 +0000  copying file ./Payload/PurrfectPix.app/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:16 +0000  35633 bytes for ./Payload/PurrfectPix.app/_CodeSignature/CodeResources
+2021-11-14 17:51:16 +0000  copying file ./Payload/PurrfectPix.app/AppIcon60x60@2x.png ... 
+2021-11-14 17:51:16 +0000  10151 bytes for ./Payload/PurrfectPix.app/AppIcon60x60@2x.png
+2021-11-14 17:51:16 +0000  copying file ./Payload/PurrfectPix.app/GoogleService-Info.plist ... 
+2021-11-14 17:51:16 +0000  673 bytes for ./Payload/PurrfectPix.app/GoogleService-Info.plist
+copying file ./Payload/PurrfectPix.app/70835-hiro-rocket-launch-purple.json ... 
+2021-11-14 17:51:16 +0000  569547 bytes for ./Payload/PurrfectPix.app/70835-hiro-rocket-launch-purple.json
+2021-11-14 17:51:16 +0000  copying file ./Payload/PurrfectPix.app/Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib ... 
+2021-11-14 17:51:16 +0000  2091 bytes for ./Payload/PurrfectPix.app/Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib
+2021-11-14 17:51:16 +0000  copying file ./Payload/PurrfectPix.app/Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib ... 
+2021-11-14 17:51:16 +0000  896 bytes for ./Payload/PurrfectPix.app/Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib
+copying file ./Payload/PurrfectPix.app/Base.lproj/LaunchScreen.storyboardc/Info.plist ... 
+2021-11-14 17:51:16 +0000  258 bytes for ./Payload/PurrfectPix.app/Base.lproj/LaunchScreen.storyboardc/Info.plist
+copying file ./Payload/PurrfectPix.app/68349-cat-tail-wag.json ... 
+2021-11-14 17:51:16 +0000  27991 bytes for ./Payload/PurrfectPix.app/68349-cat-tail-wag.json
+copying file ./Payload/PurrfectPix.app/PurrfectPix ... 
+2021-11-14 17:51:17 +0000  4498544 bytes for ./Payload/PurrfectPix.app/PurrfectPix
+copying file ./Payload/PurrfectPix.app/Assets.car ... 
+2021-11-14 17:51:17 +0000  1057231 bytes for ./Payload/PurrfectPix.app/Assets.car
+copying file ./Payload/PurrfectPix.app/890-loading-animation.json ... 
+2021-11-14 17:51:17 +0000  7512 bytes for ./Payload/PurrfectPix.app/890-loading-animation.json
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/grpcpp.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  2472 bytes for ./Payload/PurrfectPix.app/Frameworks/grpcpp.framework/_CodeSignature/CodeResources
+copying file ./Payload/PurrfectPix.app/Frameworks/grpcpp.framework/grpcpp ... 
+2021-11-14 17:51:17 +0000  1011136 bytes for ./Payload/PurrfectPix.app/Frameworks/grpcpp.framework/grpcpp
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/grpcpp.framework/gRPCCertificates-Cpp.bundle/roots.pem ... 
+2021-11-14 17:51:17 +0000  284228 bytes for ./Payload/PurrfectPix.app/Frameworks/grpcpp.framework/gRPCCertificates-Cpp.bundle/roots.pem
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/grpcpp.framework/gRPCCertificates-Cpp.bundle/Info.plist ... 
+741 bytes for ./Payload/PurrfectPix.app/Frameworks/grpcpp.framework/gRPCCertificates-Cpp.bundle/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/grpcpp.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  736 bytes for ./Payload/PurrfectPix.app/Frameworks/grpcpp.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Hashtags.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  2700 bytes for ./Payload/PurrfectPix.app/Frameworks/Hashtags.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags.bundle/Info.plist ... 
+2021-11-14 17:51:17 +0000  714 bytes for ./Payload/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags.bundle/Info.plist
+copying file ./Payload/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags.bundle/close.png ... 
+2021-11-14 17:51:17 +0000  641 bytes for ./Payload/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags.bundle/close.png
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags ... 
+2021-11-14 17:51:17 +0000  321856 bytes for ./Payload/PurrfectPix.app/Frameworks/Hashtags.framework/Hashtags
+copying file ./Payload/PurrfectPix.app/Frameworks/Hashtags.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  739 bytes for ./Payload/PurrfectPix.app/Frameworks/Hashtags.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Hashtags.framework/close.png ... 
+641 bytes for ./Payload/PurrfectPix.app/Frameworks/Hashtags.framework/close.png
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  1798 bytes for ./Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/_CodeSignature/CodeResources
+copying file ./Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher ... 
+2021-11-14 17:51:17 +0000  434272 bytes for ./Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/Info.plist ... 
+759 bytes for ./Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/FBLPromises.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  1798 bytes for ./Payload/PurrfectPix.app/Frameworks/FBLPromises.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/FBLPromises.framework/FBLPromises ... 
+2021-11-14 17:51:17 +0000  205808 bytes for ./Payload/PurrfectPix.app/Frameworks/FBLPromises.framework/FBLPromises
+copying file ./Payload/PurrfectPix.app/Frameworks/FBLPromises.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  746 bytes for ./Payload/PurrfectPix.app/Frameworks/FBLPromises.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  1798 bytes for ./Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework/GoogleUtilities ... 
+2021-11-14 17:51:17 +0000  323392 bytes for ./Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework/GoogleUtilities
+copying file ./Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  755 bytes for ./Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  1798 bytes for ./Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework/_CodeSignature/CodeResources
+copying file ./Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework/JGProgressHUD ... 
+2021-11-14 17:51:17 +0000  226160 bytes for ./Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework/JGProgressHUD
+copying file ./Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  749 bytes for ./Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/nanopb.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  1798 bytes for ./Payload/PurrfectPix.app/Frameworks/nanopb.framework/_CodeSignature/CodeResources
+copying file ./Payload/PurrfectPix.app/Frameworks/nanopb.framework/nanopb ... 
+2021-11-14 17:51:17 +0000  128944 bytes for ./Payload/PurrfectPix.app/Frameworks/nanopb.framework/nanopb
+copying file ./Payload/PurrfectPix.app/Frameworks/nanopb.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  739 bytes for ./Payload/PurrfectPix.app/Frameworks/nanopb.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  1798 bytes for ./Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  787 bytes for ./Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/Info.plist
+copying file ./Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/AlignedCollectionViewFlowLayout ... 
+2021-11-14 17:51:17 +0000  168304 bytes for ./Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework/AlignedCollectionViewFlowLayout
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/leveldb.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  1798 bytes for ./Payload/PurrfectPix.app/Frameworks/leveldb.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/leveldb.framework/leveldb ... 
+2021-11-14 17:51:17 +0000  578560 bytes for ./Payload/PurrfectPix.app/Frameworks/leveldb.framework/leveldb
+copying file ./Payload/PurrfectPix.app/Frameworks/leveldb.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  738 bytes for ./Payload/PurrfectPix.app/Frameworks/leveldb.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/grpc.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  1798 bytes for ./Payload/PurrfectPix.app/Frameworks/grpc.framework/_CodeSignature/CodeResources
+copying file ./Payload/PurrfectPix.app/Frameworks/grpc.framework/grpc ... 
+2021-11-14 17:51:17 +0000  3679712 bytes for ./Payload/PurrfectPix.app/Frameworks/grpc.framework/grpc
+copying file ./Payload/PurrfectPix.app/Frameworks/grpc.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  732 bytes for ./Payload/PurrfectPix.app/Frameworks/grpc.framework/Info.plist
+copying file ./Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework/_CodeSignature/CodeResources ... 
+1798 bytes for ./Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework/_CodeSignature/CodeResources
+copying file ./Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework/openssl_grpc ... 
+2021-11-14 17:51:17 +0000  2159024 bytes for ./Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework/openssl_grpc
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework/Info.plist ... 
+747 bytes for ./Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework/Info.plist
+copying file ./Payload/PurrfectPix.app/Frameworks/absl.framework/_CodeSignature/CodeResources ... 
+1798 bytes for ./Payload/PurrfectPix.app/Frameworks/absl.framework/_CodeSignature/CodeResources
+copying file ./Payload/PurrfectPix.app/Frameworks/absl.framework/absl ... 
+2021-11-14 17:51:17 +0000  689040 bytes for ./Payload/PurrfectPix.app/Frameworks/absl.framework/absl
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/absl.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  738 bytes for ./Payload/PurrfectPix.app/Frameworks/absl.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/TTGTags.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  1798 bytes for ./Payload/PurrfectPix.app/Frameworks/TTGTags.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/TTGTags.framework/TTGTags ... 
+2021-11-14 17:51:17 +0000  189104 bytes for ./Payload/PurrfectPix.app/Frameworks/TTGTags.framework/TTGTags
+copying file ./Payload/PurrfectPix.app/Frameworks/TTGTags.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  737 bytes for ./Payload/PurrfectPix.app/Frameworks/TTGTags.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/SDWebImage.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  1798 bytes for ./Payload/PurrfectPix.app/Frameworks/SDWebImage.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/SDWebImage.framework/SDWebImage ... 
+2021-11-14 17:51:17 +0000  944048 bytes for ./Payload/PurrfectPix.app/Frameworks/SDWebImage.framework/SDWebImage
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/SDWebImage.framework/Info.plist ... 
+744 bytes for ./Payload/PurrfectPix.app/Frameworks/SDWebImage.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  18294 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater ... 
+2021-11-14 17:51:17 +0000  142704 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  741 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/de.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  369 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/de.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/he.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  371 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/he.lproj/AppiraterLocalizable.strings
+copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ar.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  430 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ar.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/el.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  547 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/el.lproj/AppiraterLocalizable.strings
+copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/zh-Hans.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  343 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/zh-Hans.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ja.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  432 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ja.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/fa.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  493 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/fa.lproj/AppiraterLocalizable.strings
+copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/en.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  347 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/en.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/uk.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  466 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/uk.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/nb.lproj/AppiraterLocalizable.strings ... 
+358 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/nb.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/es.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  352 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/es.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/da.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  370 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/da.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/it.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  382 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/it.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/sk.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  372 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/sk.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ms.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  370 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ms.lproj/AppiraterLocalizable.strings
+copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/sv.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  350 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/sv.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/cs.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  354 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/cs.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ko.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  378 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ko.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/hy.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  600 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/hy.lproj/AppiraterLocalizable.strings
+copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/zh-Hant.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  343 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/zh-Hant.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/hu.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  361 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/hu.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/tr.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  409 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/tr.lproj/AppiraterLocalizable.strings
+copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/pl.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  410 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/pl.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/pt-BR.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  333 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/pt-BR.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/vi.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  417 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/vi.lproj/AppiraterLocalizable.strings
+copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ru.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  475 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ru.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/fr.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  368 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/fr.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/fi.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  358 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/fi.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/id.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  398 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/id.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/nl.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  391 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/nl.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/th.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  614 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/th.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/pt.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  333 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/pt.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ro.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  347 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ro.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/Info.plist ... 
+2021-11-14 17:51:17 +0000  716 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ca.lproj/AppiraterLocalizable.strings ... 
+2021-11-14 17:51:17 +0000  387 bytes for ./Payload/PurrfectPix.app/Frameworks/Appirater.framework/Appirater.bundle/ca.lproj/AppiraterLocalizable.strings
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Lottie.framework/_CodeSignature/CodeResources ... 
+2021-11-14 17:51:17 +0000  1798 bytes for ./Payload/PurrfectPix.app/Frameworks/Lottie.framework/_CodeSignature/CodeResources
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/Frameworks/Lottie.framework/Lottie ... 
+2021-11-14 17:51:17 +0000  2485328 bytes for ./Payload/PurrfectPix.app/Frameworks/Lottie.framework/Lottie
+copying file ./Payload/PurrfectPix.app/Frameworks/Lottie.framework/Info.plist ... 
+2021-11-14 17:51:17 +0000  735 bytes for ./Payload/PurrfectPix.app/Frameworks/Lottie.framework/Info.plist
+2021-11-14 17:51:17 +0000  copying file ./Payload/PurrfectPix.app/embedded.mobileprovision ... 
+2021-11-14 17:51:17 +0000  12312 bytes for ./Payload/PurrfectPix.app/embedded.mobileprovision
+copying file ./Payload/PurrfectPix.app/Info.plist ... 
+2021-11-14 17:51:17 +0000  1746 bytes for ./Payload/PurrfectPix.app/Info.plist
+copying file ./Payload/PurrfectPix.app/PkgInfo ... 
+2021-11-14 17:51:17 +0000  8 bytes for ./Payload/PurrfectPix.app/PkgInfo
+2021-11-14 17:51:17 +0000  /usr/bin/ditto exited with 0
+2021-11-14 17:51:17 +0000  Processing step: IDEDistributionAppStoreInformationStep
+2021-11-14 17:51:17 +0000  Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2021-11-14 17:51:17 +0000  Processing step: IDEDistributionGenerateProcessedDistributionItems
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf0521d820:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/openssl_grpc.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf354cc750:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/JGProgressHUD.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf05472e40:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Lottie.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf0469b950:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/leveldb.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf052192e0:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpc.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf05404f20:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Hashtags.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf0469dea0:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/SDWebImage.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf0542f250:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GoogleUtilities.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf05226690:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/Appirater.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf05206450:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/nanopb.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf04698a60:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/AlignedCollectionViewFlowLayout.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf054d1700:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/GTMSessionFetcher.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf054e7940:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/grpcpp.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf054d44d0:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/FBLPromises.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf052223c0:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/absl.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf0467ae50:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app/Frameworks/TTGTags.framework'>
+2021-11-14 17:51:17 +0000  IDEDistributionItem init <DVTFilePath:0x7fcf04780e10:'/var/folders/wr/rr83wbt96bv8538h2918yl040000gn/T/XcodeDistPipeline.~~~RfaNww/Root/Payload/PurrfectPix.app'>
+2021-11-14 17:51:17 +0000  Processing step: IDEDistributionCreateManifestStep

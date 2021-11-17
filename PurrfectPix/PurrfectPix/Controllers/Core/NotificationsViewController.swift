@@ -10,11 +10,10 @@ import Lottie
 
 class NotificationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-
     private let noActivityLabel: UILabel = {
         let label = UILabel()
         label.text = "No Notifications"
-        label.textColor = .secondaryLabel
+        label.textColor = .P1
         label.textAlignment = .center
         label.isHidden = true
         return label
@@ -266,7 +265,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             }
 
             DispatchQueue.main.async {
-                let vc = ProfileViewController(user: user)
+                let vc = ProfileViewController()
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
         }

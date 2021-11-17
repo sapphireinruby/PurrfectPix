@@ -190,8 +190,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
 
         // Sign up with authManager
 
-
-        
         AuthManager.shared.signUp(
             userID: "",
             email: email,
@@ -213,9 +211,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
 //                        }
 //                    }
 
+
                     HapticManager.shared.vibrate(for: .success)
-//                    UserDefaults.standard.setValue(user.email, forKey: "email")
-//                    UserDefaults.standard.setValue(user.userID, forKey: "userID")
 
                     // if sign in success, present home screen
                     let vcTabBar = TabBarViewController()

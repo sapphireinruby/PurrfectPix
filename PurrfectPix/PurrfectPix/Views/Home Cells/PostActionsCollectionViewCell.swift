@@ -57,12 +57,14 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .systemBackground
         contentView.addSubview(likeButton)
         contentView.addSubview(commentButton)
-        contentView.addSubview(shareButton)
+//        // hide share
+//        contentView.addSubview(shareButton)
 
         // three target actions
         likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
         commentButton.addTarget(self, action: #selector(didTapComment), for: .touchUpInside)
-        shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
+//        // hide share
+//        shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
 
     }
 
@@ -97,9 +99,10 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
 
     }
 
-    @objc func didTapShare() {
-
-    }
+//    // hide share
+//    @objc func didTapShare() {
+//
+//    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -113,14 +116,14 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         )
 
         commentButton.frame = CGRect(
-            x: likeButton.right + 20,
+            x: likeButton.right + 24,
             y: (contentView.height - size) / 2,
             width: size,
             height: size
         )
 
         shareButton.frame = CGRect(
-            x: commentButton.right + 20,
+            x: commentButton.right + 24,
             y: (contentView.height - size) / 2,
             width: size,
             height: size

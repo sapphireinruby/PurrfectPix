@@ -11,6 +11,15 @@ import FirebaseFirestoreSwift
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    private let noPostLabel: UILabel = {
+        let label = UILabel()
+        label.text = "You have no post, tap Camera to create a post or check other pets at Explore! "
+        label.textColor = .P1
+        label.textAlignment = .center
+//        label.isHidden = true
+        return label
+    }()
+
     // CollectionView for feed
     private var collectionView: UICollectionView?
 
@@ -205,6 +214,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             }
         }
+//        if viewModels.isEmpty {
+//            noPostLabel.isHidden = false
+//            collectionView.isHidden = true
+//        }
+//        else {
+//            noPostLabelLabel.isHidden = true
+//            noPostLabel.isHidden = false
+//            collectionView.reloadData()
+//        }
 
     }
 
@@ -410,14 +428,13 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
             state: isLiked ? .like : .unlike,
             postID: allPosts[index].post.postID) { success in
             guard success else {
-                print("Failed to updated likestate from small heart")
+                print("Failed to updated like state with heart icon")
                 return
             }
-                print("Updated likestate from small hear success!")
+                print("Updated likestate with heart icon success!")
         }
 
         
-
         // create notification
 
     }
@@ -440,7 +457,6 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
 
     func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell, index: Int) {
 
-
         let listVC = ListViewController(type: .likers(usernames:
         allPosts[index].post.likers))
 //        listVC.title = "Liked by"
@@ -460,18 +476,11 @@ extension HomeViewController {
     func configureCollectionView() {
 
         // calulate the heigh dynamically for square
-        let sectionHeight: CGFloat = 330 + view.width //view.width is the actual post size
+        let sectionHeight: CGFloat = 330 + view.width
+        //view.width is the actual post size
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { index, _ -> NSCollectionLayoutSection? in
-
-                    // cell for poster
-                    // * cell for pet tag
-                    // large cell for post
-                    // actions cell
-                    // like heart cell
-                    // caption cell
-                    // timestamp cell
 
                     // NSLayout item
                 let posterItem = NSCollectionLayoutItem(

@@ -113,7 +113,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         DatabaseManager.shared.findUser(with: username) { [weak self] user in
             if let user = user {
                 DispatchQueue.main.async {
-                    let vc = ProfileViewController(user: user)
+                    let vc = ProfileViewController()
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
             }

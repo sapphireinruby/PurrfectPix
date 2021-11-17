@@ -14,8 +14,6 @@ final class AuthManager {
     // Shared instanece
     static let shared = AuthManager()
 
-    var user: User?
-
     // Private constructor
     private init() {}
 
@@ -37,23 +35,19 @@ final class AuthManager {
 
     var userID: String? {
         Auth.auth().currentUser?.uid
-    } // for compyted property
+    } // for computed property
 
     var username: String? {
         Auth.auth().currentUser?.displayName
-    } // for compyted property
+    }// for computed property
 
     var email: String? {
         Auth.auth().currentUser?.email
-    } // for compyted property
+    } // for computed property
 
 
+// for cache user
 
-//    lazy var userID = Auth.auth().currentUser?.uid {
-//        didSet{
-//            print(userID)
-//        }
-//    }
 
  // for stored property
 
@@ -116,12 +110,13 @@ final class AuthManager {
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
             changeRequest?.displayName = username
             changeRequest?.commitChanges { error in
+                print("commitChangesError \(error)")
             }
 
             guard let userID = result?.user.uid else { return }
 
-            var newUser = User(username: username, email: email, profilePic: "", logInCount: 0)
-            newUser.userID = userID
+            var newUser = User(userID: userID, username: username, email: email, profilePic: "", logInCount: 0)
+//            newUser.userID = userID
 
             DatabaseManager.shared.createUser(newUser: newUser) { success in
                 if success {

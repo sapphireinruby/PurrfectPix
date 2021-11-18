@@ -36,6 +36,8 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         label.numberOfLines = 0 // line wrapping
         label.text = "\nThis is my profile bio!"
         label.font = .systemFont(ofSize: 18)
+//        label.font = .boldSystemFont(ofSize: 18)
+        label.textColor = .P1
         return label
     }()
 

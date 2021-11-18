@@ -49,6 +49,8 @@ class ProfileViewController: UIViewController {
 
     private var posts: [Post] = []
 
+    private var observer: NSObjectProtocol?
+
     let userID: String
 
     init(userID: String) {
@@ -57,7 +59,7 @@ class ProfileViewController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
 
     // MARK: - Lifecycle
@@ -69,6 +71,18 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .systemBackground
         configureNavBar()
         configureCollectionView()
+
+// NotificationCenter guard let VC 後打開
+//        if isCurrentUser {
+//            observer = NotificationCenter.default.addObserver(
+//                forName: .didPostNotification,
+//                object: nil,
+//                queue: .main
+//            ) { [weak self] _ in
+//                self?.posts.removeAll()
+//                self?.fetchProfileInfo(userID: self?.userID)
+//            }
+//        }
 
     }
 
@@ -247,7 +261,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let post = posts[indexPath.row]
-        let vc = PostViewController(post: post)
+        let vc = PostViewController(singlePost: (post, [HomeFeedCellType]()))
         navigationController?.pushViewController(vc, animated: true)
     }
 

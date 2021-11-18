@@ -180,7 +180,7 @@ class ExploreViewController: UIViewController, UISearchResultsUpdating {
                     }
 
                 })
-                self?.collectionView.reloadData() // 要放在這城市裡 要再拿到資料後 才能reload 不會出錯
+                self?.collectionView.reloadData() // 要放在這程式裡 要再拿到資料後 才能reload 不會出錯
             }
         }
     }
@@ -209,7 +209,11 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let post = posts[indexPath.row]
-        let vcPostView = PostViewController(post: post)// 要接回去 或新開
+
+        let vcPostView = PostViewController(singlePost: (posts[indexPath.row], [HomeFeedCellType]()))
+
+//        vcPostView.singlePost = xxxx
+
         navigationController?.pushViewController(vcPostView, animated: true)
     }
 }

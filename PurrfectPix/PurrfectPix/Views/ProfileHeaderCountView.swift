@@ -48,7 +48,7 @@ class ProfileHeaderCountView: UIView {
         return button
     }()
 
-    private let postCountButton: UIButton = {
+    let postCountButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.label, for: .normal)
         button.titleLabel?.numberOfLines = 2

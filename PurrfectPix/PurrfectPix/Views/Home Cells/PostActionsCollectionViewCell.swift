@@ -11,7 +11,7 @@ protocol PostActionsCollectionViewCellDelegate: AnyObject {
 
     func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int)
 
-    func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell)
+    func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell, index: Int)
     
     func postActionsCollectionViewCellDidTapShare(_ cell: PostActionsCollectionViewCell)
 }

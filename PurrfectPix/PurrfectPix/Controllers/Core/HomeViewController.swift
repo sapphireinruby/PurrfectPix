@@ -31,6 +31,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        }
 //    }
 
+    // Notification observer
+    private var observer: NSObjectProtocol?
+
     private var allPosts = [(post: Post, owner: String, viewModel:[HomeFeedCellType])]()
 
     // All post models
@@ -45,9 +48,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         title = "PurrfectPix"
         view.backgroundColor = .systemBackground
         configureCollectionView()
-        // username will edit later
-//        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
-//        fetchPosts()
+
+        observer = NotificationCenter.default.addObserver(
+            forName: .didPostNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.allPosts.removeAll() // clean all posts and fatch again  確認是不是allPosts就可以
+//            self?.allPosts.viewModels.removeAll()
+            self?.fetchPosts()
+        }
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -404,7 +415,6 @@ extension HomeViewController: PostCollectionViewCellDelegate {
                 
         }
 
-        self.collectionView?.reloadData()
     }
 }
 
@@ -418,6 +428,13 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
         guard let userID = AuthManager.shared.userID else { return }
         if allPosts[index].post.likers.contains(userID) {
 
+            // todo: remove liker from post
+            let likerIndex = allPosts[index].post.likers.firstIndex(of: userID)
+            allPosts[index].post.likers.remove(at: likerIndex!)
+
+            let post = allPosts[index].post
+            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
+            
         } else {
             allPosts[index].post.likers.append(userID)
             let post = allPosts[index].post
@@ -440,10 +457,13 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
     }
 
-    func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell) {
-//        let postVC = PostViewController(post: Post) // initiate a vc
-//        postVC.title = "Post"
-//        navigationController?.pushViewController(postVC, animated: true)
+    func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell, index: Int) {
+
+        // let postVC = PostViewController(singlePost: allPosts[index]) // all post and single post 一樣型別的話
+
+        let postVC = PostViewController(singlePost: (allPosts[index].post, allPosts[index].viewModel))
+        postVC.title = "Post"
+        navigationController?.pushViewController(postVC, animated: true)
     }
 
     func postActionsCollectionViewCellDidTapShare(_ cell: PostActionsCollectionViewCell) {
@@ -460,7 +480,7 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
 
 //        let listVC = ListViewController(type: .likers(usernames:
 //        allPosts[index].post.likers))
-////        listVC.title = "Liked by"
+//        listVC.title = "Liked by"
 //        navigationController?.pushViewController(listVC, animated: true)
 
     }

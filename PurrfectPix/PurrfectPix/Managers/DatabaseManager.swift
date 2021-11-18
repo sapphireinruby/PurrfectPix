@@ -45,6 +45,24 @@ final class DatabaseManager {
         }
     }
 
+    public func singlePost(
+        with postID: String,
+        completion: @escaping (Post?) -> Void
+    ) {
+        let ref = database.collection("posts").document("\(postID)")
+
+        ref.getDocument { snapshot, error in
+
+            guard let data = snapshot?.data(),
+            error == nil else {
+                completion(nil)
+                return
+            }
+            completion(Post(with: data))
+        }
+    }
+
+
 // MARK: insert postCount +=1, under users
     // Create new post
     // - Parameters:
@@ -420,7 +438,6 @@ final class DatabaseManager {
                  } catch {
                     print(error)
                  }
-
         }
     }
     // Get user counts for target usre's fowllowers, followings, and posts

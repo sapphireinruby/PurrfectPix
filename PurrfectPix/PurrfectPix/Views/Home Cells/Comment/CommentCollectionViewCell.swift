@@ -22,13 +22,14 @@ class CommentCollectionViewCell: UICollectionViewCell {
         clipsToBounds = true
         contentView.addSubview(label)
 
-//        // Add constraints
-//        NSLayoutConstraint.activate([
-//            label.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-//            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//        ])
+        // Add constraints
+        // TODO
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: contentView.topAnchor),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        ])
     }
 
     required init?(coder: NSCoder) {
@@ -37,10 +38,15 @@ class CommentCollectionViewCell: UICollectionViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        label.frame = CGRect(x: 4, y: 0, width: contentView.width-10, height: contentView.height)
+//        label.frame = CGRect(x: 24, y: 0, width: contentView.width-48, height: contentView.height)
     }
 
     func configure(with model: Comment) {
-        label.text = "\(model.username): \(model.comment)"
+
+        label.attributedText = NSMutableAttributedString()
+            .boldP1("\(model.username): ")
+            .normal("\(model.comment)")
+        label.sizeToFit()
+
     }
 }

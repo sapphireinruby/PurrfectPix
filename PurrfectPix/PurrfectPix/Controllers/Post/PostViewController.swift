@@ -9,9 +9,11 @@ import CoreAudio
 
 class PostViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    // reload collectionView for likers count, close keyboard when not click comment
+
     private var collectionView: UICollectionView?
 
-    private var singlePost: (post: Post, viewModel:[HomeFeedCellType])
+    private var singlePost: (post: Post, viewModel: [HomeFeedCellType])
 
     // for comment
     private let commentBarView = CommentBarView()
@@ -20,7 +22,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     // MARK: - Init
 
-    init(singlePost: (post: Post, viewModel:[HomeFeedCellType])) {
+    init(singlePost: (post: Post, viewModel: [HomeFeedCellType])) {
         self.singlePost = singlePost
         super.init(nibName: nil, bundle: nil)
 
@@ -29,7 +31,6 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
     required init?(coder: NSCoder) {
         fatalError()
     }
-
 
 //    private let noPostLabel: UILabel = {
 //        let label = UILabel()
@@ -117,26 +118,20 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         guard let userID = AuthManager.shared.userID,
               let username = AuthManager.shared.username else { return }
 
-        DatabaseManager.shared.singlePost(with: postID) { [weak self] post in
-            guard let post = post else {
+        createViewModel(
+            model: singlePost.post,
+            userID: userID,
+            username: username,
+            completion: { success in
+            guard success else {
+                print("failed to create post")
                 return
             }
-
-            self?.createViewModel(
-                model: post,
-                userID: userID,
-                username: username,
-                completion: { success in
-                guard success else {
-                    print("failed to create post")
-                    return
+                DispatchQueue.main.async {
+                    self.collectionView?.reloadData()
                 }
-                    DispatchQueue.main.async {
-                        self?.collectionView?.reloadData()
-                    }
-                }
-            )
-        }
+            }
+        )
     }
 
     private func createViewModel(
@@ -150,16 +145,21 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         StorageManager.shared.downloadURL(for: model) { postURL in
             StorageManager.shared.profilePictureURL(for: userID) { [weak self] profilePictureURL in
 
-                guard let postUrl = postURL,
+                guard let postUrl = URL(string: model.postUrlString),
                       let userID = AuthManager.shared.userID
-
+                        
                 else {
-                          print("1. model.postUrlString\(model.postUrlString)")
-                          print("2. profilePictureURL \(profilePictureURL)")
-                            return
+                    completion(false)
+                    print("1. model.postUrlString\(model.postUrlString)")
+                    print("2. profilePictureURL \(String(describing: profilePictureURL))")
+                    return
                 }
 
-                let postData: [HomeFeedCellType] = [
+                DatabaseManager.shared.getComments(
+                    postID: self!.singlePost.post.postID
+                ) { comments in
+
+                var postData: [HomeFeedCellType] = [
                     .poster(
                         viewModel: PosterCollectionViewCellViewModel(
                             username: model.username,
@@ -186,23 +186,33 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     .caption(
                         viewModel: PostCaptionCollectionViewCellViewModel(
                             username: model.username,
-                            caption: model.caption)),
+                            caption: model.caption))
+                    ]
 
-                    .timestamp(
-                        viewModel: PostDatetimeCollectionViewCellViewModel(
-                            date: DateFormatter.formatter.date(from: model.postedDate) ?? Date()
+                    comments.forEach { comment in
+                        postData.append(
+                            .comment(viewModel: comment)
                         )
-                    )
-                ]
+                    }
 
-                // [(post: Post, owner: String, viewModel:[[HomeFeedCellType]])]()
-                guard let self = self else { return }
-                self.singlePost.viewModel = postData
-                completion(true)
+                    postData.append(
+                        .timestamp(
+                            viewModel: PostDatetimeCollectionViewCellViewModel(
+                                date: DateFormatter.formatter.date(from: model.postedDate) ?? Date()
+                            )
+                        )
+
+                    )
+
+                    // [(post: Post, owner: String, viewModel:[[HomeFeedCellType]])]()
+                    guard let self = self else { return }
+                    self.singlePost.viewModel = postData
+                    completion(true)
+
+                }
 
             }
         }
-
 
     }
 
@@ -275,7 +285,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             cell.delegate = self
 
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, index: indexPath.section)
             return cell
 
         case .likeCount(let viewModel):
@@ -311,6 +321,16 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 withReuseIdentifier: PostDateTimeCollectionViewCell.identifer,
                 for: indexPath
             ) as? PostDateTimeCollectionViewCell else {
+                fatalError()
+            }
+            cell.configure(with: viewModel)
+            return cell
+
+        case .comment(let viewModel):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CommentCollectionViewCell.identifier,
+                for: indexPath
+            ) as? CommentCollectionViewCell else {
                 fatalError()
             }
             cell.configure(with: viewModel)
@@ -462,9 +482,8 @@ extension PostViewController: PostActionsCollectionViewCellDelegate {
     }
 
     func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell, index: Int) {
-//        let postVC = PostViewController(post: Post) // initiate a vc
-//        postVC.title = "Post"
-//        navigationController?.pushViewController(postVC, animated: true)
+
+        commentBarView.textfield.becomeFirstResponder()
     }
 
     func postActionsCollectionViewCellDidTapShare(_ cell: PostActionsCollectionViewCell) {
@@ -498,7 +517,7 @@ extension PostViewController{
     func configureCollectionView() {
 
         // calulate the heigh dynamically for square
-        let sectionHeight: CGFloat = 330 + view.width
+        let sectionHeight: CGFloat = 410 + view.width
         //view.width is the actual post size
         let collectionView = UICollectionView(
             frame: .zero,
@@ -547,6 +566,13 @@ extension PostViewController{
                     )
                 )
 
+                let commentItem = NSCollectionLayoutItem(
+                    layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .fractionalWidth(1),
+                        heightDimension: .absolute(80)
+                    )
+                )
+
                 let timestampItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
@@ -567,6 +593,7 @@ extension PostViewController{
                             actionsItem,
                             likeCountItem,
                             captionItem,
+                            commentItem,
                             timestampItem
                                   ]
                         )

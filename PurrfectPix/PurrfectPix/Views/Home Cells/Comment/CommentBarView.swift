@@ -24,7 +24,7 @@ final class CommentBarView: UIView, UITextFieldDelegate {
 
     let textfield: UserTextField = {
         let textfield = UserTextField()
-        textfield.placeholder = "Comment"
+        textfield.placeholder = "Comment for this cure pix"
         textfield.backgroundColor = .secondarySystemBackground
         return textfield
     }()

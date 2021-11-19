@@ -143,7 +143,8 @@ class ProfileViewController: UIViewController {
 //            self.isCurrentUser = userInfo.userID == AuthManager.shared.userID
 
             self.headerViewModel = ProfileHeaderViewModel(
-                profilePictureUrl: nil,
+
+                profilePictureUrl: URL(string: userInfo.profilePic ?? ""),
                 followerCount: followerCount,
                 followingICount: followingCount,
                 postCount: postCount,
@@ -241,15 +242,15 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
             headerView.countContainerView.delegate = self
         }
 
-        let viewModel = ProfileHeaderViewModel(
-            profilePictureUrl: nil,
-            followerCount: 23,
-            followingICount: 17,
-            postCount: 6,
-            buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: true),
-            username: "Elionono",
-            bio: "Check out my cute puppy Dodo"
-        )
+//        let viewModel = ProfileHeaderViewModel(
+//            profilePictureUrl: nil,
+//            followerCount: 23,
+//            followingICount: 17,
+//            postCount: 6,
+//            buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: true),
+//            username: "Elionono",
+//            bio: "Check out my cute puppy Dodo"
+//        )
 
         headerView.delegate = self // change profile image
         headerView.countContainerView.postCountButton.setTitle("\(posts.count) Posts", for: .normal)

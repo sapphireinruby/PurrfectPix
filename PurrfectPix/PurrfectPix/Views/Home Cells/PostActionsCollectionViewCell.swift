@@ -96,7 +96,8 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
     }
 
     @objc func didTapComment() {
-
+        // TODO
+//        postActionsCollectionViewCellDidTapComment
     }
 
 //    // hide share
@@ -135,7 +136,7 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
     }
 
-    func configure(with viewModel: PostActionsCollectionViewCellViewModel) {
+    func configure(with viewModel: PostActionsCollectionViewCellViewModel, index: Int) {
         // to save if is liked or not
         isLiked = viewModel.isLiked
 
@@ -147,7 +148,7 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
             let image = UIImage(named: "Heart-purple")
             likeButton.setImage(image, for: .normal)
         }
-
+        self.index = index
     }
 
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum HomeFeedCellType {
     // each of these type have their own ViewModels
@@ -16,5 +17,6 @@ enum HomeFeedCellType {
     case likeCount(viewModel: PostLikesCollectionViewCellViewModel)
     case caption(viewModel: PostCaptionCollectionViewCellViewModel)
     case timestamp(viewModel: PostDatetimeCollectionViewCellViewModel)
+    case comment (viewModel: Comment)
 
 }

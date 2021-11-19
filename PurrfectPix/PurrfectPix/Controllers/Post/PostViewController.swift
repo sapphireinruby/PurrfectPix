@@ -26,6 +26,9 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.singlePost = singlePost
         super.init(nibName: nil, bundle: nil)
 
+        // hide tab bar
+        hidesBottomBarWhenPushed = true
+
     }
 
     required init?(coder: NSCoder) {
@@ -404,24 +407,13 @@ extension PostViewController: PostCollectionViewCellDelegate {
         // index to get the post
         // create notification
 
-//        guard let userID = AuthManager.shared.userID else { return }
-//        if allPosts[index].post.likers.contains(userID) {
-//
-//        } else {
-//            allPosts[index].post.likers.append(userID)
-//            let post = allPosts[index].post
-//            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
-//        }
-
-
         guard let userID = AuthManager.shared.userID else { return }
         
         if singlePost.post.likers.contains(userID) {
 
         } else {
             singlePost.post.likers.append(userID)
-//            var post = viewModels.post
-//            post.viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
+            singlePost.viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: singlePost.post.likers.contains(userID)))
         }
 
         DatabaseManager.shared.updateLikeState(

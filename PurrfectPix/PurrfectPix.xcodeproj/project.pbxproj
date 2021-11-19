@@ -19,6 +19,7 @@
 		A74012B6273B31E2007B91F4 /* NotificationCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74012B5273B31E2007B91F4 /* NotificationCellType.swift */; };
 		A74012B8273B3269007B91F4 /* NotificationCellViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74012B7273B3269007B91F4 /* NotificationCellViewModels.swift */; };
 		A74012BA273C0655007B91F4 /* PurrFollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74012B9273C0655007B91F4 /* PurrFollowButton.swift */; };
+		A75DE2CA27473B990095FA45 /* CommentBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75DE2C927473B990095FA45 /* CommentBarView.swift */; };
 		A77A1EB6271F7F730072A1F6 /* PosterCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1EB5271F7F730072A1F6 /* PosterCollectionViewCellViewModel.swift */; };
 		A77A1EB8271F7F8E0072A1F6 /* PostCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1EB7271F7F8E0072A1F6 /* PostCollectionViewCellViewModel.swift */; };
 		A77A1EBA271F7FC70072A1F6 /* PostPetTagCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1EB9271F7FC70072A1F6 /* PostPetTagCollectionViewCellViewModel.swift */; };
@@ -91,6 +92,7 @@
 		A74012B5273B31E2007B91F4 /* NotificationCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCellType.swift; sourceTree = "<group>"; };
 		A74012B7273B3269007B91F4 /* NotificationCellViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCellViewModels.swift; sourceTree = "<group>"; };
 		A74012B9273C0655007B91F4 /* PurrFollowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurrFollowButton.swift; sourceTree = "<group>"; };
+		A75DE2C927473B990095FA45 /* CommentBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentBarView.swift; sourceTree = "<group>"; };
 		A77A1EB5271F7F730072A1F6 /* PosterCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		A77A1EB7271F7F8E0072A1F6 /* PostCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		A77A1EB9271F7FC70072A1F6 /* PostPetTagCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPetTagCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -174,6 +176,23 @@
 			path = "Notification Cells";
 			sourceTree = "<group>";
 		};
+		A75DE2C827473B6D0095FA45 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				A75DE2C927473B990095FA45 /* CommentBarView.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		A75DE2CB27473BAB0095FA45 /* Profile Header */ = {
+			isa = PBXGroup;
+			children = (
+				A7AFC769273FEAB6000FDF28 /* ProfileHeaderCountView.swift */,
+				A7AFC765273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift */,
+			);
+			path = "Profile Header";
+			sourceTree = "<group>";
+		};
 		A77A1EC5271F8F1F0072A1F6 /* Home Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +203,7 @@
 				A77A1ECE271F91AA0072A1F6 /* PostLikesCollectionViewCell.swift */,
 				A77A1ED0271F91BA0072A1F6 /* PostCaptionCollectionViewCell.swift */,
 				A77A1ED2271F91CA0072A1F6 /* PostDateTimeCollectionViewCell.swift */,
+				A75DE2C827473B6D0095FA45 /* Comment */,
 			);
 			path = "Home Cells";
 			sourceTree = "<group>";
@@ -283,8 +303,7 @@
 				A77A1EC5271F8F1F0072A1F6 /* Home Cells */,
 				A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */,
 				A719A56C273E42F600EE6BE1 /* ListUserTableViewCell.swift */,
-				A7AFC769273FEAB6000FDF28 /* ProfileHeaderCountView.swift */,
-				A7AFC765273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift */,
+				A75DE2CB27473BAB0095FA45 /* Profile Header */,
 				A7DDDEFE271B2E7500F28B24 /* LaunchScreen.storyboard */,
 				A780736027259E9200468B30 /* SignInHeaderView.swift */,
 				A78073622725A11400468B30 /* UserTextField.swift */,
@@ -536,6 +555,7 @@
 				A719A56D273E42F600EE6BE1 /* ListUserTableViewCell.swift in Sources */,
 				A7DDDF56271D9E1A00F28B24 /* DatabaseManager.swift in Sources */,
 				A7DDDF3D271D9A6600F28B24 /* SignInViewController.swift in Sources */,
+				A75DE2CA27473B990095FA45 /* CommentBarView.swift in Sources */,
 				A7AFC76C273FFC3B000FDF28 /* ProfileHeaderCountViewViewModel.swift in Sources */,
 				A7DDDF58271D9E2800F28B24 /* StorageManager.swift in Sources */,
 				A7DDDF52271D9BE400F28B24 /* Notification.swift in Sources */,

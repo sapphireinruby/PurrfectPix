@@ -9,8 +9,8 @@ import Foundation
 
 struct Comment: Codable {
 
+    let userID: String  // who left the comment
     let username: String // who left the comment
-    let userID: String
     let comment: String
     let dateString: String
 }

@@ -11,12 +11,11 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     private var collectionView: UICollectionView?
 
-//    private var post: Post // 其實不需要
-
-//    let postID: String // 其實不需要
-
     private var singlePost: (post: Post, viewModel:[HomeFeedCellType])
 
+    // comment
+
+    private let commentBarView = CommentBarView()
 
     // MARK: - Init
 
@@ -59,12 +58,23 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         view.backgroundColor = .systemBackground
         configureCollectionView()
         fetchPost(postID: singlePost.post.postID)
+
+        // comment
+        view.addSubview(commentBarView)
+        commentBarView.delegate = self
     }
 
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView?.frame = view.bounds
+
+        // comment
+        commentBarView.frame = CGRect(
+            x: 0,
+            y: view.height-view.safeAreaInsets.bottom - 72,
+            width: view.width,
+            height: 72)
     }
 
     private func fetchPost(postID: String) {
@@ -275,6 +285,31 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 }
 
+// comment Bar
+extension PostViewController: CommentBarViewDelegate {
+    func commentBarViewDidTapDone(_ commentBarView: CommentBarView, withText text: String) {
+        guard let currentUserID = AuthManager.shared.userID,
+            let currentUsername = AuthManager.shared.username
+        else { return }
+
+        DatabaseManager.shared.createComments(
+            comment: Comment(
+                userID: currentUserID,
+                username: currentUsername,
+                comment: text,
+                dateString: String.date(from: Date()) ?? ""
+            ),
+            postID: singlePost.post.postID,
+            userID: currentUserID
+        ) { success in
+            DispatchQueue.main.async {
+                guard success else {
+                    return
+                }
+            }
+        }
+    }
+}
 // MARK: Cell delegate:
 
 extension PostViewController: PosterCollectionViewCellDelegate {
@@ -349,6 +384,7 @@ extension PostViewController: PostCollectionViewCellDelegate {
         self.collectionView?.reloadData()
     }
 }
+
 
 extension PostViewController: PostActionsCollectionViewCellDelegate {
 

@@ -679,14 +679,14 @@ final class DatabaseManager {
     public func createComments(
         comment: Comment,
         postID: String,
-        userID: String,
+        userID: String, // the user left comment for block list
         completion: @escaping (Bool) -> Void
     ) {
-        let idForBlocker = "\(postID)_\(comment.userID)_\(Date().timeIntervalSince1970)"
+        let commentID = "\(postID)_\(comment.userID)_\(Date().timeIntervalSince1970)"
         let ref = database.collection("posts")
             .document(postID)
             .collection("comments")
-            .document(idForBlocker)
+            .document(commentID)
         guard let data = comment.asDictionary() else { return }
         ref.setData(data) { error in
             completion(error == nil)

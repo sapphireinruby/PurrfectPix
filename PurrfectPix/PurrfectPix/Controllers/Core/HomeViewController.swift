@@ -49,6 +49,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         view.backgroundColor = .systemBackground
         configureCollectionView()
 
+        view.addSubview(noPostLabel)
+
         observer = NotificationCenter.default.addObserver(
             forName: .didPostNotification,
             object: nil,

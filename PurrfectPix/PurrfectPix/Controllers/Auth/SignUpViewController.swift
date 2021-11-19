@@ -60,6 +60,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         return button
     }()
 
+//    private let agreetmentLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "By click Sing Up, you agreeto to our Terms."
+//        label.textColor = .P1
+//        label.textAlignment = .center
+//        label.isHidden = true
+//        return label
+//    }()
+
+    private let agreetmentButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.P1, for: .normal)
+        button.setTitle("By click Sing Up, you agreeto to our Terms.", for: .normal)
+        return button
+    }()
+
     private let termsButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.link, for: .normal)
@@ -101,12 +117,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             height: imageSize
         )
 
-        usernameField.frame = CGRect(x: 25, y: profilePictureImageView.bottom+20, width: view.width-50, height: 50)
-        emailField.frame = CGRect(x: 25, y: usernameField.bottom+10, width: view.width-50, height: 50)
-        passwordField.frame = CGRect(x: 25, y: emailField.bottom+10, width: view.width-50, height: 50)
-        signUpButton.frame = CGRect(x: 35, y: passwordField.bottom+20, width: view.width-70, height: 50)
-        termsButton.frame = CGRect(x: 35, y: signUpButton.bottom + 20, width: view.width-70, height: 40)
-        privacyButton.frame = CGRect(x: 35, y: termsButton.bottom + 10, width: view.width-70, height: 40)
+        usernameField.frame = CGRect(x: 35, y: profilePictureImageView.bottom+16, width: view.width-70, height: 50)
+        emailField.frame = CGRect(x: 35, y: usernameField.bottom+8, width: view.width-70, height: 50)
+        passwordField.frame = CGRect(x: 35, y: emailField.bottom+8, width: view.width-70, height: 50)
+        signUpButton.frame = CGRect(x: 35, y: passwordField.bottom+16, width: view.width-70, height: 50)
+
+//        agreetmentLabel.frame = CGRect(x: 35, y: signUpButton.bottom + 24, width: view.width-70, height: 40)
+        agreetmentButton.frame = CGRect(x: 35, y: signUpButton.bottom + 8, width: view.width-70, height: 40)
+
+        termsButton.frame = CGRect(x: 35, y: agreetmentButton.bottom + 16, width: view.width-70, height: 40)
+        privacyButton.frame = CGRect(x: 35, y: termsButton.bottom + 8, width: view.width-70, height: 40)
     }
 
     private func addSubviews() {
@@ -115,6 +135,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         view.addSubview(emailField)
         view.addSubview(passwordField)
         view.addSubview(signUpButton)
+//        view.addSubview(agreetmentLabel)
+        view.addSubview(agreetmentButton)
         view.addSubview(termsButton)
         view.addSubview(privacyButton)
     }
@@ -240,7 +262,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
 
     @objc func didTapTerms() {
-        guard let url = URL(string: "https://https://www.apple.com/legal/macapps/stdeula/") else {
+        guard let url = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") else {
             return
         }
         let vcSF = SFSafariViewController(url: url)

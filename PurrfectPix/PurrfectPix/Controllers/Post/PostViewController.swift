@@ -13,12 +13,12 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     private var singlePost: (post: Post, viewModel:[HomeFeedCellType])
 
-    // comment
-
+    // for comment
     private let commentBarView = CommentBarView()
+    private var observer: NSObjectProtocol?
+    private var hideObserver: NSObjectProtocol?
 
     // MARK: - Init
-
 
     init(singlePost: (post: Post, viewModel:[HomeFeedCellType])) {
         self.singlePost = singlePost
@@ -26,11 +26,9 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     }
 
-
     required init?(coder: NSCoder) {
         fatalError()
     }
-
 
 
 //    private let noPostLabel: UILabel = {
@@ -41,7 +39,6 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        label.isHidden = true
 //        return label
 //    }()
-
 
 
     // All post models
@@ -59,11 +56,11 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         configureCollectionView()
         fetchPost(postID: singlePost.post.postID)
 
-        // comment
+        // for comment
         view.addSubview(commentBarView)
         commentBarView.delegate = self
+        observeKeyboardChange()
     }
-
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -76,6 +73,44 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
             width: view.width,
             height: 72)
     }
+
+    // for comment
+    private func observeKeyboardChange() {
+        observer = NotificationCenter.default.addObserver(
+            forName: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil,
+            queue: .main
+        ) { notification in
+            guard let userInfo = notification.userInfo,
+                  let height = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height else {
+                return
+            }
+            UIView.animate(withDuration: 0.2) {
+                self.commentBarView.frame = CGRect(
+                    x: 0,
+                    y: self.view.height-60-height,
+                    width: self.view.width,
+                    height: 70
+                )
+            }
+        }
+
+        hideObserver = NotificationCenter.default.addObserver(
+            forName: UIResponder.keyboardWillHideNotification,
+            object: nil,
+            queue: .main
+        ) { _ in
+            UIView.animate(withDuration: 0.2) {
+                self.commentBarView.frame = CGRect(
+                    x: 0,
+                    y: self.view.height-self.view.safeAreaInsets.bottom-70,
+                    width: self.view.width,
+                    height: 70
+                )
+            }
+        }
+    }
+
 
     private func fetchPost(postID: String) {
 

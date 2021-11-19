@@ -106,7 +106,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             }
                         })
                         group.notify(queue: .main) {
+                            self?.collectionView?.reloadData()
                             self?.sortData()
+
 
                         }
 
@@ -461,9 +463,9 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
     func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell, index: Int) {
 
-        // let postVC = PostViewController(singlePost: allPosts[index]) // all post and single post 一樣型別的話
-
-        let postVC = PostViewController(singlePost: (allPosts[index].post, allPosts[index].viewModel))
+        let postVC = PostViewController(singlePost: (post: allPosts[index].post, viewModel: allPosts[index].viewModel)) //  還過不去ＱＱ
+        // let postVC = PostViewController(singlePost: allPosts[index])
+        // all post and single post 若為同型別
         postVC.title = "Post"
         navigationController?.pushViewController(postVC, animated: true)
     }

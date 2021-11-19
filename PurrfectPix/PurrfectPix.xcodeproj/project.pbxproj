@@ -20,6 +20,7 @@
 		A74012B8273B3269007B91F4 /* NotificationCellViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74012B7273B3269007B91F4 /* NotificationCellViewModels.swift */; };
 		A74012BA273C0655007B91F4 /* PurrFollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74012B9273C0655007B91F4 /* PurrFollowButton.swift */; };
 		A75DE2CA27473B990095FA45 /* CommentBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75DE2C927473B990095FA45 /* CommentBarView.swift */; };
+		A75DE2CD27474C7F0095FA45 /* CommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75DE2CC27474C7F0095FA45 /* CommentCollectionViewCell.swift */; };
 		A77A1EB6271F7F730072A1F6 /* PosterCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1EB5271F7F730072A1F6 /* PosterCollectionViewCellViewModel.swift */; };
 		A77A1EB8271F7F8E0072A1F6 /* PostCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1EB7271F7F8E0072A1F6 /* PostCollectionViewCellViewModel.swift */; };
 		A77A1EBA271F7FC70072A1F6 /* PostPetTagCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A1EB9271F7FC70072A1F6 /* PostPetTagCollectionViewCellViewModel.swift */; };
@@ -93,6 +94,7 @@
 		A74012B7273B3269007B91F4 /* NotificationCellViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCellViewModels.swift; sourceTree = "<group>"; };
 		A74012B9273C0655007B91F4 /* PurrFollowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurrFollowButton.swift; sourceTree = "<group>"; };
 		A75DE2C927473B990095FA45 /* CommentBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentBarView.swift; sourceTree = "<group>"; };
+		A75DE2CC27474C7F0095FA45 /* CommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		A77A1EB5271F7F730072A1F6 /* PosterCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		A77A1EB7271F7F8E0072A1F6 /* PostCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		A77A1EB9271F7FC70072A1F6 /* PostPetTagCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPetTagCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				A75DE2C927473B990095FA45 /* CommentBarView.swift */,
+				A75DE2CC27474C7F0095FA45 /* CommentCollectionViewCell.swift */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				A7DDDF44271D9AEE00F28B24 /* ListViewController.swift in Sources */,
 				A74012B4273B3144007B91F4 /* NotificationsManager.swift in Sources */,
 				A7AFC76E274125DA000FDF28 /* EditProfileViewController.swift in Sources */,
+				A75DE2CD27474C7F0095FA45 /* CommentCollectionViewCell.swift in Sources */,
 				A7DDDF46271D9AF900F28B24 /* PostViewController.swift in Sources */,
 				A74012AE273B2F84007B91F4 /* FollowNotificationTableViewCell.swift in Sources */,
 				A78073632725A11400468B30 /* UserTextField.swift in Sources */,

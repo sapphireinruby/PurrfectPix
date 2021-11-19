@@ -585,6 +585,11 @@ extension PostViewController{
             PostDateTimeCollectionViewCell.self,
             forCellWithReuseIdentifier: PostDateTimeCollectionViewCell.identifer
         )
+        // comment
+        collectionView.register(CommentCollectionViewCell.self,
+                                forCellWithReuseIdentifier: CommentCollectionViewCell.identifier)
+
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
 
         self.collectionView = collectionView  // configuring collectionView as it's own constance, and assign it to the global property
     }

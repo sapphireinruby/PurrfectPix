@@ -18,23 +18,23 @@ final class CommentBarView: UIView, UITextFieldDelegate {
     private let button: UIButton = {
         let button = UIButton()
         button.setTitle("Done", for: .normal)
-        button.setTitleColor(.link, for: .normal)
+        button.setTitleColor(.P2, for: .normal)
         return button
     }()
 
-    let field: UserTextField = {
-        let field = UserTextField()
-        field.placeholder = "Comment"
-        field.backgroundColor = .secondarySystemBackground
-        return field
+    let textfield: UserTextField = {
+        let textfield = UserTextField()
+        textfield.placeholder = "Comment"
+        textfield.backgroundColor = .secondarySystemBackground
+        return textfield
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         clipsToBounds = true
-        addSubview(field)
+        addSubview(textfield)
         addSubview(button)
-        field.delegate = self
+        textfield.delegate = self
         button.addTarget(self, action: #selector(didTapComment), for: .touchUpInside)
         backgroundColor = .tertiarySystemBackground
     }
@@ -44,24 +44,29 @@ final class CommentBarView: UIView, UITextFieldDelegate {
     }
 
     @objc func didTapComment() {
-        guard let text = field.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {
+        guard let text = textfield.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {
             return
         }
         delegate?.commentBarViewDidTapDone(self, withText: text)
-        field.resignFirstResponder()
-        field.text = nil
+        textfield.resignFirstResponder()
+        textfield.text = nil
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         button.sizeToFit()
-        button.frame = CGRect(x: width-button.width-4-2, y: (height-button.height)/2,
-                              width: button.width+4, height: button.height)
-        field.frame = CGRect(x: 2, y: (height-50)/2, width: width-button.width-12, height: 50)
+        button.frame = CGRect(x: width-button.width-24, //
+                              y: (height-button.height)/2,
+                              width: button.width,
+                              height: button.height)
+
+        textfield.frame = CGRect(x: 16, y: (height-50)/2,
+                                 width: width-button.width-56,
+                                 height: 50)
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        field.resignFirstResponder()
+        textfield.resignFirstResponder()
         didTapComment()
         return true
     }

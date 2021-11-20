@@ -160,6 +160,10 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         completion: @escaping (Bool) -> Void
     ) {
 
+        // loading lottie play
+        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+        animationView.play()
+
         StorageManager.shared.downloadURL(for: model) { postURL in
             StorageManager.shared.profilePictureURL(for: userID) { [weak self] profilePictureURL in
 
@@ -226,6 +230,10 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     guard let self = self else { return }
                     self.singlePost.viewModel = postData
                     completion(true)
+
+                    // loading lottie stop
+                    animationView.stop()
+                    animationView.removeFromSuperview()
 
                 }
 

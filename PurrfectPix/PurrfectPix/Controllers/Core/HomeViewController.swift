@@ -168,6 +168,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         username: String,
         completion: @escaping (Bool) -> Void
     ) {
+        // loading lottie play
+        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+        animationView.play()
 
         StorageManager.shared.downloadURL(for: model) { postURL in
             StorageManager.shared.profilePictureURL(for: userID) { [weak self] profilePictureURL in
@@ -222,6 +225,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 //                self?.viewModels.append(postData)// add to view model
                 completion(true)
+
+                // loading lottie stop
+                animationView.stop()
+                animationView.removeFromSuperview()
 
             }
         }
@@ -513,7 +520,7 @@ extension HomeViewController {
     func configureCollectionView() {
 
         // calulate the heigh dynamically for square
-        let sectionHeight: CGFloat = 330 + view.width
+        let sectionHeight: CGFloat = 350 + view.width
         //view.width is the actual post size
         let collectionView = UICollectionView(
             frame: .zero,
@@ -572,7 +579,7 @@ extension HomeViewController {
                 let timestampItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(10)
+                        heightDimension: .absolute(30)
                     )
                 )
 

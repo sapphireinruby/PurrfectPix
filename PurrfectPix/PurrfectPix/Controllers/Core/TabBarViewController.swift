@@ -63,7 +63,7 @@ class TabBarViewController: UITabBarController {
         nav3.tabBarItem = UITabBarItem(title: "Camera", image: UIImage(systemName: "camera"), tag: 1 )
         nav4.tabBarItem = UITabBarItem(title: "Notifications", image: UIImage(systemName: "bell"), tag: 1 )
         nav5.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.circle"), tag: 1 )
-        self.tabBar.tintColor = .P1 // for all tab bar selected state
+        self.tabBar.tintColor = .P2 // for all tab bar selected state
 
         // Set controllers
         self.setViewControllers([nav2, nav1, nav3, nav4, nav5], animated: false)

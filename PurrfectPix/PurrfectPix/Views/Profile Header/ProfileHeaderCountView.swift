@@ -138,7 +138,7 @@ class ProfileHeaderCountView: UIView {
         switch viewModel.actionType {
         case .edit:
             actionButton.backgroundColor = .systemBackground
-            actionButton.setTitle("Edit Profile", for: .normal)
+            actionButton.setTitle("Edit Your Profile Here", for: .normal)
             actionButton.setTitleColor(.label, for: .normal)
             actionButton.layer.borderWidth = 0.5
             actionButton.layer.borderColor = UIColor.tertiaryLabel.cgColor

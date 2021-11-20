@@ -20,6 +20,10 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private var observer: NSObjectProtocol?
     private var hideObserver: NSObjectProtocol?
 
+    // for comment keyboard
+    private var bgView = UIView()
+
+
     // MARK: - Init
 
     init(singlePost: (post: Post, viewModel: [HomeFeedCellType])) {
@@ -62,6 +66,8 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         // for comment
         view.addSubview(commentBarView)
+        view.addSubview(bgView)
+      bgView.backgroundColor = .systemBackground
         commentBarView.delegate = self
         observeKeyboardChange()
     }
@@ -73,7 +79,16 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // comment
         commentBarView.frame = CGRect(
             x: 0,
+//            y: view.height-view.safeAreaInsets.bottom-60,
             y: view.height-view.safeAreaInsets.bottom - 72,
+            width: view.width,
+            height: 72)
+
+        // comment
+        bgView.frame = CGRect(
+            x: 0,
+            y: view.height-view.safeAreaInsets.bottom,
+//            y: view.height-view.safeAreaInsets.bottom - 72,
             width: view.width,
             height: 72)
     }
@@ -490,10 +505,8 @@ extension PostViewController: PostLikesCollectionViewCellDelegate {
 
     func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell, index: Int) {
 
-//        let listVC = ListViewController(type: .likers(usernames:
-//        allPosts[index].post.likers))
-////        listVC.title = "Liked by"
-//        navigationController?.pushViewController(listVC, animated: true)
+        var count = singlePost.post.likers.count
+        self.collectionView?.reloadData()
 
     }
 }

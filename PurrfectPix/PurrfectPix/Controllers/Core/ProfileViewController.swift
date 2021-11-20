@@ -31,7 +31,6 @@ class ProfileViewController: UIViewController {
 //    return user.username == AuthManager.shared.username ?? ""
     //        }
 
-
     private var isCurrentUser: Bool {
         userID == AuthManager.shared.userID
     }
@@ -72,23 +71,29 @@ class ProfileViewController: UIViewController {
         configureNavBar()
         configureCollectionView()
 
-// NotificationCenter guard let VC 後打開
-//        if isCurrentUser {
-//            observer = NotificationCenter.default.addObserver(
-//                forName: .didPostNotification,
-//                object: nil,
-//                queue: .main
-//            ) { [weak self] _ in
-//                self?.posts.removeAll()
-//                self?.fetchProfileInfo(userID: self?.userID)
-//            }
-//        }
+ // NotificationCenter guard let VC 後打開
+        if isCurrentUser {
+            observer = NotificationCenter.default.addObserver(
+                forName: .didPostNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                self?.posts.removeAll()
+                self?.fetchProfileInfo(userID: self!.userID)
+            }
+        }
 
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        fetchProfileInfo(userID: userID)
+    }
+
+
     private func fetchProfileInfo(userID: String) {
 
-        let group = DispatchGroup() // fetch all the info, then present it
+        let group = DispatchGroup()
+        // fetch all the info, then present it
 
         // Fetch Posts
         group.enter()
@@ -107,7 +112,7 @@ class ProfileViewController: UIViewController {
         }
 
         // to store Profiel Header Info
-        var profilePictureUrl = "" // 好像都沒存進去
+        var profilePictureUrl: URL? // database沒存進去
         var buttonType: ProfileButtonType = .edit
         var username: String?
         var bio: String?
@@ -116,9 +121,7 @@ class ProfileViewController: UIViewController {
         var followingCount = 0
         var postCount = 0
 
-
         group.enter()
-
 //        // hide container view
         DatabaseManager.shared.getUserInfo(userID: AuthManager.shared.userID ?? "") { userInfo in
 
@@ -133,8 +136,15 @@ class ProfileViewController: UIViewController {
             username = userInfo.username ?? ""
             bio = userInfo.bio ?? "Introduce your pet to everyone!"
 
-            // profilePictureURL
-            profilePictureUrl = userInfo.profilePic ?? ""
+            // Profile picture url
+            group.enter()
+            StorageManager.shared.profilePictureURL(for: userID) { url in
+                defer {
+                    group.leave()
+                }
+                profilePictureUrl = url
+            }
+
 
             // set cache
             // for cache
@@ -144,9 +154,10 @@ class ProfileViewController: UIViewController {
 
             self.headerViewModel = ProfileHeaderViewModel(
 
-                profilePictureUrl: URL(string: userInfo.profilePic ?? ""),
-                followerCount: followerCount,
-                followingICount: followingCount,
+//                profilePictureUrl: URL(string: userInfo.profilePic ?? ""),
+                profilePictureUrl: profilePictureUrl,
+                followerCount: userInfo.follower!.count,
+                followingICount: userInfo.following!.count,
                 postCount: postCount,
                 buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: true) ,
                 username: userInfo.username ?? "Error",

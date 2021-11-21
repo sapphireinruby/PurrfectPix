@@ -275,7 +275,7 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
         }
 
         let sheet = UIAlertController(
-            title: "Change Picture",
+            title: "Change Profile Picture",
             message: "How about update a new photo with your pets?",
             preferredStyle: .actionSheet
         )

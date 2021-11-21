@@ -61,7 +61,7 @@ class EditProfileViewController: UIViewController {
                                  width: view.width-48,
                                  height: 50)
         bioField.frame = CGRect(x: 24,
-                                   y: nameField.bottom+10,
+                                   y: nameField.bottom+16,
                                    width: view.width-48,
                                    height: 120)
     }

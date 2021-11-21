@@ -166,9 +166,9 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         StorageManager.shared.downloadURL(for: model) { postURL in
             StorageManager.shared.profilePictureURL(for: userID) { [weak self] profilePictureURL in
 
-                guard let postUrl = URL(string: model.postUrlString),
+                guard let strongSelf = self,
+                      let postUrl = URL(string: model.postUrlString),
                       let userID = AuthManager.shared.userID
-                        
                 else {
                     completion(false)
                     print("1. model.postUrlString\(model.postUrlString)")
@@ -177,7 +177,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
 
                 DatabaseManager.shared.getComments(
-                    postID: self!.singlePost.post.postID
+                    postID: strongSelf.singlePost.post.postID
                 ) { comments in
 
                 var postData: [HomeFeedCellType] = [

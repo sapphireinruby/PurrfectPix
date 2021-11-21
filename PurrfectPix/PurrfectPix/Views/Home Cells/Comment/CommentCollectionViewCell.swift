@@ -11,26 +11,33 @@ class CommentCollectionViewCell: UICollectionViewCell {
 
     static let identifier = "CommentCollectionViewCell"
 
+    private let padding: CGFloat = 24
+
     private let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false // don't forget this line
         return label
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        clipsToBounds = true
+//        clipsToBounds = true
         contentView.addSubview(label)
 
         // Add constraints
-        // TODO
+        // TODO auto height
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: contentView.topAnchor),
             label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            label.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            label.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            label.widthAnchor.constraint(equalToConstant: contentView.width - padding)
+//            label.heightAnchor.constraint(equalToConstant: 200)
+//            label.heightAnchor.constraint(equalToConstant: self.label.height)
         ])
     }
+
 
     required init?(coder: NSCoder) {
         fatalError()
@@ -47,6 +54,5 @@ class CommentCollectionViewCell: UICollectionViewCell {
             .boldP1("\(model.username) ")
             .normal("\(model.comment)")
         label.sizeToFit()
-
     }
 }

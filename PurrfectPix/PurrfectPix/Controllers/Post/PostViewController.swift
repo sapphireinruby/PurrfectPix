@@ -23,7 +23,6 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // for comment keyboard
     private var bgView = UIView()
 
-
     // MARK: - Init
 
     init(singlePost: (post: Post, viewModel: [HomeFeedCellType])) {

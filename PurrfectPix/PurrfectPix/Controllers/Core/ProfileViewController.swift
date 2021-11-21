@@ -370,6 +370,7 @@ extension ProfileViewController: ProfileHeaderCountViewDelegate {
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true)
 
+
     }
 
     func profileHeaderCountViewDidTapFollow(_ containerView: ProfileHeaderCountView) {

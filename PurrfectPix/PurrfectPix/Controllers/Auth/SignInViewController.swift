@@ -278,7 +278,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
 
     @objc func didTapTerms() {
-        guard let url = URL(string: "https://https://www.apple.com/legal/macapps/stdeula/") else {
+        guard let url = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") else {
             return
         }
         let vcSF = SFSafariViewController(url: url)

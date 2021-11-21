@@ -26,7 +26,7 @@ class EditProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Edit Profile"
+        title = "Edit Your Profile Here"
         view.backgroundColor = .systemBackground
         view.addSubview(nameField)
         view.addSubview(bioField)

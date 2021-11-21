@@ -20,11 +20,18 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private var observer: NSObjectProtocol?
     private var hideObserver: NSObjectProtocol?
 
+    // for comment keyboard
+    private var bgView = UIView()
+
+
     // MARK: - Init
 
     init(singlePost: (post: Post, viewModel: [HomeFeedCellType])) {
         self.singlePost = singlePost
         super.init(nibName: nil, bundle: nil)
+
+        // hide tab bar
+        hidesBottomBarWhenPushed = true
 
     }
 
@@ -59,6 +66,8 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         // for comment
         view.addSubview(commentBarView)
+        view.addSubview(bgView)
+      bgView.backgroundColor = .systemBackground
         commentBarView.delegate = self
         observeKeyboardChange()
     }
@@ -70,7 +79,16 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // comment
         commentBarView.frame = CGRect(
             x: 0,
+//            y: view.height-view.safeAreaInsets.bottom-60,
             y: view.height-view.safeAreaInsets.bottom - 72,
+            width: view.width,
+            height: 72)
+
+        // comment
+        bgView.frame = CGRect(
+            x: 0,
+            y: view.height-view.safeAreaInsets.bottom,
+//            y: view.height-view.safeAreaInsets.bottom - 72,
             width: view.width,
             height: 72)
     }
@@ -404,24 +422,13 @@ extension PostViewController: PostCollectionViewCellDelegate {
         // index to get the post
         // create notification
 
-//        guard let userID = AuthManager.shared.userID else { return }
-//        if allPosts[index].post.likers.contains(userID) {
-//
-//        } else {
-//            allPosts[index].post.likers.append(userID)
-//            let post = allPosts[index].post
-//            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
-//        }
-
-
         guard let userID = AuthManager.shared.userID else { return }
         
         if singlePost.post.likers.contains(userID) {
 
         } else {
             singlePost.post.likers.append(userID)
-//            var post = viewModels.post
-//            post.viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
+            singlePost.viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: singlePost.post.likers.contains(userID)))
         }
 
         DatabaseManager.shared.updateLikeState(
@@ -498,10 +505,8 @@ extension PostViewController: PostLikesCollectionViewCellDelegate {
 
     func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell, index: Int) {
 
-//        let listVC = ListViewController(type: .likers(usernames:
-//        allPosts[index].post.likers))
-////        listVC.title = "Liked by"
-//        navigationController?.pushViewController(listVC, animated: true)
+        var count = singlePost.post.likers.count
+        self.collectionView?.reloadData()
 
     }
 }

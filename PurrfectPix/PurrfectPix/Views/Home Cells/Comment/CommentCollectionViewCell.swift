@@ -44,7 +44,7 @@ class CommentCollectionViewCell: UICollectionViewCell {
     func configure(with model: Comment) {
 
         label.attributedText = NSMutableAttributedString()
-            .boldP1("\(model.username): ")
+            .boldP1("\(model.username) ")
             .normal("\(model.comment)")
         label.sizeToFit()
 

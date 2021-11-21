@@ -276,10 +276,9 @@ final class DatabaseManager {
     public func insertNotification(
         identifier: String,
         data: [String: Any],
-        for userID: String // from name to ID
+        for userID: String 
     ) {
-        let ref = database
-            .collection("notifications")
+        let ref = database.collection("notifications")
             .document(identifier) // an unique id for each notification
         ref.setData(data)
     }

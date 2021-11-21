@@ -108,7 +108,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             self?.collectionView?.reloadData()
                             self?.sortData()
 
-
                         }
 
                     }

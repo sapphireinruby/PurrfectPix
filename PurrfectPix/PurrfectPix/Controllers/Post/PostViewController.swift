@@ -383,11 +383,13 @@ extension PostViewController: CommentBarViewDelegate {
             userID: currentUserID
         ) { success in
             DispatchQueue.main.async {
+//                self.collectionView?.reloadData()
                 guard success else {
                     return
                 }
             }
         }
+        collectionView?.reloadData()
     }
 }
 // MARK: Cell delegate:

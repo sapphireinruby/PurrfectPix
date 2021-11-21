@@ -16,7 +16,7 @@ import Foundation
 
         let profilePictureUrl: URL?
         let followerCount: Int
-        let followingICount: Int
+        let followingCount: Int
         let postCount: Int
         let buttonType: ProfileButtonType
         let username: String?

@@ -9,6 +9,7 @@ import UIKit
 
 class EditProfileViewController: UIViewController {
 
+    // to see update view immidiately
     public var completion: (() -> Void)?
 
     // Fields
@@ -20,7 +21,7 @@ class EditProfileViewController: UIViewController {
 
     private let bioField: UserTextField = {
         let field = UserTextField()
-        field.placeholder = "Tell us about you and your pet here!"
+        field.placeholder = "Share the story of you and your pet here!"
         return field
     }()
 
@@ -77,7 +78,7 @@ class EditProfileViewController: UIViewController {
         DatabaseManager.shared.setUserInfo(name: name, bio: bio) { [weak self] success in
             DispatchQueue.main.async {
                 if success {
-                    self?.completion?()
+                    self?.completion?() // to see update view immidiately
                     self?.didTapClose()
                 }
             }

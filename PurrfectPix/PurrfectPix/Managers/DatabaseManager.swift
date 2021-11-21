@@ -400,7 +400,7 @@ final class DatabaseManager {
         userID: String,
         completion: @escaping (User?) -> Void
     ) {
-        guard let userID = AuthManager.shared.userID else { return }
+//        guard let userID = AuthManager.shared.userID else { return }
         let ref = database.collection("users").document(userID)
         ref.getDocument { document, error in
             guard let document = document,

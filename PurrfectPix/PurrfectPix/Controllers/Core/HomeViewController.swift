@@ -41,7 +41,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     let dbFire = Firestore.firestore()
 
-
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -106,7 +105,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             }
                         })
                         group.notify(queue: .main) {
+                            self?.collectionView?.reloadData()
                             self?.sortData()
+
 
                         }
 
@@ -254,7 +255,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         // to show mock data
 //        let cellType = viewModels[indexPath.section][indexPath.row]
-        let cellType = allPosts[indexPath.section].viewModel[indexPath.row]
+        let cellType = allPosts[indexPath.section].viewModel[indexPath.row] // index out of range
         // section for the inner array
 
         switch cellType {
@@ -313,7 +314,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             cell.delegate = self
 
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, index: indexPath.section)
             return cell
 
         case .likeCount(let viewModel):
@@ -339,7 +340,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
 
             cell.delegate = self
+            cell.contentView.backgroundColor = .lightGray
+            cell.configure(with: viewModel)
+            return cell
 
+        case .comment(let viewModel):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CommentCollectionViewCell.identifier,
+                for: indexPath
+            ) as? CommentCollectionViewCell else {
+                fatalError()
+            }
+            cell.contentView.backgroundColor = .blue
             cell.configure(with: viewModel)
             return cell
 
@@ -350,7 +362,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 for: indexPath
             ) as? PostDateTimeCollectionViewCell else {
                 fatalError()
+
             }
+            cell.contentView.backgroundColor = .purple
             cell.configure(with: viewModel)
             return cell
         }
@@ -417,6 +431,8 @@ extension HomeViewController: PostCollectionViewCellDelegate {
                 
         }
 
+        self.collectionView?.reloadData()
+
     }
 }
 
@@ -434,13 +450,11 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
             let likerIndex = allPosts[index].post.likers.firstIndex(of: userID)
             allPosts[index].post.likers.remove(at: likerIndex!)
 
-            let post = allPosts[index].post
-            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
+            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: false))
             
         } else {
             allPosts[index].post.likers.append(userID)
-            let post = allPosts[index].post
-            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
+            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: true))
         }
 
         DatabaseManager.shared.updateLikeState(
@@ -461,9 +475,9 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
     func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell, index: Int) {
 
-        // let postVC = PostViewController(singlePost: allPosts[index]) // all post and single post 一樣型別的話
-
-        let postVC = PostViewController(singlePost: (allPosts[index].post, allPosts[index].viewModel))
+        let postVC = PostViewController(singlePost: (post: allPosts[index].post, viewModel: allPosts[index].viewModel)) //  還過不去ＱＱ
+        // let postVC = PostViewController(singlePost: allPosts[index])
+        // all post and single post 若為同型別
         postVC.title = "Post"
         navigationController?.pushViewController(postVC, animated: true)
     }
@@ -548,6 +562,13 @@ extension HomeViewController {
                     )
                 )
 
+//                let commentItem = NSCollectionLayoutItem(
+//                    layoutSize: NSCollectionLayoutSize(
+//                        widthDimension: .fractionalWidth(1),
+//                        heightDimension: .absolute(80)
+//                    )
+//                )
+
                 let timestampItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
@@ -568,6 +589,7 @@ extension HomeViewController {
                             actionsItem,
                             likeCountItem,
                             captionItem,
+//                            commentItem,
                             timestampItem
                                   ]
                         )

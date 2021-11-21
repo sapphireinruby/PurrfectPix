@@ -668,4 +668,53 @@ final class DatabaseManager {
             }
         }
 
+    // MARK: - Comment
+
+    // Create a comment
+    // - Parameters:
+    //   - comment: Comment mmodel
+    //   - postID: post id
+    //   - owner: username who owns post
+    //   - completion: Result callback
+    public func createComments(
+        comment: Comment,
+        postID: String,
+        userID: String, // the user left comment for block list
+        completion: @escaping (Bool) -> Void
+    ) {
+        let commentID = "\(postID)_\(comment.userID)_\(Date().timeIntervalSince1970)"
+        let ref = database.collection("posts")
+            .document(postID)
+            .collection("comments")
+            .document(commentID)
+        guard let data = comment.asDictionary() else { return }
+        ref.setData(data) { error in
+            completion(error == nil)
+        }
+    }
+
+
+    // Get comments for given post
+    // - Parameters:
+    //   - postID: Post id to query
+    //   - owner: Username who owns post
+    //   - completion: Result callback
+    public func getComments(
+        postID: String,
+        completion: @escaping ([Comment]) -> Void
+    ) {
+        let ref = database.collection("posts")
+            .document(postID).collection("comments")
+        ref.getDocuments { snapshot, error in
+            guard let comments = snapshot?.documents.compactMap({
+                Comment(with: $0.data())
+            }),
+            error == nil else {
+                completion([])
+                return
+            }
+
+            completion(comments)
+        }
+    }
 }

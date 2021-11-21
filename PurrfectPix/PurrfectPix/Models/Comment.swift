@@ -9,7 +9,8 @@ import Foundation
 
 struct Comment: Codable {
 
-    let username: String  //or id
+    let userID: String  // who left the comment
+    let username: String // who left the comment
     let comment: String
     let dateString: String
 }

@@ -49,10 +49,18 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
+//        // autolayout for autoheight
+//        NSLayoutConstraint.activate([
+//            label.leadingAnchor.constraint(equalTo: superview!.safeAreaLayoutGuide.leadingAnchor),
+//            label.trailingAnchor.constraint(equalTo: superview!.safeAreaLayoutGuide.trailingAnchor),
+//            label.topAnchor.constraint(equalTo: superview!.safeAreaLayoutGuide.topAnchor),
+//            label.bottomAnchor.constraint(equalTo: superview!.safeAreaLayoutGuide.bottomAnchor)
+//        ])
+
         let size = label.sizeThatFits(CGSize(
             width: contentView.bounds.size.width - 48,
             height: contentView.bounds.size.height ))
-        //type CGFloat
+        // type CGFloat
         // to return the size to fit the given label
 
         label.frame = CGRect(x: 24,
@@ -70,9 +78,13 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
     func configure(with viewModel: PostCaptionCollectionViewCellViewModel) {
 
 //        label.text = "\(viewModel.username): \(viewModel.caption)"  // showing comment with "optional"
-        let labelName = "\(viewModel.username): \n" 
+        let labelName = "\(viewModel.username) " 
         let labelCap = "\(viewModel.caption ?? "")"
         label.text = labelName + labelCap
+
+        label.attributedText = NSMutableAttributedString()
+            .boldP2("\(viewModel.username): ")
+            .normal("\(viewModel.caption ?? "")") 
 
 //        label.text = "\(viewModel.username): \(viewModel.caption ?? "")"
         // if not nil, not showing the "optional"

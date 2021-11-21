@@ -111,7 +111,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
 //        // Container
         let containerViewModel = ProfileHeaderCountViewViewModel(
             followerCount: viewModel.followerCount,
-            followingCount: viewModel.followingICount,
+            followingCount: viewModel.followingCount,
             postsCount: viewModel.postCount,
             actionType: viewModel.buttonType
         )

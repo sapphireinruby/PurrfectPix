@@ -83,7 +83,7 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
         label.text = labelName + labelCap
 
         label.attributedText = NSMutableAttributedString()
-            .boldP2("\(viewModel.username): ")
+            .boldP2("\(viewModel.username) ")
             .normal("\(viewModel.caption ?? "")") 
 
 //        label.text = "\(viewModel.username): \(viewModel.caption ?? "")"

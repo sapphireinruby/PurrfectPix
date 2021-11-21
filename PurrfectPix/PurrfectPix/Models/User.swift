@@ -32,6 +32,7 @@ struct User: Codable {
         profilePic: String?,
         logInCount: Int = 0
     ){
+        
         // 初始化會做的事情
         self.userID = userID
         self.username = username

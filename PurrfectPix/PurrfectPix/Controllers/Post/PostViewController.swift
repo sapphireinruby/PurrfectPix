@@ -23,7 +23,6 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // for comment keyboard
     private var bgView = UIView()
 
-
     // MARK: - Init
 
     init(singlePost: (post: Post, viewModel: [HomeFeedCellType])) {
@@ -160,12 +159,16 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         completion: @escaping (Bool) -> Void
     ) {
 
+        // loading lottie play
+        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+        animationView.play()
+
         StorageManager.shared.downloadURL(for: model) { postURL in
             StorageManager.shared.profilePictureURL(for: userID) { [weak self] profilePictureURL in
 
-                guard let postUrl = URL(string: model.postUrlString),
+                guard let strongSelf = self,
+                      let postUrl = URL(string: model.postUrlString),
                       let userID = AuthManager.shared.userID
-                        
                 else {
                     completion(false)
                     print("1. model.postUrlString\(model.postUrlString)")
@@ -174,7 +177,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
 
                 DatabaseManager.shared.getComments(
-                    postID: self!.singlePost.post.postID
+                    postID: strongSelf.singlePost.post.postID
                 ) { comments in
 
                 var postData: [HomeFeedCellType] = [
@@ -226,6 +229,10 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     guard let self = self else { return }
                     self.singlePost.viewModel = postData
                     completion(true)
+
+                    // loading lottie stop
+                    animationView.stop()
+                    animationView.removeFromSuperview()
 
                 }
 
@@ -376,11 +383,13 @@ extension PostViewController: CommentBarViewDelegate {
             userID: currentUserID
         ) { success in
             DispatchQueue.main.async {
+//                self.collectionView?.reloadData()
                 guard success else {
                     return
                 }
             }
         }
+        collectionView?.reloadData()
     }
 }
 // MARK: Cell delegate:

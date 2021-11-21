@@ -30,7 +30,7 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
     private let likeButton: UIButton = {
         let button = UIButton()
         button.tintColor = .label
-        let image = UIImage(named: "Heart-purple")
+        let image = UIImage(named: "Heart")
         button.setImage(image, for: .normal)
         return button
     }() // closure
@@ -38,7 +38,7 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
     private let commentButton: UIButton = {
         let button = UIButton()
         button.tintColor = .label
-        let image = UIImage(named: "Comment-Alt")
+        let image = UIImage(named: "BX Message")
         button.setImage(image, for: .normal)
         return button
     }()
@@ -80,11 +80,11 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
 
         // do the heart change directly
         if self.isLiked {
-            let image = UIImage(named: "Heart-purple")
+            let image = UIImage(named: "Heart")
             likeButton.setImage(image, for: .normal)
 
         } else {
-            let image = UIImage(named: "Heart-filled")
+            let image = UIImage(named: "Heart-filled-1")
             likeButton.setImage(image, for: .normal)
 //            likeButton.tintColor = .systemRed
         }
@@ -96,8 +96,7 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
     }
 
     @objc func didTapComment() {
-        // TODO
-//        postActionsCollectionViewCellDidTapComment
+        delegate?.postActionsCollectionViewCellDidTapComment(self, index: index)
     }
 
 //    // hide share
@@ -111,21 +110,21 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
 
         likeButton.frame = CGRect(
             x: 24,
-            y: (contentView.height - size) / 2,
+            y: (contentView.height - size),
             width: size,
             height: size
         )
 
         commentButton.frame = CGRect(
             x: likeButton.right + 24,
-            y: (contentView.height - size) / 2,
+            y: (contentView.height - size),
             width: size,
             height: size
         )
 
         shareButton.frame = CGRect(
             x: commentButton.right + 24,
-            y: (contentView.height - size) / 2,
+            y: (contentView.height - size),
             width: size,
             height: size
         )
@@ -141,11 +140,11 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         isLiked = viewModel.isLiked
 
         if viewModel.isLiked {
-            let image = UIImage(named: "Heart-filled")
+            let image = UIImage(named: "Heart-filled-1")
             likeButton.setImage(image, for: .normal)
 
         } else {
-            let image = UIImage(named: "Heart-purple")
+            let image = UIImage(named: "Heart")
             likeButton.setImage(image, for: .normal)
         }
         self.index = index

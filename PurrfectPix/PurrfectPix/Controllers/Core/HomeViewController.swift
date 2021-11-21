@@ -347,7 +347,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
 
             cell.delegate = self
-            cell.contentView.backgroundColor = .lightGray
+//            cell.contentView.backgroundColor = .lightGray
             cell.configure(with: viewModel)
             return cell
 
@@ -358,7 +358,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ) as? CommentCollectionViewCell else {
                 fatalError()
             }
-            cell.contentView.backgroundColor = .blue
+//            cell.contentView.backgroundColor = .blue
             cell.configure(with: viewModel)
             return cell
 
@@ -371,7 +371,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 fatalError()
 
             }
-            cell.contentView.backgroundColor = .purple
             cell.configure(with: viewModel)
             return cell
         }
@@ -482,7 +481,10 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
     func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell, index: Int) {
 
-        let postVC = PostViewController(singlePost: (post: allPosts[index].post, viewModel: allPosts[index].viewModel)) //  還過不去ＱＱ
+        let postVC = PostViewController(singlePost:
+                                            (post: allPosts[index].post,
+                                             viewModel: allPosts[index].viewModel))
+        //  還過不去ＱＱ
         // let postVC = PostViewController(singlePost: allPosts[index])
         // all post and single post 若為同型別
         postVC.title = "Post"
@@ -604,7 +606,7 @@ extension HomeViewController {
                     // NSLayout Section
                     let section = NSCollectionLayoutSection(group: group)
 
-                section.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 0, bottom: 4, trailing: 0)
+                section.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 0, bottom: 8, trailing: 0)
                 // total 12 points between two sections
                     return section
                 })

@@ -96,11 +96,7 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
     }
 
     @objc func didTapComment() {
-        // TODO
-//        postActionsCollectionViewCellDidTapComment
-//
-//            let vc = PostViewController(singlePost: (post, [HomeFeedCellType]()))
-//            navigationController?.pushViewController(vc, animated: true)
+        delegate?.postActionsCollectionViewCellDidTapComment(self, index: index)
     }
 
 //    // hide share

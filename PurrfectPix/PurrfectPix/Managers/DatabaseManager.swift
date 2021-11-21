@@ -45,6 +45,24 @@ final class DatabaseManager {
         }
     }
 
+    public func singlePost(
+        with postID: String,
+        completion: @escaping (Post?) -> Void
+    ) {
+        let ref = database.collection("posts").document("\(postID)")
+
+        ref.getDocument { snapshot, error in
+
+            guard let data = snapshot?.data(),
+            error == nil else {
+                completion(nil)
+                return
+            }
+            completion(Post(with: data))
+        }
+    }
+
+
 // MARK: insert postCount +=1, under users
     // Create new post
     // - Parameters:
@@ -258,10 +276,9 @@ final class DatabaseManager {
     public func insertNotification(
         identifier: String,
         data: [String: Any],
-        for userID: String // from name to ID
+        for userID: String 
     ) {
-        let ref = database
-            .collection("notifications")
+        let ref = database.collection("notifications")
             .document(identifier) // an unique id for each notification
         ref.setData(data)
     }
@@ -295,11 +312,11 @@ final class DatabaseManager {
         case unfollow
     }
 
-    // MARK: insert following and followers: count +=1, under users
+    // MARK: insert following and followers
     // Update relationship of follow for user
     // - Parameters:
     //   - state: State to update to
-    //   - targetUsername: Other user username
+    //   - targetUserID: Other user
     //   - completion: Result callback
     public func updateRelationship(user: User, state: RelationshipState, for targetUserID: String,
         completion: @escaping (Bool) -> Void
@@ -383,7 +400,7 @@ final class DatabaseManager {
         userID: String,
         completion: @escaping (User?) -> Void
     ) {
-        guard let userID = AuthManager.shared.userID else { return }
+//        guard let userID = AuthManager.shared.userID else { return }
         let ref = database.collection("users").document(userID)
         ref.getDocument { document, error in
             guard let document = document,
@@ -420,7 +437,6 @@ final class DatabaseManager {
                  } catch {
                     print(error)
                  }
-
         }
     }
     // Get user counts for target usre's fowllowers, followings, and posts
@@ -651,4 +667,53 @@ final class DatabaseManager {
             }
         }
 
+    // MARK: - Comment
+
+    // Create a comment
+    // - Parameters:
+    //   - comment: Comment mmodel
+    //   - postID: post id
+    //   - owner: username who owns post
+    //   - completion: Result callback
+    public func createComments(
+        comment: Comment,
+        postID: String,
+        userID: String, // the user left comment for block list
+        completion: @escaping (Bool) -> Void
+    ) {
+        let commentID = "\(postID)_\(comment.userID)_\(Date().timeIntervalSince1970)"
+        let ref = database.collection("posts")
+            .document(postID)
+            .collection("comments")
+            .document(commentID)
+        guard let data = comment.asDictionary() else { return }
+        ref.setData(data) { error in
+            completion(error == nil)
+        }
+    }
+
+
+    // Get comments for given post
+    // - Parameters:
+    //   - postID: Post id to query
+    //   - owner: Username who owns post
+    //   - completion: Result callback
+    public func getComments(
+        postID: String,
+        completion: @escaping ([Comment]) -> Void
+    ) {
+        let ref = database.collection("posts")
+            .document(postID).collection("comments")
+        ref.getDocuments { snapshot, error in
+            guard let comments = snapshot?.documents.compactMap({
+                Comment(with: $0.data())
+            }),
+            error == nil else {
+                completion([])
+                return
+            }
+
+            completion(comments)
+        }
+    }
 }

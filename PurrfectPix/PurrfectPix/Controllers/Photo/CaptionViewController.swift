@@ -135,6 +135,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
         textView.resignFirstResponder()
 
+        // loading lottie play
         let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
         animationView.play()
 

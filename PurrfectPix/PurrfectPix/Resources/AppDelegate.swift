@@ -23,12 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let user = Auth.auth().currentUser {
             print("You're sign in as \(user.uid), email: \(user.email ?? "")")
         }
-
-        // 以下兩行會每次開app 先登出使用者
-
-        do { try Auth.auth().signOut() }
-        catch{
-        }
+//
+//        // 以下兩行會每次開app 先登出使用者
+//
+//        do { try Auth.auth().signOut() }
+//        catch{
+//        }
 
         return true
     }
@@ -46,5 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    // AppDelegate - set supportedInterfaceOrientationsForWindow to whatever orientations you want the entire application to support:
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+            return .portrait
+        }
 
 }

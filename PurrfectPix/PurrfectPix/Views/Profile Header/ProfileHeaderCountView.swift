@@ -48,7 +48,7 @@ class ProfileHeaderCountView: UIView {
         return button
     }()
 
-    private let postCountButton: UIButton = {
+    let postCountButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.label, for: .normal)
         button.titleLabel?.numberOfLines = 2
@@ -138,7 +138,7 @@ class ProfileHeaderCountView: UIView {
         switch viewModel.actionType {
         case .edit:
             actionButton.backgroundColor = .systemBackground
-            actionButton.setTitle("Edit Profile", for: .normal)
+            actionButton.setTitle("Edit User Profile", for: .normal)
             actionButton.setTitleColor(.label, for: .normal)
             actionButton.layer.borderWidth = 0.5
             actionButton.layer.borderColor = UIColor.tertiaryLabel.cgColor

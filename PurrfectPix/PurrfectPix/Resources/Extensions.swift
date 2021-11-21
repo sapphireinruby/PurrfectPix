@@ -122,7 +122,8 @@ extension Encodable {
 enum BaseColor: String {
 
     // swiftlint:disable identifier_name
-    case P1 // D077D8 pinkpurple
+    case P1 // 889CEB light lavander purple
+    case P2 // D077D8 pinkpurple
 
 }
 
@@ -130,11 +131,77 @@ extension UIColor {
 
     static let P1 = baseColor(.P1)
 
+    static let P2 = baseColor(.P2)
+
     private static func baseColor(_ color: BaseColor) -> UIColor? {
 
         return UIColor(named: color.rawValue)!
     }
 
+}
+
+extension NSMutableAttributedString {
+    var fontSize: CGFloat { return 18 }
+    var boldFont: UIFont { return UIFont(name: "Roboto-Bold", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize) }
+    var normalFont: UIFont { return UIFont(name: "Roboto-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)}
+
+    func boldP1(_ value: String) -> NSMutableAttributedString {
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: boldFont,
+            .foregroundColor: UIColor.P1
+        ]
+
+        self.append(NSAttributedString(string: value, attributes: attributes))
+        return self
+    }
+
+    func boldP2(_ value: String) -> NSMutableAttributedString {
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: boldFont,
+            .foregroundColor: UIColor.P2
+        ]
+
+        self.append(NSAttributedString(string: value, attributes: attributes))
+        return self
+    }
+
+    func normal(_ value: String) -> NSMutableAttributedString {
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: normalFont
+        ]
+
+        self.append(NSAttributedString(string: value, attributes: attributes))
+        return self
+    }
+    /* Other styling methods */
+
+//    func blackHighlight(_ value:String) -> NSMutableAttributedString {
+//
+//        let attributes:[NSAttributedString.Key : Any] = [
+//            .font :  normalFont,
+//            .foregroundColor : UIColor.white,
+//            .backgroundColor : UIColor.black
+//
+//        ]
+//
+//        self.append(NSAttributedString(string: value, attributes:attributes))
+//        return self
+//    }
+
+    func underlined(_ value:String) -> NSMutableAttributedString {
+
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font :  normalFont,
+            .underlineStyle : NSUnderlineStyle.single.rawValue
+
+        ]
+
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+    }
 }
 
 extension UIViewController {

@@ -36,6 +36,8 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         label.numberOfLines = 0 // line wrapping
         label.text = "\nThis is my profile bio!"
         label.font = .systemFont(ofSize: 18)
+//        label.font = .boldSystemFont(ofSize: 18)
+        label.textColor = .P1
         return label
     }()
 
@@ -109,7 +111,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
 //        // Container
         let containerViewModel = ProfileHeaderCountViewViewModel(
             followerCount: viewModel.followerCount,
-            followingCount: viewModel.followingICount,
+            followingCount: viewModel.followingCount,
             postsCount: viewModel.postCount,
             actionType: viewModel.buttonType
         )

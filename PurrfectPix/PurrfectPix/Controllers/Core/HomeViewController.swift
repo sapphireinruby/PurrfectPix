@@ -31,6 +31,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        }
 //    }
 
+    // Notification observer
+    private var observer: NSObjectProtocol?
+
     private var allPosts = [(post: Post, owner: String, viewModel:[HomeFeedCellType])]()
 
     // All post models
@@ -38,16 +41,25 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     let dbFire = Firestore.firestore()
 
-
     override func viewDidLoad() {
 
         super.viewDidLoad()
         title = "PurrfectPix"
         view.backgroundColor = .systemBackground
         configureCollectionView()
-        // username will edit later
-//        UserDefaults.standard.setValue("wRWTOfxEaKtP8OSso4pB", forKey: "userID")
-//        fetchPosts()
+
+        view.addSubview(noPostLabel)
+
+        observer = NotificationCenter.default.addObserver(
+            forName: .didPostNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.allPosts.removeAll() // clean all posts and fatch again  確認是不是allPosts就可以
+//            self?.allPosts.viewModels.removeAll()
+            self?.fetchPosts()
+        }
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -93,6 +105,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             }
                         })
                         group.notify(queue: .main) {
+                            self?.collectionView?.reloadData()
                             self?.sortData()
 
                         }
@@ -154,6 +167,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         username: String,
         completion: @escaping (Bool) -> Void
     ) {
+        // loading lottie play
+        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+        animationView.play()
 
         StorageManager.shared.downloadURL(for: model) { postURL in
             StorageManager.shared.profilePictureURL(for: userID) { [weak self] profilePictureURL in
@@ -209,6 +225,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //                self?.viewModels.append(postData)// add to view model
                 completion(true)
 
+                // loading lottie stop
+                animationView.stop()
+                animationView.removeFromSuperview()
+
             }
         }
 //        if viewModels.isEmpty {
@@ -241,7 +261,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         // to show mock data
 //        let cellType = viewModels[indexPath.section][indexPath.row]
-        let cellType = allPosts[indexPath.section].viewModel[indexPath.row]
+        let cellType = allPosts[indexPath.section].viewModel[indexPath.row] // index out of range
         // section for the inner array
 
         switch cellType {
@@ -300,7 +320,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             cell.delegate = self
 
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, index: indexPath.section)
             return cell
 
         case .likeCount(let viewModel):
@@ -326,7 +346,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
 
             cell.delegate = self
+//            cell.contentView.backgroundColor = .lightGray
+            cell.configure(with: viewModel)
+            return cell
 
+        case .comment(let viewModel):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CommentCollectionViewCell.identifier,
+                for: indexPath
+            ) as? CommentCollectionViewCell else {
+                fatalError()
+            }
+//            cell.contentView.backgroundColor = .blue
             cell.configure(with: viewModel)
             return cell
 
@@ -337,6 +368,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 for: indexPath
             ) as? PostDateTimeCollectionViewCell else {
                 fatalError()
+
             }
             cell.configure(with: viewModel)
             return cell
@@ -405,6 +437,7 @@ extension HomeViewController: PostCollectionViewCellDelegate {
         }
 
         self.collectionView?.reloadData()
+
     }
 }
 
@@ -418,10 +451,15 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
         guard let userID = AuthManager.shared.userID else { return }
         if allPosts[index].post.likers.contains(userID) {
 
+            // todo: remove liker from post
+            let likerIndex = allPosts[index].post.likers.firstIndex(of: userID)
+            allPosts[index].post.likers.remove(at: likerIndex!)
+
+            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: false))
+            
         } else {
             allPosts[index].post.likers.append(userID)
-            let post = allPosts[index].post
-            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
+            allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: true))
         }
 
         DatabaseManager.shared.updateLikeState(
@@ -440,10 +478,16 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
     }
 
-    func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell) {
-//        let postVC = PostViewController(post: Post) // initiate a vc
-//        postVC.title = "Post"
-//        navigationController?.pushViewController(postVC, animated: true)
+    func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell, index: Int) {
+
+        let postVC = PostViewController(singlePost:
+                                            (post: allPosts[index].post,
+                                             viewModel: allPosts[index].viewModel))
+        //  還過不去ＱＱ
+        // let postVC = PostViewController(singlePost: allPosts[index])
+        // all post and single post 若為同型別
+        postVC.title = "Post"
+        navigationController?.pushViewController(postVC, animated: true)
     }
 
     func postActionsCollectionViewCellDidTapShare(_ cell: PostActionsCollectionViewCell) {
@@ -460,7 +504,7 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
 
 //        let listVC = ListViewController(type: .likers(usernames:
 //        allPosts[index].post.likers))
-////        listVC.title = "Liked by"
+//        listVC.title = "Liked by"
 //        navigationController?.pushViewController(listVC, animated: true)
 
     }
@@ -477,7 +521,7 @@ extension HomeViewController {
     func configureCollectionView() {
 
         // calulate the heigh dynamically for square
-        let sectionHeight: CGFloat = 330 + view.width
+        let sectionHeight: CGFloat = 350 + view.width
         //view.width is the actual post size
         let collectionView = UICollectionView(
             frame: .zero,
@@ -526,10 +570,17 @@ extension HomeViewController {
                     )
                 )
 
+//                let commentItem = NSCollectionLayoutItem(
+//                    layoutSize: NSCollectionLayoutSize(
+//                        widthDimension: .fractionalWidth(1),
+//                        heightDimension: .absolute(80)
+//                    )
+//                )
+
                 let timestampItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(10)
+                        heightDimension: .absolute(30)
                     )
                 )
 
@@ -546,6 +597,7 @@ extension HomeViewController {
                             actionsItem,
                             likeCountItem,
                             captionItem,
+//                            commentItem,
                             timestampItem
                                   ]
                         )
@@ -553,7 +605,7 @@ extension HomeViewController {
                     // NSLayout Section
                     let section = NSCollectionLayoutSection(group: group)
 
-                section.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 0, bottom: 4, trailing: 0)
+                section.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 0, bottom: 8, trailing: 0)
                 // total 12 points between two sections
                     return section
                 })

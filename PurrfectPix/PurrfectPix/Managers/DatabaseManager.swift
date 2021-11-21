@@ -312,11 +312,11 @@ final class DatabaseManager {
         case unfollow
     }
 
-    // MARK: insert following and followers: count +=1, under users
+    // MARK: insert following and followers
     // Update relationship of follow for user
     // - Parameters:
     //   - state: State to update to
-    //   - targetUsername: Other user username
+    //   - targetUserID: Other user
     //   - completion: Result callback
     public func updateRelationship(user: User, state: RelationshipState, for targetUserID: String,
         completion: @escaping (Bool) -> Void

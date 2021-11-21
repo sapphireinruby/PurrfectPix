@@ -330,6 +330,9 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
 
 extension ProfileViewController: ProfileHeaderCountViewDelegate {
     func profileHeaderCountViewDidTapFollowers(_ containerView: ProfileHeaderCountView) {
+//
+//        let vc = ListViewController(type: .followers(user: user))
+//        navigationController?.pushViewController(vc, animated: true)
 
     }
 
@@ -360,10 +363,33 @@ extension ProfileViewController: ProfileHeaderCountViewDelegate {
     }
 
     func profileHeaderCountViewDidTapFollow(_ containerView: ProfileHeaderCountView) {
+//        DatabaseManager.shared.updateRelationship(
+//            state: .follow,
+//            for: user.username // 沒有user了
+//        ) { [weak self] success in
+//            if !success {
+//                print("failed to follow")
+//                DispatchQueue.main.async {
+//                    self?.collectionView?.reloadData()
+//                }
+//            }
+//        }
 
     }
 
     func profileHeaderCountViewDidTapUnFollow(_ containerView: ProfileHeaderCountView) {
+//        DatabaseManager.shared.updateRelationship(
+//            state: .unfollow,
+//            for: user.username
+//        ) { [weak self] success in
+//            if !success {
+//                print("failed to follow")
+//                DispatchQueue.main.async {
+//                    self?.collectionView?.reloadData()
+//                }
+//            }
+//        }
+//    }
 
     }
 

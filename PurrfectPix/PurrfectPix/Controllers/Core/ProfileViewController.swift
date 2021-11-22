@@ -142,34 +142,6 @@ class ProfileViewController: UIViewController {
             }
         }
 
-        // if not current user's profile, get follow state
-//        if !isCurrentUser {
-//            // need to get if the current user is following the perofile user account
-//            group.enter()
-//            DatabaseManager.shared.isFollowing(targetUserID: user.username) { isFollowing in
-//                // isFollowing  function需要修改
-//                defer {
-//                    group.leave()
-//                }
-//                print(isFollowing)
-//                buttonType = .follow(isFollowing: isFollowing)
-//            }
-//        }
-
-//        group.notify(queue: .main) {
-//            // swiftlint:disable line_length
-//            self.headerViewModel = ProfileHeaderViewModel(
-//                profilePictureUrl: URL(string: profilePictureUrl),
-//                followerCount: 3,
-//                followingICount: 4,
-//                postCount: 7,
-//                buttonType: buttonType,
-//                username: username,
-//                bio: bio
-//            )
-
-//        }
-
     }
 
     override func viewDidLayoutSubviews() {

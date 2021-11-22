@@ -531,7 +531,7 @@ extension PostViewController{
     func configureCollectionView() {
 
         // calulate the heigh dynamically for square
-        let sectionHeight: CGFloat = 410 + view.width
+//        let sectionHeight: CGFloat = 410 + view.width
         //view.width is the actual post size
         let collectionView = UICollectionView(
             frame: .zero,
@@ -541,14 +541,14 @@ extension PostViewController{
                 let posterItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(60)
+                        heightDimension: .estimated(60)
                     )
                 )
 
                 let petTagItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(100)
+                        heightDimension: .estimated(100)
                     )
                 )
 
@@ -562,35 +562,35 @@ extension PostViewController{
                 let actionsItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(40)
+                        heightDimension: .estimated(40)
                     )
                 )
 
                 let likeCountItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(40)
+                        heightDimension: .estimated(40)
                     )
                 )
 
                 let captionItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(80)
+                        heightDimension: .estimated(68)
                     )
                 )
 
                 let commentItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(80)
+                        heightDimension: .estimated(60)
                     )
                 )
 
                 let timestampItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(10)
+                        heightDimension: .estimated(30)
                     )
                 )
 

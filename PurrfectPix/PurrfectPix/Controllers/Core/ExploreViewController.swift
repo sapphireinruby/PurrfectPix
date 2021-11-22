@@ -213,8 +213,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
 
         let vcPostView = PostViewController(singlePost: (posts[indexPath.row], [HomeFeedCellType]()))
 
-//        vcPostView.singlePost = xxxx
-
         navigationController?.pushViewController(vcPostView, animated: true)
     }
 }

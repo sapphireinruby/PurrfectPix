@@ -598,7 +598,7 @@ extension PostViewController{
                 let group = NSCollectionLayoutGroup.vertical(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(sectionHeight)
+                        heightDimension: .fractionalHeight(1)
                     ),
                         subitems: [
                             posterItem,

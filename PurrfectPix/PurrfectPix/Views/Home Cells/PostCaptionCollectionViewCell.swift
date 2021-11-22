@@ -86,9 +86,6 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
             .boldP2("\(viewModel.username) ")
             .normal("\(viewModel.caption ?? "")") 
 
-//        label.text = "\(viewModel.username): \(viewModel.caption ?? "")"
-        // if not nil, not showing the "optional"
-//        label.textColor = .P1
     }
 
 }

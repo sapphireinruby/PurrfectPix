@@ -9,28 +9,6 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-//    目前要調整的地方：改username and bio 後要更新畫面。
-//    目前進來時還抓不到本人，所以無法再title 顯示username
-
-
-//    private let user: User
-
-//    private var user: User? {
-//        didSet {
-//            if let user = user {
-//                isCurrentUser = user.username == AuthManager.shared.username
-//            } else {
-//                isCurrentUser = false
-//            }
-//        }
-//    }
-
-    //        private let user: User
-    //
-    //        private var isCurrentUser: Bool {
-//    return user.username == AuthManager.shared.username ?? ""
-    //        }
-
     private var isCurrentUser: Bool {
         userID == AuthManager.shared.userID
     }
@@ -363,37 +341,37 @@ extension ProfileViewController: ProfileHeaderCountViewDelegate {
     }
 
     func profileHeaderCountViewDidTapFollow(_ containerView: ProfileHeaderCountView) {
-//        DatabaseManager.shared.updateRelationship(
-//            state: .follow,
-//            for: user.username // 沒有user了
-//        ) { [weak self] success in
-//            if !success {
-//                print("failed to follow")
-//                DispatchQueue.main.async {
-//                    self?.collectionView?.reloadData()
-//                }
-//            }
-//        }
+        DatabaseManager.shared.updateRelationship(
+           state: .follow, for: userID
+        ) { [weak self] success in
+            if !success {
+                print("failed to follow")
+                DispatchQueue.main.async {
+                    self?.collectionView?.reloadData()
+                }
+            }
+        }
 
     }
 
     func profileHeaderCountViewDidTapUnFollow(_ containerView: ProfileHeaderCountView) {
-//        DatabaseManager.shared.updateRelationship(
-//            state: .unfollow,
-//            for: user.username
-//        ) { [weak self] success in
-//            if !success {
-//                print("failed to follow")
-//                DispatchQueue.main.async {
-//                    self?.collectionView?.reloadData()
-//                }
-//            }
-//        }
-//    }
 
+        DatabaseManager.shared.updateRelationship(
+            state: .unfollow,
+            for: userID
+        ) { [weak self] success in
+            if !success {
+                print("failed to follow")
+                DispatchQueue.main.async {
+                    self?.collectionView?.reloadData()
+                }
+            }
+        }
     }
 
-}
+ }
+
+
 
 extension ProfileViewController{
     func configureCollectionView() {

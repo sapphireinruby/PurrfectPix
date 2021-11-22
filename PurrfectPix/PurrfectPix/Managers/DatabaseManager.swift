@@ -75,21 +75,6 @@ final class DatabaseManager {
             completion(false)
             return
         }
-        // insert postCount +=1, under collection("users")
-//        let userRef = database.collection("users").document(userID)
-//        do {
-//
-//            try userRef.setData(from: User) { error in
-//                if let error = error {
-//                    completion(false)
-//                } else {
-//                    completion(error == nil)
-//                }
-//            }
-//        } catch {
-//            print("Add post count fails")
-//
-//        }
 
         var post = newPost
         let reference = database.collection("posts").document(newPost.postID)
@@ -244,8 +229,8 @@ final class DatabaseManager {
 
     // MARK: notification related
 
-    /// Get notifications for current user
-    /// - Parameter completion: Result callback
+    // Get notifications for current user
+    // - Parameter completion: Result callback
     public func getNotifications(
         completion: @escaping ([PurrNotification]) -> Void
     ) {
@@ -270,7 +255,7 @@ final class DatabaseManager {
 
     // Creates new notification
     // - Parameters:
-    ///   - identifer: New notification I
+    //   - identifer: New notification I
     //   - data: Notification data
     //   - username: target username
     public func insertNotification(
@@ -318,7 +303,7 @@ final class DatabaseManager {
     //   - state: State to update to
     //   - targetUserID: Other user
     //   - completion: Result callback
-    public func updateRelationship(user: User, state: RelationshipState, for targetUserID: String,
+    public func updateRelationship(state: RelationshipState, for targetUserID: String,
         completion: @escaping (Bool) -> Void
     ) {
         guard let currentUserID = AuthManager.shared.userID else {
@@ -340,7 +325,7 @@ final class DatabaseManager {
                    "following": FieldValue.arrayRemove(["targetUserID"])
                ])
             do {
-                try currentFollowing.setData(from: user)
+                try currentFollowing.setData(from: targetUserID)
             } catch {
                 // error
                 print("Delete target user from following list fails")
@@ -353,7 +338,7 @@ final class DatabaseManager {
             ])
 
             do {
-                try targetUserFollowers.setData(from: user)
+                try targetUserFollowers.setData(from: targetUserID)
             } catch {
                 // error
                 print("Delete from target user's followers list fails")
@@ -368,7 +353,7 @@ final class DatabaseManager {
                    "followers" : FieldValue.arrayUnion(["targetUserID"])
                ])
         do {
-            try currentFollowing.setData(from: user)
+            try currentFollowing.setData(from: targetUserID)
         } catch {
             // error
             print("Follow target user fails")
@@ -379,7 +364,7 @@ final class DatabaseManager {
              "followers" : FieldValue.arrayUnion(["currentUserID"])
                ])
             do {
-                try targetUserFollowers.setData(from: user)
+                try targetUserFollowers.setData(from: targetUserID)
             } catch {
                 // error
                 print("Add to target user's followers list fails")
@@ -447,7 +432,6 @@ final class DatabaseManager {
         userID: String,
         completion: @escaping ((followers: Int, following: Int, posts: Int)) -> Void
     ) {
-//        let postRef = database.collection("posts")
         let docRef = database.collection("users").document(userID)
 
         var posts = 0
@@ -462,59 +446,7 @@ final class DatabaseManager {
                 print("Document does not exist")
             }
         }
-//
-//        let group = DispatchGroup()
-//        group.enter()
-//        group.enter()
-//        group.enter()
-//
-//        postRef.getDocuments { snapshot, error in
-//            defer {
-//                group.leave()
-//            }
-//            let query = postRef.whereField("userID", isEqualTo: userID) { snapshot, error in
-//                // 錯誤訊息 Type of expression is ambiguous without more context 應該是argument 或return type錯誤
-//                guard let count = snapshot.size, error == nil else {
-//                    return
-//                }
-//                posts = count
-//            }
-//
-//        }
-//        // 還是要整包抓下來 再拿field裡面的count
-//
-//        userRef.getDocument(completion: <#T##FIRDocumentSnapshotBlock##FIRDocumentSnapshotBlock##(DocumentSnapshot?, Error?) -> Void#>)
-//
-//        userRef.where("followers").get() { snapshot, error in
-//            defer {
-//                group.leave()
-//            }
-//
-//            guard let count = snapshot?.count, error == nil else {
-//                return
-//            }
-//            followers = count
-//        }
-//
-//        userRef.where("following").get() { snapshot, error in
-//            defer {
-//                group.leave()
-//            }
-//
-//            guard let count = snapshot?.documents.count, error == nil else {
-//                return
-//            }
-//            following = count
-//        }
-//
-//        group.notify(queue: .global()) {
-//            let result = (
-//                followers: followers,
-//                following: following,
-//                posts: posts
-//            )
-//            completion(result)
-//        }
+
     }
 
     // Check if current user is following another user
@@ -554,16 +486,7 @@ final class DatabaseManager {
             return
         }
         let ref = database.collection("users").document(currentUserID)
-        // 或列出自己的followers就好
-        // 再建立一個collection 存入document 等到生成table view實在顯示
 
-//        ref.get() { snapshot, error in
-//            guard let usernames = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
-//                completion([])
-//                return
-//            }
-//            completion(usernames)  //  user要轉username
-//        }
     }
 
 

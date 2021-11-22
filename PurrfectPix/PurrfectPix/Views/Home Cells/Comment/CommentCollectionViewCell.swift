@@ -30,9 +30,9 @@ class CommentCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: contentView.topAnchor),
             label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            label.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            label.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            label.widthAnchor.constraint(equalToConstant: contentView.width - padding)
+            label.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            label.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -padding)
+//            label.widthAnchor.constraint(equalToConstant: contentView.width - padding)
 //            label.heightAnchor.constraint(equalToConstant: 200)
 //            label.heightAnchor.constraint(equalToConstant: self.label.height)
         ])

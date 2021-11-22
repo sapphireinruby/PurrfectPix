@@ -453,7 +453,7 @@ final class DatabaseManager {
 
     // Check if current user is following another user
     // - Parameters:
-    //   - targetUsername: Other user to check
+    //   - targetUserID: Other user to check
     //   - completion: Result callback
     public func isFollowing(
         targetUserID: String,
@@ -466,7 +466,7 @@ final class DatabaseManager {
 
         let ref = database.collection("users")
             .document(currentUserID) // 在自己的following裏面 有無對方的ID 還需要修改
-         ref.whereField("following", isEqualTo: "targetUserID")
+//            .whereField("following", arrayContains: targetUserID)
         ref.getDocument { snapshot, error in
             guard snapshot?.data() != nil, error == nil else {
                 // Not following

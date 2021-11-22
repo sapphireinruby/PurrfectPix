@@ -88,6 +88,7 @@ class ProfileViewController: UIViewController {
             }
         }
 
+        guard let currentUserID = AuthManager.shared.userID else { return }
         // to store Profiel Header Info
         var profilePictureUrl: URL? // database沒存進去
         var buttonType: ProfileButtonType = .edit
@@ -120,7 +121,7 @@ class ProfileViewController: UIViewController {
                 }
                 profilePictureUrl = url
             }
-
+            
             // set cache
             // for cache
             CacheUserInfo.shared.cache[userInfo.userID] = userInfo // closure 裡面要加self，但解開optional後就不用了
@@ -134,7 +135,7 @@ class ProfileViewController: UIViewController {
                     followerCount: userInfo.followers?.count ?? 0,
                     followingCount: userInfo.following?.count ?? 0,
                     postCount: postCount,
-                    buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: true) ,
+                    buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: userInfo.followers?.contains(currentUserID) ?? false),
                     username: userInfo.username.uppercased() ?? "",
                     bio: userInfo.bio ?? "This user have no bio yet. \nIntroduce your pet to everyone!"
                 )

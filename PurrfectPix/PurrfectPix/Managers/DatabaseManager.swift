@@ -322,10 +322,10 @@ final class DatabaseManager {
             // 1. Remove follower for currentUser following list, delete targetUserID from 自己的 following array
 
             currentFollowing.updateData([
-                   "following": FieldValue.arrayRemove(["targetUserID"])
+                   "following": FieldValue.arrayRemove([targetUserID])
                ])
             do {
-                try currentFollowing.setData(from: targetUserID)
+                try currentFollowing.setData(from: currentUserID)
             } catch {
                 // error
                 print("Delete target user from following list fails")
@@ -334,7 +334,7 @@ final class DatabaseManager {
             // 2. Remove currentUser from targetUser followers list, delete currentUserID from 對方的 followers, followers.remove(currentUserID)
 
          targetUserFollowers.updateData([
-                "followers": FieldValue.arrayRemove(["currentUserID"])
+                "followers": FieldValue.arrayRemove([currentUserID])
             ])
 
             do {
@@ -350,10 +350,10 @@ final class DatabaseManager {
             // 1. Add target user to self's following list 加入對方到自己的 追蹤中 currentFollowing
 
            currentFollowing.updateData([
-                   "followers" : FieldValue.arrayUnion(["targetUserID"])
+                   "following" : FieldValue.arrayUnion([targetUserID])
                ])
         do {
-            try currentFollowing.setData(from: targetUserID)
+            try currentFollowing.setData(from: currentUserID)
         } catch {
             // error
             print("Follow target user fails")
@@ -361,7 +361,7 @@ final class DatabaseManager {
 
            // 2. Add currentUser to targetUser followers list 加入自己成對方的追蹤者 targetUserFollowers
             targetUserFollowers.updateData([
-             "followers" : FieldValue.arrayUnion(["currentUserID"])
+             "followers": FieldValue.arrayUnion([currentUserID])
                ])
             do {
                 try targetUserFollowers.setData(from: targetUserID)

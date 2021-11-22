@@ -419,8 +419,10 @@ final class DatabaseManager {
                  user.bio = bio
                  do {
                     try ref.setData(from: user)
+                     completion(true)
                  } catch {
-                    print(error)
+                     print(error)
+                     completion(error == nil)
                  }
         }
     }
@@ -464,7 +466,7 @@ final class DatabaseManager {
 
         let ref = database.collection("users")
             .document(currentUserID) // 在自己的following裏面 有無對方的ID 還需要修改
-        // ref.whereField("following", isEqualTo: "targetUserID")
+         ref.whereField("following", isEqualTo: "targetUserID")
         ref.getDocument { snapshot, error in
             guard snapshot?.data() != nil, error == nil else {
                 // Not following

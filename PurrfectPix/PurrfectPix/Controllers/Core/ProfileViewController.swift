@@ -131,7 +131,7 @@ class ProfileViewController: UIViewController {
                 self.headerViewModel = ProfileHeaderViewModel(
 
                     profilePictureUrl: profilePictureUrl,
-                    followerCount: userInfo.follower?.count ?? 0,
+                    followerCount: userInfo.followers?.count ?? 0,
                     followingCount: userInfo.following?.count ?? 0,
                     postCount: postCount,
                     buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: true) ,

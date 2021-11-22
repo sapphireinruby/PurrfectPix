@@ -72,7 +72,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     private let agreetmentButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.P1, for: .normal)
-        button.setTitle("By click Sing Up, you agreeto to our Terms.", for: .normal)
+        button.setTitle("By Click Sing Up, \nYou Agreeto to Our Terms Below.", for: .normal)
+        button.titleLabel?.lineBreakMode = .byWordWrapping // multi-line text in UIButton
+        button.titleLabel?.textAlignment = .center
         return button
     }()
 
@@ -123,7 +125,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         signUpButton.frame = CGRect(x: 35, y: passwordField.bottom+16, width: view.width-70, height: 50)
 
 //        agreetmentLabel.frame = CGRect(x: 35, y: signUpButton.bottom + 24, width: view.width-70, height: 40)
-        agreetmentButton.frame = CGRect(x: 35, y: signUpButton.bottom + 8, width: view.width-70, height: 40)
+        agreetmentButton.frame = CGRect(x: 35, y: signUpButton.bottom + 24, width: view.width-70, height: 40)
 
         termsButton.frame = CGRect(x: 35, y: agreetmentButton.bottom + 16, width: view.width-70, height: 40)
         privacyButton.frame = CGRect(x: 35, y: termsButton.bottom + 8, width: view.width-70, height: 40)

@@ -23,12 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let user = Auth.auth().currentUser {
             print("You're sign in as \(user.uid), email: \(user.email ?? "")")
         }
-//
-//        // 以下兩行會每次開app 先登出使用者
-//
-//        do { try Auth.auth().signOut() }
-//        catch{
-//        }
+
+        // 以下兩行會每次開app 先登出使用者
+
+        do { try Auth.auth().signOut() }
+        catch{
+        }
 
         return true
     }

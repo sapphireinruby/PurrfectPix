@@ -140,7 +140,7 @@ final class CameraViewController: UIViewController {
     }
 
     private func setUpCamera() {
-
+        captureSession = AVCaptureSession()
         guard let captureSession = captureSession else { return }
         if let device = AVCaptureDevice.default(for: .video) {
             do {

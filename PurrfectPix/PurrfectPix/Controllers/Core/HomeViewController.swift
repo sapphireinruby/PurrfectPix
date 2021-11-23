@@ -16,7 +16,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         label.text = "You have no post, tap Camera to create a post or check other pets at Explore! "
         label.textColor = .P1
         label.textAlignment = .center
-//        label.isHidden = true
+        //        label.isHidden = true
         return label
     }()
 
@@ -25,11 +25,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     // Feed viewModels, two demensional array, each inner arry is a post or a section
     // 7 kinds of home feed cell enums on cell type models file
-//    private var viewModels = [[HomeFeedCellType]]() {
-//        didSet {
-//            collectionView?.reloadData()
-//        }
-//    }
+    //    private var viewModels = [[HomeFeedCellType]]() {
+    //        didSet {
+    //            collectionView?.reloadData()
+    //        }
+    //    }
 
     // Notification observer
     private var observer: NSObjectProtocol?
@@ -37,7 +37,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private var allPosts = [(post: Post, owner: String, viewModel:[HomeFeedCellType])]()
 
     // All post models
-//    private var allPosts: [(post: Post, owner: String)] = []
+    //    private var allPosts: [(post: Post, owner: String)] = []
 
     let dbFire = Firestore.firestore()
 
@@ -56,7 +56,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             queue: .main
         ) { [weak self] _ in
             self?.allPosts.removeAll() // clean all posts and fatch again  確認是不是allPosts就可以
-//            self?.allPosts.viewModels.removeAll()
+            //            self?.allPosts.viewModels.removeAll()
             self?.fetchPosts()
         }
 
@@ -77,7 +77,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         allPosts.removeAll() // fetch 之前先清除
 
-        guard let username = AuthManager.shared.username else { return }
+        guard AuthManager.shared.username != nil else { return }
 
         guard let userID = AuthManager.shared.userID else { return }
 
@@ -186,8 +186,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                       let userID = AuthManager.shared.userID
 
                 else {
-                          print("1. model.postUrlString\(model.postUrlString)")
-                          print("2. profilePictureURL \(profilePictureURL)")
+                    print("1. model.postUrlString\(model.postUrlString)")
+                    print("2. profilePictureURL \(profilePictureURL)")
                     completion(false)
 
                     return
@@ -201,38 +201,38 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         )
                     ),
                     
-                    .petTag(
-                        viewModel: PostPetTagCollectionViewCellViewModel(
-                            petTag: model.petTag
-                        )
-                    ),
+                        .petTag(
+                            viewModel: PostPetTagCollectionViewCellViewModel(
+                                petTag: model.petTag
+                            )
+                        ),
 
-                    .post(
-                        viewModel: PostCollectionViewCellViewModel(
-                            postUrl: postUrl
-                        )
-                    ),
+                        .post(
+                            viewModel: PostCollectionViewCellViewModel(
+                                postUrl: postUrl
+                            )
+                        ),
 
                         .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: model.likers.contains(userID))), // 這篇貼文的likers 裏面 有現在的userID, 就會是true
 
                         .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: model.likers)),
 
-                    .caption(
-                        viewModel: PostCaptionCollectionViewCellViewModel(
-                            username: model.username,
-                            caption: model.caption)),
+                        .caption(
+                            viewModel: PostCaptionCollectionViewCellViewModel(
+                                username: model.username,
+                                caption: model.caption)),
 
-                    .timestamp(
-                        viewModel: PostDatetimeCollectionViewCellViewModel(
-                            date: DateFormatter.formatter.date(from: model.postedDate) ?? Date()
+                        .timestamp(
+                            viewModel: PostDatetimeCollectionViewCellViewModel(
+                                date: DateFormatter.formatter.date(from: model.postedDate) ?? Date()
+                            )
                         )
-                    )
                 ]
 
                 // [(post: Post, owner: String, viewModel:[[HomeFeedCellType]])]()
                 self?.allPosts.append((post: model, owner: username, viewModel: postData))
 
-//                self?.viewModels.append(postData)// add to view model
+                //                self?.viewModels.append(postData)// add to view model
                 completion(true)
 
                 // loading lottie stop
@@ -241,15 +241,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             }
         }
-//        if viewModels.isEmpty {
-//            noPostLabel.isHidden = false
-//            collectionView.isHidden = true
-//        }
-//        else {
-//            noPostLabelLabel.isHidden = true
-//            noPostLabel.isHidden = false
-//            collectionView.reloadData()
-//        }
+        //        if viewModels.isEmpty {
+        //            noPostLabel.isHidden = false
+        //            collectionView.isHidden = true
+        //        }
+        //        else {
+        //            noPostLabelLabel.isHidden = true
+        //            noPostLabel.isHidden = false
+        //            collectionView.reloadData()
+        //        }
 
     }
 
@@ -270,14 +270,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         // to show mock data
-//        let cellType = viewModels[indexPath.section][indexPath.row]
+        //        let cellType = viewModels[indexPath.section][indexPath.row]
         let cellType = allPosts[indexPath.section].viewModel[indexPath.row] // index out of range
         // section for the inner array
 
         switch cellType {
 
         case .poster(let viewModel):
-        // to dequeue the right cell
+            // to dequeue the right cell
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: PosterCollectionViewCell.identifer,
                 for: indexPath
@@ -288,7 +288,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.delegate = self  //delegate set up at cell class
 
             cell.configure(with: viewModel)
-//            cell.contentView.backgroundColor = colors[indexPath.row]
+            //            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .petTag(let viewModel):
@@ -356,7 +356,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
 
             cell.delegate = self
-//            cell.contentView.backgroundColor = .lightGray
+            //            cell.contentView.backgroundColor = .lightGray
             cell.configure(with: viewModel)
             return cell
 
@@ -367,7 +367,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ) as? CommentCollectionViewCell else {
                 fatalError()
             }
-//            cell.contentView.backgroundColor = .blue
+            //            cell.contentView.backgroundColor = .blue
             cell.configure(with: viewModel)
             return cell
 
@@ -437,14 +437,14 @@ extension HomeViewController: PostCollectionViewCellDelegate {
         DatabaseManager.shared.updateLikeState(
             state: .like,
             postID: allPosts[index].post.postID) { success in
-            guard success else {
-                print("Failed to like from post picture")
+                guard success else {
+                    print("Failed to like from post picture")
 
-                return
-            }
-            print("Like post from post picture success!")
+                    return
+                }
+                print("Like post from post picture success!")
                 
-        }
+            }
 
         self.collectionView?.reloadData()
 
@@ -458,7 +458,7 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
     func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int) {
         // 3 icons under picture, tap to like the post
         // call DB to update like state
-//        let tupople = allPosts[index]
+        //        let tupople = allPosts[index]
 
         guard let userID = AuthManager.shared.userID else { return }
         if allPosts[index].post.likers.contains(userID) {
@@ -477,12 +477,12 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
         DatabaseManager.shared.updateLikeState(
             state: isLiked ? .like : .unlike,
             postID: allPosts[index].post.postID) { success in
-            guard success else {
-                print("Failed to updated like state with heart icon")
-                return
-            }
+                guard success else {
+                    print("Failed to updated like state with heart icon")
+                    return
+                }
                 print("Updated likestate with heart icon success!")
-        }
+            }
 
         self.collectionView?.reloadData()
         
@@ -514,10 +514,10 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
 
     func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell, index: Int) {
 
-//        let listVC = ListViewController(type: .likers(usernames:
-//        allPosts[index].post.likers))
-//        listVC.title = "Liked by"
-//        navigationController?.pushViewController(listVC, animated: true)
+        //        let listVC = ListViewController(type: .likers(usernames:
+        //        allPosts[index].post.likers))
+        //        listVC.title = "Liked by"
+        //        navigationController?.pushViewController(listVC, animated: true)
 
     }
 }
@@ -539,7 +539,7 @@ extension HomeViewController {
             frame: .zero,
             collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { index, _ -> NSCollectionLayoutSection? in
 
-                    // NSLayout item
+                // NSLayout item
                 let posterItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
@@ -582,12 +582,12 @@ extension HomeViewController {
                     )
                 )
 
-//                let commentItem = NSCollectionLayoutItem(
-//                    layoutSize: NSCollectionLayoutSize(
-//                        widthDimension: .fractionalWidth(1),
-//                        heightDimension: .absolute(80)
-//                    )
-//                )
+                //                let commentItem = NSCollectionLayoutItem(
+                //                    layoutSize: NSCollectionLayoutSize(
+                //                        widthDimension: .fractionalWidth(1),
+                //                        heightDimension: .absolute(80)
+                //                    )
+                //                )
 
                 let timestampItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
@@ -596,31 +596,31 @@ extension HomeViewController {
                     )
                 )
 
-                    // NSLayout group
+                // NSLayout group
                 let group = NSCollectionLayoutGroup.vertical(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
                         heightDimension: .absolute(sectionHeight)
                     ),
-                        subitems: [
-                            posterItem,
-                            petTagItem,
-                            postItem,
-                            actionsItem,
-                            likeCountItem,
-                            captionItem,
-//                            commentItem,
-                            timestampItem
-                                  ]
-                        )
+                    subitems: [
+                        posterItem,
+                        petTagItem,
+                        postItem,
+                        actionsItem,
+                        likeCountItem,
+                        captionItem,
+                        //                            commentItem,
+                        timestampItem
+                    ]
+                )
 
-                    // NSLayout Section
-                    let section = NSCollectionLayoutSection(group: group)
+                // NSLayout Section
+                let section = NSCollectionLayoutSection(group: group)
 
                 section.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 0, bottom: 8, trailing: 0)
                 // total 12 points between two sections
-                    return section
-                })
+                return section
+            })
         )
 
         view.addSubview(collectionView)
@@ -666,5 +666,4 @@ extension HomeViewController {
 
         self.collectionView = collectionView  // configuring collectionView as it's own constance, and assign it to the global property
     }
-
 }

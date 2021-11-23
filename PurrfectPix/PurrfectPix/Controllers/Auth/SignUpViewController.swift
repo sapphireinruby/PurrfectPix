@@ -72,7 +72,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     private let agreetmentButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.P1, for: .normal)
-        button.setTitle("By Click Sing Up, \nYou Agreeto to Our Terms Below.", for: .normal)
+        button.setTitle("By Click Sing Up, \nYou Agree to Our Terms Below.", for: .normal)
         button.titleLabel?.lineBreakMode = .byWordWrapping // multi-line text in UIButton
         button.titleLabel?.textAlignment = .center
         return button

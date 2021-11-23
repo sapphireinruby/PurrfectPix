@@ -96,7 +96,6 @@ final class AuthManager {
         completion: @escaping (Result<User, Error>) -> Void
     ) {
 
-
         // Create account
         auth.createUser(withEmail: email, password: password) { result, error in
             guard result != nil, error == nil else {

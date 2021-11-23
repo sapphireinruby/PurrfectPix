@@ -129,16 +129,15 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
 
-
     private func fetchPost(postID: String) {
 
-        guard let userID = AuthManager.shared.userID,
-              let username = AuthManager.shared.username else { return }
+//        guard let userID = AuthManager.shared.userID,
+//              let username = AuthManager.shared.username else { return }
 
         createViewModel(
             model: singlePost.post,
-            userID: userID,
-            username: username,
+            userID: singlePost.post.userID,
+            username: singlePost.post.username,
             completion: { success in
             guard success else {
                 print("failed to create post")

@@ -89,6 +89,7 @@ class ProfileViewController: UIViewController {
         }
 
         guard let currentUserID = AuthManager.shared.userID else { return }
+        
         // to store Profiel Header Info
         var profilePictureUrl: URL? // database沒存進去
         var buttonType: ProfileButtonType = .edit
@@ -110,7 +111,7 @@ class ProfileViewController: UIViewController {
             guard let userInfo = userInfo else { return }
 
             // Bio, username
-            username = userInfo.username.uppercased() ?? " "
+            username = userInfo.username.uppercased() ?? ""
             bio = userInfo.bio ?? "No bio set up for this user."
 
             // Profile picture url
@@ -121,7 +122,7 @@ class ProfileViewController: UIViewController {
                 }
                 profilePictureUrl = url
             }
-            
+
             // set cache
             // for cache
             CacheUserInfo.shared.cache[userInfo.userID] = userInfo // closure 裡面要加self，但解開optional後就不用了

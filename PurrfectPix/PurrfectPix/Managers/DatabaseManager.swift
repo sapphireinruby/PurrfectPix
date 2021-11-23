@@ -200,31 +200,42 @@ final class DatabaseManager {
         }
     }
 
-    // Get users that parameter username follows
+    // Get posts that current user follows for home
     // - Parameters:
-    //   - username: Query username
+    //   - username: Query userID
     //   - completion: Result callback
-    public func following(for userID: String, completion: @escaping ([String]) -> Void) {
-        
-        let ref = database.collection("users").document(userID)
+    public func following(for userID: String, completion: @escaping ([Post]) -> Void) {
 
-        ref.getDocument { (querySnapshot, error) in
-            if let user = try? querySnapshot?.data(as: User.self) {
+        //  1. 拿到每個following 的UserID 然後找每個posts下面 有UserID 的document
+        let ref = database.collection("posts").order(by: "postedDate", descending: true)
 
-                var usernames = [String]()
+        ref.getDocuments { snapshot, error in
 
-                user.following?.forEach({ userID in
-                    self.fetchUser(userID: userID) { user in
-                        usernames.append(user.username)
-                    }
-                })
-                completion(usernames)
-            } else {
-              print("Can't fetch user info QQ")
+            guard let posts = snapshot?.documents.compactMap({ // with extension for decode
+
+                Post(with: $0.data())  // dictionary
+            }),
+            error == nil else {
+                return
             }
+
+            DatabaseManager.shared.getUserInfo(userID: userID) { user in
+                var newPost = posts.filter { post in
+                    if post.userID == userID {
+                        return true
+                    } else {
+                        guard let following = user?.following else { return false }
+                        if following.contains(post.userID) {
+                            return true
+                        } else { return false }
+                    }
+                }
+                completion(newPost)
+
+            }
+
         }
     }
-    
     
 
     // MARK: notification related
@@ -374,6 +385,7 @@ final class DatabaseManager {
         }
     }
 
+
     // MARK: - User Info
 
     // Get user info
@@ -450,47 +462,6 @@ final class DatabaseManager {
         }
 
     }
-
-    // Check if current user is following another user
-    // - Parameters:
-    //   - targetUserID: Other user to check
-    //   - completion: Result callback
-    public func isFollowing(
-        targetUserID: String,
-        completion: @escaping (Bool) -> Void
-    ) {
-        guard let currentUserID = AuthManager.shared.userID else {
-            completion(false)
-            return
-        }
-
-        let ref = database.collection("users")
-            .document(currentUserID) // 在自己的following裏面 有無對方的ID 還需要修改
-//            .whereField("following", arrayContains: targetUserID)
-        ref.getDocument { snapshot, error in
-            guard snapshot?.data() != nil, error == nil else {
-                // Not following
-                completion(false)
-                return
-            }
-            // following
-            completion(true)
-        }
-    }
-
-    // Get followers for user
-    // - Parameters:
-    //   - UserID: UserID to query
-    //   - completion: Result callback
-    public func followers(for userID: String, completion: @escaping ([String]) -> Void) {
-        guard let currentUserID = AuthManager.shared.userID else {
-            completion([])
-            return
-        }
-        let ref = database.collection("users").document(currentUserID)
-
-    }
-
 
 
 

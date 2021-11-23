@@ -65,6 +65,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchPosts()
+
     }  // 有時候會出現兩次～
 
     override func viewDidLayoutSubviews() {
@@ -80,40 +81,47 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         guard let userID = AuthManager.shared.userID else { return }
 
-        DatabaseManager.shared.posts(for: userID) { [weak self] result in
-            // refresh the collectionView after all the asynchronous job is done
+        //        DatabaseManager.shared.posts(for: userID) { [weak self] result in
+        //            // refresh the collectionView after all the asynchronous job is done
+        //
+        //            DispatchQueue.main.async {
+        //                switch result {
+        //                case .success(let posts):
+        //
+        //                case . failure(let error):
+        //                    print(error)
+        //                }
+        //            }
+        //
+        //        }
 
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let posts):
-                    let group = DispatchGroup()  
+        DatabaseManager.shared.following(for: userID) { posts in
 
-                    posts.forEach { model in
-                        group.enter()
+            let group = DispatchGroup()
+            var count = 0
+            posts.forEach { model in
+                print("group enter \(count)")
+                group.enter()
+                count += 1
 
-                        self?.createViewModel(
-                            model: model,
-                            userID: userID,
-                            username: username,
-                            completion: { success in
-                            defer {
-                                group.leave()
-                            }
-                            if !success {
-                                print("failed to create viewModel")
-
-                            }
-                        })
-                        group.notify(queue: .main) {
-                            self?.collectionView?.reloadData()
-                            self?.sortData()
+                self.createViewModel(
+                    model: model,
+                    userID: model.userID,
+                    username: model.username,
+                    completion: { success in
+                        defer {
+                            print("group leave \(count)")
+                            group.leave()
+                        }
+                        if !success {
+                            print("failed to create viewModel")
 
                         }
+                    })
 
-                    }
-                case . failure(let error):
-                    print(error)
-                }
+            }
+            group.notify(queue: .main) {
+                self.sortData()
             }
 
         }
@@ -180,7 +188,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 else {
                           print("1. model.postUrlString\(model.postUrlString)")
                           print("2. profilePictureURL \(profilePictureURL)")
-                            return
+                    completion(false)
+
+                    return
                 }
 
                 let postData: [HomeFeedCellType] = [

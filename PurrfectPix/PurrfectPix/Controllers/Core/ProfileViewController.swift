@@ -152,7 +152,6 @@ class ProfileViewController: UIViewController {
     }
 
     private func configureNavBar() {
-        //  目前抓不到是否是本人 所以不會顯示
         if isCurrentUser {
             navigationItem.rightBarButtonItem = UIBarButtonItem(
                 image: UIImage(systemName: "gear"),

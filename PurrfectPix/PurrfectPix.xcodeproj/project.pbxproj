@@ -279,7 +279,7 @@
 				A7BC5E0E272209E100010F52 /* Photo */,
 				A7DDDF48271D9B1200F28B24 /* Setting */,
 				A7DDDF40271D9AA500F28B24 /* Post */,
-				A7DDDF3B271D9A3700F28B24 /* Auth */,
+				A7DDDF3B271D9A3700F28B24 /* Auth and user */,
 				A7DDDF2D271BD88F00F28B24 /* Core */,
 			);
 			path = Controllers;
@@ -371,13 +371,13 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		A7DDDF3B271D9A3700F28B24 /* Auth */ = {
+		A7DDDF3B271D9A3700F28B24 /* Auth and user */ = {
 			isa = PBXGroup;
 			children = (
 				A7DDDF3C271D9A6600F28B24 /* SignInViewController.swift */,
 				A7DDDF3E271D9A7800F28B24 /* SignUpViewController.swift */,
 			);
-			path = Auth;
+			path = "Auth and user";
 			sourceTree = "<group>";
 		};
 		A7DDDF40271D9AA500F28B24 /* Post */ = {

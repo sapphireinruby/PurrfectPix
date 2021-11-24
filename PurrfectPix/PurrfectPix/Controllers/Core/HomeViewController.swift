@@ -36,9 +36,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     private var allPosts = [(post: Post, owner: String, viewModel:[HomeFeedCellType])]()
 
-    // All post models
-    //    private var allPosts: [(post: Post, owner: String)] = []
-
     let dbFire = Firestore.firestore()
 
     override func viewDidLoad() {
@@ -55,7 +52,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             object: nil,
             queue: .main
         ) { [weak self] _ in
-            self?.allPosts.removeAll() // clean all posts and fatch again  確認是不是allPosts就可以
+            self?.allPosts.removeAll()
             //            self?.allPosts.viewModels.removeAll()
             self?.fetchPosts()
         }
@@ -66,7 +63,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewWillAppear(animated)
         fetchPosts()
 
-    }  // 有時候會出現兩次～
+    }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -128,7 +125,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     }
 
-    private func sortData() {  // 目前有呼叫
+    private func sortData() {
 
         allPosts = allPosts.sorted(by: { first, second in
             let date1 = first.post.date
@@ -213,7 +210,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             )
                         ),
 
-                        .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: model.likers.contains(userID))), // 這篇貼文的likers 裏面 有現在的userID, 就會是true
+                        .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: model.likers.contains(userID))),
 
                         .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: model.likers)),
 
@@ -495,9 +492,6 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
         let postVC = PostViewController(singlePost:
                                             (post: allPosts[index].post,
                                              viewModel: allPosts[index].viewModel))
-        //  還過不去ＱＱ
-        // let postVC = PostViewController(singlePost: allPosts[index])
-        // all post and single post 若為同型別
         postVC.title = "Post"
         navigationController?.pushViewController(postVC, animated: true)
     }
@@ -525,6 +519,7 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
 extension HomeViewController: PostCaptionCollectionViewCellDelegate {
     func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell) {
         print("tapped caption")
+        
     }
 }
 

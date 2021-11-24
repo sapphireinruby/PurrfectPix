@@ -108,6 +108,26 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                     color: .systemPink
                 ) {
 
+                    let actionSheet = UIAlertController(
+                        title: "Delete Account",
+                        message: "All posts from your account will be deleted, are you sure?",
+                        preferredStyle: .actionSheet
+                    )
+                    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    actionSheet.addAction(UIAlertAction(title: "Contact Us to Delete Your Account", style: .destructive, handler: { [weak self] _ in
+                        AuthManager.shared.signOut { success in
+                            if success {
+                                DispatchQueue.main.async {
+                                    let vc = SignInViewController()
+                                    let navVC = UINavigationController(rootViewController: vc)
+                                    navVC.modalPresentationStyle = .fullScreen
+                                    self?.present(navVC, animated: true)
+                                }
+                            }
+                        }
+                    }))
+                    self.present(actionSheet, animated: true)
+
                 }
             ])
         )

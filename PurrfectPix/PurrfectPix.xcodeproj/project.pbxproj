@@ -42,6 +42,7 @@
 		A780736827292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json in Resources */ = {isa = PBXBuildFile; fileRef = A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */; };
 		A780736A272A01E600468B30 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7807369272A01E600468B30 /* Media.xcassets */; };
 		A7A44E39272ED237005ECBF5 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */; };
+		A7A78D65274EDB6000B4C699 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A78D64274EDB6000B4C699 /* Setting.swift */; };
 		A7AFC766273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC765273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift */; };
 		A7AFC768273FD37F000FDF28 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC767273FD37F000FDF28 /* ProfileHeaderViewModel.swift */; };
 		A7AFC76A273FEAB6000FDF28 /* ProfileHeaderCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC769273FEAB6000FDF28 /* ProfileHeaderCountView.swift */; };
@@ -116,6 +117,7 @@
 		A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "70835-hiro-rocket-launch-purple.json"; sourceTree = "<group>"; };
 		A7807369272A01E600468B30 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		A7A78D64274EDB6000B4C699 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		A7AFC765273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		A7AFC767273FD37F000FDF28 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		A7AFC769273FEAB6000FDF28 /* ProfileHeaderCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCountView.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				A7DDDF4B271D9BA600F28B24 /* User.swift */,
 				A7DDDF4D271D9BBC00F28B24 /* Post.swift */,
 				A7DDDF4F271D9BCE00F28B24 /* Relationship.swift */,
+				A7A78D64274EDB6000B4C699 /* Setting.swift */,
 				A7DDDF51271D9BE400F28B24 /* Notification.swift */,
 				A74012B5273B31E2007B91F4 /* NotificationCellType.swift */,
 				A7315CFF271E27C300B58879 /* Comment.swift */,
@@ -588,6 +591,7 @@
 				A7DDDEF8271B2E7200F28B24 /* HomeViewController.swift in Sources */,
 				A7DDDF4C271D9BA600F28B24 /* User.swift in Sources */,
 				A74012BA273C0655007B91F4 /* PurrFollowButton.swift in Sources */,
+				A7A78D65274EDB6000B4C699 /* Setting.swift in Sources */,
 				A77A1ECB271F916F0072A1F6 /* PostActionsCollectionViewCell.swift in Sources */,
 				A7DDDF3F271D9A7800F28B24 /* SignUpViewController.swift in Sources */,
 				A77A1EBE271F80120072A1F6 /* PostLikesCollectionViewCellViewModel.swift in Sources */,

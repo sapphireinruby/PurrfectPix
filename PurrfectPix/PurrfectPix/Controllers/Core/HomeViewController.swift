@@ -11,14 +11,14 @@ import FirebaseFirestoreSwift
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    private let noPostLabel: UILabel = {
-        let label = UILabel()
-        label.text = "You have no post, tap Camera to create a post or check other pets at Explore! "
-        label.textColor = .P1
-        label.textAlignment = .center
-        //        label.isHidden = true
-        return label
-    }()
+//    private let noPostLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "You have no post, tap Camera to create a post or check other pets at Explore! "
+//        label.textColor = .P1
+//        label.textAlignment = .center
+//        //        label.isHidden = true
+//        return label
+//    }()
 
     // CollectionView for feed
     private var collectionView: UICollectionView?
@@ -45,7 +45,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         view.backgroundColor = .systemBackground
         configureCollectionView()
 
-        view.addSubview(noPostLabel)
+//        view.addSubview(noPostLabel)
 
         observer = NotificationCenter.default.addObserver(
             forName: .didPostNotification,
@@ -78,20 +78,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         guard let userID = AuthManager.shared.userID else { return }
 
-        //        DatabaseManager.shared.posts(for: userID) { [weak self] result in
-        //            // refresh the collectionView after all the asynchronous job is done
-        //
-        //            DispatchQueue.main.async {
-        //                switch result {
-        //                case .success(let posts):
-        //
-        //                case . failure(let error):
-        //                    print(error)
-        //                }
-        //            }
-        //
-        //        }
-
         DatabaseManager.shared.following(for: userID) { posts in
 
             let group = DispatchGroup()
@@ -120,9 +106,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             group.notify(queue: .main) {
                 self.sortData()
             }
-
         }
-
     }
 
     private func sortData() {
@@ -134,21 +118,21 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         })
 
         allPosts = allPosts.sorted(by: { first, second in
-            // 拿allPost的tuple 裡面的 timestamp cell來做排序
+
             var date1: Date?
             var date2: Date?
             first.viewModel.forEach {  type in
                 switch type {
-                case .timestamp(let vm):
-                    date1 = vm.date
+                case .timestamp(let viewModel):
+                    date1 = viewModel.date
                 default:
                     break
                 }
             }
             second.viewModel.forEach { type in
                 switch type {
-                case .timestamp(let vm):
-                    date2 = vm.date
+                case .timestamp(let viewModel):
+                    date2 = viewModel.date
 
                 default:
                     break
@@ -266,9 +250,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        // to show mock data
-        //        let cellType = viewModels[indexPath.section][indexPath.row]
-        let cellType = allPosts[indexPath.section].viewModel[indexPath.row] // index out of range
+        //  let cellType = viewModels[indexPath.section][indexPath.row]
+        let cellType = allPosts[indexPath.section].viewModel[indexPath.row]
         // section for the inner array
 
         switch cellType {
@@ -282,7 +265,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 fatalError()
             }
 
-            cell.delegate = self  //delegate set up at cell class
+            cell.delegate = self  // delegate set up at cell class
 
             cell.configure(with: viewModel)
             //            cell.contentView.backgroundColor = colors[indexPath.row]
@@ -450,8 +433,6 @@ extension HomeViewController: PostCollectionViewCellDelegate {
 
 extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
-
-
     func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int) {
         // 3 icons under picture, tap to like the post
         // call DB to update like state
@@ -533,8 +514,7 @@ extension HomeViewController {
 
     func configureCollectionView() {
 
-        // calulate the heigh dynamically for square
-        let sectionHeight: CGFloat = 350 + view.width
+        // calulate the heigh dynamically for square with device width
         //view.width is the actual post size
         let collectionView = UICollectionView(
             frame: .zero,
@@ -551,7 +531,7 @@ extension HomeViewController {
                 let petTagItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(100)
+                        heightDimension: .estimated(40)
                     )
                 )
 
@@ -565,7 +545,7 @@ extension HomeViewController {
                 let actionsItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(40)
+                        heightDimension: .absolute(50)
                     )
                 )
 
@@ -579,7 +559,7 @@ extension HomeViewController {
                 let captionItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(80)
+                        heightDimension: .estimated(80)
                     )
                 )
 
@@ -601,7 +581,7 @@ extension HomeViewController {
                 let group = NSCollectionLayoutGroup.vertical(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(sectionHeight)
+                        heightDimension: .fractionalHeight(1)
                     ),
                     subitems: [
                         posterItem,

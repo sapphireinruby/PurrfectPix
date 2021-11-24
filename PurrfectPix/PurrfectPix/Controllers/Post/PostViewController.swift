@@ -539,7 +539,7 @@ extension PostViewController {
                 let posterItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .fractionalHeight(80)
+                        heightDimension: .absolute(60)
                     )
                 )
 
@@ -560,21 +560,21 @@ extension PostViewController {
                 let actionsItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .fractionalHeight(60)
+                        heightDimension: .absolute(50)
                     )
                 )
 
                 let likeCountItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .estimated(40)
+                        heightDimension: .absolute(40)
                     )
                 )
 
                 let captionItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .estimated(68)
+                        heightDimension: .estimated(80)
                     )
                 )
 
@@ -588,7 +588,7 @@ extension PostViewController {
                 let timestampItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .estimated(30)
+                        heightDimension: .absolute(30)
                     )
                 )
 

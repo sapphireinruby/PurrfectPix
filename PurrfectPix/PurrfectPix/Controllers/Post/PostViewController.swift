@@ -382,13 +382,13 @@ extension PostViewController: CommentBarViewDelegate {
             userID: currentUserID
         ) { success in
             DispatchQueue.main.async {
-//                self.collectionView?.reloadData()
+//                self.collectionView?.reloadData() // 沒有成功
                 guard success else {
                     return
                 }
             }
         }
-        collectionView?.reloadData()
+        collectionView?.reloadData() // 沒有成功
     }
 }
 // MARK: Cell delegate:
@@ -455,7 +455,6 @@ extension PostViewController: PostCollectionViewCellDelegate {
     }
 }
 
-
 extension PostViewController: PostActionsCollectionViewCellDelegate {
 
     func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int) {
@@ -520,12 +519,12 @@ extension PostViewController: PostLikesCollectionViewCellDelegate {
 }
 
 extension PostViewController: PostCaptionCollectionViewCellDelegate {
-    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell) {
+    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell, index: Int) {
         print("tapped caption")
     }
 }
 
-extension PostViewController{
+extension PostViewController {
 
     func configureCollectionView() {
 
@@ -540,14 +539,14 @@ extension PostViewController{
                 let posterItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .estimated(60)
+                        heightDimension: .fractionalHeight(80)
                     )
                 )
 
                 let petTagItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .estimated(100)
+                        heightDimension: .estimated(60)
                     )
                 )
 
@@ -561,7 +560,7 @@ extension PostViewController{
                 let actionsItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .estimated(40)
+                        heightDimension: .fractionalHeight(60)
                     )
                 )
 

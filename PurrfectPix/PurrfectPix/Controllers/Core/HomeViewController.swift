@@ -517,8 +517,14 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
 }
 
 extension HomeViewController: PostCaptionCollectionViewCellDelegate {
-    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell) {
+    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell, index: Int) {
         print("tapped caption")
+
+        let postVC = PostViewController(singlePost:
+                                            (post: allPosts[index].post,
+                                             viewModel: allPosts[index].viewModel))
+        postVC.title = "Post"
+        navigationController?.pushViewController(postVC, animated: true)
         
     }
 }

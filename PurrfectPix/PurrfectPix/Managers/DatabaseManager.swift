@@ -229,12 +229,10 @@ final class DatabaseManager {
                     }
                 }
                 completion(newPost)
-
             }
 
         }
     }
-    
 
     // MARK: notification related
 
@@ -462,60 +460,6 @@ final class DatabaseManager {
     }
 
 
-
-    // MARK: - Comment
-
-    // Create a comment
-    // - Parameters:
-    //   - comment: Comment model
-    //   - postID: post id
-    //   - owner: username who owns post
-    //   - completion: Result callback
-    public func createComments(
-        comment: Comment,
-        postID: String,
-        owner: String,
-        completion: @escaping (Bool) -> Void
-    ) {
-        let newIdentifier = "\(postID)_\(comment.username)_\(Date().timeIntervalSince1970)_\(Int.random(in: 0...1000))"
-        let ref = database.collection("posts")
-            .document(postID)
-            .collection("comments")
-            .document(newIdentifier)
-        guard let data = comment.asDictionary() else { return }
-        ref.setData(data) { error in
-            completion(error == nil)
-        }
-    }
-
-    // Get comments for given post
-    // - Parameters:
-    //   - postID: Post id to query
-    //   - owner: Username who owns post
-    //   - completion: Result callback
-    public func getComments(
-        postID: String,
-        owner: String,
-        completion: @escaping ([Comment]) -> Void
-    ) {
-        let ref = database.collection("users")
-            .document(owner)
-            .collection("posts")
-            .document(postID)
-            .collection("comments")
-        ref.getDocuments { snapshot, error in
-            guard let comments = snapshot?.documents.compactMap({
-                Comment(with: $0.data())
-            }),
-            error == nil else {
-                completion([])
-                return
-            }
-
-            completion(comments)
-        }
-    }
-
     // MARK: - Liking
 
     // two like states
@@ -586,30 +530,52 @@ final class DatabaseManager {
         }
     }
 
-
-    // Get comments for given post
+    // Get comments for given post and filter blocklist
     // - Parameters:
     //   - postID: Post id to query
-    //   - owner: Username who owns post
     //   - completion: Result callback
     public func getComments(
         postID: String,
         completion: @escaping ([Comment]) -> Void
     ) {
-        let ref = database.collection("posts")
-            .document(postID).collection("comments")
+        let group = DispatchGroup()
+        var blockedUsers = [String]()
+
+        guard let currentUserID = AuthManager.shared.userID else { return }
+        group.enter()
+        DatabaseManager.shared.getUserInfo(userID: currentUserID) { user in
+            blockedUsers = user?.blocking ?? [String]()
+
+            defer {
+                group.leave()
+            }
+
+        }
+
+        group.enter()
+        let ref = database.collection("posts").document(postID).collection("comments")
         ref.getDocuments { snapshot, error in
-            guard let comments = snapshot?.documents.compactMap({
+            defer {
+                group.leave()
+            }
+            guard var comments = snapshot?.documents.compactMap({
                 Comment(with: $0.data())
             }),
             error == nil else {
                 completion([])
                 return
             }
-
+            comments = comments.filter { comment in
+                if blockedUsers.contains(comment.userID) {
+                    return false
+                } else {
+                    return true
+                }
+            }
             completion(comments)
         }
     }
+
 
     // MARK: - blocklist
 

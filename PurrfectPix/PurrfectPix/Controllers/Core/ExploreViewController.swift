@@ -214,6 +214,8 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
 
         navigationController?.pushViewController(vcPostView, animated: true)
     }
+
+    
 }
 
 extension ExploreViewController: SearchResultsViewControllerDelegate {

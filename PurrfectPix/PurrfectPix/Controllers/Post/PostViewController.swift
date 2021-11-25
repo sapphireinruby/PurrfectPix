@@ -250,8 +250,6 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-//        let cellType = allPosts[indexPath.section].viewModel[indexPath.row]
-
         let cellType = singlePost.viewModel[indexPath.row]
 
         switch cellType {

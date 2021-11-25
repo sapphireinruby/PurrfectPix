@@ -386,10 +386,9 @@ extension HomeViewController: PosterCollectionViewCellDelegate {
         sheet.addAction(UIAlertAction(title: "Report Post and Block User", style: .destructive, handler: { [weak self] _ in
             guard let targetUserID = self?.allPosts[index].post.userID else { return }
 
-            DatabaseManager.shared.setBlockList(for: targetUserID)
-            { success in
+            DatabaseManager.shared.setBlockList(for: targetUserID) { success in
                 if success {
-                    print("add user \(targetUserID) to block list")
+                    print("Add user \(targetUserID) to block list")
                 }
             }
         }))

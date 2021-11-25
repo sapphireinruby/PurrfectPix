@@ -173,12 +173,11 @@ class ExploreViewController: UIViewController, UISearchResultsUpdating {
                 self?.posts = posts.filter({ post in
                     guard let blocked = user.blocking else { return true}
                     // 看黑名單裡面有沒有這個user ID 如果有就不呈現
-                    if blocked.contains(post.userID){
+                    if blocked.contains(post.userID) {
                         return false
                     } else {
                         return true
                     }
-
                 })
                 self?.collectionView.reloadData() // 要放在這程式裡 要再拿到資料後 才能reload 不會出錯
             }
@@ -201,7 +200,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
 
         let model = posts[indexPath.row]
-        cell.configure(with: URL(string: posts[indexPath.row].postUrlString))
+        cell.configure(with: URL(string: model.postUrlString))
 
         return cell
     }
@@ -211,7 +210,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         collectionView.deselectItem(at: indexPath, animated: true)
         let post = posts[indexPath.row]
 
-        let vcPostView = PostViewController(singlePost: (posts[indexPath.row], [HomeFeedCellType]()))
+        let vcPostView = PostViewController(singlePost: (post, [HomeFeedCellType]()))
 
         navigationController?.pushViewController(vcPostView, animated: true)
     }

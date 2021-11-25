@@ -17,7 +17,6 @@ final class DatabaseManager {
 
     let database = Firestore.firestore()
 
-
     // Find posts from a given user for profile tab
     // - Parameters:
     // - username: UserID ** to query
@@ -62,7 +61,6 @@ final class DatabaseManager {
         }
     }
 
-
 // MARK: insert postCount +=1, under users
     // Create new post
     // - Parameters:
@@ -71,7 +69,7 @@ final class DatabaseManager {
 
     public func createPost(newPost: Post, completion: @escaping (Bool) -> Void) {
 
-        guard let userID = AuthManager.shared.userID else {
+        guard AuthManager.shared.userID != nil else {
             completion(false)
             return
         }
@@ -627,7 +625,8 @@ final class DatabaseManager {
 
         // Add target user to self's blocking list
         ref.updateData([
-            "blocking": FieldValue.arrayUnion([targetUserID])
+            "blocking": FieldValue.arrayUnion([targetUserID]),
+            "following": FieldValue.arrayRemove([targetUserID])
         ]) { error in
             if let error = error {
                 print(error)

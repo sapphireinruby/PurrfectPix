@@ -625,17 +625,15 @@ final class DatabaseManager {
 
         let ref = database.collection("users").document(currentUserID)
 
-            // Add target user to self's blocking list
-
-           ref.updateData([
-                   "blocking": FieldValue.arrayUnion([targetUserID])
-               ])
-        do {
-            try ref.setData(from: currentUserID)
-        } catch {
-            // error
-            print("Block this user fails")
+        // Add target user to self's blocking list
+        ref.updateData([
+            "blocking": FieldValue.arrayUnion([targetUserID])
+        ]) { error in
+            if let error = error {
+                print(error)
+            } else {
+                completion(true)
+            }
         }
-            completion(true)
     }
 }

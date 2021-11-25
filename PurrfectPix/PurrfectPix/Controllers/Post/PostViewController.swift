@@ -394,7 +394,7 @@ extension PostViewController: CommentBarViewDelegate {
 // MARK: Cell delegate:
 
 extension PostViewController: PosterCollectionViewCellDelegate {
-    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell) {
+    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell, index: Int) {
         // upper right more meun
 
         let sheet = UIAlertController(
@@ -412,7 +412,22 @@ extension PostViewController: PosterCollectionViewCellDelegate {
         present(sheet, animated: true)
     }
 
-    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell) {
+    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell, index: Int) {
+
+        let userID = singlePost.post.userID
+
+        let vcProfile = ProfileViewController(userID: userID)
+        navigationController?.pushViewController(vcProfile, animated: true)
+
+    }
+
+    func posterCollectionViewCellDidTapUserPic(_ cell: PosterCollectionViewCell, index: Int) {
+
+        let userID = singlePost.post.userID
+
+        let vcProfile = ProfileViewController(userID: userID)
+        navigationController?.pushViewController(vcProfile, animated: true)
+
     }
 }
 

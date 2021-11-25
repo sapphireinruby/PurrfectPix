@@ -9,14 +9,17 @@ import UIKit
 import SDWebImage
 
 protocol PosterCollectionViewCellDelegate: AnyObject {
-    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell)
-    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell)
+    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell, index: Int)
+    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell, index: Int)
+    func posterCollectionViewCellDidTapUserPic(_ cell: PosterCollectionViewCell, index: Int)
 
 }
 
 final class PosterCollectionViewCell: UICollectionViewCell {
     
     static let identifer = "PosterCollectionViewCell"
+
+    private var index = 0
 
     // use delagate weak to avoid the risk of a "strong reference cycle" aka “retain cycle”
     weak var delegate: PosterCollectionViewCellDelegate?
@@ -64,16 +67,26 @@ final class PosterCollectionViewCell: UICollectionViewCell {
         usernameLabel.isUserInteractionEnabled = true // tap the name to show the user profile
         usernameLabel.addGestureRecognizer(tap)
 
+        // tap user picture
+        let tapPic = UITapGestureRecognizer(target: self, action: #selector(didTapUserPic))
+        imageView.isUserInteractionEnabled = true // tap the name to show the user profile
+        imageView.addGestureRecognizer(tapPic)
+
+
     }
 
     // action selector
     @objc func didTapMore() {
-        delegate?.posterCollectionViewCellDidTapMore(self)
+        delegate?.posterCollectionViewCellDidTapMore(self, index: index)
         // passing a reference of caller of a delegate function
     }
 
     @objc func didTapUsername() {
-        delegate?.posterCollectionViewCellDidTapUsername(self)
+        delegate?.posterCollectionViewCellDidTapUsername(self, index: index)
+    }
+
+    @objc func didTapUserPic() {
+        delegate?.posterCollectionViewCellDidTapUserPic(self, index: index)
     }
 
     required init? (coder: NSCoder) {

@@ -370,7 +370,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: Cell delegate:
 
 extension HomeViewController: PosterCollectionViewCellDelegate {
-    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell) {
+    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell, index: Int) {
         // upper right more meun
 
         let sheet = UIAlertController(
@@ -388,7 +388,22 @@ extension HomeViewController: PosterCollectionViewCellDelegate {
         present(sheet, animated: true)
     }
 
-    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell) {
+    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell, index: Int) {
+
+        let userID = allPosts[index].post.userID
+
+        let vcProfile = ProfileViewController(userID: userID)
+        navigationController?.pushViewController(vcProfile, animated: true)
+
+    }
+
+    func posterCollectionViewCellDidTapUserPic(_ cell: PosterCollectionViewCell, index: Int) {
+
+        let userID = allPosts[index].post.userID
+
+        let vcProfile = ProfileViewController(userID: userID)
+        navigationController?.pushViewController(vcProfile, animated: true)
+
     }
 }
 

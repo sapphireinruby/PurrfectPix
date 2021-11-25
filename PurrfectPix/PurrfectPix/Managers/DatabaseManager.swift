@@ -394,11 +394,12 @@ final class DatabaseManager {
         completion: @escaping (User?) -> Void
     ) {
 //        guard let userID = AuthManager.shared.userID else { return }
-        let ref = database.collection("users").document(userID)
+        let ref = database.collection("users").document(userID) // 有進來 有userID
         ref.getDocument { document, error in
             guard let document = document,
             document.exists,
-            let user = try? document.data(as: User.self) else{
+            let user = try? document.data(as: User.self) else {
+                print("Get user info from getUserInfo() failed")
                 return
             }
 
@@ -458,7 +459,6 @@ final class DatabaseManager {
         }
 
     }
-
 
     // MARK: - Liking
 
@@ -542,17 +542,17 @@ final class DatabaseManager {
         var blockedUsers = [String]()
 
         guard let currentUserID = AuthManager.shared.userID else { return }
-        group.enter()
-        DatabaseManager.shared.getUserInfo(userID: currentUserID) { user in
-            blockedUsers = user?.blocking ?? [String]()
+        group.enter() // 有進來, current userID 有抓到
+        DatabaseManager.shared.getUserInfo(userID: currentUserID) { user in // 有進來
+            blockedUsers = user?.blocking ?? [String]() // 沒有進來
 
             defer {
                 group.leave()
             }
-
         }
 
-        group.enter()
+        group.enter() // 直接進來 (lldb) po blockedUsers: 0 elements
+
         let ref = database.collection("posts").document(postID).collection("comments")
         ref.getDocuments { snapshot, error in
             defer {
@@ -575,7 +575,6 @@ final class DatabaseManager {
             completion(comments)
         }
     }
-
 
     // MARK: - blocklist
 

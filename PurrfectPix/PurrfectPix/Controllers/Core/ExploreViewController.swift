@@ -172,7 +172,7 @@ class ExploreViewController: UIViewController, UISearchResultsUpdating {
 
                 self?.posts = posts.filter({ post in
                     guard let blocked = user.blocking else { return true}
-                    // 看黑名單裡面有沒有這個user ID 如果有就不呈現
+
                     if blocked.contains(post.userID) {
                         return false
                     } else {
@@ -208,14 +208,59 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         collectionView.deselectItem(at: indexPath, animated: true)
-        let post = posts[indexPath.row]
+        let model = posts[indexPath.row]
 
-        let vcPostView = PostViewController(singlePost: (post, [HomeFeedCellType]()))
+        let vcPostView = PostViewController(singlePost: (model, [HomeFeedCellType]()))
 
         navigationController?.pushViewController(vcPostView, animated: true)
     }
 
-    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+
+        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+
+            let open = UIAction(title: "Open this Post",
+                                image: nil,
+                                identifier: nil,
+                                discoverabilityTitle: nil,
+                                state: .off)
+            { _ in
+                collectionView.deselectItem(at: indexPath, animated: true)
+                let model = self.posts[indexPath.row]
+
+                let vcPostView = PostViewController(singlePost: (model, [HomeFeedCellType]()))
+
+                self.navigationController?.pushViewController(vcPostView, animated: true)
+                print("Tapped open post")
+            }
+
+            let block = UIAction(title: "Report Post & \nBlock this User",
+                                 image: UIImage(systemName: "minus.circle"),
+                                 identifier: nil,
+                                 discoverabilityTitle: nil,
+                                 attributes: .destructive,
+                                 state: .off)
+            { [weak self] _ in
+                guard let targetUserID = self?.posts[indexPath.row].userID else { return }
+
+                    DatabaseManager.shared.setBlockList(for: targetUserID) { success in
+                        if success {
+                            print("Add user \(targetUserID) to block list")
+                        }
+                    }
+                collectionView.reloadData() // 目前沒有作用
+                print("Tapped block post")
+            }
+
+            return UIMenu(title: "Post Action",
+                          image: nil,
+                          identifier: nil,
+                          options: UIMenu.Options.displayInline,
+                          children: [open, block])
+        }
+        return config
+
+    }
 }
 
 extension ExploreViewController: SearchResultsViewControllerDelegate {

@@ -12,7 +12,6 @@ protocol PosterCollectionViewCellDelegate: AnyObject {
     func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell, index: Int)
     func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell, index: Int)
     func posterCollectionViewCellDidTapUserPic(_ cell: PosterCollectionViewCell, index: Int)
-
 }
 
 final class PosterCollectionViewCell: UICollectionViewCell {

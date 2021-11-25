@@ -395,8 +395,6 @@ extension PostViewController: CommentBarViewDelegate {
 
 extension PostViewController: PosterCollectionViewCellDelegate {
     func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell, index: Int) {
-        // upper right more meun
-
         let sheet = UIAlertController(
             title: "Post Actions",
             message: nil,
@@ -407,7 +405,15 @@ extension PostViewController: PosterCollectionViewCellDelegate {
 
         sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
 
-        sheet.addAction(UIAlertAction(title: "Report Post and Block User", style: .destructive, handler: { _ in}))
+        sheet.addAction(UIAlertAction(title: "Report Post and Block User", style: .destructive, handler: { [weak self] _ in
+            guard let targetUserID = self?.singlePost.post.userID else { return }
+
+            DatabaseManager.shared.setBlockList(for: targetUserID) { success in
+                if success {
+                    print("Add user \(targetUserID) to block list")
+                }
+            }
+        }))
 
         present(sheet, animated: true)
     }

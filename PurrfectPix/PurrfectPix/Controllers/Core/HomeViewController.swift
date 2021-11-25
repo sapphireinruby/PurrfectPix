@@ -371,7 +371,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 extension HomeViewController: PosterCollectionViewCellDelegate {
     func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell, index: Int) {
-        // upper right more meun
 
         let sheet = UIAlertController(
             title: "Post Actions",

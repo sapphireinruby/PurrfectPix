@@ -264,7 +264,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
 
     @objc func didTapTerms() {
-        guard let url = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") else {
+        guard let url = URL(string: "https://www.eulatemplate.com/live.php?token=RLsPxkgXpniiWyNYPWeKa2mewR1GnuiE") else {
             return
         }
         let vcSF = SFSafariViewController(url: url)

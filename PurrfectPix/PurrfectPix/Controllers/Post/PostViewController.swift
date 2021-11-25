@@ -267,7 +267,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             cell.delegate = self  //delegate set up at cell class
 
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, index: indexPath.section)
             return cell
 
         case .petTag(let viewModel):
@@ -561,7 +561,7 @@ extension PostViewController {
                 let petTagItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .estimated(60)
+                        heightDimension: .estimated(80)
                     )
                 )
 

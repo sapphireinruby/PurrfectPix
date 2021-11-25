@@ -267,7 +267,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             cell.delegate = self  // delegate set up at cell class
 
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, index: indexPath.section)
             //            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
@@ -383,7 +383,16 @@ extension HomeViewController: PosterCollectionViewCellDelegate {
 
         sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
 
-        sheet.addAction(UIAlertAction(title: "Report Post and Block User", style: .destructive, handler: { _ in}))
+        sheet.addAction(UIAlertAction(title: "Report Post and Block User", style: .destructive, handler: { [weak self] _ in
+            guard let targetUserID = self?.allPosts[index].post.userID else { return }
+
+            DatabaseManager.shared.setBlockList(for: targetUserID)
+            { success in
+                if success {
+                    print("add user \(targetUserID) to block list")
+                }
+            }
+        }))
 
         present(sheet, animated: true)
     }
@@ -546,7 +555,7 @@ extension HomeViewController {
                 let petTagItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .estimated(40)
+                        heightDimension: .estimated(80)
                     )
                 )
 

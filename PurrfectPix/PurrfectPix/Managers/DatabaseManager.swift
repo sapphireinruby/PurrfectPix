@@ -612,4 +612,30 @@ final class DatabaseManager {
             completion(comments)
         }
     }
+
+    // MARK: - blocklist
+
+    public func setBlockList(for targetUserID: String,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let currentUserID = AuthManager.shared.userID else {
+            completion(false)
+            return
+        }
+
+        let ref = database.collection("users").document(currentUserID)
+
+            // Add target user to self's blocking list
+
+           ref.updateData([
+                   "blocking": FieldValue.arrayUnion([targetUserID])
+               ])
+        do {
+            try ref.setData(from: currentUserID)
+        } catch {
+            // error
+            print("Block this user fails")
+        }
+            completion(true)
+    }
 }

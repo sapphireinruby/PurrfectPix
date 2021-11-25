@@ -132,8 +132,10 @@ final class PosterCollectionViewCell: UICollectionViewCell {
 
     }
 
-    func configure(with viewModel: PosterCollectionViewCellViewModel) {
+    func configure(with viewModel: PosterCollectionViewCellViewModel, index: Int) {
         // the username that setted up on viewModel file, will get from data
+
+        self.index = index
 
         usernameLabel.text = viewModel.username
 //        imageView.sd_setImage(with: viewModel.profilePictureURL, completed: nil)

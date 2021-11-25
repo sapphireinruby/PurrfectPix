@@ -76,7 +76,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                     color: .P2!
                 ) { [weak self] in
                     DispatchQueue.main.async {
-                        guard let url = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") else {
+                        guard let url = URL(string: "https://www.eulatemplate.com/live.php?token=RLsPxkgXpniiWyNYPWeKa2mewR1GnuiE") else {
                             return
                         }
                         let vcSF = SFSafariViewController(url: url)
@@ -127,7 +127,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                         }
                     }))
                     self.present(actionSheet, animated: true)
-
                 }
             ])
         )
@@ -143,7 +142,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         footer.addSubview(button)
         button.setTitle("Sign Out",
                         for: .normal)
-        button.setTitleColor(.systemRed, for: .normal)
+        button.setTitleColor(.P2, for: .normal)
         button.addTarget(self, action: #selector(didTapSignOut), for: .touchUpInside)
 
         tableView.tableFooterView = footer

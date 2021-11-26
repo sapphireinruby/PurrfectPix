@@ -203,8 +203,8 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
                     self?.navigationController?.popToRootViewController(animated: false)
 
                     // for new post created and observer this notification
-//                    NotificationCenter.default.post(name: .didPostNotification,
-//                                                    object: nil)
+                    NotificationCenter.default.post(name: .didPostNotification,
+                                                    object: nil)
                 }
             }
         }

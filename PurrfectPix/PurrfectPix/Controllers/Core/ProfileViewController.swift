@@ -26,8 +26,6 @@ class ProfileViewController: UIViewController {
 
     private var posts: [Post] = []
 
-    private var observer: NSObjectProtocol?
-
     let userID: String
 
     init(userID: String) {
@@ -50,21 +48,21 @@ class ProfileViewController: UIViewController {
         configureCollectionView()
 
  // NotificationCenter guard let VC 後打開
-//        if isCurrentUser {
-//            observer = NotificationCenter.default.addObserver(
-//                forName: .didPostNotification,
-//                object: nil,
-//                queue: .main
-//            ) { [weak self] _ in
-//                self?.posts.removeAll()
-//                self?.fetchProfileInfo(userID: self!.userID)
-//            }
-//        }
+        if isCurrentUser {
+            NotificationCenter.default.addObserver(
+                forName: .didPostNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                self?.posts.removeAll()
+                self?.fetchProfileInfo(userID: self!.userID)
+            }
+        }
 
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        fetchProfileInfo(userID: userID)
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     private func fetchProfileInfo(userID: String) {

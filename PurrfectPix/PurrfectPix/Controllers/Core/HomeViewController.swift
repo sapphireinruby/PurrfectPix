@@ -31,9 +31,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //        }
     //    }
 
-    // Notification observer
-    private var observer: NSObjectProtocol?
-
     private var allPosts = [(post: Post, owner: String, viewModel:[HomeFeedCellType])]()
 
     let dbFire = Firestore.firestore()
@@ -44,30 +41,27 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         title = "PurrfectPix"
         view.backgroundColor = .systemBackground
         configureCollectionView()
+        fetchPosts()
 
 //        view.addSubview(noPostLabel)
 
-//        observer = NotificationCenter.default.addObserver(
-//            forName: .didPostNotification,
-//            object: nil,
-//            queue: .main
-//        ) { [weak self] _ in
-//            self?.allPosts.removeAll()
-//            //            self?.allPosts.viewModels.removeAll()
-//            self?.fetchPosts()
-//        }
-
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        fetchPosts()
+        NotificationCenter.default.addObserver(
+            forName: .didPostNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.fetchPosts()
+        }
 
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView?.frame = view.bounds
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     private func fetchPosts() {

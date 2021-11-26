@@ -27,9 +27,9 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical   //.horizontal
-        layout.minimumLineSpacing = 4
-        layout.minimumInteritemSpacing = 30
-        layout.itemSize.width = 72   // 50
+        layout.minimumLineSpacing = 48
+        layout.minimumInteritemSpacing = 24
+        layout.itemSize.width = 48
         layout.sectionInset = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
 
         let collectionView = UICollectionView(
@@ -86,7 +86,7 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
             x: 16,
             y: imageView.bottom + 24,
             width: view.width - 32,
-            height: 100
+            height: view.height
         )
     }
 

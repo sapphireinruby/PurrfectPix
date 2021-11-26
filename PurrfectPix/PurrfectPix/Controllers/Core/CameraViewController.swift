@@ -22,10 +22,11 @@ final class CameraViewController: UIViewController {
     private let shutterButton: UIButton = {
 
         let button = UIButton()
-        button.tintColor = .label
+        button.tintColor = .P1
         button.setImage(UIImage(systemName: "camera.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 60)),
                         for: .normal)
-//        button.layer.borderColor = UIColor.label.cgColor // fit in both light mode and dark mode
+//      button.layer.borderColor = UIColor.label.cgColor
+        // fit in both light mode and dark mode
 
         return button
 
@@ -34,8 +35,8 @@ final class CameraViewController: UIViewController {
     private let photoPickerButton: UIButton = {
 
         let button = UIButton()
-        button.tintColor = .label
-        button.setImage(UIImage(systemName: "photo.on.rectangle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40)),
+        button.tintColor = .P2
+        button.setImage(UIImage(systemName: "photo.on.rectangle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 60)),
                         for: .normal)
         return button
 
@@ -79,7 +80,7 @@ final class CameraViewController: UIViewController {
         // make the frame squire
         previewLayer.frame = CGRect(
             x: 0,
-            y: view.safeAreaInsets.top,
+            y: view.safeAreaInsets.top + 160,
             width: view.width,
             height: view.width
         )
@@ -92,11 +93,10 @@ final class CameraViewController: UIViewController {
             width: buttonSize,
             height: buttonSize
         )
-//        shutterButton.layer.cornerRadius = buttonSize/2
 
         photoPickerButton.frame = CGRect(
-            x: (shutterButton.left - (buttonSize/1.5))/2,
-            y: shutterButton.top + ((buttonSize/1.5)/2),
+            x: (view.width-buttonSize)/2,
+            y: view.safeAreaInsets.top + view.width + 200,
             width: buttonSize,
             height: buttonSize)
     }
@@ -148,8 +148,7 @@ final class CameraViewController: UIViewController {
                 if captureSession.canAddInput(input) {
                     captureSession.addInput(input)
                 }
-            }
-            catch {
+            } catch {
                 print(error)
             }
 
@@ -157,12 +156,10 @@ final class CameraViewController: UIViewController {
                 captureSession.addOutput(output)
             }
 
-            // Layer
-            previewLayer.session = captureSession
-            previewLayer.videoGravity = .resizeAspectFill
-
             // for adding a preview layer after taking photo
             cameraView.layer.addSublayer(previewLayer)
+            previewLayer.session = captureSession
+            previewLayer.videoGravity = .resizeAspectFill
 
             captureSession.startRunning()
         }
@@ -190,7 +187,7 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         picker.dismiss(animated: true, completion: nil)
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
@@ -222,13 +219,13 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             return
         }
 
-        let vc = PostEditViewController(image: resizedImage)
+        let vcPost = PostEditViewController(image: resizedImage)
         // vc under photo folder
         
         if #available(iOS 14.0, *) {
-            vc.navigationItem.backButtonDisplayMode = .minimal
+            vcPost.navigationItem.backButtonDisplayMode = .minimal
         }
-        navigationController?.pushViewController(vc, animated: false)
+        navigationController?.pushViewController(vcPost, animated: false)
 
     }
 }

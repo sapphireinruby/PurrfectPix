@@ -16,7 +16,7 @@ struct Post: Codable {
     let petTag: [String]
     let postedDate: String  // date
     var likers: [String]
-    let comments: [CommentByUser]? // map :  comment [ { user: String, comment: String }]
+    var comments: [Comment]? // map :  comment [ { user: String, comment: String }]
 
 
     let postUrlString: String
@@ -37,9 +37,10 @@ struct Post: Codable {
 
 }
 
-struct CommentByUser: Codable {
+    struct Comment: Codable {
 
-    let username: String
-    let comment: String
-    
-}
+        let userID: String  // who left the comment
+        let username: String // who left the comment
+        let comment: String
+        let dateString: String
+    }

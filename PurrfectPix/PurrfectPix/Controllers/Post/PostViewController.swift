@@ -7,6 +7,7 @@ import FirebaseFirestore
 import UIKit
 import CoreAudio
 import AVFoundation
+import StoreKit
 
 class PostViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -52,9 +53,9 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // for comment
         view.addSubview(commentBarView)
         view.addSubview(bgView)
-      bgView.backgroundColor = .systemBackground
+        bgView.backgroundColor = .systemBackground
         commentBarView.delegate = self
-//        observeKeyboardChange()
+        //        observeKeyboardChange()
     }
 
     override func viewDidLayoutSubviews() {
@@ -64,7 +65,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // comment
         commentBarView.frame = CGRect(
             x: 0,
-//            y: view.height-view.safeAreaInsets.bottom-60,
+            //            y: view.height-view.safeAreaInsets.bottom-60,
             y: view.height-view.safeAreaInsets.bottom - 72,
             width: view.width,
             height: 72)
@@ -73,7 +74,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         bgView.frame = CGRect(
             x: 0,
             y: view.height-view.safeAreaInsets.bottom,
-//            y: view.height-view.safeAreaInsets.bottom - 72,
+            //            y: view.height-view.safeAreaInsets.bottom - 72,
             width: view.width,
             height: 72)
     }
@@ -87,8 +88,8 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         ) { notification in
             guard let userInfo = notification.userInfo,
                   let height = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height else {
-                return
-            }
+                      return
+                  }
             UIView.animate(withDuration: 0.2) {
                 self.commentBarView.frame = CGRect(
                     x: 0,
@@ -123,10 +124,10 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
             userID: singlePost.post.userID,
             username: singlePost.post.username,
             completion: { success in
-            guard success else {
-                print("failed to create post")
-                return
-            }
+                guard success else {
+                    print("failed to create post")
+                    return
+                }
                 DispatchQueue.main.async {
                     self.collectionView?.reloadData()
                 }
@@ -163,34 +164,34 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     postID: strongSelf.singlePost.post.postID
                 ) { result in
 
-                var postData: [HomeFeedCellType] = [
-                    .poster(
-                        viewModel: PosterCollectionViewCellViewModel(
-                            username: model.username,
-                            profilePictureURL: profilePictureURL ?? nil
-                        )
-                    ),
+                    var postData: [HomeFeedCellType] = [
+                        .poster(
+                            viewModel: PosterCollectionViewCellViewModel(
+                                username: model.username,
+                                profilePictureURL: profilePictureURL ?? nil
+                            )
+                        ),
 
-                    .petTag(
-                        viewModel: PostPetTagCollectionViewCellViewModel(
-                            petTag: model.petTag
-                        )
-                    ),
+                            .petTag(
+                                viewModel: PostPetTagCollectionViewCellViewModel(
+                                    petTag: model.petTag
+                                )
+                            ),
 
-                    .post(
-                        viewModel: PostCollectionViewCellViewModel(
-                            postUrl: postUrl
-                        )
-                    ),
+                            .post(
+                                viewModel: PostCollectionViewCellViewModel(
+                                    postUrl: postUrl
+                                )
+                            ),
 
-                    .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: model.likers.contains(userID))),
+                            .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: model.likers.contains(userID))),
 
-                    .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: model.likers)),
+                            .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: model.likers)),
 
-                    .caption(
-                        viewModel: PostCaptionCollectionViewCellViewModel(
-                            username: model.username,
-                            caption: model.caption))
+                            .caption(
+                                viewModel: PostCaptionCollectionViewCellViewModel(
+                                    username: model.username,
+                                    caption: model.caption))
                     ]
 
                     postData.append(
@@ -234,7 +235,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: collectionView datasource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return allPosts[section].viewModel.count
+        //        return allPosts[section].viewModel.count
 
         return singlePost.viewModel.count
     }
@@ -245,7 +246,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         switch cellType {
 
         case .poster(let viewModel):
-        // to dequeue the right cell
+            // to dequeue the right cell
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: PosterCollectionViewCell.identifer,
                 for: indexPath
@@ -355,27 +356,32 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 extension PostViewController: CommentBarViewDelegate {
     func commentBarViewDidTapDone(_ commentBarView: CommentBarView, withText text: String) {
         guard let currentUserID = AuthManager.shared.userID,
-            let currentUsername = AuthManager.shared.username
+              let currentUsername = AuthManager.shared.username
         else { return }
 
+        let comment = Comment(
+            userID: currentUserID,
+            username: currentUsername,
+            comment: text,
+            dateString: String.date(from: Date()) ?? ""
+        )
+
         DatabaseManager.shared.createComments(
-            comment: Comment(
-                userID: currentUserID,
-                username: currentUsername,
-                comment: text,
-                dateString: String.date(from: Date()) ?? ""
-            ),
+            comment: comment,
             postID: singlePost.post.postID,
             userID: currentUserID
         ) { success in
             DispatchQueue.main.async {
-//                self.collectionView?.reloadData() // 沒有成功
+                //                self.collectionView?.reloadData() // 沒有成功
                 guard success else {
                     return
                 }
             }
         }
-        collectionView?.reloadData() // 沒有成功
+
+        singlePost.post.comments?.append(comment)
+        singlePost.viewModel[7] = .comment(viewModel: comment)
+        collectionView?.reloadData()
     }
 }
 // MARK: Cell delegate:
@@ -450,14 +456,14 @@ extension PostViewController: PostCollectionViewCellDelegate {
         DatabaseManager.shared.updateLikeState(
             state: .like,
             postID: singlePost.post.postID) { success in
-            guard success else {
-                print("Failed to like from post picture")
+                guard success else {
+                    print("Failed to like from post picture")
 
-                return
+                    return
+                }
+                print("Like post from post picture success!")
+
             }
-            print("Like post from post picture success!")
-
-        }
 
         self.collectionView?.reloadData()
     }
@@ -468,7 +474,7 @@ extension PostViewController: PostActionsCollectionViewCellDelegate {
     func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int) {
         // 3 icons under picture, tap to like the post
         // call DB to update like state
-//        let tuple = allPosts[index]
+        //        let tuple = allPosts[index]
 
         guard let userID = AuthManager.shared.userID
         else { return }
@@ -490,12 +496,12 @@ extension PostViewController: PostActionsCollectionViewCellDelegate {
         DatabaseManager.shared.updateLikeState(
             state: isLiked ? .like : .unlike,
             postID: singlePost.post.postID) { success in
-            guard success else {
-                print("Failed to updated like state with heart icon")
-                return
-            }
+                guard success else {
+                    print("Failed to updated like state with heart icon")
+                    return
+                }
                 print("Updated likestate with heart icon success!")
-        }
+            }
 
         self.collectionView?.reloadData()
 
@@ -532,18 +538,18 @@ extension PostViewController: PostCaptionCollectionViewCellDelegate {
     }
 }
 
-extension PostViewController {
+extension PostViewController: UICollectionViewDelegateFlowLayout {
 
     func configureCollectionView() {
 
         // calulate the heigh dynamically for square
-//        let sectionHeight: CGFloat = 410 + view.width
+        //        let sectionHeight: CGFloat = 410 + view.width
         //view.width is the actual post size
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { index, _ -> NSCollectionLayoutSection? in
 
-                    // NSLayout item
+                // NSLayout item
                 let posterItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
@@ -600,31 +606,31 @@ extension PostViewController {
                     )
                 )
 
-                    // NSLayout group
+                // NSLayout group
                 let group = NSCollectionLayoutGroup.vertical(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
                         heightDimension: .fractionalHeight(1)
                     ),
-                        subitems: [
-                            posterItem,
-                            petTagItem,
-                            postItem,
-                            actionsItem,
-                            likeCountItem,
-                            captionItem,
-                            commentItem,
-                            timestampItem
-                                  ]
-                        )
+                    subitems: [
+                        posterItem,
+                        petTagItem,
+                        postItem,
+                        actionsItem,
+                        likeCountItem,
+                        captionItem,
+                        commentItem,
+                        timestampItem
+                    ]
+                )
 
-                    // NSLayout Section
-                    let section = NSCollectionLayoutSection(group: group)
+                // NSLayout Section
+                let section = NSCollectionLayoutSection(group: group)
 
                 section.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 0, bottom: 4, trailing: 0)
                 // total 12 points between two sections
-                    return section
-                })
+                return section
+            })
         )
 
         view.addSubview(collectionView)
@@ -675,4 +681,8 @@ extension PostViewController {
 
         self.collectionView = collectionView  // configuring collectionView as it's own constance, and assign it to the global property
     }
+
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//    }
 }

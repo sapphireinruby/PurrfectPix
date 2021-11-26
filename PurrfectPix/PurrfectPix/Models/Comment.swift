@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Comment: Codable {
-
-    let userID: String  // who left the comment
-    let username: String // who left the comment
-    let comment: String
-    let dateString: String
-}
+//struct Comment: Codable {
+//
+//    let userID: String  // who left the comment
+//    let username: String // who left the comment
+//    let comment: String
+//    let dateString: String
+//}

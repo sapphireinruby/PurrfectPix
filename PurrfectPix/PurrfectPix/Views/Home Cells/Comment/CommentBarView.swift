@@ -17,7 +17,7 @@ final class CommentBarView: UIView, UITextFieldDelegate {
 
     private let button: UIButton = {
         let button = UIButton()
-        button.setTitle("Done", for: .normal)
+        button.setTitle("Submit", for: .normal)
         button.setTitleColor(.P2, for: .normal)
         return button
     }()

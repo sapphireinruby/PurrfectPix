@@ -183,7 +183,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
                 petTag: petTags,
                 postedDate: stringDate,
                 likers: [String](),
-                comments: [CommentByUser](),
+                comments: [Comment](),
                 postUrlString: url,
                 location: ""
             )

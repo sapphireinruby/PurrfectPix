@@ -6,10 +6,9 @@
 import FirebaseFirestore
 import UIKit
 import CoreAudio
+import AVFoundation
 
 class PostViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
-    // reload collectionView for likers count, close keyboard when not click comment
 
     private var collectionView: UICollectionView?
 
@@ -38,19 +37,6 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         fatalError()
     }
 
-//    private let noPostLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "You have no post, tap Camera to create a post or check other pets at Explore! "
-//        label.textColor = .P1
-//        label.textAlignment = .center
-//        label.isHidden = true
-//        return label
-//    }()
-
-
-    // All post models
-//    private var allPosts: [(post: Post, owner: String)] = []
-
     let dbFire = Firestore.firestore()
 
     // MARK: - Lifecycle
@@ -68,7 +54,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
         view.addSubview(bgView)
       bgView.backgroundColor = .systemBackground
         commentBarView.delegate = self
-        observeKeyboardChange()
+//        observeKeyboardChange()
     }
 
     override func viewDidLayoutSubviews() {
@@ -92,7 +78,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
             height: 72)
     }
 
-    // for comment
+    // for comment keyboard
     private func observeKeyboardChange() {
         observer = NotificationCenter.default.addObserver(
             forName: UIResponder.keyboardWillChangeFrameNotification,
@@ -131,8 +117,6 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     private func fetchPost(postID: String) {
 
-//        guard let userID = AuthManager.shared.userID,
-//              let username = AuthManager.shared.username else { return }
 
         createViewModel(
             model: singlePost.post,
@@ -177,7 +161,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
                 DatabaseManager.shared.getComments(
                     postID: strongSelf.singlePost.post.postID
-                ) { comments in
+                ) { result in
 
                 var postData: [HomeFeedCellType] = [
                     .poster(
@@ -209,12 +193,6 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             caption: model.caption))
                     ]
 
-                    comments.forEach { comment in
-                        postData.append(
-                            .comment(viewModel: comment)
-                        )
-                    }
-
                     postData.append(
                         .timestamp(
                             viewModel: PostDatetimeCollectionViewCellViewModel(
@@ -223,6 +201,19 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         )
 
                     )
+
+                    switch result {
+
+                    case .success(let comments):
+
+                        comments.forEach { comment in
+                            postData.append(
+                                .comment(viewModel: comment)
+                            )
+                        }
+
+                    case .failure(_): break
+                    }
 
                     // [(post: Post, owner: String, viewModel:[[HomeFeedCellType]])]()
                     guard let self = self else { return }
@@ -249,7 +240,6 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let cellType = singlePost.viewModel[indexPath.row]
 
         switch cellType {
@@ -264,7 +254,6 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
 
             cell.delegate = self  //delegate set up at cell class
-
             cell.configure(with: viewModel, index: indexPath.section)
             return cell
 
@@ -682,9 +671,8 @@ extension PostViewController {
         collectionView.register(CommentCollectionViewCell.self,
                                 forCellWithReuseIdentifier: CommentCollectionViewCell.identifier)
 
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
 
         self.collectionView = collectionView  // configuring collectionView as it's own constance, and assign it to the global property
     }
-
 }

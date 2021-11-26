@@ -25,8 +25,6 @@ final class CameraViewController: UIViewController {
         button.tintColor = .P1
         button.setImage(UIImage(systemName: "camera.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 60)),
                         for: .normal)
-//      button.layer.borderColor = UIColor.label.cgColor
-        // fit in both light mode and dark mode
 
         return button
 
@@ -80,7 +78,7 @@ final class CameraViewController: UIViewController {
         // make the frame squire
         previewLayer.frame = CGRect(
             x: 0,
-            y: view.safeAreaInsets.top + 160,
+            y: view.safeAreaInsets.top + 80,
             width: view.width,
             height: view.width
         )

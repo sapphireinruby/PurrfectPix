@@ -50,20 +50,20 @@ class ProfileViewController: UIViewController {
         configureCollectionView()
 
  // NotificationCenter guard let VC 後打開
-        if isCurrentUser {
-            observer = NotificationCenter.default.addObserver(
-                forName: .didPostNotification,
-                object: nil,
-                queue: .main
-            ) { [weak self] _ in
-                self?.posts.removeAll()
-                self?.fetchProfileInfo(userID: self!.userID)
-            }
-        }
+//        if isCurrentUser {
+//            observer = NotificationCenter.default.addObserver(
+//                forName: .didPostNotification,
+//                object: nil,
+//                queue: .main
+//            ) { [weak self] _ in
+//                self?.posts.removeAll()
+//                self?.fetchProfileInfo(userID: self!.userID)
+//            }
+//        }
 
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         fetchProfileInfo(userID: userID)
     }
 
@@ -111,7 +111,7 @@ class ProfileViewController: UIViewController {
             guard let userInfo = userInfo else { return }
 
             // Bio, username
-            username = userInfo.username.uppercased() ?? ""
+            username = userInfo.username.uppercased()
             bio = userInfo.bio ?? "No bio set up for this user."
 
             // Profile picture url
@@ -137,7 +137,7 @@ class ProfileViewController: UIViewController {
                     followingCount: userInfo.following?.count ?? 0,
                     postCount: postCount,
                     buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: userInfo.followers?.contains(currentUserID) ?? false),
-                    username: userInfo.username.uppercased() ?? "",
+                    username: userInfo.username.uppercased(),
                     bio: userInfo.bio ?? "This user have no bio yet. \nIntroduce your pet to everyone!"
                 )
                 self.collectionView?.reloadData()
@@ -212,8 +212,8 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let post = posts[indexPath.row]
-        let vc = PostViewController(singlePost: (post, [HomeFeedCellType]()))
-        navigationController?.pushViewController(vc, animated: true)
+        let vcPost = PostViewController(singlePost: (post, [HomeFeedCellType]()))
+        navigationController?.pushViewController(vcPost, animated: true)
     }
 
 }
@@ -266,7 +266,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             return
         }
         StorageManager.shared.uploadProfilePicture(
-            userID: userID,  //需要修改
+            userID: userID,
             data: image.pngData()
         ) { [weak self] success in
             if success {
@@ -301,15 +301,15 @@ extension ProfileViewController: ProfileHeaderCountViewDelegate {
 
     func profileHeaderCountViewDidTapEditProfile(_ containerView: ProfileHeaderCountView) {
 
-        let vc = EditProfileViewController()
+        let vcEdit = EditProfileViewController()
 
-        vc.completion = { [weak self] in
+        vcEdit.completion = { [weak self] in
             // refetch/reload hearder info
             guard let userID = AuthManager.shared.userID else { return }
             self?.headerViewModel = nil
             self?.fetchProfileInfo(userID: userID)
         }
-        let navVC = UINavigationController(rootViewController: vc)
+        let navVC = UINavigationController(rootViewController: vcEdit)
         present(navVC, animated: true)
     }
 
@@ -343,7 +343,6 @@ extension ProfileViewController: ProfileHeaderCountViewDelegate {
     }
 
  }
-
 
 
 extension ProfileViewController{

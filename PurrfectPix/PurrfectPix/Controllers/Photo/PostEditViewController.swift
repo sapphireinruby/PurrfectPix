@@ -10,7 +10,7 @@ import UIKit
 
 class PostEditViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    private var filters = [UIImage]() // array for filter images
+    private var filters = [UIImage]()
     var filterStyles: [FilterType] = [.autoAdjust, .vibrance, .ciSepiaTone, .ciGaussianBlur, .ciHighlightShadowAdjust, .ciColorMonochrome ]
 
     private let imageView: UIImageView = {
@@ -26,10 +26,10 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
     private let collectionView: UICollectionView = {
 
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical   //.horizontal
         layout.minimumLineSpacing = 4
         layout.minimumInteritemSpacing = 30
-        layout.itemSize.width = 50
+        layout.itemSize.width = 72   // 50
         layout.sectionInset = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
 
         let collectionView = UICollectionView(
@@ -137,7 +137,7 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
 
         case .autoAdjust:
 
-            var inputImage = CIImage(cgImage: cgImage)
+            let inputImage = CIImage(cgImage: cgImage)
             let filters = inputImage.autoAdjustmentFilters()
             for filter: CIFilter in filters {
                 filter.setValue(inputImage, forKey: kCIInputImageKey)

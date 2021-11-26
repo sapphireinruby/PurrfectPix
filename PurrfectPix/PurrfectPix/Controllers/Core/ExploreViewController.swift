@@ -248,6 +248,8 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
                             print("Add user \(targetUserID) to block list")
                         }
                     }
+
+                self?.posts.remove(at: indexPath.row)
                 collectionView.reloadData() // 目前沒有作用
                 print("Tapped block post")
             }

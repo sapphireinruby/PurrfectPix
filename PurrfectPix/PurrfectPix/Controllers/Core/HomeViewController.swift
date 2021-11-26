@@ -47,15 +47,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 //        view.addSubview(noPostLabel)
 
-        observer = NotificationCenter.default.addObserver(
-            forName: .didPostNotification,
-            object: nil,
-            queue: .main
-        ) { [weak self] _ in
-            self?.allPosts.removeAll()
-            //            self?.allPosts.viewModels.removeAll()
-            self?.fetchPosts()
-        }
+//        observer = NotificationCenter.default.addObserver(
+//            forName: .didPostNotification,
+//            object: nil,
+//            queue: .main
+//        ) { [weak self] _ in
+//            self?.allPosts.removeAll()
+//            //            self?.allPosts.viewModels.removeAll()
+//            self?.fetchPosts()
+//        }
 
     }
 
@@ -73,6 +73,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private func fetchPosts() {
 
         allPosts.removeAll() // fetch 之前先清除
+        collectionView?.reloadData()
 
         guard AuthManager.shared.username != nil else { return }
 

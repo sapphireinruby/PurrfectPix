@@ -11,16 +11,11 @@ import Foundation
 
 final class DatabaseManager {
 
-    static let shared = DatabaseManager()  // singleton
-    // Private constructor
+    static let shared = DatabaseManager()
+
     private init() {}
 
     let database = Firestore.firestore()
-
-    // Find posts from a given user for profile tab
-    // - Parameters:
-    // - username: UserID ** to query
-    // - completion: Result callback
 
     public func posts(
         
@@ -394,7 +389,7 @@ final class DatabaseManager {
         completion: @escaping (User?) -> Void
     ) {
 //        guard let userID = AuthManager.shared.userID else { return }
-        let ref = database.collection("users").document(userID) // 有進來 有userID
+        let ref = database.collection("users").document(userID) // 過濾黑名單留言：有進來 有userID
         ref.getDocument { document, error in
             guard let document = document,
             document.exists,
@@ -536,7 +531,7 @@ final class DatabaseManager {
     //   - completion: Result callback
     public func getComments(
         postID: String,
-        completion: @escaping ([Comment]) -> Void
+        completion: @escaping (Result<[Comment], Error>) -> Void
     ) {
         let group = DispatchGroup()
         var blockedUsers = [String]()
@@ -562,7 +557,7 @@ final class DatabaseManager {
                 Comment(with: $0.data())
             }),
             error == nil else {
-                completion([])
+                completion(.failure(error!))
                 return
             }
             comments = comments.filter { comment in
@@ -572,9 +567,67 @@ final class DatabaseManager {
                     return true
                 }
             }
-            completion(comments)
+            completion(.success(comments))
         }
     }
+
+    // check留言
+
+    func checkComments(
+        postID: String,
+        completion: @escaping (Result<[Comment], Error>) -> Void
+    ) {
+        let group = DispatchGroup()
+        var blockedUsers = [String]()
+
+        // for block list
+        guard let currentUserID = AuthManager.shared.userID else { return }
+
+        group.enter()
+        DatabaseManager.shared.getUserInfo(userID: currentUserID) { user in
+            blockedUsers = user?.blocking ?? [String]()
+
+            do {
+                group.leave()
+            }
+        }
+
+        group.enter()
+        let ref = database.collection("posts").document(postID).collection("comments")
+
+            ref.addSnapshotListener { snapshot, error in
+
+            guard let snapshot = snapshot else { return }
+
+            snapshot.documentChanges.forEach { documentChange in
+
+                if  documentChange.type == .added {
+
+                        ref.getDocuments() { (querySnapshot, err) in
+                            guard let querySnapshot = querySnapshot else { return }
+
+                            var comments = querySnapshot.documents.compactMap({
+                                Comment(with: $0.data())
+                            })
+
+                            comments = comments.filter { comment in
+                                if blockedUsers.contains(comment.userID) {
+                                    return false
+                                } else {
+                                    return true
+                                }
+                            }
+                            completion(.success(comments))
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+
+
 
     // MARK: - blocklist
 

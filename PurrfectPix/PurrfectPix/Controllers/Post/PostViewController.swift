@@ -379,8 +379,12 @@ extension PostViewController: CommentBarViewDelegate {
             }
         }
 
+//        var newInd = singlePost.viewModel.count
+//        singlePost.viewModel[newInd] = .comment(viewModel: comment)
+        // index是對的 但是無法生成cell
         singlePost.post.comments?.append(comment)
         singlePost.viewModel[7] = .comment(viewModel: comment)
+        // 會一直重複覆蓋 第一筆留言 若沒有留言的會index out of rabge
         collectionView?.reloadData()
     }
 }

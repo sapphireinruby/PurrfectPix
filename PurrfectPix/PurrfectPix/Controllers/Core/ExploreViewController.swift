@@ -217,6 +217,8 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
 
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 
+        var targetUserID = posts[indexPath.row].userID
+
         let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
 
             let open = UIAction(title: "Open this Post",
@@ -241,7 +243,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
                                  attributes: .destructive,
                                  state: .off)
             { [weak self] _ in
-                guard let targetUserID = self?.posts[indexPath.row].userID else { return }
 
                     DatabaseManager.shared.setBlockList(for: targetUserID) { success in
                         if success {
@@ -253,12 +254,22 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
                 collectionView.reloadData() // 目前沒有作用
                 print("Tapped block post")
             }
+            if targetUserID == AuthManager.shared.userID {
+                return UIMenu(title: "Post Action",
+                              image: nil,
+                              identifier: nil,
+                              options: UIMenu.Options.displayInline,
+                              children: [open])
 
-            return UIMenu(title: "Post Action",
-                          image: nil,
-                          identifier: nil,
-                          options: UIMenu.Options.displayInline,
-                          children: [open, block])
+            } else {
+                return UIMenu(title: "Post Action",
+                              image: nil,
+                              identifier: nil,
+                              options: UIMenu.Options.displayInline,
+                              children: [open, block])
+
+            }
+
         }
         return config
 

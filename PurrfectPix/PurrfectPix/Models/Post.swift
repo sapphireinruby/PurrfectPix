@@ -14,16 +14,14 @@ struct Post: Codable {
     var postID: String  // Image & the whole Post share one ID
     let caption: String
     let petTag: [String]
-    let postedDate: String  // date
+    let postedDate: String
     var likers: [String]
-    var comments: [Comment]? // map :  comment [ { user: String, comment: String }]
-
+    var comments: [Comment]?
 
     let postUrlString: String
 
-    // storageReference: get the photo download URL from storage
+    // get the photo download URL from storage
     var storageReference: String? {
-//        guard let userID = userID else { return nil }
         return "\(userID)/posts/\(postID).png" 
     }
 
@@ -34,7 +32,6 @@ struct Post: Codable {
 
     // 社群相關
     let location: String?
-
 }
 
     struct Comment: Codable {

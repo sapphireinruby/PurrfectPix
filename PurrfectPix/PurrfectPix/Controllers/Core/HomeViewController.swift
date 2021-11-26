@@ -463,10 +463,16 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
             allPosts[index].post.likers.remove(at: likerIndex!)
 
             allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: false))
+
+
+
             
         } else {
             allPosts[index].post.likers.append(userID)
             allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: true))
+
+//            allPosts[index].post.likers.count + 1
+//            allPosts[index].viewModel[4] = .likeCount(viewModel: PostLikesCollectionViewCellViewModel)
         }
 
         DatabaseManager.shared.updateLikeState(
@@ -510,6 +516,10 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
         //        allPosts[index].post.likers))
         //        listVC.title = "Liked by"
         //        navigationController?.pushViewController(listVC, animated: true)
+        var count = allPosts[index].post.likers.count
+
+//        allPosts[index].viewModel[4] = .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: []))
+                self.collectionView?.reloadData()
 
     }
 }

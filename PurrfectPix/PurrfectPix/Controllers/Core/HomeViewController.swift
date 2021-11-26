@@ -367,25 +367,33 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 extension HomeViewController: PosterCollectionViewCellDelegate {
     func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell, index: Int) {
 
+        var currentUserID = AuthManager.shared.userID
+        var targetUserID = allPosts[index].post.userID
+
         let sheet = UIAlertController(
             title: "Post Actions",
             message: nil,
             preferredStyle: .actionSheet
         )
 
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        if currentUserID == targetUserID {
+            sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
 
-        sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
+        } else {
+            sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
+            sheet.addAction(UIAlertAction(title: "Report Post and Block User", style: .destructive, handler: { [weak self] _ in
+                guard let targetUserID = self?.allPosts[index].post.userID else { return }
 
-        sheet.addAction(UIAlertAction(title: "Report Post and Block User", style: .destructive, handler: { [weak self] _ in
-            guard let targetUserID = self?.allPosts[index].post.userID else { return }
-
-            DatabaseManager.shared.setBlockList(for: targetUserID) { success in
-                if success {
-                    print("Add user \(targetUserID) to block list")
+                DatabaseManager.shared.setBlockList(for: targetUserID) { success in
+                    if success {
+                        print("Add user \(targetUserID) to block list")
+                    }
                 }
-            }
-        }))
+            }))
+
+        }
 
         present(sheet, animated: true)
     }

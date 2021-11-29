@@ -26,7 +26,7 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
     private let collectionView: UICollectionView = {
 
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical   //.horizontal
+        layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 48
         layout.minimumInteritemSpacing = 24
         layout.itemSize.width = 48

@@ -130,8 +130,11 @@ class ProfileHeaderCountView: UIView {
 
     func configure(with viewModel: ProfileHeaderCountViewViewModel) {
         followerCountButton.setTitle("\(viewModel.followerCount)\nFollowers", for: .normal)
+        followerCountButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         followingCountButton.setTitle("\(viewModel.followingCount)\nFollowing", for: .normal)
+        followingCountButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         postCountButton.setTitle("\(viewModel.postsCount)\nPosts", for: .normal)
+        postCountButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
 
         self.action = viewModel.actionType
 

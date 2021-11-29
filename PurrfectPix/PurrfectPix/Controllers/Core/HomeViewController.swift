@@ -96,7 +96,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
                         }
                     })
-
             }
             group.notify(queue: .main) {
                 self.sortData()
@@ -205,10 +204,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         )
                 ]
 
-                // [(post: Post, owner: String, viewModel:[[HomeFeedCellType]])]()
                 self?.allPosts.append((post: model, owner: username, viewModel: postData))
 
-                //                self?.viewModels.append(postData)// add to view model
                 completion(true)
 
                 // loading lottie stop
@@ -239,13 +236,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return allPosts[section].viewModel.count
     }
 
-    let colors: [UIColor] = [
-        .purple, .green, .lightGray, .blue, .yellow, .darkGray, .red
-    ]
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        //  let cellType = viewModels[indexPath.section][indexPath.row]
         let cellType = allPosts[indexPath.section].viewModel[indexPath.row]
         // section for the inner array
 
@@ -263,7 +256,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.delegate = self  // delegate set up at cell class
 
             cell.configure(with: viewModel, index: indexPath.section)
-            //            cell.contentView.backgroundColor = colors[indexPath.row]
             return cell
 
         case .petTag(let viewModel):
@@ -331,7 +323,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
 
             cell.delegate = self
-            //            cell.contentView.backgroundColor = .lightGray
+
             cell.configure(with: viewModel)
             return cell
 
@@ -342,7 +334,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ) as? CommentCollectionViewCell else {
                 fatalError()
             }
-            //            cell.contentView.backgroundColor = .blue
+
             cell.configure(with: viewModel)
             return cell
 
@@ -358,7 +350,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.configure(with: viewModel)
             return cell
         }
-
     }
 }
 
@@ -452,16 +443,14 @@ extension HomeViewController: PostCollectionViewCellDelegate {
             }
 
         self.collectionView?.reloadData()
-
     }
 }
 
 extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
     func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int) {
-        // 3 icons under picture, tap to like the post
-        // call DB to update like state
-        //        let tupople = allPosts[index]
+        // 3 icons under picture, tap to like the post, call DB to update like state
+
 
         guard let userID = AuthManager.shared.userID else { return }
         if allPosts[index].post.likers.contains(userID) {
@@ -472,15 +461,10 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
             allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: false))
 
-
-
-            
         } else {
             allPosts[index].post.likers.append(userID)
             allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: true))
 
-//            allPosts[index].post.likers.count + 1
-//            allPosts[index].viewModel[4] = .likeCount(viewModel: PostLikesCollectionViewCellViewModel)
         }
 
         DatabaseManager.shared.updateLikeState(
@@ -520,15 +504,9 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
 
     func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell, index: Int) {
 
-        //        let listVC = ListViewController(type: .likers(usernames:
-        //        allPosts[index].post.likers))
-        //        listVC.title = "Liked by"
-        //        navigationController?.pushViewController(listVC, animated: true)
         var count = allPosts[index].post.likers.count
 
-//        allPosts[index].viewModel[4] = .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: []))
                 self.collectionView?.reloadData()
-
     }
 }
 
@@ -550,7 +528,7 @@ extension HomeViewController {
     func configureCollectionView() {
 
         // calulate the heigh dynamically for square with device width
-        //view.width is the actual post size
+        // view.width is the actual post size
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { index, _ -> NSCollectionLayoutSection? in
@@ -598,13 +576,6 @@ extension HomeViewController {
                     )
                 )
 
-                //                let commentItem = NSCollectionLayoutItem(
-                //                    layoutSize: NSCollectionLayoutSize(
-                //                        widthDimension: .fractionalWidth(1),
-                //                        heightDimension: .absolute(80)
-                //                    )
-                //                )
-
                 let timestampItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
@@ -625,16 +596,13 @@ extension HomeViewController {
                         actionsItem,
                         likeCountItem,
                         captionItem,
-                        //                            commentItem,
                         timestampItem
                     ]
                 )
 
                 // NSLayout Section
                 let section = NSCollectionLayoutSection(group: group)
-
-                section.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 0, bottom: 8, trailing: 0)
-                // total 12 points between two sections
+                section.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 0, bottom: 4, trailing: 0)
                 return section
             })
         )

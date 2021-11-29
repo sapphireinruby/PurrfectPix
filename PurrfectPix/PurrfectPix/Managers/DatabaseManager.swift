@@ -534,11 +534,10 @@ final class DatabaseManager {
         completion: @escaping (Result<[Comment], Error>) -> Void
     ) {
         let concurrentQueue = DispatchQueue(label: "concurrentQueue", attributes: .concurrent)
-        let semaphore = DispatchSemaphore(value: 1)
+        let semaphore = DispatchSemaphore(value: 0)
 
         var blockedUsers = [String]()
         concurrentQueue.async() {
-              semaphore.wait()
             guard let currentUserID = AuthManager.shared.userID else { return }
             DatabaseManager.shared.getUserInfo(userID: currentUserID) { user in
                 blockedUsers = user?.blocking ?? [String]()
@@ -550,7 +549,6 @@ final class DatabaseManager {
               semaphore.wait()
             let ref = self.database.collection("posts").document(postID).collection("comments")
             ref.getDocuments { snapshot, error in
-                semaphore.signal()
 
                 guard var comments = snapshot?.documents.compactMap({
                     Comment(with: $0.data())
@@ -567,6 +565,7 @@ final class DatabaseManager {
                     }
                 }
                 completion(.success(comments))
+                semaphore.signal()
             }
             }
 

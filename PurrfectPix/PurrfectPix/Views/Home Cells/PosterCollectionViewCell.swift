@@ -99,7 +99,6 @@ final class PosterCollectionViewCell: UICollectionViewCell {
         let imagePadding: CGFloat = 4
         let imageSize: CGFloat = contentView.height - (imagePadding * 2)
 
-        // protfile image
         imageView.frame = CGRect(x: imagePadding * 6,
                                  y: imagePadding,
                                  width: imageSize,
@@ -107,7 +106,6 @@ final class PosterCollectionViewCell: UICollectionViewCell {
         )
         imageView.layer.cornerRadius = imageSize / 2
 
-        // usernameLabel
         usernameLabel.sizeToFit()
         usernameLabel.frame = CGRect(x: imageView.right + 16,
                                      y: 0,
@@ -115,7 +113,6 @@ final class PosterCollectionViewCell: UICollectionViewCell {
                                      height: contentView.height
         )
 
-        // moreButton
         moreButton.frame = CGRect(x: contentView.width-55-16,
                                   y: (contentView.height - 50) / 2,
                                   width: 55,
@@ -137,7 +134,6 @@ final class PosterCollectionViewCell: UICollectionViewCell {
         self.index = index
 
         usernameLabel.text = viewModel.username
-//        imageView.sd_setImage(with: viewModel.profilePictureURL, completed: nil)
         imageView.sd_setImage(with:  viewModel.profilePictureURL, placeholderImage: UIImage(systemName: "person.circle"))
         imageView.tintColor = .P1
 

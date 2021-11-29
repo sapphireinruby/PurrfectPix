@@ -13,6 +13,8 @@ class CommentCollectionViewCell: UICollectionViewCell {
 
     private let padding: CGFloat = 24
 
+    private let paddingV: CGFloat = 4
+
     private let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -22,22 +24,18 @@ class CommentCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        clipsToBounds = true
+        clipsToBounds = true
         contentView.addSubview(label)
 
-        // Add constraints
         // TODO auto height
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: contentView.topAnchor),
-            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: paddingV),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: paddingV),
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
-//            label.widthAnchor.constraint(equalToConstant: contentView.width - padding)
-//            label.heightAnchor.constraint(equalToConstant: 200)
-//            label.heightAnchor.constraint(equalToConstant: self.label.height)
+
         ])
     }
-
 
     required init?(coder: NSCoder) {
         fatalError()
@@ -45,7 +43,7 @@ class CommentCollectionViewCell: UICollectionViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-//        label.frame = CGRect(x: 24, y: 0, width: contentView.width-48, height: contentView.height)
+        label.frame = CGRect(x: 24, y: 0, width: contentView.width-48, height: contentView.height)
     }
 
     func configure(with model: Comment) {

@@ -358,8 +358,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 extension HomeViewController: PosterCollectionViewCellDelegate {
     func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell, index: Int) {
 
-        var currentUserID = AuthManager.shared.userID
-        var targetUserID = allPosts[index].post.userID
+        let currentUserID = AuthManager.shared.userID
+        let targetUserID = allPosts[index].post.userID
 
         let sheet = UIAlertController(
             title: "Post Actions",
@@ -383,9 +383,14 @@ extension HomeViewController: PosterCollectionViewCellDelegate {
                     }
                 }
             }))
+            if let popoverController = sheet.popoverPresentationController {
 
+                popoverController.sourceView = self.view
+                popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                popoverController.permittedArrowDirections = []
+            }
         }
-
+        
         present(sheet, animated: true)
     }
 

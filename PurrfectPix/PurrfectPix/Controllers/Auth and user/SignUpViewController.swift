@@ -184,6 +184,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                 self?.present(picker, animated: true)
             }
         }))
+        if let popoverController = sheet.popoverPresentationController {
+
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
         present(sheet, animated: true)
     }
 
@@ -260,6 +266,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                                       message: "Please make sure to fill all fields and have a password longer than 6 characters.",
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+
+        if let popoverController = alert.popoverPresentationController {
+
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
         present(alert, animated: true)
     }
 

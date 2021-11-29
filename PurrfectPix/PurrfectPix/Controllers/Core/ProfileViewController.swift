@@ -249,6 +249,14 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
                 self?.present(picker, animated: true)
             }
         }))
+
+        if let popoverController = sheet.popoverPresentationController {
+
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
         present(sheet, animated: true)
     }
 }

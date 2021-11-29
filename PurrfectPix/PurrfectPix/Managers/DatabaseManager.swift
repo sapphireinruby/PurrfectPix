@@ -533,42 +533,43 @@ final class DatabaseManager {
         postID: String,
         completion: @escaping (Result<[Comment], Error>) -> Void
     ) {
-        let group = DispatchGroup()
+        let concurrentQueue = DispatchQueue(label: "concurrentQueue", attributes: .concurrent)
+        let semaphore = DispatchSemaphore(value: 1)
+
         var blockedUsers = [String]()
-
-        guard let currentUserID = AuthManager.shared.userID else { return }
-        group.enter() // 有進來, current userID 有抓到
-        DatabaseManager.shared.getUserInfo(userID: currentUserID) { user in // 有進來
-            blockedUsers = user?.blocking ?? [String]() // 沒有進來
-
-            defer {
-                group.leave()
+        concurrentQueue.async() {
+              semaphore.wait()
+            guard let currentUserID = AuthManager.shared.userID else { return }
+            DatabaseManager.shared.getUserInfo(userID: currentUserID) { user in
+                blockedUsers = user?.blocking ?? [String]()
+                semaphore.signal()
             }
         }
 
-        group.enter() // 直接進來 (lldb) po blockedUsers: 0 elements
+        concurrentQueue.async() {
+              semaphore.wait()
+            let ref = self.database.collection("posts").document(postID).collection("comments")
+            ref.getDocuments { snapshot, error in
+                semaphore.signal()
 
-        let ref = database.collection("posts").document(postID).collection("comments")
-        ref.getDocuments { snapshot, error in
-            defer {
-                group.leave()
-            }
-            guard var comments = snapshot?.documents.compactMap({
-                Comment(with: $0.data())
-            }),
-            error == nil else {
-                completion(.failure(error!))
-                return
-            }
-            comments = comments.filter { comment in
-                if blockedUsers.contains(comment.userID) {
-                    return false
-                } else {
-                    return true
+                guard var comments = snapshot?.documents.compactMap({
+                    Comment(with: $0.data())
+                }),
+                error == nil else {
+                    completion(.failure(error!))
+                    return
                 }
+                comments = comments.filter { comment in
+                    if blockedUsers.contains(comment.userID) {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+                completion(.success(comments))
             }
-            completion(.success(comments))
-        }
+            }
+
     }
 
     // check留言

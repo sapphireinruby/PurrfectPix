@@ -77,17 +77,17 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
         label.text = nil
     }
 
-    func configure(with viewModel: PostCaptionCollectionViewCellViewModel) {
+    func configure(with viewModel: PostCaptionCollectionViewCellViewModel, index: Int) {
 
-//        label.text = "\(viewModel.username): \(viewModel.caption)"  // showing comment with "optional"
         let labelName = "\(viewModel.username) " 
         let labelCap = "\(viewModel.caption ?? "")"
         label.text = labelName + labelCap
 
         label.attributedText = NSMutableAttributedString()
             .boldP2("\(viewModel.username) ")
-            .normal("\(viewModel.caption ?? "")") 
+            .normal("\(viewModel.caption ?? "")")
 
+        self.index = index
     }
 
 }

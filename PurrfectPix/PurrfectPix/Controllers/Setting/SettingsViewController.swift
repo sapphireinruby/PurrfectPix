@@ -148,6 +148,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         footer.addSubview(button)
         button.setTitle("Sign Out",
                         for: .normal)
+        button.titleLabel?.textAlignment = .center
         button.setTitleColor(.P2, for: .normal)
         button.addTarget(self, action: #selector(didTapSignOut), for: .touchUpInside)
 

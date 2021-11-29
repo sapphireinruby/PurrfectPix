@@ -324,7 +324,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             cell.delegate = self
 
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, index: indexPath.section)
             return cell
 
         case .timestamp(let viewModel):
@@ -389,30 +389,44 @@ extension PostViewController: CommentBarViewDelegate {
 
 extension PostViewController: PosterCollectionViewCellDelegate {
     func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell, index: Int) {
+        let currentUserID = AuthManager.shared.userID
+        let targetUserID = singlePost.post.userID
+
         let sheet = UIAlertController(
             title: "Post Actions",
             message: nil,
             preferredStyle: .actionSheet
         )
 
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        if currentUserID == targetUserID {
+            sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
 
-        sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
+            if let popoverController = sheet.popoverPresentationController {
 
-        sheet.addAction(UIAlertAction(title: "Report Post and Block User", style: .destructive, handler: { [weak self] _ in
-            guard let targetUserID = self?.singlePost.post.userID else { return }
-
-            DatabaseManager.shared.setBlockList(for: targetUserID) { success in
-                if success {
-                    print("Add user \(targetUserID) to block list")
-                }
+                popoverController.sourceView = self.view
+                popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                popoverController.permittedArrowDirections = []
             }
-        }))
-        if let popoverController = sheet.popoverPresentationController {
 
-            popoverController.sourceView = self.view
-            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-            popoverController.permittedArrowDirections = []
+        } else {
+            sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            sheet.addAction(UIAlertAction(title: "Share Post", style: .default, handler: nil))
+            sheet.addAction(UIAlertAction(title: "Report Post and Block User", style: .destructive, handler: { [weak self] _ in
+                guard let targetUserID = self?.singlePost.post.userID else { return }
+
+                DatabaseManager.shared.setBlockList(for: targetUserID) { success in
+                    if success {
+                        print("Add user \(targetUserID) to block list")
+                    }
+                }
+            }))
+            if let popoverController = sheet.popoverPresentationController {
+
+                popoverController.sourceView = self.view
+                popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                popoverController.permittedArrowDirections = []
+            }
         }
 
         present(sheet, animated: true)

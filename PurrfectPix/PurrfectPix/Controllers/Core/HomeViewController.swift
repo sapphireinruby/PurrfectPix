@@ -442,6 +442,9 @@ extension HomeViewController: PostCollectionViewCellDelegate {
             allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: post.likers.contains(userID)))
         }
 
+        let likers = allPosts[index].post.likers
+        allPosts[index].viewModel[4] = .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: likers))
+
         DatabaseManager.shared.updateLikeState(
             state: .like,
             postID: allPosts[index].post.postID) { success in
@@ -451,7 +454,6 @@ extension HomeViewController: PostCollectionViewCellDelegate {
                     return
                 }
                 print("Like post from post picture success!")
-                
             }
 
         self.collectionView?.reloadData()
@@ -478,6 +480,9 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
             allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: true))
 
         }
+
+        let likers = allPosts[index].post.likers
+        allPosts[index].viewModel[4] = .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: likers))
 
         DatabaseManager.shared.updateLikeState(
             state: isLiked ? .like : .unlike,

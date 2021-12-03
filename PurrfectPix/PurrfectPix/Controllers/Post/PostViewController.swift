@@ -9,7 +9,7 @@ import CoreAudio
 import AVFoundation
 import StoreKit
 
-class PostViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class PostViewController: UIViewController, UICollectionViewDataSource {
 
     private var collectionView: UICollectionView?
 
@@ -203,10 +203,11 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
                     )
 
+
                     switch result {
 
                     case .success(let comments):
-
+                        self?.singlePost.post.comments = comments
                         comments.forEach { comment in
                             postData.append(
                                 .comment(viewModel: comment)
@@ -345,7 +346,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ) as? CommentCollectionViewCell else {
                 fatalError()
             }
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, index: indexPath.section)
             return cell
 
         }
@@ -562,7 +563,83 @@ extension PostViewController: PostLikesCollectionViewCellDelegate {
 extension PostViewController: PostCaptionCollectionViewCellDelegate {
     func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell, index: Int) {
         print("tapped caption")
+        
+        let userID = singlePost.post.userID
+
+        let vcProfile = ProfileViewController(userID: userID)
+        navigationController?.pushViewController(vcProfile, animated: true)
     }
+}
+
+extension PostViewController: UICollectionViewDelegate {
+
+
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+
+
+        guard indexPath.row > 6 else { return nil }
+
+        guard var comments = singlePost.post.comments else { return nil }
+
+        let targetUserID = comments[indexPath.row-7].userID
+        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+
+            let profile = UIAction(title: "Check His/Her Profile",
+                                image: nil,
+                                identifier: nil,
+                                discoverabilityTitle: nil,
+                                state: .off)
+            { _ in
+                collectionView.deselectItem(at: indexPath, animated: true)
+                let model = comments[indexPath.row-7]
+
+                let vcProfile = ProfileViewController(userID: targetUserID)
+
+                self.navigationController?.pushViewController(vcProfile , animated: true)
+                print("Tapped open post")
+            }
+
+            let block = UIAction(title: "Report Comment & \nBlock this User",
+                                 image: UIImage(systemName: "minus.circle"),
+                                 identifier: nil,
+                                 discoverabilityTitle: nil,
+                                 attributes: .destructive,
+                                 state: .off)
+            { [weak self] _ in
+
+                    DatabaseManager.shared.setBlockList(for: targetUserID) { success in
+                        if success {
+                            print("Add user \(targetUserID) to block list")
+                        }
+                    }
+
+                comments.remove(at: indexPath.row-7)
+                self?.singlePost.viewModel.remove(at: indexPath.row)
+                collectionView.reloadData()
+                print("Tapped block post")
+            }
+            if targetUserID == AuthManager.shared.userID {
+                return UIMenu(title: "Comment Action",
+                              image: nil,
+                              identifier: nil,
+                              options: UIMenu.Options.displayInline,
+                              children: [profile])
+
+            } else {
+                return UIMenu(title: "Comment Action",
+                              image: nil,
+                              identifier: nil,
+                              options: UIMenu.Options.displayInline,
+                              children: [profile, block])
+
+            }
+
+        }
+        return config
+
+    }
+
+
 }
 
 extension PostViewController: UICollectionViewDelegateFlowLayout {

@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 //    private let noPostLabel: UILabel = {
 //        let label = UILabel()
-//        label.text = "You have no post, tap Camera to create a post or check other pets at Explore! "
+//        label.text = "You have no post, tap Camera to create a post or check other pets at Explore!"
 //        label.textColor = .P1
 //        label.textAlignment = .center
 //        //        label.isHidden = true
@@ -335,7 +335,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 fatalError()
             }
 
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, index: indexPath.section)
             return cell
 
         case .timestamp(let viewModel):
@@ -464,7 +464,6 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
     func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int) {
         // 3 icons under picture, tap to like the post, call DB to update like state
-
 
         guard let userID = AuthManager.shared.userID else { return }
         if allPosts[index].post.likers.contains(userID) {

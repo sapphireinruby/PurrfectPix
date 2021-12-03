@@ -19,7 +19,6 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
 
     weak var delegate: PostCaptionCollectionViewCellDelegate?
 
-
     private let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0 //for line wrap

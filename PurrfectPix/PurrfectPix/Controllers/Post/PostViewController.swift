@@ -474,6 +474,9 @@ extension PostViewController: PostCollectionViewCellDelegate {
             singlePost.viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: singlePost.post.likers.contains(userID)))
         }
 
+        let likers = singlePost.post.likers
+        singlePost.viewModel[4] = .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: likers))
+
         DatabaseManager.shared.updateLikeState(
             state: .like,
             postID: singlePost.post.postID) { success in
@@ -512,6 +515,9 @@ extension PostViewController: PostActionsCollectionViewCellDelegate {
                 singlePost.post.likers.append(userID)
                 singlePost.viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: singlePost.post.likers.contains(userID)))
             }
+
+            let likers = singlePost.post.likers
+            singlePost.viewModel[4] = .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: likers))
         }
 
         DatabaseManager.shared.updateLikeState(

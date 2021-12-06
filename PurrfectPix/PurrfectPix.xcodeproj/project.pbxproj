@@ -40,7 +40,6 @@
 		A78073632725A11400468B30 /* UserTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78073622725A11400468B30 /* UserTextField.swift */; };
 		A78073662729213B00468B30 /* 68349-cat-tail-wag.json in Resources */ = {isa = PBXBuildFile; fileRef = A78073652729213A00468B30 /* 68349-cat-tail-wag.json */; };
 		A780736827292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json in Resources */ = {isa = PBXBuildFile; fileRef = A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */; };
-		A780736A272A01E600468B30 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7807369272A01E600468B30 /* Media.xcassets */; };
 		A7A44E39272ED237005ECBF5 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */; };
 		A7A78D65274EDB6000B4C699 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A78D64274EDB6000B4C699 /* Setting.swift */; };
 		A7AFC766273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC765273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift */; };
@@ -115,7 +114,6 @@
 		A78073622725A11400468B30 /* UserTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTextField.swift; sourceTree = "<group>"; };
 		A78073652729213A00468B30 /* 68349-cat-tail-wag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "68349-cat-tail-wag.json"; sourceTree = "<group>"; };
 		A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "70835-hiro-rocket-launch-purple.json"; sourceTree = "<group>"; };
-		A7807369272A01E600468B30 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		A7A78D64274EDB6000B4C699 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		A7AFC765273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -353,7 +351,6 @@
 			children = (
 				A7DDDF5D271DA19600F28B24 /* GoogleService-Info.plist */,
 				A7DDDEFC271B2E7500F28B24 /* Assets.xcassets */,
-				A7807369272A01E600468B30 /* Media.xcassets */,
 				A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */,
 				A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */,
 				A77A1ED4271FC7DA0072A1F6 /* Extensions.swift */,
@@ -484,7 +481,6 @@
 				A780736827292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json in Resources */,
 				A78073662729213B00468B30 /* 68349-cat-tail-wag.json in Resources */,
 				A7DDDEFD271B2E7500F28B24 /* Assets.xcassets in Resources */,
-				A780736A272A01E600468B30 /* Media.xcassets in Resources */,
 				A7DDDF5E271DA19700F28B24 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -758,7 +754,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PurrfectPix/PurrfectPix.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UQWW588DMN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PurrfectPix/Info.plist;
@@ -775,12 +771,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AmberL.PurrfectPix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -792,7 +788,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PurrfectPix/PurrfectPix.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UQWW588DMN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PurrfectPix/Info.plist;
@@ -809,12 +805,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AmberL.PurrfectPix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

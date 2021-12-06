@@ -286,7 +286,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
 
     @objc func didTapPrivacy() {
-        guard let url = URL(string: "https://www.privacypolicies.com/live/dd1fde8e-ef94-48a1-8b08-49b95c29ac5e") else {
+        guard let url = URL(string: " ") else {
             return
         }
         let vcWeb = SFSafariViewController(url: url)

@@ -15,9 +15,18 @@ final class CameraViewController: UIViewController {
     private var captureSession: AVCaptureSession?
     private let previewLayer = AVCaptureVideoPreviewLayer() // get global safe area
 
+        private let remindingLabel: UILabel = {
+            let label = UILabel()
+            label.text = "Please upload Image with Animal only.\nPost without Animal might be \nReported and Deleted. \nU•ェ•U Thank you!"
+            label.textColor = .P1
+            label.numberOfLines = 0
+            label.lineBreakMode = .byWordWrapping
+            label.textAlignment = .center
+            return label
+        }()
+
     private let cameraView = UIView()
-    // for adding a preview layer after taking photo,
-    //but before choose this one
+    // for adding a preview layer after taking photo
 
     private let shutterButton: UIButton = {
 
@@ -45,6 +54,7 @@ final class CameraViewController: UIViewController {
         view.backgroundColor = .secondarySystemBackground
         title = "Take Photo"
 
+        view.addSubview(remindingLabel)
         view.addSubview(cameraView)
         view.addSubview(shutterButton)
         view.addSubview(photoPickerButton)
@@ -74,11 +84,12 @@ final class CameraViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+
         cameraView.frame = view.bounds
         // make the frame squire
         previewLayer.frame = CGRect(
             x: 0,
-            y: view.safeAreaInsets.top + 80,
+            y: view.safeAreaInsets.top + 24,
             width: view.width,
             height: view.width
         )
@@ -87,16 +98,25 @@ final class CameraViewController: UIViewController {
 
         shutterButton.frame = CGRect(
             x: (view.width-buttonSize)/2,
-            y: view.safeAreaInsets.top + view.width + 100,
+            y: view.safeAreaInsets.top + view.width + 40,
             width: buttonSize,
             height: buttonSize
         )
 
         photoPickerButton.frame = CGRect(
             x: (view.width-buttonSize)/2,
-            y: view.safeAreaInsets.top + view.width + 200,
+            y: shutterButton.bottom + 16,
             width: buttonSize,
-            height: buttonSize)
+            height: buttonSize
+        )
+
+        remindingLabel.frame = CGRect(
+            x: 32,
+            y: photoPickerButton.bottom + 8,
+            width: view.width - 64,
+            height: view.width
+        )
+
     }
 
     @objc func didTapPickPhoto() {

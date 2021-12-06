@@ -17,23 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch logo-2" translatesAutoresizingMaskIntoConstraints="NO" id="SHv-qp-gwL">
-                                <rect key="frame" x="118.5" y="401" width="177" height="94"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="RTO-RM-5hQ" userLabel="logo">
+                                <rect key="frame" x="93" y="236" width="228" height="424"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="94" id="4iD-Ym-aSK"/>
-                                    <constraint firstAttribute="width" constant="177" id="drT-wK-Rxa"/>
+                                    <constraint firstAttribute="height" constant="424" id="hg2-Kc-ERd"/>
+                                    <constraint firstAttribute="width" constant="228" id="vO8-tK-dSU"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SHv-qp-gwL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="AIK-Y5-e0M"/>
-                            <constraint firstItem="SHv-qp-gwL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="IXv-t8-wYX"/>
-                            <constraint firstItem="SHv-qp-gwL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="a2F-X9-u78"/>
-                            <constraint firstItem="SHv-qp-gwL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ij8-jR-j6F"/>
-                            <constraint firstItem="SHv-qp-gwL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="m6L-Z8-Rmj"/>
-                            <constraint firstItem="SHv-qp-gwL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="xrq-Oz-2Tc"/>
+                            <constraint firstItem="RTO-RM-5hQ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="0e8-4E-1KT"/>
+                            <constraint firstItem="RTO-RM-5hQ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="gC3-aF-JkS"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -43,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launch logo-2" width="3018" height="1834"/>
+        <image name="logo-1" width="9255" height="12190"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

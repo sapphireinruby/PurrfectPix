@@ -11,14 +11,16 @@ import FirebaseFirestoreSwift
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-//    private let noPostLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "You have no post, tap Camera to create a post or check other pets at Explore!"
-//        label.textColor = .P1
-//        label.textAlignment = .center
-//        //        label.isHidden = true
-//        return label
-//    }()
+    private let noPostLabel: UILabel = {
+        let label = UILabel()
+        label.text = "You have no post yet. \nTap Camera to create you post \nor check other pets at Explore!"
+        label.textColor = .P1
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.isHidden = true
+        return label
+    }()
 
     // CollectionView for feed
     private var collectionView: UICollectionView?
@@ -43,7 +45,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         configureCollectionView()
         fetchPosts()
 
-//        view.addSubview(noPostLabel)
+        view.addSubview(noPostLabel)
 
         NotificationCenter.default.addObserver(
             forName: .didPostNotification,
@@ -57,6 +59,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        noPostLabel.center = view.center
+        noPostLabel.sizeToFit()
         collectionView?.frame = view.bounds
     }
 
@@ -140,6 +144,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return false
         })
 
+        if allPosts.isEmpty {
+            noPostLabel.isHidden = false
+        }
+        else {
+            noPostLabel.isHidden = true
+        }
         collectionView?.reloadData()
     }
 
@@ -213,16 +223,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 animationView.removeFromSuperview()
 
             }
+
         }
-        //        if viewModels.isEmpty {
-        //            noPostLabel.isHidden = false
-        //            collectionView.isHidden = true
-        //        }
-        //        else {
-        //            noPostLabelLabel.isHidden = true
-        //            noPostLabel.isHidden = false
-        //            collectionView.reloadData()
-        //        }
+
+//        if allPosts.isEmpty {
+//            noPostLabel.isHidden = false
+//        }
+//        else {
+//            noPostLabel.isHidden = true
+//        }
 
     }
 

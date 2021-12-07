@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class EditProfileViewController: UIViewController {
 
@@ -76,9 +77,17 @@ class EditProfileViewController: UIViewController {
         let name = nameField.text ?? ""
         let bio = bioField.text ?? ""
         DatabaseManager.shared.setUserInfo(name: name, bio: bio) { [weak self] success in
+
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = name
+            changeRequest?.commitChanges { error in
+                print("commit username changes error \(error)")
+            }
+
             DispatchQueue.main.async {
                 if success {
-                    self?.completion?() // to see update view immidiately
+                    // to see updated info immidiately
+                    self?.completion?()
                     self?.didTapClose()
                 }
             }

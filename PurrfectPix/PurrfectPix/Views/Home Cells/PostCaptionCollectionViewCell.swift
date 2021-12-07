@@ -8,15 +8,16 @@
 import UIKit
 
 protocol PostCaptionCollectionViewCellDelegate: AnyObject {
-    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell)
+    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell, index: Int)
 }
 
 class PostCaptionCollectionViewCell: UICollectionViewCell {
 
     static let identifer = "PostCaptionCollectionViewCell"
 
-    weak var delegate: PostCaptionCollectionViewCellDelegate?
+    private var index = 0
 
+    weak var delegate: PostCaptionCollectionViewCellDelegate?
 
     private let label: UILabel = {
         let label = UILabel()
@@ -43,7 +44,7 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
     }
 
     @objc func didTapCaption() {
-        delegate?.postCaptionCollectionViewCellDidTapCaptioon(self)
+        delegate?.postCaptionCollectionViewCellDidTapCaptioon(self, index: index)
     }
 
     override func layoutSubviews() {
@@ -75,20 +76,17 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
         label.text = nil
     }
 
-    func configure(with viewModel: PostCaptionCollectionViewCellViewModel) {
+    func configure(with viewModel: PostCaptionCollectionViewCellViewModel, index: Int) {
 
-//        label.text = "\(viewModel.username): \(viewModel.caption)"  // showing comment with "optional"
         let labelName = "\(viewModel.username) " 
         let labelCap = "\(viewModel.caption ?? "")"
         label.text = labelName + labelCap
 
         label.attributedText = NSMutableAttributedString()
             .boldP2("\(viewModel.username) ")
-            .normal("\(viewModel.caption ?? "")") 
+            .normal("\(viewModel.caption ?? "")")
 
-//        label.text = "\(viewModel.username): \(viewModel.caption ?? "")"
-        // if not nil, not showing the "optional"
-//        label.textColor = .P1
+        self.index = index
     }
 
 }

@@ -172,15 +172,15 @@ class ExploreViewController: UIViewController, UISearchResultsUpdating {
 
                 self?.posts = posts.filter({ post in
                     guard let blocked = user.blocking else { return true}
-                    // 看黑名單裡面有沒有這個user ID 如果有就不呈現
-                    if blocked.contains(post.userID){
+
+                    if blocked.contains(post.userID) {
                         return false
                     } else {
                         return true
                     }
-
                 })
-                self?.collectionView.reloadData() // 要放在這程式裡 要再拿到資料後 才能reload 不會出錯
+                self?.collectionView.reloadData()
+                // position of this is important, inside the funciton so it can work
             }
         }
     }
@@ -201,7 +201,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
 
         let model = posts[indexPath.row]
-        cell.configure(with: URL(string: posts[indexPath.row].postUrlString))
+        cell.configure(with: URL(string: model.postUrlString))
 
         return cell
     }
@@ -209,13 +209,71 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         collectionView.deselectItem(at: indexPath, animated: true)
-        let post = posts[indexPath.row]
+        let model = posts[indexPath.row]
 
-        let vcPostView = PostViewController(singlePost: (posts[indexPath.row], [HomeFeedCellType]()))
-
-//        vcPostView.singlePost = xxxx
+        let vcPostView = PostViewController(singlePost: (model, [HomeFeedCellType]()))
 
         navigationController?.pushViewController(vcPostView, animated: true)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+
+        var targetUserID = posts[indexPath.row].userID
+
+        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+
+            let open = UIAction(title: "Open this Post",
+                                image: nil,
+                                identifier: nil,
+                                discoverabilityTitle: nil,
+                                state: .off)
+            { _ in
+                collectionView.deselectItem(at: indexPath, animated: true)
+                let model = self.posts[indexPath.row]
+
+                let vcPostView = PostViewController(singlePost: (model, [HomeFeedCellType]()))
+
+                self.navigationController?.pushViewController(vcPostView, animated: true)
+                print("Tapped open post")
+            }
+
+            let block = UIAction(title: "Report Post & \nBlock this User",
+                                 image: UIImage(systemName: "minus.circle"),
+                                 identifier: nil,
+                                 discoverabilityTitle: nil,
+                                 attributes: .destructive,
+                                 state: .off)
+            { [weak self] _ in
+
+                    DatabaseManager.shared.setBlockList(for: targetUserID) { success in
+                        if success {
+                            print("Add user \(targetUserID) to block list")
+                        }
+                    }
+
+                self?.posts.remove(at: indexPath.row)
+                collectionView.reloadData() // 目前沒有作用
+                print("Tapped block post")
+            }
+            if targetUserID == AuthManager.shared.userID {
+                return UIMenu(title: "Post Action",
+                              image: nil,
+                              identifier: nil,
+                              options: UIMenu.Options.displayInline,
+                              children: [open])
+
+            } else {
+                return UIMenu(title: "Post Action",
+                              image: nil,
+                              identifier: nil,
+                              options: UIMenu.Options.displayInline,
+                              children: [open, block])
+
+            }
+
+        }
+        return config
+
     }
 }
 

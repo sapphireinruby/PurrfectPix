@@ -7,11 +7,23 @@
 
 import UIKit
 
+protocol CommentCollectionViewCellDelegate: AnyObject {
+    func commentCollectionViewCellDidTapComment(_ cell: CommentCollectionViewCell, index: Int)
+    // for contextMenu to tap block
+}
+
 class CommentCollectionViewCell: UICollectionViewCell {
 
     static let identifier = "CommentCollectionViewCell"
 
     private let padding: CGFloat = 24
+
+    private let paddingV: CGFloat = 4
+
+    // for contextMenu to tap block
+    private var index = 0
+
+    weak var delegate: CommentCollectionViewCellDelegate?
 
     private let label: UILabel = {
         let label = UILabel()
@@ -22,37 +34,45 @@ class CommentCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        clipsToBounds = true
+        clipsToBounds = true
         contentView.addSubview(label)
 
-        // Add constraints
+        // for contextMenu to tap block
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(didTapComment))
+        label.addGestureRecognizer(tap)
+
         // TODO auto height
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: contentView.topAnchor),
-            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            label.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            label.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            label.widthAnchor.constraint(equalToConstant: contentView.width - padding)
-//            label.heightAnchor.constraint(equalToConstant: 200)
-//            label.heightAnchor.constraint(equalToConstant: self.label.height)
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: paddingV),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: paddingV),
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
+
         ])
     }
-
 
     required init?(coder: NSCoder) {
         fatalError()
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-//        label.frame = CGRect(x: 24, y: 0, width: contentView.width-48, height: contentView.height)
+    // for contextMenu to tap block
+    @objc func didTapComment() {
+        delegate?.commentCollectionViewCellDidTapComment(self, index: index)
     }
 
-    func configure(with model: Comment) {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        label.frame = CGRect(x: 24, y: 0, width: contentView.width-48, height: contentView.height)
+    }
+
+    func configure(with model: Comment, index: Int) {
 
         label.attributedText = NSMutableAttributedString()
             .boldP1("\(model.username) ")
             .normal("\(model.comment)")
         label.sizeToFit()
+
+        self.index = index
     }
 }

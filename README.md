@@ -11,6 +11,7 @@
 </p>
 
 <p align="center">
+A Pet Only Instagram to Heal Your Soul and Put Smile on Your Face!<br />
   For animal lovers to enjoy browsing and sharing animal photos.<br />
   Simply scroll down "Explore" to be inspired and cured by animals. <br />
 <b>PurrfectPix</b> provides features to capture moments, apply filters, attach meme hashtags<br />or just share them from your device to interact and show off with other pet lovers in the community!

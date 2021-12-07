@@ -9,28 +9,6 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-//    目前要調整的地方：改username and bio 後要更新畫面。
-//    目前進來時還抓不到本人，所以無法再title 顯示username
-
-
-//    private let user: User
-
-//    private var user: User? {
-//        didSet {
-//            if let user = user {
-//                isCurrentUser = user.username == AuthManager.shared.username
-//            } else {
-//                isCurrentUser = false
-//            }
-//        }
-//    }
-
-    //        private let user: User
-    //
-    //        private var isCurrentUser: Bool {
-//    return user.username == AuthManager.shared.username ?? ""
-    //        }
-
     private var isCurrentUser: Bool {
         userID == AuthManager.shared.userID
     }
@@ -47,8 +25,6 @@ class ProfileViewController: UIViewController {
     }
 
     private var posts: [Post] = []
-
-    private var observer: NSObjectProtocol?
 
     let userID: String
 
@@ -73,7 +49,7 @@ class ProfileViewController: UIViewController {
 
  // NotificationCenter guard let VC 後打開
         if isCurrentUser {
-            observer = NotificationCenter.default.addObserver(
+            NotificationCenter.default.addObserver(
                 forName: .didPostNotification,
                 object: nil,
                 queue: .main
@@ -85,8 +61,8 @@ class ProfileViewController: UIViewController {
 
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        fetchProfileInfo(userID: userID)
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     private func fetchProfileInfo(userID: String) {
@@ -110,6 +86,8 @@ class ProfileViewController: UIViewController {
             }
         }
 
+        guard let currentUserID = AuthManager.shared.userID else { return }
+        
         // to store Profiel Header Info
         var profilePictureUrl: URL? // database沒存進去
         var buttonType: ProfileButtonType = .edit
@@ -131,7 +109,7 @@ class ProfileViewController: UIViewController {
             guard let userInfo = userInfo else { return }
 
             // Bio, username
-            username = userInfo.username.uppercased() ?? " "
+            username = userInfo.username.uppercased()
             bio = userInfo.bio ?? "No bio set up for this user."
 
             // Profile picture url
@@ -153,44 +131,16 @@ class ProfileViewController: UIViewController {
                 self.headerViewModel = ProfileHeaderViewModel(
 
                     profilePictureUrl: profilePictureUrl,
-                    followerCount: userInfo.follower?.count ?? 0,
+                    followerCount: userInfo.followers?.count ?? 0,
                     followingCount: userInfo.following?.count ?? 0,
                     postCount: postCount,
-                    buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: true) ,
-                    username: userInfo.username.uppercased() ?? "",
+                    buttonType: self.isCurrentUser ? .edit : .follow(isFollowing: userInfo.followers?.contains(currentUserID) ?? false),
+                    username: userInfo.username.uppercased(),
                     bio: userInfo.bio ?? "This user have no bio yet. \nIntroduce your pet to everyone!"
                 )
                 self.collectionView?.reloadData()
             }
         }
-
-        // if not current user's profile, get follow state
-//        if !isCurrentUser {
-//            // need to get if the current user is following the perofile user account
-//            group.enter()
-//            DatabaseManager.shared.isFollowing(targetUserID: user.username) { isFollowing in
-//                // isFollowing  function需要修改
-//                defer {
-//                    group.leave()
-//                }
-//                print(isFollowing)
-//                buttonType = .follow(isFollowing: isFollowing)
-//            }
-//        }
-
-//        group.notify(queue: .main) {
-//            // swiftlint:disable line_length
-//            self.headerViewModel = ProfileHeaderViewModel(
-//                profilePictureUrl: URL(string: profilePictureUrl),
-//                followerCount: 3,
-//                followingICount: 4,
-//                postCount: 7,
-//                buttonType: buttonType,
-//                username: username,
-//                bio: bio
-//            )
-
-//        }
 
     }
 
@@ -200,7 +150,6 @@ class ProfileViewController: UIViewController {
     }
 
     private func configureNavBar() {
-        //  目前抓不到是否是本人 所以不會顯示
         if isCurrentUser {
             navigationItem.rightBarButtonItem = UIBarButtonItem(
                 image: UIImage(systemName: "gear"),
@@ -261,8 +210,8 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let post = posts[indexPath.row]
-        let vc = PostViewController(singlePost: (post, [HomeFeedCellType]()))
-        navigationController?.pushViewController(vc, animated: true)
+        let vcPost = PostViewController(singlePost: (post, [HomeFeedCellType]()))
+        navigationController?.pushViewController(vcPost, animated: true)
     }
 
 }
@@ -300,6 +249,14 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
                 self?.present(picker, animated: true)
             }
         }))
+
+        if let popoverController = sheet.popoverPresentationController {
+
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
         present(sheet, animated: true)
     }
 }
@@ -315,7 +272,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             return
         }
         StorageManager.shared.uploadProfilePicture(
-            userID: userID,  //需要修改
+            userID: userID,
             data: image.pngData()
         ) { [weak self] success in
             if success {
@@ -350,50 +307,49 @@ extension ProfileViewController: ProfileHeaderCountViewDelegate {
 
     func profileHeaderCountViewDidTapEditProfile(_ containerView: ProfileHeaderCountView) {
 
-        let vc = EditProfileViewController()
+        let vcEdit = EditProfileViewController()
 
-        vc.completion = { [weak self] in
+        vcEdit.completion = { [weak self] in
             // refetch/reload hearder info
             guard let userID = AuthManager.shared.userID else { return }
             self?.headerViewModel = nil
             self?.fetchProfileInfo(userID: userID)
         }
-        let navVC = UINavigationController(rootViewController: vc)
+        let navVC = UINavigationController(rootViewController: vcEdit)
         present(navVC, animated: true)
     }
 
     func profileHeaderCountViewDidTapFollow(_ containerView: ProfileHeaderCountView) {
-//        DatabaseManager.shared.updateRelationship(
-//            state: .follow,
-//            for: user.username // 沒有user了
-//        ) { [weak self] success in
-//            if !success {
-//                print("failed to follow")
-//                DispatchQueue.main.async {
-//                    self?.collectionView?.reloadData()
-//                }
-//            }
-//        }
+        DatabaseManager.shared.updateRelationship(
+           state: .follow, for: userID
+        ) { [weak self] success in
+            if !success {
+                print("failed to follow")
+                DispatchQueue.main.async {
+                    self?.collectionView?.reloadData()
+                }
+            }
+        }
 
     }
 
     func profileHeaderCountViewDidTapUnFollow(_ containerView: ProfileHeaderCountView) {
-//        DatabaseManager.shared.updateRelationship(
-//            state: .unfollow,
-//            for: user.username
-//        ) { [weak self] success in
-//            if !success {
-//                print("failed to follow")
-//                DispatchQueue.main.async {
-//                    self?.collectionView?.reloadData()
-//                }
-//            }
-//        }
-//    }
 
+        DatabaseManager.shared.updateRelationship(
+            state: .unfollow,
+            for: userID
+        ) { [weak self] success in
+            if !success {
+                print("failed to follow")
+                DispatchQueue.main.async {
+                    self?.collectionView?.reloadData()
+                }
+            }
+        }
     }
 
-}
+ }
+
 
 extension ProfileViewController{
     func configureCollectionView() {

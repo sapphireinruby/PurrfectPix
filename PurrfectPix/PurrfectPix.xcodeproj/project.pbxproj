@@ -40,8 +40,8 @@
 		A78073632725A11400468B30 /* UserTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78073622725A11400468B30 /* UserTextField.swift */; };
 		A78073662729213B00468B30 /* 68349-cat-tail-wag.json in Resources */ = {isa = PBXBuildFile; fileRef = A78073652729213A00468B30 /* 68349-cat-tail-wag.json */; };
 		A780736827292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json in Resources */ = {isa = PBXBuildFile; fileRef = A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */; };
-		A780736A272A01E600468B30 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7807369272A01E600468B30 /* Media.xcassets */; };
 		A7A44E39272ED237005ECBF5 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */; };
+		A7A78D65274EDB6000B4C699 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A78D64274EDB6000B4C699 /* Setting.swift */; };
 		A7AFC766273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC765273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift */; };
 		A7AFC768273FD37F000FDF28 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC767273FD37F000FDF28 /* ProfileHeaderViewModel.swift */; };
 		A7AFC76A273FEAB6000FDF28 /* ProfileHeaderCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFC769273FEAB6000FDF28 /* ProfileHeaderCountView.swift */; };
@@ -114,8 +114,8 @@
 		A78073622725A11400468B30 /* UserTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTextField.swift; sourceTree = "<group>"; };
 		A78073652729213A00468B30 /* 68349-cat-tail-wag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "68349-cat-tail-wag.json"; sourceTree = "<group>"; };
 		A780736727292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "70835-hiro-rocket-launch-purple.json"; sourceTree = "<group>"; };
-		A7807369272A01E600468B30 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		A7A44E38272ED237005ECBF5 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		A7A78D64274EDB6000B4C699 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		A7AFC765273FD17B000FDF28 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		A7AFC767273FD37F000FDF28 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		A7AFC769273FEAB6000FDF28 /* ProfileHeaderCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCountView.swift; sourceTree = "<group>"; };
@@ -279,7 +279,7 @@
 				A7BC5E0E272209E100010F52 /* Photo */,
 				A7DDDF48271D9B1200F28B24 /* Setting */,
 				A7DDDF40271D9AA500F28B24 /* Post */,
-				A7DDDF3B271D9A3700F28B24 /* Auth */,
+				A7DDDF3B271D9A3700F28B24 /* Auth and user */,
 				A7DDDF2D271BD88F00F28B24 /* Core */,
 			);
 			path = Controllers;
@@ -291,6 +291,7 @@
 				A7DDDF4B271D9BA600F28B24 /* User.swift */,
 				A7DDDF4D271D9BBC00F28B24 /* Post.swift */,
 				A7DDDF4F271D9BCE00F28B24 /* Relationship.swift */,
+				A7A78D64274EDB6000B4C699 /* Setting.swift */,
 				A7DDDF51271D9BE400F28B24 /* Notification.swift */,
 				A74012B5273B31E2007B91F4 /* NotificationCellType.swift */,
 				A7315CFF271E27C300B58879 /* Comment.swift */,
@@ -350,7 +351,6 @@
 			children = (
 				A7DDDF5D271DA19600F28B24 /* GoogleService-Info.plist */,
 				A7DDDEFC271B2E7500F28B24 /* Assets.xcassets */,
-				A7807369272A01E600468B30 /* Media.xcassets */,
 				A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */,
 				A7DDDEF3271B2E7200F28B24 /* AppDelegate.swift */,
 				A77A1ED4271FC7DA0072A1F6 /* Extensions.swift */,
@@ -371,13 +371,13 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		A7DDDF3B271D9A3700F28B24 /* Auth */ = {
+		A7DDDF3B271D9A3700F28B24 /* Auth and user */ = {
 			isa = PBXGroup;
 			children = (
 				A7DDDF3C271D9A6600F28B24 /* SignInViewController.swift */,
 				A7DDDF3E271D9A7800F28B24 /* SignUpViewController.swift */,
 			);
-			path = Auth;
+			path = "Auth and user";
 			sourceTree = "<group>";
 		};
 		A7DDDF40271D9AA500F28B24 /* Post */ = {
@@ -481,7 +481,6 @@
 				A780736827292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json in Resources */,
 				A78073662729213B00468B30 /* 68349-cat-tail-wag.json in Resources */,
 				A7DDDEFD271B2E7500F28B24 /* Assets.xcassets in Resources */,
-				A780736A272A01E600468B30 /* Media.xcassets in Resources */,
 				A7DDDF5E271DA19700F28B24 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,6 +587,7 @@
 				A7DDDEF8271B2E7200F28B24 /* HomeViewController.swift in Sources */,
 				A7DDDF4C271D9BA600F28B24 /* User.swift in Sources */,
 				A74012BA273C0655007B91F4 /* PurrFollowButton.swift in Sources */,
+				A7A78D65274EDB6000B4C699 /* Setting.swift in Sources */,
 				A77A1ECB271F916F0072A1F6 /* PostActionsCollectionViewCell.swift in Sources */,
 				A7DDDF3F271D9A7800F28B24 /* SignUpViewController.swift in Sources */,
 				A77A1EBE271F80120072A1F6 /* PostLikesCollectionViewCellViewModel.swift in Sources */,
@@ -754,12 +754,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PurrfectPix/PurrfectPix.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = UQWW588DMN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PurrfectPix/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PurrfectPix;
-				INFOPLIST_KEY_NSCameraUsageDescription = "for capturing photos";
+				INFOPLIST_KEY_NSCameraUsageDescription = "for app to uses the camera to capture cute photo of Animals.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "for you to choose photos to upload";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -771,7 +771,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AmberL.PurrfectPix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -788,12 +788,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PurrfectPix/PurrfectPix.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = UQWW588DMN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PurrfectPix/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PurrfectPix;
-				INFOPLIST_KEY_NSCameraUsageDescription = "for capturing photos";
+				INFOPLIST_KEY_NSCameraUsageDescription = "for app to uses the camera to capture cute photo of Animals.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "for you to choose photos to upload";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -805,7 +805,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AmberL.PurrfectPix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

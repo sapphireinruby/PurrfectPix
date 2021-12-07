@@ -17,7 +17,7 @@ final class CommentBarView: UIView, UITextFieldDelegate {
 
     private let button: UIButton = {
         let button = UIButton()
-        button.setTitle("Done", for: .normal)
+        button.setTitle("Submit", for: .normal)
         button.setTitleColor(.P2, for: .normal)
         return button
     }()
@@ -55,14 +55,14 @@ final class CommentBarView: UIView, UITextFieldDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         button.sizeToFit()
-        button.frame = CGRect(x: width-button.width-24, //
-                              y: (height-button.height)/2,
+        button.frame = CGRect(x: width-button.width-24, // 12-text-button-12
+                              y: (height-button.height)/2, //
                               width: button.width,
                               height: button.height)
 
         textfield.frame = CGRect(x: 16, y: (height-50)/2,
                                  width: width-button.width-56,
-                                 height: 50)
+                                 height: 40)
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

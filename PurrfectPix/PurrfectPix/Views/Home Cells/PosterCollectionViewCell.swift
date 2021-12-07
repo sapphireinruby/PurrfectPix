@@ -9,14 +9,16 @@ import UIKit
 import SDWebImage
 
 protocol PosterCollectionViewCellDelegate: AnyObject {
-    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell)
-    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell)
-
+    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell, index: Int)
+    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell, index: Int)
+    func posterCollectionViewCellDidTapUserPic(_ cell: PosterCollectionViewCell, index: Int)
 }
 
 final class PosterCollectionViewCell: UICollectionViewCell {
     
     static let identifer = "PosterCollectionViewCell"
+
+    private var index = 0
 
     // use delagate weak to avoid the risk of a "strong reference cycle" aka “retain cycle”
     weak var delegate: PosterCollectionViewCellDelegate?
@@ -64,16 +66,26 @@ final class PosterCollectionViewCell: UICollectionViewCell {
         usernameLabel.isUserInteractionEnabled = true // tap the name to show the user profile
         usernameLabel.addGestureRecognizer(tap)
 
+        // tap user picture
+        let tapPic = UITapGestureRecognizer(target: self, action: #selector(didTapUserPic))
+        imageView.isUserInteractionEnabled = true // tap the name to show the user profile
+        imageView.addGestureRecognizer(tapPic)
+
+
     }
 
     // action selector
     @objc func didTapMore() {
-        delegate?.posterCollectionViewCellDidTapMore(self)
+        delegate?.posterCollectionViewCellDidTapMore(self, index: index)
         // passing a reference of caller of a delegate function
     }
 
     @objc func didTapUsername() {
-        delegate?.posterCollectionViewCellDidTapUsername(self)
+        delegate?.posterCollectionViewCellDidTapUsername(self, index: index)
+    }
+
+    @objc func didTapUserPic() {
+        delegate?.posterCollectionViewCellDidTapUserPic(self, index: index)
     }
 
     required init? (coder: NSCoder) {
@@ -87,7 +99,6 @@ final class PosterCollectionViewCell: UICollectionViewCell {
         let imagePadding: CGFloat = 4
         let imageSize: CGFloat = contentView.height - (imagePadding * 2)
 
-        // protfile image
         imageView.frame = CGRect(x: imagePadding * 6,
                                  y: imagePadding,
                                  width: imageSize,
@@ -95,7 +106,6 @@ final class PosterCollectionViewCell: UICollectionViewCell {
         )
         imageView.layer.cornerRadius = imageSize / 2
 
-        // usernameLabel
         usernameLabel.sizeToFit()
         usernameLabel.frame = CGRect(x: imageView.right + 16,
                                      y: 0,
@@ -103,7 +113,6 @@ final class PosterCollectionViewCell: UICollectionViewCell {
                                      height: contentView.height
         )
 
-        // moreButton
         moreButton.frame = CGRect(x: contentView.width-55-16,
                                   y: (contentView.height - 50) / 2,
                                   width: 55,
@@ -119,11 +128,12 @@ final class PosterCollectionViewCell: UICollectionViewCell {
 
     }
 
-    func configure(with viewModel: PosterCollectionViewCellViewModel) {
+    func configure(with viewModel: PosterCollectionViewCellViewModel, index: Int) {
         // the username that setted up on viewModel file, will get from data
 
+        self.index = index
+
         usernameLabel.text = viewModel.username
-//        imageView.sd_setImage(with: viewModel.profilePictureURL, completed: nil)
         imageView.sd_setImage(with:  viewModel.profilePictureURL, placeholderImage: UIImage(systemName: "person.circle"))
         imageView.tintColor = .P1
 

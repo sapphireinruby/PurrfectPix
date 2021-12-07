@@ -72,7 +72,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     private let agreetmentButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.P1, for: .normal)
-        button.setTitle("By click Sing Up, you agreeto to our Terms.", for: .normal)
+        button.setTitle("By Click Sing Up, \nYou Agree to Our Terms Below.", for: .normal)
+        button.titleLabel?.lineBreakMode = .byWordWrapping // multi-line text in UIButton
+        button.titleLabel?.textAlignment = .center
         return button
     }()
 
@@ -123,7 +125,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         signUpButton.frame = CGRect(x: 35, y: passwordField.bottom+16, width: view.width-70, height: 50)
 
 //        agreetmentLabel.frame = CGRect(x: 35, y: signUpButton.bottom + 24, width: view.width-70, height: 40)
-        agreetmentButton.frame = CGRect(x: 35, y: signUpButton.bottom + 8, width: view.width-70, height: 40)
+        agreetmentButton.frame = CGRect(x: 35, y: signUpButton.bottom + 24, width: view.width-70, height: 40)
 
         termsButton.frame = CGRect(x: 35, y: agreetmentButton.bottom + 16, width: view.width-70, height: 40)
         privacyButton.frame = CGRect(x: 35, y: termsButton.bottom + 8, width: view.width-70, height: 40)
@@ -182,6 +184,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                 self?.present(picker, animated: true)
             }
         }))
+        if let popoverController = sheet.popoverPresentationController {
+
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
         present(sheet, animated: true)
     }
 
@@ -258,11 +266,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                                       message: "Please make sure to fill all fields and have a password longer than 6 characters.",
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+
+        if let popoverController = alert.popoverPresentationController {
+
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
         present(alert, animated: true)
     }
 
     @objc func didTapTerms() {
-        guard let url = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") else {
+        guard let url = URL(string: "https://www.eulatemplate.com/live.php?token=RLsPxkgXpniiWyNYPWeKa2mewR1GnuiE") else {
             return
         }
         let vcSF = SFSafariViewController(url: url)
@@ -270,7 +286,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
 
     @objc func didTapPrivacy() {
-        guard let url = URL(string: "https://www.privacypolicies.com/live/dd1fde8e-ef94-48a1-8b08-49b95c29ac5e") else {
+        guard let url = URL(string: " ") else {
             return
         }
         let vcWeb = SFSafariViewController(url: url)

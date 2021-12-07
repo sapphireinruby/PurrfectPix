@@ -11,17 +11,11 @@ import Foundation
 
 final class DatabaseManager {
 
-    static let shared = DatabaseManager()  // singleton
-    // Private constructor
+    static let shared = DatabaseManager()
+
     private init() {}
 
     let database = Firestore.firestore()
-
-
-    // Find posts from a given user for profile tab
-    // - Parameters:
-    // - username: UserID ** to query
-    // - completion: Result callback
 
     public func posts(
         
@@ -62,7 +56,6 @@ final class DatabaseManager {
         }
     }
 
-
 // MARK: insert postCount +=1, under users
     // Create new post
     // - Parameters:
@@ -71,25 +64,10 @@ final class DatabaseManager {
 
     public func createPost(newPost: Post, completion: @escaping (Bool) -> Void) {
 
-        guard let userID = AuthManager.shared.userID else {
+        guard AuthManager.shared.userID != nil else {
             completion(false)
             return
         }
-        // insert postCount +=1, under collection("users")
-//        let userRef = database.collection("users").document(userID)
-//        do {
-//
-//            try userRef.setData(from: User) { error in
-//                if let error = error {
-//                    completion(false)
-//                } else {
-//                    completion(error == nil)
-//                }
-//            }
-//        } catch {
-//            print("Add post count fails")
-//
-//        }
 
         var post = newPost
         let reference = database.collection("posts").document(newPost.postID)
@@ -215,37 +193,46 @@ final class DatabaseManager {
         }
     }
 
-    // Get users that parameter username follows
+    // Get posts that current user follows for home
     // - Parameters:
-    //   - username: Query username
+    //   - username: Query userID
     //   - completion: Result callback
-    public func following(for userID: String, completion: @escaping ([String]) -> Void) {
-        
-        let ref = database.collection("users").document(userID)
+    public func following(for userID: String, completion: @escaping ([Post]) -> Void) {
 
-        ref.getDocument { (querySnapshot, error) in
-            if let user = try? querySnapshot?.data(as: User.self) {
+        //  1. 拿到每個following 的UserID 然後找每個posts下面 有UserID 的document
+        let ref = database.collection("posts").order(by: "postedDate", descending: true)
 
-                var usernames = [String]()
+        ref.getDocuments { snapshot, error in
 
-                user.following?.forEach({ userID in
-                    self.fetchUser(userID: userID) { user in
-                        usernames.append(user.username)
-                    }
-                })
-                completion(usernames)
-            } else {
-              print("Can't fetch user info QQ")
+            guard let posts = snapshot?.documents.compactMap({ // with extension for decode
+
+                Post(with: $0.data())  // dictionary
+            }),
+            error == nil else {
+                return
             }
+
+            DatabaseManager.shared.getUserInfo(userID: userID) { user in
+                var newPost = posts.filter { post in
+                    if post.userID == userID {
+                        return true
+                    } else {
+                        guard let following = user?.following else { return false }
+                        if following.contains(post.userID) {
+                            return true
+                        } else { return false }
+                    }
+                }
+                completion(newPost)
+            }
+
         }
     }
-    
-    
 
     // MARK: notification related
 
-    /// Get notifications for current user
-    /// - Parameter completion: Result callback
+    // Get notifications for current user
+    // - Parameter completion: Result callback
     public func getNotifications(
         completion: @escaping ([PurrNotification]) -> Void
     ) {
@@ -270,7 +257,7 @@ final class DatabaseManager {
 
     // Creates new notification
     // - Parameters:
-    ///   - identifer: New notification I
+    //   - identifer: New notification I
     //   - data: Notification data
     //   - username: target username
     public func insertNotification(
@@ -318,7 +305,7 @@ final class DatabaseManager {
     //   - state: State to update to
     //   - targetUserID: Other user
     //   - completion: Result callback
-    public func updateRelationship(user: User, state: RelationshipState, for targetUserID: String,
+    public func updateRelationship(state: RelationshipState, for targetUserID: String,
         completion: @escaping (Bool) -> Void
     ) {
         guard let currentUserID = AuthManager.shared.userID else {
@@ -337,10 +324,10 @@ final class DatabaseManager {
             // 1. Remove follower for currentUser following list, delete targetUserID from 自己的 following array
 
             currentFollowing.updateData([
-                   "following": FieldValue.arrayRemove(["targetUserID"])
+                   "following": FieldValue.arrayRemove([targetUserID])
                ])
             do {
-                try currentFollowing.setData(from: user)
+                try currentFollowing.setData(from: currentUserID)
             } catch {
                 // error
                 print("Delete target user from following list fails")
@@ -349,11 +336,11 @@ final class DatabaseManager {
             // 2. Remove currentUser from targetUser followers list, delete currentUserID from 對方的 followers, followers.remove(currentUserID)
 
          targetUserFollowers.updateData([
-                "followers": FieldValue.arrayRemove(["currentUserID"])
+                "followers": FieldValue.arrayRemove([currentUserID])
             ])
 
             do {
-                try targetUserFollowers.setData(from: user)
+                try targetUserFollowers.setData(from: targetUserID)
             } catch {
                 // error
                 print("Delete from target user's followers list fails")
@@ -365,10 +352,10 @@ final class DatabaseManager {
             // 1. Add target user to self's following list 加入對方到自己的 追蹤中 currentFollowing
 
            currentFollowing.updateData([
-                   "followers" : FieldValue.arrayUnion(["targetUserID"])
+                   "following" : FieldValue.arrayUnion([targetUserID])
                ])
         do {
-            try currentFollowing.setData(from: user)
+            try currentFollowing.setData(from: currentUserID)
         } catch {
             // error
             print("Follow target user fails")
@@ -376,10 +363,10 @@ final class DatabaseManager {
 
            // 2. Add currentUser to targetUser followers list 加入自己成對方的追蹤者 targetUserFollowers
             targetUserFollowers.updateData([
-             "followers" : FieldValue.arrayUnion(["currentUserID"])
+             "followers": FieldValue.arrayUnion([currentUserID])
                ])
             do {
-                try targetUserFollowers.setData(from: user)
+                try targetUserFollowers.setData(from: targetUserID)
             } catch {
                 // error
                 print("Add to target user's followers list fails")
@@ -388,6 +375,7 @@ final class DatabaseManager {
             completion(true)
         }
     }
+
 
     // MARK: - User Info
 
@@ -401,11 +389,12 @@ final class DatabaseManager {
         completion: @escaping (User?) -> Void
     ) {
 //        guard let userID = AuthManager.shared.userID else { return }
-        let ref = database.collection("users").document(userID)
+        let ref = database.collection("users").document(userID) // 過濾黑名單留言：有進來 有userID
         ref.getDocument { document, error in
             guard let document = document,
             document.exists,
-            let user = try? document.data(as: User.self) else{
+            let user = try? document.data(as: User.self) else {
+                print("Get user info from getUserInfo() failed")
                 return
             }
 
@@ -434,8 +423,10 @@ final class DatabaseManager {
                  user.bio = bio
                  do {
                     try ref.setData(from: user)
+                     completion(true)
                  } catch {
-                    print(error)
+                     print(error)
+                     completion(error == nil)
                  }
         }
     }
@@ -447,7 +438,6 @@ final class DatabaseManager {
         userID: String,
         completion: @escaping ((followers: Int, following: Int, posts: Int)) -> Void
     ) {
-//        let postRef = database.collection("posts")
         let docRef = database.collection("users").document(userID)
 
         var posts = 0
@@ -462,164 +452,7 @@ final class DatabaseManager {
                 print("Document does not exist")
             }
         }
-//
-//        let group = DispatchGroup()
-//        group.enter()
-//        group.enter()
-//        group.enter()
-//
-//        postRef.getDocuments { snapshot, error in
-//            defer {
-//                group.leave()
-//            }
-//            let query = postRef.whereField("userID", isEqualTo: userID) { snapshot, error in
-//                // 錯誤訊息 Type of expression is ambiguous without more context 應該是argument 或return type錯誤
-//                guard let count = snapshot.size, error == nil else {
-//                    return
-//                }
-//                posts = count
-//            }
-//
-//        }
-//        // 還是要整包抓下來 再拿field裡面的count
-//
-//        userRef.getDocument(completion: <#T##FIRDocumentSnapshotBlock##FIRDocumentSnapshotBlock##(DocumentSnapshot?, Error?) -> Void#>)
-//
-//        userRef.where("followers").get() { snapshot, error in
-//            defer {
-//                group.leave()
-//            }
-//
-//            guard let count = snapshot?.count, error == nil else {
-//                return
-//            }
-//            followers = count
-//        }
-//
-//        userRef.where("following").get() { snapshot, error in
-//            defer {
-//                group.leave()
-//            }
-//
-//            guard let count = snapshot?.documents.count, error == nil else {
-//                return
-//            }
-//            following = count
-//        }
-//
-//        group.notify(queue: .global()) {
-//            let result = (
-//                followers: followers,
-//                following: following,
-//                posts: posts
-//            )
-//            completion(result)
-//        }
-    }
 
-    // Check if current user is following another user
-    // - Parameters:
-    //   - targetUsername: Other user to check
-    //   - completion: Result callback
-    public func isFollowing(
-        targetUserID: String,
-        completion: @escaping (Bool) -> Void
-    ) {
-        guard let currentUserID = AuthManager.shared.userID else {
-            completion(false)
-            return
-        }
-
-        let ref = database.collection("users")
-            .document(currentUserID) // 在自己的following裏面 有無對方的ID 還需要修改
-        // ref.whereField("following", isEqualTo: "targetUserID")
-        ref.getDocument { snapshot, error in
-            guard snapshot?.data() != nil, error == nil else {
-                // Not following
-                completion(false)
-                return
-            }
-            // following
-            completion(true)
-        }
-    }
-
-    // Get followers for user
-    // - Parameters:
-    //   - UserID: UserID to query
-    //   - completion: Result callback
-    public func followers(for userID: String, completion: @escaping ([String]) -> Void) {
-        guard let currentUserID = AuthManager.shared.userID else {
-            completion([])
-            return
-        }
-        let ref = database.collection("users").document(currentUserID)
-        // 或列出自己的followers就好
-        // 再建立一個collection 存入document 等到生成table view實在顯示
-
-//        ref.get() { snapshot, error in
-//            guard let usernames = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
-//                completion([])
-//                return
-//            }
-//            completion(usernames)  //  user要轉username
-//        }
-    }
-
-
-
-
-    // MARK: - Comment
-
-    // Create a comment
-    // - Parameters:
-    //   - comment: Comment model
-    //   - postID: post id
-    //   - owner: username who owns post
-    //   - completion: Result callback
-    public func createComments(
-        comment: Comment,
-        postID: String,
-        owner: String,
-        completion: @escaping (Bool) -> Void
-    ) {
-        let newIdentifier = "\(postID)_\(comment.username)_\(Date().timeIntervalSince1970)_\(Int.random(in: 0...1000))"
-        let ref = database.collection("posts")
-            .document(postID)
-            .collection("comments")
-            .document(newIdentifier)
-        guard let data = comment.asDictionary() else { return }
-        ref.setData(data) { error in
-            completion(error == nil)
-        }
-    }
-
-    // Get comments for given post
-    // - Parameters:
-    //   - postID: Post id to query
-    //   - owner: Username who owns post
-    //   - completion: Result callback
-    public func getComments(
-        postID: String,
-        owner: String,
-        completion: @escaping ([Comment]) -> Void
-    ) {
-        let ref = database.collection("users")
-            .document(owner)
-            .collection("posts")
-            .document(postID)
-            .collection("comments")
-        ref.getDocuments { snapshot, error in
-            guard let comments = snapshot?.documents.compactMap({
-                Comment(with: $0.data())
-            }),
-            error == nil else {
-                completion([])
-                return
-            }
-
-            completion(comments)
-        }
     }
 
     // MARK: - Liking
@@ -692,28 +525,132 @@ final class DatabaseManager {
         }
     }
 
-
-    // Get comments for given post
+    // Get comments for given post and filter blocklist
     // - Parameters:
     //   - postID: Post id to query
-    //   - owner: Username who owns post
     //   - completion: Result callback
     public func getComments(
         postID: String,
-        completion: @escaping ([Comment]) -> Void
+        completion: @escaping (Result<[Comment], Error>) -> Void
     ) {
-        let ref = database.collection("posts")
-            .document(postID).collection("comments")
-        ref.getDocuments { snapshot, error in
-            guard let comments = snapshot?.documents.compactMap({
-                Comment(with: $0.data())
-            }),
-            error == nil else {
-                completion([])
-                return
+        let concurrentQueue = DispatchQueue(label: "concurrentQueue", attributes: .concurrent)
+        let semaphore = DispatchSemaphore(value: 0)
+
+        var blockedUsers = [String]()
+        concurrentQueue.async() {
+            guard let currentUserID = AuthManager.shared.userID else { return }
+            DatabaseManager.shared.getUserInfo(userID: currentUserID) { user in
+                blockedUsers = user?.blocking ?? [String]()
+                semaphore.signal()
+            }
+        }
+
+        concurrentQueue.async() {
+              semaphore.wait()
+            let ref = self.database.collection("posts").document(postID).collection("comments")
+            ref.getDocuments { snapshot, error in
+
+                guard var comments = snapshot?.documents.compactMap({
+                    Comment(with: $0.data())
+                }),
+                error == nil else {
+                    completion(.failure(error!))
+                    return
+                }
+                comments = comments.filter { comment in
+                    if blockedUsers.contains(comment.userID) {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+                completion(.success(comments))
+                semaphore.signal()
+            }
             }
 
-            completion(comments)
+    }
+
+    // check留言
+
+    func checkComments(
+        postID: String,
+        completion: @escaping (Result<[Comment], Error>) -> Void
+    ) {
+        let group = DispatchGroup()
+        var blockedUsers = [String]()
+
+        // for block list
+        guard let currentUserID = AuthManager.shared.userID else { return }
+
+        group.enter()
+        DatabaseManager.shared.getUserInfo(userID: currentUserID) { user in
+            blockedUsers = user?.blocking ?? [String]()
+
+            do {
+                group.leave()
+            }
+        }
+
+        group.enter()
+        let ref = database.collection("posts").document(postID).collection("comments")
+
+            ref.addSnapshotListener { snapshot, error in
+
+            guard let snapshot = snapshot else { return }
+
+            snapshot.documentChanges.forEach { documentChange in
+
+                if  documentChange.type == .added {
+
+                        ref.getDocuments() { (querySnapshot, err) in
+                            guard let querySnapshot = querySnapshot else { return }
+
+                            var comments = querySnapshot.documents.compactMap({
+                                Comment(with: $0.data())
+                            })
+
+                            comments = comments.filter { comment in
+                                if blockedUsers.contains(comment.userID) {
+                                    return false
+                                } else {
+                                    return true
+                                }
+                            }
+                            completion(.success(comments))
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+
+
+
+    // MARK: - blocklist
+
+    public func setBlockList(for targetUserID: String,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let currentUserID = AuthManager.shared.userID else {
+            completion(false)
+            return
+        }
+
+        let ref = database.collection("users").document(currentUserID)
+
+        // Add target user to self's blocking list
+        ref.updateData([
+            "blocking": FieldValue.arrayUnion([targetUserID]),
+            "following": FieldValue.arrayRemove([targetUserID])
+        ]) { error in
+            if let error = error {
+                print(error)
+            } else {
+                completion(true)
+            }
         }
     }
 }

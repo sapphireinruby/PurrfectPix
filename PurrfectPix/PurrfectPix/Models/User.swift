@@ -18,7 +18,7 @@ struct User: Codable {
     // community
     var following: [String]?
     var followingCount: Int?
-    var follower: [String]?
+    var followers: [String]?
     var followerCount: Int?
     var postCount: Int?
     var blocking: [String]?
@@ -41,7 +41,7 @@ struct User: Codable {
         self.profilePic = profilePic
         self.following = []
         self.followingCount = 0
-        self.follower = []
+        self.followers = []
         self.followerCount = 0
         self.postCount = 0
         self.blocking = []

@@ -15,17 +15,25 @@ final class CameraViewController: UIViewController {
     private var captureSession: AVCaptureSession?
     private let previewLayer = AVCaptureVideoPreviewLayer() // get global safe area
 
+        private let remindingLabel: UILabel = {
+            let label = UILabel()
+            label.text = "Please upload Image with Animal only.\nPost without Animal might be \nReported and Deleted. \nU•ェ•U Thank you!"
+            label.textColor = .P1
+            label.numberOfLines = 0
+            label.lineBreakMode = .byWordWrapping
+            label.textAlignment = .center
+            return label
+        }()
+
     private let cameraView = UIView()
-    // for adding a preview layer after taking photo,
-    //but before choose this one
+    // for adding a preview layer after taking photo
 
     private let shutterButton: UIButton = {
 
         let button = UIButton()
-        button.tintColor = .label
+        button.tintColor = .P1
         button.setImage(UIImage(systemName: "camera.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 60)),
                         for: .normal)
-//        button.layer.borderColor = UIColor.label.cgColor // fit in both light mode and dark mode
 
         return button
 
@@ -34,8 +42,8 @@ final class CameraViewController: UIViewController {
     private let photoPickerButton: UIButton = {
 
         let button = UIButton()
-        button.tintColor = .label
-        button.setImage(UIImage(systemName: "photo.on.rectangle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40)),
+        button.tintColor = .P2
+        button.setImage(UIImage(systemName: "photo.on.rectangle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 60)),
                         for: .normal)
         return button
 
@@ -46,6 +54,7 @@ final class CameraViewController: UIViewController {
         view.backgroundColor = .secondarySystemBackground
         title = "Take Photo"
 
+        view.addSubview(remindingLabel)
         view.addSubview(cameraView)
         view.addSubview(shutterButton)
         view.addSubview(photoPickerButton)
@@ -75,11 +84,12 @@ final class CameraViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+
         cameraView.frame = view.bounds
         // make the frame squire
         previewLayer.frame = CGRect(
             x: 0,
-            y: view.safeAreaInsets.top,
+            y: view.safeAreaInsets.top + 24,
             width: view.width,
             height: view.width
         )
@@ -88,17 +98,25 @@ final class CameraViewController: UIViewController {
 
         shutterButton.frame = CGRect(
             x: (view.width-buttonSize)/2,
-            y: view.safeAreaInsets.top + view.width + 100,
+            y: view.safeAreaInsets.top + view.width + 40,
             width: buttonSize,
             height: buttonSize
         )
-//        shutterButton.layer.cornerRadius = buttonSize/2
 
         photoPickerButton.frame = CGRect(
-            x: (shutterButton.left - (buttonSize/1.5))/2,
-            y: shutterButton.top + ((buttonSize/1.5)/2),
+            x: (view.width-buttonSize)/2,
+            y: shutterButton.bottom + 16,
             width: buttonSize,
-            height: buttonSize)
+            height: buttonSize
+        )
+
+        remindingLabel.frame = CGRect(
+            x: 32,
+            y: photoPickerButton.bottom + 8,
+            width: view.width - 64,
+            height: view.width
+        )
+
     }
 
     @objc func didTapPickPhoto() {
@@ -140,7 +158,7 @@ final class CameraViewController: UIViewController {
     }
 
     private func setUpCamera() {
-
+        captureSession = AVCaptureSession()
         guard let captureSession = captureSession else { return }
         if let device = AVCaptureDevice.default(for: .video) {
             do {
@@ -148,8 +166,7 @@ final class CameraViewController: UIViewController {
                 if captureSession.canAddInput(input) {
                     captureSession.addInput(input)
                 }
-            }
-            catch {
+            } catch {
                 print(error)
             }
 
@@ -157,12 +174,10 @@ final class CameraViewController: UIViewController {
                 captureSession.addOutput(output)
             }
 
-            // Layer
-            previewLayer.session = captureSession
-            previewLayer.videoGravity = .resizeAspectFill
-
             // for adding a preview layer after taking photo
             cameraView.layer.addSublayer(previewLayer)
+            previewLayer.session = captureSession
+            previewLayer.videoGravity = .resizeAspectFill
 
             captureSession.startRunning()
         }
@@ -190,7 +205,7 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         picker.dismiss(animated: true, completion: nil)
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
@@ -222,13 +237,13 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             return
         }
 
-        let vc = PostEditViewController(image: resizedImage)
+        let vcPost = PostEditViewController(image: resizedImage)
         // vc under photo folder
         
         if #available(iOS 14.0, *) {
-            vc.navigationItem.backButtonDisplayMode = .minimal
+            vcPost.navigationItem.backButtonDisplayMode = .minimal
         }
-        navigationController?.pushViewController(vc, animated: false)
+        navigationController?.pushViewController(vcPost, animated: false)
 
     }
 }

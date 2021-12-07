@@ -5,6 +5,7 @@ target 'PurrfectPix' do
   use_frameworks!
 
   pod 'lottie-ios'
+  pod 'IQKeyboardManagerSwift'
   pod "TTGTagCollectionView"
   pod 'JGProgressHUD'
   pod 'Hashtags'

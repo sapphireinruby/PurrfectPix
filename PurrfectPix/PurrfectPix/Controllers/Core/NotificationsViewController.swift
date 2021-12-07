@@ -357,12 +357,13 @@ extension NotificationsViewController: LikeNotificationTableViewCellDelegate, Co
             with: postID
         ) { [weak self] post in
             DispatchQueue.main.async {
-                guard let post = post else {
+                guard post != nil else {
                     let alert = UIAlertController(
                         title: "Oops",
                         message: "We are unable to open this post.",
                         preferredStyle: .alert
                     )
+
                     alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
                     self?.present(alert, animated: true)
                     return
@@ -374,4 +375,3 @@ extension NotificationsViewController: LikeNotificationTableViewCellDelegate, Co
         }
     }
 }
-

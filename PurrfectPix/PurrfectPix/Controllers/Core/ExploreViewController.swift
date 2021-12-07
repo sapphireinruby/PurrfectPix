@@ -179,7 +179,8 @@ class ExploreViewController: UIViewController, UISearchResultsUpdating {
                         return true
                     }
                 })
-                self?.collectionView.reloadData() // 要放在這程式裡 要再拿到資料後 才能reload 不會出錯
+                self?.collectionView.reloadData()
+                // position of this is important, inside the funciton so it can work
             }
         }
     }

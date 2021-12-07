@@ -1,17 +1,18 @@
 # PurrfectPix
 
 <p align="center">
-  <img width="600" src="https://github.com/sapphireinruby/PurrfectPix/blob/main/PURRFECTPIX%2012%20pro%20max%20SCREENSHOT/launch%20screen%20logo%20only.png?raw=true">
+  <img width="400" src="https://github.com/sapphireinruby/PurrfectPix/blob/main/PURRFECTPIX%2012%20pro%20max%20SCREENSHOT/launch%20screen%20logo%20only.png?raw=true">
 </p>
+<p align="center">
+A Pet Only Instagram to Heal Your Soul and Put Smile on Your Face!</p>
 
 <p align="center">
    <img src="https://img.shields.io/badge/release-1.0.0-green"> 
    <img src="https://img.shields.io/badge/built-swift-orange"> 
    <img src="https://img.shields.io/badge/build-passing-brightgreen"> 
 </p>
-
+<br>
 <p align="center">
-A Pet Only Instagram to Heal Your Soul and Put Smile on Your Face!<br />
   For animal lovers to enjoy browsing and sharing animal photos.<br />
   Simply scroll down "Explore" to be inspired and cured by animals. <br />
 <b>PurrfectPix</b> provides features to capture moments, apply filters, attach meme hashtags<br />or just share them from your device to interact and show off with other pet lovers in the community!
@@ -19,7 +20,7 @@ A Pet Only Instagram to Heal Your Soul and Put Smile on Your Face!<br />
 
 <p align="center">
   <a href="https://testflight.apple.com/join/eKRHRv2g">
-    <img width="70" src="https://github.com/sapphireinruby/PurrfectPix/blob/main/PURRFECTPIX%2012%20pro%20max%20SCREENSHOT/Purr%20app%20icon%20with%20radius.png?raw=true"> 
+    <img width="60" src="https://github.com/sapphireinruby/PurrfectPix/blob/main/PURRFECTPIX%2012%20pro%20max%20SCREENSHOT/Purr%20app%20icon%20with%20radius.png?raw=true"> 
   </a>
 </p>
 

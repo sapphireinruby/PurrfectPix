@@ -14,7 +14,7 @@ protocol PostLikesCollectionViewCellDelegate: AnyObject {
 
 class PostLikesCollectionViewCell: UICollectionViewCell {
 
-    static let identifer = "PostLikesCollectionViewCell"
+    static let identifier = "PostLikesCollectionViewCell"
 
     weak var delegate: PostLikesCollectionViewCellDelegate?
 

@@ -45,8 +45,6 @@ final class AuthManager {
         Auth.auth().currentUser?.email
     } // for computed property
 
-
-
  // for stored property
 
     // Attempt sign in
@@ -78,14 +76,7 @@ final class AuthManager {
         }
     }
 
-    // Attempt new user sign up
-    // - Parameters:
-    //   - email: Email
-    //   - username: Username
-    //   - password: Password
-    //   - profilePicture: Optional profile picture data
-    //   - completion: Callback
-    
+    // swiftlint:disable function_parameter_count
     public func signUp(
 
         userID: String,
@@ -95,6 +86,7 @@ final class AuthManager {
         profilePicture: Data?,
         completion: @escaping (Result<User, Error>) -> Void
     ) {
+        // swiftlint:enable function_parameter_count
 
         // Create account
         auth.createUser(withEmail: email, password: password) { result, error in
@@ -107,12 +99,12 @@ final class AuthManager {
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
             changeRequest?.displayName = username
             changeRequest?.commitChanges { error in
-                print("commitChangesError \(error)")
+                print("commitChangesError \(String(describing: error))")
             }
 
             guard let userID = result?.user.uid else { return }
 
-            var newUser = User(userID: userID, username: username, email: email, profilePic: "", logInCount: 0)
+            let newUser = User(userID: userID, username: username, email: email, profilePic: "", logInCount: 0)
 //            newUser.userID = userID
 
             DatabaseManager.shared.createUser(newUser: newUser) { success in
@@ -145,8 +137,7 @@ final class AuthManager {
         do {
             try auth.signOut()
             completion(true)
-        }
-        catch {
+        } catch {
             print(error)
             completion(false)
         }

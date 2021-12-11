@@ -42,7 +42,6 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         return table
     }()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,20 +53,6 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         view.addSubview(noActivityLabel)
         fetchNotifications()
-
-////       below: animationView for lottie
-//
-//        let animationView = AnimationView(name: "68349-cat-tail-wag")
-//        animationView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-//        animationView.center = self.view.center
-//        animationView.contentMode = .scaleAspectFill
-//        animationView.loopMode = .autoReverse
-//        animationView.animationSpeed = 0.5
-//        animationView.backgroundBehavior = .pauseAndRestore // restart from other tab bar item
-//
-//        view.addSubview(animationView)
-//
-//        animationView.play()
 
 }
 
@@ -88,6 +73,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     // Creates viewModels from models for notification
+    // swiftlint:disable function_body_length
     private func createViewModels() {
 
         models.forEach { model in
@@ -98,7 +84,6 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             guard let profilePictureUrl = URL(string: model.profilePictureUrl) else {
                 return
             }
-
 
             switch type {
             case .like:
@@ -149,8 +134,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         if viewModels.isEmpty {
             noActivityLabel.isHidden = false
             tableView.isHidden = true
-        }
-        else {
+        } else {
             noActivityLabel.isHidden = true
             tableView.isHidden = false
             tableView.reloadData()

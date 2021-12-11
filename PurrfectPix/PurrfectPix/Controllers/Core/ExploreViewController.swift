@@ -243,7 +243,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
                                  discoverabilityTitle: nil,
                                  attributes: .destructive,
                                  state: .off)
-            { [weak self] _ in
+            {[weak self] _ in
 
                     DatabaseManager.shared.setBlockList(for: targetUserID) { success in
                         if success {

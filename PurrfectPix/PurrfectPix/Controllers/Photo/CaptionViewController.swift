@@ -14,7 +14,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
     // show the pictre user just took
     private let image: UIImage
 
-    private let imageVIew: UIImageView = {
+    private let imageView: UIImageView = {
 
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -66,8 +66,8 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
 
-        view.addSubview(imageVIew)
-        imageVIew.image = image
+        view.addSubview(imageView)
+        imageView.image = image
         view.addSubview(textView)
 
         textView.delegate = self
@@ -136,7 +136,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
         textView.resignFirstResponder()
 
         // loading lottie play
-        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+        let animationView = self.createAnimation(name: "890-loading-animation", mood: .autoReverse)
         animationView.play()
 
         // clean the text view placeholder
@@ -225,7 +225,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
         super.viewDidLayoutSubviews()
         let size: CGFloat = view.width / 3
 
-        imageVIew.frame = CGRect(
+        imageView.frame = CGRect(
             x: (view.width-size) / 2,
             y: view.safeAreaInsets.top + 80,
             width: size,
@@ -234,7 +234,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate, TTGTextTagCol
 
         textView.frame = CGRect(
             x: 24,
-            y: imageVIew.bottom + 16,
+            y: imageView.bottom + 16,
             width: view.width - 48,
             height: 160
         )

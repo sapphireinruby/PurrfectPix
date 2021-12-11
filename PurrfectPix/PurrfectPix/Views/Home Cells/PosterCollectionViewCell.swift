@@ -16,7 +16,7 @@ protocol PosterCollectionViewCellDelegate: AnyObject {
 
 final class PosterCollectionViewCell: UICollectionViewCell {
     
-    static let identifer = "PosterCollectionViewCell"
+    static let identifier = "PosterCollectionViewCell"
 
     private var index = 0
 

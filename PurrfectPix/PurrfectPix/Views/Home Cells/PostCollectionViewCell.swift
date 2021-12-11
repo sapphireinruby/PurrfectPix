@@ -15,7 +15,7 @@ protocol PostCollectionViewCellDelegate: AnyObject {
 
 class PostCollectionViewCell: UICollectionViewCell {
     
-    static let identifer = "PostCollectionViewCell"
+    static let identifier = "PostCollectionViewCell"
 
     weak var delegate: PostCollectionViewCellDelegate?
 

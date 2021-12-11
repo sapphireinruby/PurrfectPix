@@ -15,7 +15,7 @@ protocol PostPetTagCollectionViewCellDelegate: AnyObject {
 
 class PostPetTagCollectionViewCell: UICollectionViewCell, TTGTextTagCollectionViewDelegate {
 
-    static let identifer = "PostPetTagCollectionViewCell"
+    static let identifier = "PostPetTagCollectionViewCell"
 
     // use delagate weak to avoid the risk of a "strong reference cycle" aka “retain cycle”
     weak var delegate: PostPetTagCollectionViewCellDelegate?

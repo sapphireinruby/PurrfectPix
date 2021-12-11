@@ -25,7 +25,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // CollectionView for feed
     private var collectionView: UICollectionView?
 
-    // Feed viewModels, two demensional array, each inner arry is a post or a section
+    // Feed viewModels, two dimensional array, each inner array is a post or a section
     // 7 kinds of home feed cell enums on cell type models file
     //    private var viewModels = [[HomeFeedCellType]]() {
     //        didSet {
@@ -70,7 +70,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     private func fetchPosts() {
 
-        allPosts.removeAll() // fetch 之前先清除
+        allPosts.removeAll()
+        // remove all data, to make screen empty to avoid scroll and crash due to vm created incomplete
         collectionView?.reloadData()
 
         guard AuthManager.shared.username != nil else { return }
@@ -160,8 +161,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         username: String,
         completion: @escaping (Bool) -> Void
     ) {
-        // loading lottie play
-        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+        // loading Lottie play
+        let animationView = self.createAnimation(name: "890-loading-animation", mood: .autoReverse)
         animationView.play()
 
         StorageManager.shared.downloadURL(for: model) { postURL in
@@ -218,7 +219,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
                 completion(true)
 
-                // loading lottie stop
+                // loading Lottie stop
                 animationView.stop()
                 animationView.removeFromSuperview()
 
@@ -245,7 +246,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return allPosts[section].viewModel.count
     }
 
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cellType = allPosts[indexPath.section].viewModel[indexPath.row]
@@ -256,7 +256,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         case .poster(let viewModel):
             // to dequeue the right cell
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PosterCollectionViewCell.identifer,
+                withReuseIdentifier: PosterCollectionViewCell.identifier,
                 for: indexPath
             ) as? PosterCollectionViewCell else {
                 fatalError()
@@ -270,7 +270,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         case .petTag(let viewModel):
 
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PostPetTagCollectionViewCell.identifer,
+                withReuseIdentifier: PostPetTagCollectionViewCell.identifier,
                 for: indexPath
             ) as? PostPetTagCollectionViewCell else {
                 fatalError()
@@ -284,7 +284,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         case .post(let viewModel):
 
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PostCollectionViewCell.identifer,
+                withReuseIdentifier: PostCollectionViewCell.identifier,
                 for: indexPath
             ) as? PostCollectionViewCell else {
                 fatalError()
@@ -298,7 +298,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         case .actions(let viewModel):
 
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PostActionsCollectionViewCell.identifer,
+                withReuseIdentifier: PostActionsCollectionViewCell.identifier,
                 for: indexPath
             ) as? PostActionsCollectionViewCell else {
                 fatalError()
@@ -312,7 +312,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         case .likeCount(let viewModel):
 
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PostLikesCollectionViewCell.identifer,
+                withReuseIdentifier: PostLikesCollectionViewCell.identifier,
                 for: indexPath
             ) as? PostLikesCollectionViewCell else {
                 fatalError()
@@ -325,7 +325,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         case .caption(let viewModel):
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PostCaptionCollectionViewCell.identifer,
+                withReuseIdentifier: PostCaptionCollectionViewCell.identifier,
                 for: indexPath
             ) as? PostCaptionCollectionViewCell else {
                 fatalError()
@@ -350,7 +350,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         case .timestamp(let viewModel):
 
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PostDateTimeCollectionViewCell.identifer,
+                withReuseIdentifier: PostDateTimeCollectionViewCell.identifier,
                 for: indexPath
             ) as? PostDateTimeCollectionViewCell else {
                 fatalError()
@@ -499,7 +499,7 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
                     print("Failed to updated like state with heart icon")
                     return
                 }
-                print("Updated likestate with heart icon success!")
+                print("Updated like state with heart icon success!")
             }
 
         self.collectionView?.reloadData()
@@ -536,7 +536,7 @@ extension HomeViewController: PostLikesCollectionViewCellDelegate {
 }
 
 extension HomeViewController: PostCaptionCollectionViewCellDelegate {
-    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell, index: Int) {
+    func postCaptionCollectionViewCellDidTapCaption(_ cell: PostCaptionCollectionViewCell, index: Int) {
         print("tapped caption")
 
         let postVC = PostViewController(singlePost:
@@ -552,7 +552,7 @@ extension HomeViewController {
 
     func configureCollectionView() {
 
-        // calulate the heigh dynamically for square with device width
+        // calculate the heigh dynamically for square with device width
         // view.width is the actual post size
         let collectionView = UICollectionView(
             frame: .zero,
@@ -640,37 +640,37 @@ extension HomeViewController {
         // register 7 cells
         collectionView.register(
             PosterCollectionViewCell.self,
-            forCellWithReuseIdentifier: PosterCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PosterCollectionViewCell.identifier
         )
 
         collectionView.register(
             PostPetTagCollectionViewCell.self,
-            forCellWithReuseIdentifier: PostPetTagCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PostPetTagCollectionViewCell.identifier
         )
 
         collectionView.register(
             PostCollectionViewCell.self,
-            forCellWithReuseIdentifier: PostCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PostCollectionViewCell.identifier
         )
 
         collectionView.register(
             PostActionsCollectionViewCell.self,
-            forCellWithReuseIdentifier: PostActionsCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PostActionsCollectionViewCell.identifier
         )
 
         collectionView.register(
             PostLikesCollectionViewCell.self,
-            forCellWithReuseIdentifier: PostLikesCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PostLikesCollectionViewCell.identifier
         )
 
         collectionView.register(
             PostCaptionCollectionViewCell.self,
-            forCellWithReuseIdentifier: PostCaptionCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PostCaptionCollectionViewCell.identifier
         )
 
         collectionView.register(
             PostDateTimeCollectionViewCell.self,
-            forCellWithReuseIdentifier: PostDateTimeCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PostDateTimeCollectionViewCell.identifier
         )
 
         self.collectionView = collectionView  // configuring collectionView as it's own constance, and assign it to the global property

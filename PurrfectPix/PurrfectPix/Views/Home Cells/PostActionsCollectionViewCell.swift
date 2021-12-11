@@ -18,7 +18,7 @@ protocol PostActionsCollectionViewCellDelegate: AnyObject {
 
 class PostActionsCollectionViewCell: UICollectionViewCell {
 
-    static let identifer = "PostActionsCollectionViewCell"
+    static let identifier = "PostActionsCollectionViewCell"
 
     private var index = 0
 

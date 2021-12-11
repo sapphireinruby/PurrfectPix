@@ -12,7 +12,6 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
         // 以下 apple ID sign in  第一次可以，第二次有誤
         guard let userID = AuthManager.shared.userID,
 //              let username = AuthManager.shared.username,

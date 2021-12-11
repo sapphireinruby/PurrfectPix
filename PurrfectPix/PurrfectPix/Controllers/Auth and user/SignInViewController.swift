@@ -141,7 +141,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
     func performSignIn() {
 
-        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+        let animationView = self.createAnimation(name: "890-loading-animation", mood: .autoReverse)
         animationView.play()
 
         let request = createAppleIDRequest()

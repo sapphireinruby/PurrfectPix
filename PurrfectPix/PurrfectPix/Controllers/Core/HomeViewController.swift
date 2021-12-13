@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     private let noPostLabel: UILabel = {
         let label = UILabel()
-        label.text = "You have no post yet. \nTap Camera to create you post \nor check other pets at Explore!"
+        label.text = "You have no post yet. \nTap Camera to create your post \nor check other pets at Explore!"
         label.textColor = .P1
         label.textAlignment = .center
         label.numberOfLines = 0

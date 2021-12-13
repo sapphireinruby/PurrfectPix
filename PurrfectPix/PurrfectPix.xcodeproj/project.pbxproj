@@ -54,7 +54,6 @@
 		A7DDDEF6271B2E7200F28B24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */; };
 		A7DDDEF8271B2E7200F28B24 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDEF7271B2E7200F28B24 /* HomeViewController.swift */; };
 		A7DDDEFD271B2E7500F28B24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DDDEFC271B2E7500F28B24 /* Assets.xcassets */; };
-		A7DDDF00271B2E7500F28B24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7DDDEFE271B2E7500F28B24 /* LaunchScreen.storyboard */; };
 		A7DDDF31271BD8E600F28B24 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF30271BD8E600F28B24 /* CameraViewController.swift */; };
 		A7DDDF33271BD94E00F28B24 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF32271BD94E00F28B24 /* ExploreViewController.swift */; };
 		A7DDDF35271BD96E00F28B24 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF34271BD96D00F28B24 /* NotificationsViewController.swift */; };
@@ -76,6 +75,7 @@
 		A7DDDF5A271D9E5200F28B24 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF59271D9E5200F28B24 /* AnalyticsManager.swift */; };
 		A7DDDF5C271D9E6000F28B24 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDF5B271D9E6000F28B24 /* HapticsManager.swift */; };
 		A7DDDF5E271DA19700F28B24 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7DDDF5D271DA19600F28B24 /* GoogleService-Info.plist */; };
+		A7F4FB1B27672CD500A054A9 /* LaunchScreenTwo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7F4FB1A27672CD500A054A9 /* LaunchScreenTwo.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,7 +130,6 @@
 		A7DDDEF5271B2E7200F28B24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A7DDDEF7271B2E7200F28B24 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A7DDDEFC271B2E7500F28B24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A7DDDEFF271B2E7500F28B24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7DDDF01271B2E7500F28B24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7DDDF30271BD8E600F28B24 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		A7DDDF32271BD94E00F28B24 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +152,7 @@
 		A7DDDF59271D9E5200F28B24 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		A7DDDF5B271D9E6000F28B24 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		A7DDDF5D271DA19600F28B24 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A7F4FB1A27672CD500A054A9 /* LaunchScreenTwo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreenTwo.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,7 +308,7 @@
 				A7BC5E112722109400010F52 /* PhotoCollectionViewCell.swift */,
 				A719A56C273E42F600EE6BE1 /* ListUserTableViewCell.swift */,
 				A75DE2CB27473BAB0095FA45 /* Profile Header */,
-				A7DDDEFE271B2E7500F28B24 /* LaunchScreen.storyboard */,
+				A7F4FB1A27672CD500A054A9 /* LaunchScreenTwo.storyboard */,
 				A780736027259E9200468B30 /* SignInHeaderView.swift */,
 				A78073622725A11400468B30 /* UserTextField.swift */,
 			);
@@ -477,10 +477,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7BCBC70272FD5C10005D7BE /* 890-loading-animation.json in Resources */,
-				A7DDDF00271B2E7500F28B24 /* LaunchScreen.storyboard in Resources */,
 				A780736827292A9D00468B30 /* 70835-hiro-rocket-launch-purple.json in Resources */,
 				A78073662729213B00468B30 /* 68349-cat-tail-wag.json in Resources */,
 				A7DDDEFD271B2E7500F28B24 /* Assets.xcassets in Resources */,
+				A7F4FB1B27672CD500A054A9 /* LaunchScreenTwo.storyboard in Resources */,
 				A7DDDF5E271DA19700F28B24 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,17 +618,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		A7DDDEFE271B2E7500F28B24 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A7DDDEFF271B2E7500F28B24 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		A7DDDF02271B2E7500F28B24 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -752,9 +741,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = PurrfectPix/PurrfectPix.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = UQWW588DMN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PurrfectPix/Info.plist;
@@ -762,7 +752,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "for app to uses the camera to capture cute photo of Animals.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "for you to choose photos to upload";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreenTwo;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -786,9 +776,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = PurrfectPix/PurrfectPix.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = UQWW588DMN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PurrfectPix/Info.plist;
@@ -796,7 +787,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "for app to uses the camera to capture cute photo of Animals.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "for you to choose photos to upload";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreenTwo;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

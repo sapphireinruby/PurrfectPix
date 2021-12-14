@@ -166,8 +166,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             AuthManager.shared.signOut { success in
                 if success {
                     DispatchQueue.main.async {
-                        let vc = SignInViewController()
-                        let navVC = UINavigationController(rootViewController: vc)
+                        let signInVc = SignInViewController()
+                        let navVC = UINavigationController(rootViewController: signInVc)
                         navVC.modalPresentationStyle = .fullScreen
                         self?.present(navVC, animated: true)
                     }

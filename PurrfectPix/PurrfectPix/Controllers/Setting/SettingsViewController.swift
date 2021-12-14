@@ -17,6 +17,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return table
     }()
 
+    deinit {
+        print("~~~~~~~OK~~~~~~~")
+    }
+
     private var sections: [SettingsSection] = []
 
     override func viewDidLoad() {
@@ -166,10 +170,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             AuthManager.shared.signOut { success in
                 if success {
                     DispatchQueue.main.async {
+
+                        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
                         let signInVc = SignInViewController()
-                        let navVC = UINavigationController(rootViewController: signInVc)
-                        navVC.modalPresentationStyle = .fullScreen
-                        self?.present(navVC, animated: true)
+                        window.rootViewController = signInVc
+
+//                        let navVC = UINavigationController(rootViewController: signInVc)
+//                        navVC.modalPresentationStyle = .fullScreen
+//                        self?.present(navVC, animated: true)
                     }
                 }
             }

@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
 
         if let user = Auth.auth().currentUser {
-            print("You're sign in as \(user.uid), email: \(user.email ?? "")")
+            print("User is sign in as \(user.uid), email: \(user.email ?? "")")
         }
 
 //        // signOut user each time app launch

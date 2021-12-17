@@ -65,7 +65,7 @@ class TabBarViewController: UITabBarController {
         self.tabBar.tintColor = .P2 // for all tab bar selected state
 
         // Set controllers
-        self.setViewControllers([nav1, nav2, nav3, nav5], animated: false)
+        self.setViewControllers([nav2, nav1, nav3, nav5], animated: false)
 
     }
 

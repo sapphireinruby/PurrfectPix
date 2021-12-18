@@ -6,19 +6,17 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseFirestoreSwift
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     private let noPostLabel: UILabel = {
         let label = UILabel()
-        label.text = "You have no post yet. \nTap Camera to create your post \nor check other pets at Explore!"
+        label.text = "If you have no post yet, \nTap Camera to create your post \nor check other pets at Explore!"
         label.textColor = .P1
         label.textAlignment = .center
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
-        label.isHidden = true
+        label.isHidden = false
         return label
     }()
 
@@ -34,8 +32,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //    }
 
     private var allPosts = [(post: Post, owner: String, viewModel:[HomeFeedCellType])]()
-
-    let dbFire = Firestore.firestore()
 
     override func viewDidLoad() {
 
@@ -147,8 +143,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         if allPosts.isEmpty {
             noPostLabel.isHidden = false
-        }
-        else {
+        } else {
             noPostLabel.isHidden = true
         }
         collectionView?.reloadData()
@@ -226,13 +221,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
 
         }
-
-//        if allPosts.isEmpty {
-//            noPostLabel.isHidden = false
-//        }
-//        else {
-//            noPostLabel.isHidden = true
-//        }
 
     }
 
@@ -477,7 +465,6 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
         guard let userID = AuthManager.shared.userID else { return }
         if allPosts[index].post.likers.contains(userID) {
 
-            // todo: remove liker from post
             let likerIndex = allPosts[index].post.likers.firstIndex(of: userID)
             allPosts[index].post.likers.remove(at: likerIndex!)
 
@@ -486,7 +473,6 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
         } else {
             allPosts[index].post.likers.append(userID)
             allPosts[index].viewModel[3] = .actions(viewModel: PostActionsCollectionViewCellViewModel(isLiked: true))
-
         }
 
         let likers = allPosts[index].post.likers
@@ -504,7 +490,7 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
         self.collectionView?.reloadData()
         
-        // create notification
+        // create notification in future
 
     }
 

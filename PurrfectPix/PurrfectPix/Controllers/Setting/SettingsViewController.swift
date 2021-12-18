@@ -38,7 +38,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     }
 
-
     @objc func didTapClose() {
         dismiss(animated: true, completion: nil)
     }
@@ -56,7 +55,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                     image: UIImage(systemName: "star"),
                     color: .systemGray2
                 ) {
-
                 },
                 SettingOption(
                     title: "Share PurrfectPix",
@@ -91,8 +89,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                     guard let url = URL(string: "https://www.privacypolicies.com/live/dd1fde8e-ef94-48a1-8b08-49b95c29ac5e") else {
                         return
                     }
-                    let vc = SFSafariViewController(url: url)
-                    self?.present(vc, animated: true, completion: nil)
+                    let vcSF = SFSafariViewController(url: url)
+                    self?.present(vcSF, animated: true, completion: nil)
 
                 },
                 SettingOption(
@@ -166,10 +164,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             AuthManager.shared.signOut { success in
                 if success {
                     DispatchQueue.main.async {
-                        let vc = SignInViewController()
-                        let navVC = UINavigationController(rootViewController: vc)
-                        navVC.modalPresentationStyle = .fullScreen
-                        self?.present(navVC, animated: true)
+
+                        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
+                        let signInVc = SignInViewController()
+                        window.rootViewController = signInVc
+
                     }
                 }
             }

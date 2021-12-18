@@ -12,9 +12,7 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // 以下 apple ID sign in  第一次可以，第二次有誤
         guard let userID = AuthManager.shared.userID,
-//              let username = AuthManager.shared.username,
               let email = AuthManager.shared.email
         else {
                   print("Create tab bar with user info error")
@@ -36,12 +34,6 @@ class TabBarViewController: UITabBarController {
         let nav4 = UINavigationController(rootViewController: activity)
         let nav5 = UINavigationController(rootViewController: profile)
 
-        nav1.navigationBar.tintColor = .P1
-        nav2.navigationBar.tintColor = .P1
-        nav3.navigationBar.tintColor = .P1
-        nav4.navigationBar.tintColor = .P1
-        nav5.navigationBar.tintColor = .P1
-
         if #available(iOS 14.0, *) {
             home.navigationItem.backButtonDisplayMode = .minimal
             explore.navigationItem.backButtonDisplayMode = .minimal
@@ -62,10 +54,10 @@ class TabBarViewController: UITabBarController {
         nav3.tabBarItem = UITabBarItem(title: "Camera", image: UIImage(systemName: "camera"), tag: 1 )
         nav4.tabBarItem = UITabBarItem(title: "Notifications", image: UIImage(systemName: "bell"), tag: 1 )
         nav5.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.circle"), tag: 1 )
-        self.tabBar.tintColor = .P2 // for all tab bar selected state
+        self.tabBar.tintColor = .P2 // at selected state
 
         // Set controllers
-        self.setViewControllers([nav1, nav2, nav3, nav5], animated: false)
+        self.setViewControllers([nav2, nav1, nav3, nav5], animated: false)
 
     }
 

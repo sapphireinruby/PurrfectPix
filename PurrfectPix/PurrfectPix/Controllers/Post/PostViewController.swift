@@ -3,7 +3,7 @@
 //  PurrfectPix
 //
 //  Created by Amber on 10/18/21.
-import FirebaseFirestore
+
 import UIKit
 import CoreAudio
 import AVFoundation
@@ -38,7 +38,6 @@ class PostViewController: UIViewController, UICollectionViewDataSource {
         fatalError()
     }
 
-    let dbFire = Firestore.firestore()
 
     // MARK: - Lifecycle
 

@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseFirestoreSwift
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -34,8 +32,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //    }
 
     private var allPosts = [(post: Post, owner: String, viewModel:[HomeFeedCellType])]()
-
-    let dbFire = Firestore.firestore()
 
     override func viewDidLoad() {
 

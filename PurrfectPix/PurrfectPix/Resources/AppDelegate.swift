@@ -22,8 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
 
-
-
 //        // signOut user for testing
 //
 //        do { try Auth.auth().signOut() }

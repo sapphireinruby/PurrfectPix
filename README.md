@@ -19,7 +19,7 @@ A Pet Only Instagram to Heal Your Soul and Put Smile on Your Face!</p>
 </p>
 
 <p align="center">
-  <a href="https://testflight.apple.com/join/eKRHRv2g">
+  <a href="https://apps.apple.com/us/app/purrfectpix/id1592279373">
     <img width="167" src="https://github.com/sapphireinruby/PurrfectPix/blob/main/PURRFECTPIX%2012%20pro%20max%20SCREENSHOT/App_Store_Badge.png?raw=true"> 
   </a>
 </p>

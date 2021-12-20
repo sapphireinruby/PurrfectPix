@@ -156,6 +156,7 @@ avoid concurrency problems.
 
 | Version | Date | Description                                                                                     |
 | :-------| :----|:------------------------------------------------------------------------------------------------|
+| 1.0.1   | 2021.12.20 | Changed launch screen, added Home screen instruction msg, and removed double imported SDK|
 | 1.0.0   | 2021.12.15 | Launch in App Store|
 | 0.1.0   | 2021.12.01 | External testing in TestFlight|
 

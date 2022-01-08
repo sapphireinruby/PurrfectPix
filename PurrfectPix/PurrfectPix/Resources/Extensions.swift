@@ -59,7 +59,7 @@ extension UIFont {
 }
 
 extension DateFormatter {
-    // expensive for memeory to initialize everytime, for better app performance
+    // expensive for memory to initialize every time, for better app performance
     static let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -103,7 +103,6 @@ extension Decodable {
 }
 
 extension Encodable {
-    // 不能用了
     // Convert model to dictionary
     // - Returns: Optional dictionary representation
     func asDictionary() -> [String: Any]? {
@@ -122,8 +121,8 @@ extension Encodable {
 enum BaseColor: String {
 
     // swiftlint:disable identifier_name
-    case P1 // 889CEB light lavander purple
-    case P2 // D077D8 pinkpurple
+    case P1 // 889CEB light lavender purple
+    case P2 // D077D8 pink-purple
 
 }
 
@@ -206,7 +205,7 @@ extension NSMutableAttributedString {
 
 extension UIViewController {
 
-    func setupAnimation(name: String, mood: LottieLoopMode ) -> AnimationView {
+    func createAnimation(name: String, mood: LottieLoopMode ) -> AnimationView {
 
             let animationView = AnimationView(name: name)
 
@@ -214,11 +213,11 @@ extension UIViewController {
             animationView.center = self.view.center
             animationView.contentMode = .scaleAspectFit
 
-            animationView.loopMode = mood
+            animationView.loopMode = .loop
             animationView.animationSpeed =  1
             animationView.backgroundBehavior = .pauseAndRestore // restart from other tab bar item
 
-            view.addSubview(animationView)
+        self.view.addSubview(animationView)
 
             return animationView
 

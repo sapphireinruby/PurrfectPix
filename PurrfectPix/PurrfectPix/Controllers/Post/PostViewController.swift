@@ -3,7 +3,7 @@
 //  PurrfectPix
 //
 //  Created by Amber on 10/18/21.
-import FirebaseFirestore
+
 import UIKit
 import CoreAudio
 import AVFoundation
@@ -38,7 +38,6 @@ class PostViewController: UIViewController, UICollectionViewDataSource {
         fatalError()
     }
 
-    let dbFire = Firestore.firestore()
 
     // MARK: - Lifecycle
 
@@ -144,7 +143,7 @@ class PostViewController: UIViewController, UICollectionViewDataSource {
     ) {
 
         // loading lottie play
-        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+        let animationView = self.createAnimation(name: "890-loading-animation", mood: .autoReverse)
         animationView.play()
 
         StorageManager.shared.downloadURL(for: model) { postURL in
@@ -249,7 +248,7 @@ class PostViewController: UIViewController, UICollectionViewDataSource {
         case .poster(let viewModel):
             // to dequeue the right cell
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PosterCollectionViewCell.identifer,
+                withReuseIdentifier: PosterCollectionViewCell.identifier,
                 for: indexPath
             ) as? PosterCollectionViewCell else {
                 fatalError()
@@ -262,7 +261,7 @@ class PostViewController: UIViewController, UICollectionViewDataSource {
         case .petTag(let viewModel):
 
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PostPetTagCollectionViewCell.identifer,
+                withReuseIdentifier: PostPetTagCollectionViewCell.identifier,
                 for: indexPath
             ) as? PostPetTagCollectionViewCell else {
                 fatalError()
@@ -276,7 +275,7 @@ class PostViewController: UIViewController, UICollectionViewDataSource {
         case .post(let viewModel):
 
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PostCollectionViewCell.identifer,
+                withReuseIdentifier: PostCollectionViewCell.identifier,
                 for: indexPath
             ) as? PostCollectionViewCell else {
                 fatalError()
@@ -290,7 +289,7 @@ class PostViewController: UIViewController, UICollectionViewDataSource {
         case .actions(let viewModel):
 
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PostActionsCollectionViewCell.identifer,
+                withReuseIdentifier: PostActionsCollectionViewCell.identifier,
                 for: indexPath
             ) as? PostActionsCollectionViewCell else {
                 fatalError()
@@ -304,7 +303,7 @@ class PostViewController: UIViewController, UICollectionViewDataSource {
         case .likeCount(let viewModel):
 
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PostLikesCollectionViewCell.identifer,
+                withReuseIdentifier: PostLikesCollectionViewCell.identifier,
                 for: indexPath
             ) as? PostLikesCollectionViewCell else {
                 fatalError()
@@ -317,7 +316,7 @@ class PostViewController: UIViewController, UICollectionViewDataSource {
 
         case .caption(let viewModel):
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PostCaptionCollectionViewCell.identifer,
+                withReuseIdentifier: PostCaptionCollectionViewCell.identifier,
                 for: indexPath
             ) as? PostCaptionCollectionViewCell else {
                 fatalError()
@@ -331,7 +330,7 @@ class PostViewController: UIViewController, UICollectionViewDataSource {
         case .timestamp(let viewModel):
 
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PostDateTimeCollectionViewCell.identifer,
+                withReuseIdentifier: PostDateTimeCollectionViewCell.identifier,
                 for: indexPath
             ) as? PostDateTimeCollectionViewCell else {
                 fatalError()
@@ -561,7 +560,7 @@ extension PostViewController: PostLikesCollectionViewCellDelegate {
 }
 
 extension PostViewController: PostCaptionCollectionViewCellDelegate {
-    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell, index: Int) {
+    func postCaptionCollectionViewCellDidTapCaption(_ cell: PostCaptionCollectionViewCell, index: Int) {
         print("tapped caption")
         
         let userID = singlePost.post.userID
@@ -745,37 +744,37 @@ extension PostViewController: UICollectionViewDelegateFlowLayout {
         // register 7 cells
         collectionView.register(
             PosterCollectionViewCell.self,
-            forCellWithReuseIdentifier: PosterCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PosterCollectionViewCell.identifier
         )
 
         collectionView.register(
             PostPetTagCollectionViewCell.self,
-            forCellWithReuseIdentifier: PostPetTagCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PostPetTagCollectionViewCell.identifier
         )
 
         collectionView.register(
             PostCollectionViewCell.self,
-            forCellWithReuseIdentifier: PostCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PostCollectionViewCell.identifier
         )
 
         collectionView.register(
             PostActionsCollectionViewCell.self,
-            forCellWithReuseIdentifier: PostActionsCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PostActionsCollectionViewCell.identifier
         )
 
         collectionView.register(
             PostLikesCollectionViewCell.self,
-            forCellWithReuseIdentifier: PostLikesCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PostLikesCollectionViewCell.identifier
         )
 
         collectionView.register(
             PostCaptionCollectionViewCell.self,
-            forCellWithReuseIdentifier: PostCaptionCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PostCaptionCollectionViewCell.identifier
         )
 
         collectionView.register(
             PostDateTimeCollectionViewCell.self,
-            forCellWithReuseIdentifier: PostDateTimeCollectionViewCell.identifer
+            forCellWithReuseIdentifier: PostDateTimeCollectionViewCell.identifier
         )
         // comment
         collectionView.register(CommentCollectionViewCell.self,

@@ -8,12 +8,12 @@
 import UIKit
 
 protocol PostCaptionCollectionViewCellDelegate: AnyObject {
-    func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell, index: Int)
+    func postCaptionCollectionViewCellDidTapCaption(_ cell: PostCaptionCollectionViewCell, index: Int)
 }
 
 class PostCaptionCollectionViewCell: UICollectionViewCell {
 
-    static let identifer = "PostCaptionCollectionViewCell"
+    static let identifier = "PostCaptionCollectionViewCell"
 
     private var index = 0
 
@@ -44,7 +44,7 @@ class PostCaptionCollectionViewCell: UICollectionViewCell {
     }
 
     @objc func didTapCaption() {
-        delegate?.postCaptionCollectionViewCellDidTapCaptioon(self, index: index)
+        delegate?.postCaptionCollectionViewCellDidTapCaption(self, index: index)
     }
 
     override func layoutSubviews() {

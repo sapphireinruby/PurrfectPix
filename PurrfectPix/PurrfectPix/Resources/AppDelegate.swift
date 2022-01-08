@@ -22,14 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
 
-        if let user = Auth.auth().currentUser {
-            print("You're sign in as \(user.uid), email: \(user.email ?? "")")
-        }
-
-//        // 以下兩行會每次開app 先登出使用者
+//        // signOut user for testing
 //
 //        do { try Auth.auth().signOut() }
 //        catch{
+//        }
+//
+//        // check user for testing
+//
+//        if let user = Auth.auth().currentUser {
+//            print("User is sign in as \(user.uid), email: \(user.email ?? "")")
 //        }
 
         return true

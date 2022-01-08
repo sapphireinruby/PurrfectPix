@@ -141,7 +141,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
     func performSignIn() {
 
-        let animationView = self.setupAnimation(name: "890-loading-animation", mood: .autoReverse)
+        let animationView = self.createAnimation(name: "890-loading-animation", mood: .autoReverse)
         animationView.play()
 
         let request = createAppleIDRequest()
@@ -242,20 +242,23 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
 //         Sign in with authManager
         
-        AuthManager.shared.signIn(email: email, password: password) { [weak self] result in
+        AuthManager.shared.signIn(email: email, password: password) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success:
 //                    HapticManager
 
                     // if sign in success, present home screen
+                    guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
                     let vcTabBar = TabBarViewController()
-                    vcTabBar.modalPresentationStyle = .fullScreen
-                    self?.present(
-                        vcTabBar,
-                        animated: true,
-                        completion: nil
-                    )
+                    window.rootViewController = vcTabBar
+//
+//                    vcTabBar.modalPresentationStyle = .fullScreen
+//                    self?.present(
+//                        vcTabBar,
+//                        animated: true,
+//                        completion: nil
+//                    )
 
                 case .failure(let error):
 //                    HapticManager

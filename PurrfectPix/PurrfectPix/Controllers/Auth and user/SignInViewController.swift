@@ -246,22 +246,15 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-//                    HapticManager
+                    HapticManager.self
 
                     // if sign in success, present home screen
                     guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
                     let vcTabBar = TabBarViewController()
                     window.rootViewController = vcTabBar
-//
-//                    vcTabBar.modalPresentationStyle = .fullScreen
-//                    self?.present(
-//                        vcTabBar,
-//                        animated: true,
-//                        completion: nil
-//                    )
 
                 case .failure(let error):
-//                    HapticManager
+                    HapticManager.self
                     print(error)
                 }
             }

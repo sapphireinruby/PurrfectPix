@@ -52,7 +52,7 @@ final class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
-        title = "Create Post with with Animal"
+        title = "Create a Pet Post"
 
         view.addSubview(remindingLabel)
         view.addSubview(cameraView)
